@@ -1,0 +1,111 @@
+﻿
+
+<link href="~/Content/pagination.css" rel="stylesheet" />
+<link href="~/Content/simplePagination.css" rel="stylesheet" />
+<script src="~/Scripts/pagination.min.js"></script>
+<link href="~/Content/font-awesome.css" rel="stylesheet" />
+<link href="~/Content/component.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:200" rel="stylesheet">
+<script src="~/Scripts/slim-scroll/jquery.slimscroll.js"></script>
+<script src="~/Scripts/iziModal.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-messaging.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500|Raleway" rel="stylesheet">
+<link href="~/Content/jgrid.css" rel="stylesheet" />
+<link href="~/Content/iziModal.css" rel="stylesheet" />
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNmUWulUV31VdXe2c5IU30d8D4Q6pzMYw"></script>
+
+<style>
+    body {
+        background-color: #ebebeb !important;
+    }
+
+    #randerDiv {
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    .card-style {
+        border-radius: 4px !important;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px rgba(63,63,68,.1) !important;
+        box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px rgba(63,63,68,.1) !important;
+        background-color: #fff !important;
+    }
+
+    .form-card {
+        border-radius: 0px !important;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px rgba(63,63,68,.1) !important;
+        box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px rgba(63,63,68,.1) !important;
+        background-color: #fff !important;
+        font-size: 12px;
+        padding: 5px;
+        min-height: 45px;
+    }
+
+    .form-card-head {
+        border-radius: 0px !important;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px rgba(63,63,68,.1) !important;
+        box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px rgba(63,63,68,.1) !important;
+        /*background-color: #fff !important;*/
+        font-size: 12px;
+        padding: 5px;
+        color: #921111;
+        background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 90%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 90%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+    }
+
+    #map-canvas {
+        margin: 0;
+        padding: 0;
+        min-height: 480px;
+        max-height: 600px;
+        height: 100%;
+    }
+
+    .btn-group:hover .dropdown-menu {
+        display: block;
+    }
+
+    /*@@media (min-width: 1200px) {
+        .container {
+            max-width: 97%;
+        }
+    }*/
+    #jfilterCaption {
+        font-size: 33px !important;
+    }
+
+    .fieldHead {
+        width: 100%;
+        font-weight: 800;
+    }
+
+    .row {
+        padding: 1px;
+        margin: 0;
+    }
+
+    .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, col-md-12 {
+        padding: 3px;
+        padding-bottom: 2px;
+        padding-top: 2px;
+    }
+
+    col-md-12 {
+        padding: 0px;
+        padding-bottom: 2px;
+        padding-top: 2px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    .j-grid-detail-layout .export {
+        visibility: hidden;
+    }
+
+    .contentMemberInfoGrid {
+        padding: 0;
+    }
+</style>

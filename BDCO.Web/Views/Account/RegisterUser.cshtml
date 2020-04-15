@@ -1,0 +1,293 @@
+﻿@using BDCO.Web.Models
+@model LoginViewModel
+@using AppetizerHtmlHelper
+@*@using Kendo.Mvc.UI*@
+@{
+    ViewBag.Title = "User Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .k-checkbox-label {
+    position: relative;
+    padding-left: 2.5em;
+    vertical-align: middle;
+    line-height: 2.875em;
+    cursor: pointer;
+    font-size: 14px;
+}
+.k-checkbox-label:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 0;
+    border-width: 1px;
+    border-style: solid;
+    width: 1em;
+    height: 1em;
+    font-size: 2em;
+    line-height: 1em;
+    text-align: center;
+}
+
+</style>
+<div class="pageTitle" style="padding-left:6px;margin-left:6px;">
+    <h3>User Create</h3>
+    <div class="btn-group pull-right col-md-offset-1" style="margin-top:20px;" role="group" aria-label="Basic example">
+        <a class="btn btn-warning" href="/Account/RegisterUser"> <i class="fa fa-plus" aria-hidden="true"></i> <b>Add User</b></a>
+        <a class="btn btn-primary" href="/Account/UserList"> <i class="fa fa-list" aria-hidden="true"></i> <b>List</b></a>
+        <a class="btn btn-info" href="/Account/UserGeolocation"><i class="fa fa-globe" aria-hidden="true"></i> <b>GEO</b></a>
+        @*<a class="btn btn-success" href="/Account/UserServicePoint"><i class="fa fa-registered" aria-hidden="true"></i> <b>ServicePoint</b></a>*@
+    </div>
+</div>
+<form id="SponsorshipUser">
+
+    <fieldset>
+       
+        <div class="row">
+            <div class="col-md-3 col-sm-12">
+                <label >Full Name<span style="color: #ff0000; font-size:22px;font-weight:bold">*</span></label>
+                @Html.KendoTextBox("UserID", "", "150", "width: 100%;  display:none", "")
+                @Html.KendoTextBox("FullName", "", "150", "width: 100%;", "")
+                <span id="eFullName" class="hideError"></span>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <label>E-mail<span style="color: #ff0000; font-size:22px;font-weight:bold">*</span></label>
+                @Html.KendoTextBox("Email", "", "150", "width: 100%;", "")
+                <span id="eEmail" class="hideError"></span>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <label >Mobile No <span style="color: #ff0000; font-size:22px;font-weight:bold">*</span></label>
+                @Html.KendoTextBox("PhoneNumber", "", "150", "width: 100%;", "")
+                <span id="ePhoneNumber" class="hideError"></span>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <label>Organization<span style="color: #ff0000; font-size:22px;font-weight:bold">*</span></label>
+                <input id="Organization" style="width: 100%;" />
+                <span id="eOrganization" class="hideError"></span>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-3 col-sm-12">
+                <label >Designation<span style="color: #ff0000; font-size:22px;font-weight:bold">*</span></label>
+                @*<input id="Designation" style="width: 100%;" />*@
+                @Html.KendoTextBox("Designation", "", "150", "width: 100%;", "")
+                <span id="eDesignation" class="hideError"></span>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <label>Staff ID<span style="color: #ff0000; font-size:22px;font-weight:bold"></span></label>
+                @Html.KendoTextBox("StaffID", "", "150", "width: 100%;", "")
+                <span id="eStaffID" class="hideError"></span>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <label>Roll<span style="color: #ff0000; font-size:22px;font-weight:bold"></span></label>
+                <input id="UserType" style="width: 100%;" />
+                <span id="eUserType" class="hideError"></span>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <label><span style="color: #ff0000; font-size:22px;font-weight:bold"></span></label>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div style="width:100%">
+                            <input type="checkbox" id="IsActive" class="k-checkbox">
+                            <label class="k-checkbox-label" for="IsActive">Active</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="width:100%">
+                            <input type="radio" id="GeoType1" name="GeoType" value="1" checked="checked"> উপজেলা<br>
+                            <input type="radio" id="GeoType2" name="GeoType" value="2"> পৌরসভা<br>
+                            <input type="radio" id="GeoType3" name="GeoType" value="3"> সিটি কর্পোরেশন<br>
+
+                        </div>
+                    </div>
+                </div>
+               
+                
+                @*<span id="eIsActive" class="hideError"></span>*@
+            </div>
+        </div>
+        <br />
+    </fieldset>
+    <fieldset>
+        <div class="row">
+            <div class="col-md-8">
+
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <input type="button" value="Cancel" title="Cancel" id="btnCancel" onclick="fnResetData()" style="width:100%;" class="odDefaultButton" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <input type="button" value="Save" class="odDefaultButton" onclick="fnSaveData()" style="width:100%;" />
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+<script>
+    $(document).ready(function () {
+
+        loadOrganization();
+        //loadUserId();
+        laodUserRoll();
+        //var url = window.location.href;
+        //var splitStr = url.split('=');
+        //var id = splitStr[1];
+        //if (id != null || id != undefined) {
+        //    fnEditUser(id);
+        //}
+       
+    });
+    
+    function fnEditUser(id) {
+        appetizer.ajaxLoder.showPleaseWait();
+        var urlpath = '@Url.Action("GetUserInfobyId", "Account")';
+        appetizer.actionCall(urlpath, { 'UserId': id }, 'GET', function (data, result) {
+            if (result) {
+                debugger
+                appetizer.div.loadDivControlFromJson(data.Data, '0');
+                
+                var org = $('#Organization').data("kendoDropDownList");//.text(data.Data.Organization);
+                org.text( data.Data.Organization);
+                $('#IsActive').prop('checked', data.Data.IsActive);
+                //$('input[name=GeoType]:checked', '#SponsorshipUser').val(data.Data.GeoType);
+                $('input[name="GeoType"][value="' + data.Data.GeoType + '"]').prop('checked', true);
+                appetizer.ajaxLoder.hidePleaseWait();
+
+            }
+            else {
+                appetizer.ajaxLoder.hidePleaseWait();
+            }
+        })
+    }
+
+    function laodUserRoll()
+    {
+        appetizer.ajaxLoder.showPleaseWait();
+        var urlpath = '@Url.Action("GetUserRolls", "Account")';
+        appetizer.actionCall(urlpath, null, 'GET', function (data, result) {
+            if (result) {
+                if (data.Data.length > 0) {
+                    var item = $("#UserType").kendoDropDownList({
+                        //optionLabel: " ",
+                        dataTextField: "RollName",
+                        dataValueField: "RollID",
+                        filter: "contains",
+                        dataSource: data.Data,
+                        height: '300',
+                        template: "<div style=\"padding:5px;line-height:16px;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.RollName #</div>",
+                        open: adjustDropDownWidth,
+                    }).data("kendoDropDownList");
+                }
+
+            } else {
+
+            };
+            appetizer.ajaxLoder.hidePleaseWait();
+            
+        });
+    }
+
+    function loadUserId() {
+        appetizer.ajaxLoder.showPleaseWait();
+        var urlpath = '@Url.Action("GetSuggestedUserId", "Account")';
+        appetizer.actionCall(urlpath,null, 'GET', function (data, result) {
+                if (result) {
+                    if (data.Data.SuggestedUserId != null) {
+                        var suggesteduserid = parseInt(data.Data.SuggestedUserId) + 1
+                        $('#UserID').val(suggesteduserid);
+                    }
+                    appetizer.ajaxLoder.hidePleaseWait();
+                } else {
+                    appetizer.ajaxLoder.hidePleaseWait();
+                };
+            });
+    };
+
+    function loadOrganization() {
+        var urlpath = '@Url.Action("GetObservationalOrgList", "Account")';
+        appetizer.actionCall(urlpath, {}, 'GET', function (data, result) {
+            if (result) {
+
+                if (data.Data.length > 0) {
+                    var item = $("#Organization").kendoDropDownList({
+                        //optionLabel: " ",
+                        dataTextField: "Name",
+                        dataValueField: "ID",
+                        filter: "contains",
+                        dataSource: data.Data,
+                        height: '300',
+                        template: "<div style=\"padding:5px;line-height:16px;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.Name #</div>",
+                        open: adjustDropDownWidth,
+                    }).data("kendoDropDownList");
+
+                    var url = window.location.href;
+                    var splitStr = url.split('=');
+                    var id = splitStr[1];
+                    if (id != null || id != undefined) {
+                        fnEditUser(id);
+                    }
+                }
+
+            } else {
+
+            };
+        });
+    };
+    function fnSaveData() {
+        debugger
+        //activaTab('tab1default');
+        var isFormValidate = new appetizer.formValidation();
+        isFormValidate.add('FullName', appetizer.tools.validationType.isNotEmpty, "This field is required");
+        isFormValidate.add('Email', appetizer.tools.validationType.isNotEmpty, "This field is required");
+        isFormValidate.add('PhoneNumber', appetizer.tools.validationType.isNotEmpty, "This field is required");      
+        if (isFormValidate.validate()) {
+            var user = appetizer.div.getJsonObjectFromDiv('SponsorshipUser', '0');
+            user.GeoType = $('input[name=GeoType]:checked', '#SponsorshipUser').val();
+            var urlpath = '@Url.Action("SaveUser", "Account")';
+            appetizer.ajaxLoder.showPleaseWait();
+            appetizer.actionCall(urlpath, { "objUser": user }, "POST", function (data, result) {
+
+                if (result) {
+                    debugger
+                    appetizer.ajaxLoder.hidePleaseWait();
+                    if (data.Data == 'User already Exist!')
+                    {
+                        appetizer.message.showError('#showErrorMsg', data.Data, 10000);
+                    }
+                    else
+                    {
+                        appetizer.message.showInfo('#showMsg', data.Data, 10000);
+                        $(document).on('closed', '#showMsg', function (e) {
+                            window.location.href = '/Account/UserList';
+                        });
+                        
+                    }
+                    
+                    //fnResetData();
+                   // $('html, body').animate({ scrollTop: 0 }, 'slide');
+                }
+                else {
+                    debugger
+                    appetizer.ajaxLoder.hidePleaseWait();
+                    appetizer.message.showError('#showErrorMsg', data.Data, 10000);
+                }
+            });
+        }
+        else {
+
+          //  appetizer.message.showError('#showErrorMsg', 'Some field is required!', 4000);
+            return false;
+
+        }
+    }
+    function adjustDropDownWidth(e) {
+        var listContainer = e.sender.list.closest(".k-list-container");
+        listContainer.width(listContainer.width() + kendo.support.scrollbar());
+    }
+
+</script>

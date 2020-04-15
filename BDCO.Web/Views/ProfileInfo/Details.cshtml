@@ -1,0 +1,450 @@
+﻿@using AppetizerHtmlHelper;
+
+@{
+    ViewBag.Title = "Profile Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* JSGRID Includes *@
+<link href="~/Content/font-awesome.css" rel="stylesheet" />
+<link href="~/Content/component.css" rel="stylesheet" />
+<link href="~/Content/jgrid.css" rel="stylesheet" />
+<link href="~/Content/simplePagination.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.simplePagination.js"></script>
+@* JSGRID Includes *@
+
+<div style="height:auto;" id="block">
+    <form>
+        <div class="content-form-title">
+            <h4 style="padding-top:5px;"><b>Profile</b> Information</h4>
+            <hr />
+        </div>
+
+        <div class="row" style="display:none;">
+            <div class="col-md-4" style="display:none;">
+                <input type="text" name="RecordID" id="RecordID" value="" style="width:100%" onchange="" />
+                @*<input type="text" name="ProfileId" id="ProfileId" value="" style="width:100%" onchange="" />*@
+                <input type="text" name="UserId" id="UserId" value="" style="width:100%" onchange="" />
+                <span id="eRecordId" class="hideError"></span>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:5px;">
+            <div class="col-md-3">
+                <label>Profile Type</label>
+                <input name="TypeId" id="TypeId" value="" style="width:100%" />
+                <span id="eTypeId" class="hideError"></span>
+            </div> 
+
+            <div class="col-md-3">
+                <label>Profile ID</label>
+                <input name="ProfileId" id="ProfileId" value="" style="width:100%;" readonly class="k-textbox"/>
+                <span id="eTypeId" class="hideError"></span>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:5px;">
+            <div class="col-md-3">
+                <label>Name</label>
+                <input type="text" name="Name" id="Name" value="" class="k-textbox" style="width:100%" />
+                <span id="eName" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Sex</label>
+                <input name="Gender" id="Gender" value="" style="width:100%" />
+                <span id="eGender" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Nationality</label>
+                <input name="Nationality" id="Nationality" value="" style="width:100%" />
+                <span id="eNationality" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Mobile</label>
+                <input type="text" name="Mobile" id="Mobile" value="" class="k-textbox" style="width:100%" />
+                <span id="eMobile" class="hideError"></span>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:5px;">
+            <div class="col-md-3">
+                <label>MOHA ID</label>
+                <input type="text" name="MOHAID" id="MOHAID" value="" class="k-textbox" style="width:100%" />
+                <span id="eMOHAID" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>NID</label>
+                <input type="text" name="NID" id="NID" value="" class="k-textbox" style="width:100%" />
+                <span id="eNID" class="hideError"></span>
+            </div>
+            <div class="col-md-6">
+                <label>Address</label>
+                <input type="text" name="Address" id="Address" value="" class="k-textbox" style="width:100%" />
+                <span id="eAddress" class="hideError"></span>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:5px;">
+            <div class="col-md-3">
+                <label>Organization</label>
+                <input type="text" name="PartnerId" id="PartnerId" value="" style="width:100%" />
+                <span id="eOrganization" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Designation</label>
+                <input type="text" name="Designation" id="Designation" value="" style="width:100%" />
+                <span id="eDesignation" class="hideError"></span>
+            </div>
+
+            <div class="col-md-3">
+                <label>Education Qualification</label>
+                <input type="text" name="EducationQualification" id="EducationQualification" value="" style="width:100%" />
+                <span id="eEducationQualification" class="hideError"></span>
+            </div> 
+            
+            <div class="col-md-3">
+                <label>Experience in Field</label>
+                <input type="number" min="0" max="50" name="ExperienceInField" id="ExperienceInField" value="" class="k-textbox" style="width:100%" />
+                <span id="eExperienceInField" class="hideError"></span>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:5px;">
+            <div class="col-md-3">
+                <label>Learning Facility</label>
+                <input type="text" name="FacilityId" id="FacilityId" value="" style="width:100%" />
+                <span id="eFacilityId" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Teaching Subject</label>
+                <input type="text" name="TeachingSubject" id="TeachingSubject" value="" style="width:100%" />
+                <span id="eTeachingSubject" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Teacher Learning Cycle By RT</label>
+                <input type="number" name="TeacherLearningCycleByRT" id="TeacherLearningCycleByRT" value="" class="k-textbox" style="width:100%" />
+                <span id="eTeacherLearningCycleByRT" class="hideError"></span>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:5px;">
+            <div class="col-md-3">
+                <label>Training Received</label>
+                <input type="text" name="TrainingReceived" id="TrainingReceived" value="" class="k-textbox" style="width:100%" />
+                <span id="eTrainingReceived" class="hideError"></span>
+            </div>
+
+            <div class="col-md-3">
+                <label>Training Organized By</label>
+                <input type="text" name="TrainingOrganizedBy" id="TrainingOrganizedBy" value="" class="k-textbox" style="width:100%" />
+                <span id="eTrainingOrganizedBy" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Training Experience Out Of Camp</label>
+                <input type="number" min="0" max="50" name="TrainingExperienceOutOfCamp" id="TrainingExperienceOutOfCamp" value="" class="k-textbox" style="width:100%" />
+                <span id="eTrainingExperienceOutOfCamp" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Training Experience In Camp</label>
+                <input type="number" min="0" max="50" name="TrainingExperienceInCamp" id="TrainingExperienceInCamp" value="" class="k-textbox" style="width:100%" />
+                <span id="eTrainingExperienceInCamp" class="hideError"></span>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:5px;">
+            <div class="col-md-3">
+                <label>Supervisor Name</label>
+                <input type="text" name="SupervisorName" id="SupervisorName" value="" class="k-textbox" style="width:100%" />
+                <span id="eSupervisorName" class="hideError"></span>
+            </div>
+
+            <div class="col-md-3">
+                <label>Supervisor Mobile</label>
+                <input type="text" name="SupervisorMobile" id="SupervisorMobile" value="" class="k-textbox" style="width:100%" />
+                <span id="eSupervisorMobile" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Supervisor Email</label>
+                <input type="text" name="SupervisorEmail" id="SupervisorEmail" value="" class="k-textbox" style="width:100%" />
+                <span id="eSupervisorEmail" class="hideError"></span>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:5px;">
+            <div class="col-md-3">
+                <label>District</label>
+                <input type="text" name="DistrictCode" id="DistrictCode" value="" style="width:100%" onchange="" />
+                <span id="eDistrictCode" class="hideError"></span>
+            </div>
+
+            <div class="col-md-3">
+                <label>Upazila</label>
+                <input type="text" name="UpazilaCode" id="UpazilaCode" value="" style="width:100%" onchange="" />
+                <span id="eUpazilaCode" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Union</label>
+                <input type="text" name="UnionCode" id="UnionCode" value="" style="width:100%" onchange="" />
+                <span id="eUnionCode" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Village</label>
+                <input type="text" name="VillageCode" id="VillageCode" value="" style="width:100%" onchange="" />
+                <span id="eVillageCode" class="hideError"></span>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:5px;">
+            <div class="col-md-3">
+                <label>Center</label>
+                <input type="text" name="CenterCode" id="CenterCode" value="" style="width:100%" onchange="" />
+                <span id="eCenterCode" class="hideError"></span>
+            </div>
+
+            <div class="col-md-3">
+                <label>Camp</label>
+                <input type="text" name="CampId" id="CampId" value="" style="width:100%" onchange="" />
+                <span id="eCampId" class="hideError"></span>
+            </div>
+
+            <div class="col-md-3">
+                <label>Block</label>
+                <input type="text" name="BlockId" id="BlockId" value="" style="width:100%" onchange="" />
+                <span id="eBlockId" class="hideError"></span>
+            </div>
+            <div class="col-md-2 col-md-offset-1" style="padding-top:25px;">
+                <button type="button" onclick="fnSave()" class="btn btn-success"><i class="fa fa-plus"></i> Save</button>
+                @*<button type="button" onclick="fnSearch(1)" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>*@
+                <button type="button" onclick="fnClear()" class="btn btn-warning"><i class="fa fa-recycle"></i> Clear</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<script>
+
+    var currentPageNumber = 1;
+    function fnClear() {
+        $("#UpazilaCode").data("kendoDropDownList").select("");
+        $("#DistrictCode").data("kendoDropDownList").select("");
+        $("#UnionCode").data("kendoDropDownList").select("");
+        $("#VillageCode").data("kendoDropDownList").select("");
+        $("#CampId").data("kendoDropDownList").select("");
+        $("#CenterCode").data("kendoDropDownList").select("");
+        $("#BlockId").data("kendoDropDownList").select("");
+        $("#BlockId").data("kendoDropDownList").select("");
+        $("#RecordId").val("");
+    }
+
+    $("#TypeId").kendoDropDownList({
+        optionLabel: "Select...",
+        dataTextField: "Text",
+        dataValueField: "Value",
+        dataSource: [{ Text: "Master Trainer", Value: "1" }, { Text: "Resource Trainer", Value: "2" }, { Text: "Teacher", Value: "3" }]
+    });
+
+    $("#Gender").kendoDropDownList({
+        optionLabel: "Select...",
+        dataTextField: "GenderName",
+        dataValueField: "Gender",
+        dataSource: { transport: { read: { dataType: "json", url: "/Common/GetGenderInfo", } } }
+    });
+
+    $("#Designation").kendoDropDownList({
+        optionLabel: "Select...",
+        dataTextField: "Text",
+        dataValueField: "Value",
+        change: upazilaChnage,
+        dataSource: { transport: { read: { dataType: "json", url: "/filter/GetDesignation", } } }
+    });
+
+    $("#Nationality").kendoDropDownList({
+        optionLabel: "Select...",
+        dataTextField: "Nationality",
+        dataValueField: "CountryID",
+        dataSource: { transport: { read: { dataType: "json", url: "/Common/GetNationality", } } }
+    });
+
+  
+    $("#FacilityId").kendoDropDownList({
+        optionLabel: "Select...",
+        dataTextField: "Text",
+        dataValueField: "Value",
+        change: districtChange,
+        dataSource: { transport: { read: { dataType: "json", url: "/filter/GetLearningFacility", } } }
+    });   
+
+     
+    $("#TeachingSubject").kendoDropDownList({
+        optionLabel: "Select...",
+        dataTextField: "Text",
+        dataValueField: "Value",
+        change: districtChange,
+        dataSource: { transport: { read: { dataType: "json", url: "/filter/GetTeacherSubjects", } } }
+    });
+    
+
+    $("#EducationQualification").kendoDropDownList({
+        optionLabel: "Select...",
+        dataTextField: "Text",
+        dataValueField: "Value",
+        change: districtChange,
+        dataSource: { transport: { read: { dataType: "json", url: "/filter/GetEducationQualifications", } } }
+    });
+
+    $("#EducationQualification").kendoDropDownList({
+        optionLabel: "Select...",
+        dataTextField: "Text",
+        dataValueField: "Value",
+        change: districtChange,
+        dataSource: { transport: { read: { dataType: "json", url: "/filter/GetEducationQualifications", } } }
+    });
+
+    $("#PartnerId").kendoDropDownList({
+        optionLabel: "Select...",
+        dataTextField: "Text",
+        dataValueField: "Value",
+        change: districtChange,
+        dataSource: { transport: { read: { dataType: "json", url: "/filter/GetPartnerInfo" } } }
+    });
+
+    function GetDistrict() {
+        $("#DistrictCode").kendoDropDownList({
+            optionLabel: "Select...",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            change: districtChange,
+            dataSource: { transport: { read: { dataType: "json", url: "/filter/GetDistrictCode", } } }
+        });
+    }
+
+    function districtChange() {
+        var districtCode = $("#DistrictCode").val();
+        upazila = $("#UpazilaCode").kendoDropDownList({
+            optionLabel: "Select...",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            change: upazilaChnage,
+            dataSource: { transport: { read: { dataType: "json", url: "/filter/GetUpazilaCode/?DistrictCode=" + districtCode, } } }
+        });
+
+        $("#UpazilaCode").data("kendoDropDownList").trigger('change');
+        $("#UnionCode").data("kendoDropDownList").trigger('change');
+    }
+
+    function upazilaChnage() {
+        union = $("#UnionCode").kendoDropDownList({
+            optionLabel: "Select...",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            change: unionChange,
+            dataSource: { transport: { read: { dataType: "json", url: "/filter/GetUnionCode/?DistrictCode=" + $("#DistrictCode").val() + "&UpazilaCode=" + $("#UpazilaCode").val() } } }
+        });
+
+        $("#UnionCode").data("kendoDropDownList").trigger('change');
+    }
+
+    function unionChange() {
+        village = $("#VillageCode").kendoDropDownList({
+            optionLabel: "Select...",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            change: villageChange,
+            dataSource: { transport: { read: { dataType: "json", url: "/filter/GetVillageCode/?DistrictCode=" + $("#DistrictCode").val() + "&UpazilaCode=" + $("#UpazilaCode").val() + "&UnionCode=" + $("#UnionCode").val() } } }
+        });
+    }
+
+    function villageChange() {
+        $('#CampId').kendoDropDownList({
+            optionLabel: "Select...",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            change: campCenterChange,
+            dataSource: { transport: { read: { dataType: "json", url: "/filter/GetCampId/?DistrictCode=" + $("#DistrictCode").val() + "&UpazilaCode=" + $("#UpazilaCode").val() + "&UnionCode=" + $("#UnionCode").val() + "&VillageCode=" + $("#VillageCode").val() } } }
+        });
+
+        $('#CenterCode').kendoDropDownList({
+            optionLabel: "Select...",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            dataSource: { transport: { read: { dataType: "json", url: "/filter/GetCenterId/?DistrictCode=" + $("#DistrictCode").val() + "&UpazilaCode=" + $("#UpazilaCode").val() + "&UnionCode=" + $("#UnionCode").val() + "&VillageCode=" + $("#VillageCode").val() } } }
+        });
+    }
+
+    function campCenterChange() {
+        $('#BlockId').kendoDropDownList({
+            optionLabel: "Select...",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            change: villageChange,
+            dataSource: { transport: { read: { dataType: "json", url: "/filter/GetBlockId/?CampId=" + $("#CampId").val() } } }
+        });
+    }
+
+    function getUrlVars() {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for (var i = 0; i < hashes.length; i++) {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+
+    $(document).on("ready", function () {
+        function dropdownChange(control, method) {
+            control.bind('change', method);
+        }
+
+        var district;
+        var upazila;
+        var union;
+        var village;
+        var campid;
+        var centerId;
+        GetDistrict();
+        $('#RecordID').val(getUrlVars()["recordId"]);
+        SetToTop($('#RecordID').val());
+        //fnClear();
+
+     
+    });
+
+    function SetToTop(recordId) {
+        var getUrl = '@Url.Action("GetProfileInfoByID")';
+        appetizer.ajaxLoder.showPleaseWait();
+        appetizer.actionCall(getUrl, { id: recordId }, 'json', function (data, result) {
+            appetizer.div.setJsonObjectToDiv(data, 'block');
+            $("#DistrictCode").data("kendoDropDownList").trigger('change');
+            $("#UpazilaCode").data("kendoDropDownList").trigger('change');
+            $("#UnionCode").data("kendoDropDownList").trigger('change');
+            $("#VillageCode").data("kendoDropDownList").trigger('change');
+            $("#CampId").data("kendoDropDownList").trigger('change');
+            appetizer.ajaxLoder.hidePleaseWait();
+
+        });
+    }
+
+
+    function fnSave() {
+        //var isFormValid = new appetizer.formValidation();
+        //isFormValid.add('RegisterNo', appetizer.tools.validationType.isNotEmpty, "Please input Registration No.")
+        // if (!isFormValid.validate()) return;
+
+        debugger
+        var urlpath = '@Url.Action("Save", "ProfileInfo")';
+        var jsonData = appetizer.div.getJsonObjectFromDiv('block', '0');
+
+        appetizer.actionCall(urlpath, jsonData, "POST", function (data, result) {
+            if (result) {
+                appetizer.message.showInfo('#showMsg', data.Data, 10000);
+                fnReset();
+            }
+            else { appetizer.message.showError('#showMsg', data.Data, 10000); }
+        });
+    }
+
+</script>
+

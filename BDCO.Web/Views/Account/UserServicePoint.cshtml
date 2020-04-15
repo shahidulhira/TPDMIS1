@@ -1,0 +1,264 @@
+﻿@using AppetizerHtmlHelper
+@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "User Resource Center Setting";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/component.css" rel="stylesheet" />
+<link href="~/Content/KendoUI/kendo.common.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Anton|Archivo+Narrow" rel="stylesheet">
+<style>
+    .checked {
+        color: #fff;
+        background-color: #f0ad4e;
+    }
+</style>
+<div class="row" style="padding:20px">
+    <div class="panel with-nav-tabs panel-default">
+        <div style="padding:20px">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <h3 style="color:#c20123; margin-top:0px;line-height: 0.5; font-size:20px"><strong>User</strong> Resource Center</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="btn-group pull-right col-md-offset-1" role="group" aria-label="Basic example">
+                            <a class="btn btn-warning" href="/Account/RegisterUser"> <i class="fa fa-plus" aria-hidden="true"></i> <b>Add User</b></a>
+                            <a class="btn btn-primary" href="/Account/UserList"> <i class="fa fa-list" aria-hidden="true"></i> <b>List</b></a>
+                            <a class="btn btn-info" href="/Account/UserGeolocation"><i class="fa fa-globe" aria-hidden="true"></i> <b>GEO</b></a>
+                            <a class="btn btn-success" href="/Account/UserServicePoint"><i class="fa fa-registered" aria-hidden="true"></i> <b>ServicePoint</b></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="col-md-12" style="padding-left:0px; padding-right: 0px;">
+                <div class="panel with-nav-tabs panel-default" style="background-color: #ededed">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="col-md-12">
+                                        <div class="row" style="padding-top:10px; min-height:45px">
+                                            <label for="usergroup1" style="font-size:16px; text-transform:none">USER </label> &nbsp;
+                                            <input id="Users" style="width: 30%;" />
+                                            <button class="btn btn-warning pull-right" type="button">
+                                                Center <span class="badge" id="RcNBadge">0</span>
+                                            </button>
+
+
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-md-12">
+
+
+                                    <div class="col-md-12" style="height:100%">
+                                        <div class="col-md-12">
+                                            <div class="row" id="divRcN">
+
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <input type="button" value="Clear" id="btnSave1" class="odDefaultButton" style="width:6%;background: linear-gradient(rgb(160, 8, 8) 5%, rgb(247, 1, 1) 100%) rgb(136, 6, 6); color:#fff" onclick="ResetServicePoint()">
+                                            <input type="button" value="Save" id="btnSave" class="odDefaultButton pull-right" style="width:6%;background: linear-gradient(rgb(160, 8, 8) 5%, rgb(247, 1, 1) 100%) rgb(136, 6, 6);color:#fff" onclick="SaveRcN()">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/Appetizer.js"></script>
+<script>
+    var dataLength = 0;
+    $(document).ready(function () {
+
+        $selectedRcN = [];
+        $upflag = 0;
+        var unflag = 0;
+        var vflag = 0;
+        LoadUserDropdown();
+        LoadServicePoint();
+        $("#divRcN").empty();
+        var divhtml = '<table id="gridRcN"></table>';
+        $(divhtml).appendTo($("#divRcN"));
+        var html = '';
+        $(html).appendTo($("#gridRcN"));
+        $("#gridRcN").kendoGrid({
+            height: 400,
+            sortable: false
+        });
+
+
+    });
+
+    function ResetServicePoint() {
+        $('input:checkbox').removeAttr('checked');
+        $("tr").removeClass("checked");
+
+        $selectedRcN = [];
+
+        $('#RcNBadge').text($selectedRcN.length);
+    }
+
+    function SaveRcN() {
+        var userId = $('#Users').val();
+        if (userId == "") {
+            appetizer.message.showError('#showErrorMsg', 'Please select User first!', 10000);
+        }
+        else {
+            SaveUserRcN(userId)
+        }
+
+    };
+
+    function SaveUserRcN(userId) {
+
+        var urlpath = '@Url.Action("SaveUserServicePoint", "Account")';
+        var jsonToken = { "lstRcN": $selectedRcN, "UserId": userId }
+
+        appetizer.ajaxLoder.showPleaseWait();
+        appetizer.actionCall(urlpath, jsonToken, "POST", function (data, result) {
+            if (result) {
+
+                appetizer.ajaxLoder.hidePleaseWait();
+                appetizer.message.showInfo('#showMsg', data.Data, 10000);
+
+                $('input:checkbox').removeAttr('checked');
+                $("tr").removeClass("checked");
+
+                $selectedRcN = [];
+
+                $('#RcNBadge').text($selectedRcN.length);
+
+                var dropdownlist = $('#Users').data("kendoDropDownList");
+                dropdownlist.select(function (dataItem) {
+                    return dataItem.symbol === "--SELECT--";
+                });
+            }
+            else {
+                appetizer.ajaxLoder.hidePleaseWait();
+                appetizer.message.showError('#showErrorMsg', data.Data, 10000);
+            }
+        });
+
+    }
+
+    function LoadUserDropdown() {
+        var urlpath = '@Url.Action("GetUserInfoList", "Account")';
+        appetizer.actionCall(urlpath, '', 'GET', function (data, result) {
+            if (result) {
+                if (data.Data.length > 0) {
+                    var item = $("#Users").kendoDropDownList({
+                        optionLabel: "--SELECT--",
+                        dataTextField: "FullName",
+                        dataValueField: "UserID",
+                        filter: "contains",
+                        dataSource: data.Data,
+                        height: '300',
+                        template: "<div style=\"padding:5px;line-height:18px;font-size:14px; color:##000;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.FullName #</div>",
+                        open: adjustDropDownWidth,
+                    }).data("kendoDropDownList");
+                }
+
+            } else {
+
+            };
+        });
+    };
+
+
+
+    function LoadServicePoint(userId) {
+
+        var urlpath = '@Url.Action("GetServicePointInfo", "Account")';
+        var userType = '@User.CurrentUserGeoType()';
+        appetizer.actionCall(urlpath, { "UserId": userId, "UserType": userType }, 'GET', function (data, result) {
+            if (result) {
+                $("#divRcN").empty();
+                var divhtml = '<table id="gridRcN"></table>';
+                $(divhtml).appendTo($("#divRcN"));
+                var html = '';
+
+                $("#gridRcN tr").detach();
+                var html = '<thead><tr><th>Check </th><th>RESOURCES CENTER CODE </th><th>RESOURCES CENTER NAME </th></tr></thead><tbody>';
+                for (i = 0; i < data.Data.lstServicePoint.length; i++) {
+                    html += '<tr>' +
+                            '<td><input type="checkbox" class="checkbox" id="checkRcN' + data.Data.lstServicePoint[i].ServicePointId + '" onclick="javascript: RcNClicked(\'' + data.Data.lstServicePoint[i].ServicePointId + '\',this.checked)" /></td>' +
+                            '<td>' + data.Data.lstServicePoint[i].ServicePointId + '</td>' +
+                            '<td>' + data.Data.lstServicePoint[i].ServicePointName + '</td>' +
+                            '</tr> </tbody>';
+                }
+                $(html).appendTo($("#gridRcN"));
+                $("#gridRcN").kendoGrid({
+                    height: 400,
+                    sortable: false
+                });
+                for (var i = 0; i < data.Data.ServicePointList.length; i++) {
+                    if (data.Data.ServicePointList[i].ServicePointId != "0") {
+                        $('#checkRcN' + data.Data.ServicePointList[i].ServicePointId).prop('checked', true);
+                        var index = $selectedRcN.findIndex(x => x.ServicePointId == data.Data.ServicePointList[i].ServicePointId);
+                        if (index == -1) {
+                            $selectedRcN.push({ ServicePointId: data.Data.ServicePointList[i].ServicePointId });
+
+                            $('#checkRcN' + data.Data.ServicePointList[i].ServicePointId).closest('tr').addClass('checked');
+                        }
+                    }
+                }
+                $('#RcNBadge').text($selectedRcN.length);
+
+            } else {
+
+            };
+        });
+
+    }
+
+
+
+    $('#Users').change(function () {
+        var userId = $(this).val();
+        LoadServicePoint(userId);
+    });
+
+
+
+    function adjustDropDownWidth(e) {
+        var listContainer = e.sender.list.closest(".k-list-container");
+        listContainer.width(listContainer.width() + kendo.support.scrollbar());
+    }
+
+
+
+
+    function RcNClicked(ServicePointId, checkStatus) {
+        if (checkStatus == true) {
+            var index = $selectedRcN.findIndex(x => x.ServicePointId == ServicePointId);
+            if (index == -1) {
+                $selectedRcN.push({ ServicePointId: ServicePointId });
+                //console.log($selectedDistrict);
+                $('#checkRcN' + ServicePointId).closest('tr').addClass('checked');
+            }
+        }
+        else {
+            var index = $selectedRcN.findIndex(x => x.ServicePointId == ServicePointId);
+            $selectedRcN.splice(index, 1);
+            $('#checkRcN' + ServicePointId).closest('tr').removeClass('checked');
+        }
+        $('#RcNBadge').text($selectedRcN.length);
+    }
+
+
+
+</script>
+
+

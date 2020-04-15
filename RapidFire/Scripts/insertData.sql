@@ -1,0 +1,1 @@
+INSERT INTO ashiq.Student (Id,Name,Gender) values (newid(),'Test User -A Test',1)

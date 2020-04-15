@@ -1,0 +1,351 @@
+﻿@using BDCO.Domain.Aggregates
+@model List<InterviewQuestionnaireResults>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/simplePagination.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.simplePagination.js"></script>
+<link href="~/Content/jgrid.css" rel="stylesheet" />
+<style>
+    body {
+        background-color: #ebebeb !important;
+    }
+    #randerDiv {
+        border: none !important;
+        box-shadow: none !important;
+    }
+    .card-style {
+        border-radius: 4px !important;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px rgba(63,63,68,.1) !important;
+        box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px rgba(63,63,68,.1) !important;
+        background-color: #fff !important;
+    }
+    #map-canvas {
+        margin: 0;
+        padding: 0;
+        min-height: 480px;
+        max-height: 600px;
+        height: 100%;
+    }
+    .btn-group:hover .dropdown-menu {
+        display: block;
+    }
+    #jfilterCaption {
+        font-size: 22px !important;
+    }
+    .grid {
+        background: #ffffff;
+        border-radius: 4px;
+        padding: 8px;
+        box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px rgba(63,63,68,.1) !important;
+        margin-top: 10px;
+    }
+        .grid .master {
+            background: #eeedee;
+            border-right: 2px solid white;
+            border-radius: 4px;
+            padding: 5px 3px;
+        }
+            .grid .master .header {
+                font-size: 13px;
+                font-weight: bold;
+                padding: 0 0 2px 0;
+            }
+            .grid .master .body {
+                background: white;
+                padding: 4px;
+                height: 60vh;
+            }
+                .grid .master .body .item {
+                    background: #f6f6f6;
+                    box-shadow: 0px 0px 1px 0px #3f3f3f;
+                    cursor: pointer;
+                    margin-bottom: 5px;
+                }
+                    .grid .master .body .item.selected {
+                        background: #b8dce6 !important;
+                    }
+                    .grid .master .body .item .left-pan {
+                        display: inline-block;
+                        min-width: 230px;
+                    }
+                        .grid .master .body .item .left-pan .ico {
+                            display: inline-block;
+                            font-size: 50px;
+                            padding: 4px 10px;
+                            line-height: 0;
+                            vertical-align: super;
+                            color: #1dc9b7;
+                        }
+                        .grid .master .body .item .left-pan .contents {
+                            display: inline-block;
+                            padding: 4px 3px;
+                            font-size: 13px;
+                            line-height: 18px;
+                        }
+                            .grid .master .body .item .left-pan .contents div:nth-child(1) {
+                                font-weight: bold;
+                            }
+                    .grid .master .body .item .right-pan {
+                        display: inline-block;
+                        min-width: 90px;
+                        float: right;
+                        text-align: right;
+                        padding: 0px 4px;
+                    }
+            .grid .master .foot {
+                font-family: monospace;
+                font-size: 11px;
+                padding: 5px 0;
+                height: 23px;
+            }
+                .grid .master .foot .paging {
+                    padding: 0;
+                }
+                .grid .master .foot .total {
+                    padding: 0;
+                    padding-top: 2px;
+                    text-align: end;
+                }
+                    .grid .master .foot .total .number {
+                        font-weight: bold;
+                        background-color: #5e5e5e;
+                        border-radius: 50%;
+                        color: white;
+                        padding: 0 4px;
+                    }
+        .grid .child {
+            background: #eeedee;
+            border-left: 2px solid white;
+            border-radius: 4px;
+            padding: 5px 3px;
+        }
+            .grid .child .header {
+                font-size: 13px;
+                font-weight: bold;
+                padding: 0 0 2px 0;
+            }
+            .grid .child .body {
+                background: white;
+                padding: 4px;
+                height: 60vh;
+            }
+            .grid .child table {
+                width: 100%;
+            }
+                .grid .child table th {
+                    background: #ebebeb;
+                    padding: 3px;
+                    vertical-align: inherit;
+                    font-size: 12px;
+                    text-align: center;
+                    border: 1px solid #dddddd;
+                }
+                .grid .child table td {
+                    padding: 3px;
+                    vertical-align: inherit;
+                    font-size: 12px;
+                    border: 1px solid #dddddd;
+                }
+            .grid .child .foot {
+                font-family: monospace;
+                font-size: 11px;
+                padding: 5px 0;
+                height: 23px;
+            }
+    .simple-pagination {
+        padding: 0;
+    }
+    .light-theme a, .light-theme span {
+        font-size: 11px;
+        line-height: 16px;
+    }
+    #jfilterCaption {
+        font-size: 18px !important;
+    }
+    #j-loader {
+        z-index: 0 !important;
+    }
+    .col-md-9 .card-style{
+        width:874px !important;
+        padding: 8px;
+    }
+</style>
+<div id="jFilter" style="margin-top: 10px;font-family: 'Quicksand', sans-serif; margin-left:-15px;"></div>
+<div id="j-loader" style="        width: 1170px;
+        max-width: 1170px;
+        height: 75%;
+        border-radius: 5px;
+        margin-left: -15px;
+        margin-top: 10px;
+">
+    <div id="spinner"><img alt="" src="/images/j-loader.gif"></div>
+</div>
+<div class="row grid">
+    <div class="col-md-4 master">
+        <div class="header">Interview Questionnaire for Teacher</div>
+        <div class="body" id="master-body">
+        </div>
+        <div class="foot">
+            <div class="col-md-9 paging">
+                <div class="pagination-holder">
+                    <div id="light-pagination" class="pagination light-theme simple-pagination">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 total">Total: <span class="number" id="lblTotalRecord">0</span></div>
+        </div>
+    </div>
+    <div class="col-md-8 child">
+        <div class="header">Details Info.</div>
+        <div class="body">
+            <table id="tblOut">
+                <thead>
+                    <tr>
+                        <th>SL</th>
+                        <th>Performance Statement</th>
+                        <th>Performance Level</th>
+                    </tr>
+                </thead>
+                <tbody id="child-body" style="text-align:center;"></tbody>
+            </table>
+        </div>
+        <div class="foot">
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.js" type="text/javascript"></script>
+<script src="~/Scripts/sjmis.js"></script>
+<script src="~/Scripts/jFilter.js"></script>
+<script src="~/Scripts/jGrid.js"></script>
+<script type="text/javascript">
+    //debugger;
+    var $preloader = $('#j-loader');
+    var filter = new jFilter('jFilter', 'Teachers Interview Questionnaire', 'Search and manage Interview Questionnaire info.');
+    var labelArr = ["Intervention:Intervention", "UserId:User"];
+    filter.setCustomLabel(labelArr);
+    setSJMISFromToDateFilters(filter);
+
+    var fDate = new Date();
+    fDate.setMonth(0);
+    var fromDate = fDate.toISOString().split('T')[0];
+
+    var today = new Date().toISOString().split('T')[0];
+    filter.setFilter({ FromDate: fromDate, ToDate: today });
+    filter.onClick(function (filterData) {
+        if ($preloader.length > 0) {
+            $preloader.delay(700).fadeOut('slow');
+        }
+        LoadParent(1);
+    });
+
+    $(document).ready(function () {
+        LoadParent(1);
+    });
+    var docMarks = @Html.Raw(Json.Encode(Model));
+    var qb;
+    function LoadParent(pageNo ) {
+        var param = {
+            PageSize: 10,
+            PageNo: pageNo
+        };
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("GetQuestionnaire","InterviewQuestionnaire")',
+            data: JSON.stringify(param),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                if (response.data.length == 0) {
+                    console.log("no data found..");
+                }
+                else {
+                    qb = response.data;
+                    totalRecord = response.data.length;
+                    var html = '';
+                    qb.forEach(function (item, index) {
+                        var selected = '';
+                        if (index === 0) {
+                            loadChild(item.ProfileId, item.ChecklistId);
+                            selected = 'selected';
+                        }
+                        html += '<div class="item ' + selected + '" id="' + item.ProfileId + '" onclick="loadChild(\'' + item.ProfileId + '\',\'' + item.ChecklistId + '\')">'
+                            + '<div class="left-pan">'
+                            + '<div class="ico">'
+                            + '<i class="fa fa-list-alt"></i>'
+                            + '</div>'
+                            + '<div class="contents">'
+                            + '<div><i class="fa fa-calendar"></i> Applicant ID: ' + item.ProfileId + '</div>'
+                            + '<div><i class="fa fa-user"></i> Checklist ID: ' + item.ChecklistId + '</div>'
+                            + '<div><i class="fa fa-credit-card"></i> Teacher: ' + item.Name + '</div>'
+                            + '</div>'
+                            + '</div>'
+                            + '<div class="right-pan">'
+                            + '</div>'
+                            + '</div>';
+                    });
+                    $('#master-body').html(html);
+                    $('#master-body').slimScroll({ height: '60vh', size: '5px' });
+                    $('#light-pagination').pagination({
+                        items: totalRecord / 5,
+                        cssStyle: 'light-theme',
+                        currentPage: pageNo,
+                        onPageClick: function (pageNumber, e) {
+                            LoadParent(pageNumber);
+                        }
+                    });
+                    $("#lblTotalRecord").text(totalRecord);
+                }
+            }
+        });
+    }
+    function loadChild(ProfileId,ChecklistId) {
+        $('#master-body').children().removeClass('selected');
+        $('#' + ProfileId).addClass('selected');
+        var v = [];
+        var no = 1;
+        for (var i = 0; i < docMarks.length; i++) {
+            if (docMarks[i].ProfileId == ProfileId && docMarks[i].ChecklistId == ChecklistId) {
+                const str = docMarks[i].Marks;
+                const vv = str.split(',');
+                var m = parseInt(vv[0]);
+                for(var j =0; j<vv.length; j++){
+                    if(m< parseInt(vv[j])){
+                        m=parseInt(vv[j]);
+                    }
+                }
+                v.push({
+                    sl: no++,
+                    questionText: docMarks[i].QuestionText,
+                    mark: PerformanceLevel(m)
+                });
+            }
+        }
+        var tbody = $('#tblOut tbody');
+        var props = ["sl", "questionText", "mark"];
+        tbody.empty();
+        $.each(v, function(i, marks) {
+          var tr = $('<tr style="text-align:left;">');
+          $.each(props, function(i, prop) {
+            $('<td>').html(marks[prop]).appendTo(tr);
+          });
+          tbody.append(tr);
+        });
+        $('.grid .child .body').slimScroll({ height: '60vh', size: '5px' });
+    }
+    function PerformanceLevel(mark) {
+        var rtrn = "";
+        if (mark == 1) {
+            rtrn = "Foundation";
+        } else if (mark == 2) {
+            rtrn = "Development";
+        } else if (mark == 3) {
+            rtrn = "Proficient";
+        } else if (mark == 4) {
+            rtrn = "Expert";
+        }
+        return rtrn;
+    }
+</script>
+

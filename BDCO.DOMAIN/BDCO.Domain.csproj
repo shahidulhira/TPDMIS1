@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BF0549E9-1083-4BB3-AFFC-F7766FDF4EED}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BDCO.Domain</RootNamespace>
+    <AssemblyName>BDCO.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Exchange.WebServices, Version=15.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Microsoft.Exchange.WebServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.1.0.0\lib\netstandard1.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="QRCoder, Version=1.3.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.3.5\lib\net40\QRCoder.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\BaseViewModel.cs" />
+    <Compile Include="Models\Batch\BatchInfo.cs" />
+    <Compile Include="Models\BlockIDList.cs" />
+    <Compile Include="Models\CampInfo\CampInfo.cs" />
+    <Compile Include="Models\Checklist\TeacherTrainingChecklist.cs" />
+    <Compile Include="Models\CompetencyTool\CompetencyTest.cs" />
+    <Compile Include="Models\CompetencyTool\DocAndRecordChecklist.cs" />
+    <Compile Include="Models\CompetencyTool\InterviewQuestionnaire.cs" />
+    <Compile Include="Models\CompetencyTool\ObservationChecklist.cs" />
+    <Compile Include="Models\GeoLocation\GeoLocationModels.cs" />
+    <Compile Include="Models\GeoLocation\Location.cs" />
+    <Compile Include="Models\LearningFacility\LearningFacility.cs" />
+    <Compile Include="Models\Organization\ObservationalOrganization.cs" />
+    <Compile Include="Models\PartnerInfo\PartnerInfo.cs" />
+    <Compile Include="Models\ProfileInfo\ProfileInfo.cs" />
+    <Compile Include="Models\Reports\DailyProgressReport.cs" />
+    <Compile Include="Models\Reports\DistributionPlanReport.cs" />
+    <Compile Include="Models\Reports\DistributionReport.cs" />
+    <Compile Include="Models\Reports\UserWiseServiceCountReport.cs" />
+    <Compile Include="Models\ServicePoint\UserServicePointForSave.cs" />
+    <Compile Include="Identity\Models\UserRoll.cs" />
+    <Compile Include="Models\CenterInfo\CenterInfo.cs" />
+    <Compile Include="Models\BlockInfo\BlockInfo.cs" />
+    <Compile Include="Models\Systems\Chart.cs" />
+    <Compile Include="Models\Systems\DeviceInfo.cs" />
+    <Compile Include="Models\Systems\ReferralHospital.cs" />
+    <Compile Include="Models\Systems\ReferralHospitalType.cs" />
+    <Compile Include="Models\Systems\SpinnerData.cs" />
+    <Compile Include="Models\Training\Training.cs" />
+    <Compile Include="Models\UniqueId.cs" />
+    <Compile Include="RequestModels\ObservationalOrganization.cs" />
+    <Compile Include="RequestModels\Location.cs" />
+    <Compile Include="Models\GeoLocation\PermittedGeoLocation.cs" />
+    <Compile Include="Identity\Models\Geolocation\IPGeolocation.cs" />
+    <Compile Include="Identity\Models\Geolocation\UserGeoLocation.cs" />
+    <Compile Include="Models\GenderInfo\GenderInfo.cs" />
+    <Compile Include="Models\GeoLocation\GeoLocation.cs" />
+    <Compile Include="Models\GeoPacket.cs" />
+    <Compile Include="Models\ResponseBase.cs" />
+    <Compile Include="Models\Systems\AggregateRoot.cs" />
+    <Compile Include="Models\Systems\ApiValue.cs" />
+    <Compile Include="Identity\Models\AspNetUsers.cs" />
+    <Compile Include="Models\Systems\EventStore.cs" />
+    <Compile Include="Models\Systems\Permission.cs" />
+    <Compile Include="Models\TotalRecordCount.cs" />
+    <Compile Include="Models\UserRole\Resources.cs" />
+    <Compile Include="Models\UserRole\UsersRoles.cs" />
+    <Compile Include="Identity\RequestParams\UserRequestModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\DatabaseContext.cs" />
+    <Compile Include="Identity\Response\SuggestedUserIdQueryResult.cs" />
+    <Compile Include="Identity\Response\LoginResponseQueryResult.cs" />
+    <Compile Include="Identity\RequestParams\ServicePointRP.cs" />
+    <Compile Include="Identity\RequestParams\SuggestedUserIdRP.cs" />
+    <Compile Include="Identity\RequestParams\UsersLogin.cs" />
+    <Compile Include="Identity\RequestParams\ForAPIResponse.cs" />
+    <Compile Include="RequestModels\GeoLocationRM.cs" />
+    <Compile Include="RequestModels\TotalRecordCountRM.cs" />
+    <Compile Include="Identity\ServicePoint\ServicePoint.cs" />
+    <Compile Include="Result\CommandResult.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="Utility\AppEnum.cs" />
+    <Compile Include="Utility\AppMailSecurity.cs" />
+    <Compile Include="Utility\ConditionalHandler.cs" />
+    <Compile Include="Utility\DateTimeExtension.cs" />
+    <Compile Include="Utility\ReportHelper.cs" />
+    <Compile Include="Utility\Tools.cs" />
+    <Compile Include="Utility\UtilityHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Architecture Document\" />
+    <Folder Include="Resources\Business Document\" />
+    <Folder Include="Validations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BDCO.CORE\BDCO.Core.csproj">
+      <Project>{26341233-87fb-450e-902e-9b4387d93248}</Project>
+      <Name>BDCO.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BDCO.REPOSITORY\BDCO.Repository.csproj">
+      <Project>{8a91296e-fc89-4aa0-b53b-b78357d7052d}</Project>
+      <Name>BDCO.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Reference Document\CourseController.txt" />
+    <Content Include="Resources\Reference Document\KnowledgeBankEntry.txt" />
+    <Content Include="Resources\Reference Document\_Layout.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

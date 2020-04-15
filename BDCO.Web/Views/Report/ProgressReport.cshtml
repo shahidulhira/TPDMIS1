@@ -1,0 +1,225 @@
+﻿
+@{
+    ViewBag.Title = "ProgressReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/pagination.css" rel="stylesheet" />
+<link href="~/Content/simplePagination.css" rel="stylesheet" />
+<script src="~/Scripts/pagination.min.js"></script>
+<link href="~/Content/font-awesome.css" rel="stylesheet" />
+<link href="~/Content/component.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:200" rel="stylesheet">
+<script src="~/Scripts/slim-scroll/jquery.slimscroll.js"></script>
+<script src="~/Scripts/iziModal.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-messaging.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500|Raleway" rel="stylesheet">
+<link href="~/Content/jgrid.css" rel="stylesheet" />
+<link href="~/Content/iziModal.css" rel="stylesheet" />
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNmUWulUV31VdXe2c5IU30d8D4Q6pzMYw"></script>
+
+<style>
+    body {
+        background-color: #ebebeb !important;
+    }
+
+    #randerDiv {
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    #jfilterCaption {
+        font-size: 39px !important;
+        height: 63px !important;
+        width: 100%;
+        line-height: 12px !important;
+    }
+
+    .card-style {
+        border-radius: 4px !important;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px rgba(63,63,68,.1) !important;
+        box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px rgba(63,63,68,.1) !important;
+        background-color: #fff !important;
+    }
+
+    #map-canvas {
+        margin: 0;
+        padding: 0;
+        min-height: 480px;
+        max-height: 600px;
+        height: 100%;
+    }
+
+    .btn-group:hover .dropdown-menu {
+        display: block;
+    }
+
+    #MemberDetailView .form-card {
+        border-radius: 0px !important;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px rgba(63,63,68,.1) !important;
+        box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px rgba(63,63,68,.1) !important;
+        background-color: #fff !important;
+        font-size: 12px;
+        padding: 5px;
+        min-height: 45px;
+    }
+
+    #MemberDetailView .form-card-head {
+        border-radius: 0px !important;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px rgba(63,63,68,.1) !important;
+        box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px rgba(63,63,68,.1) !important;
+        /*background-color: #fff !important;*/
+        font-size: 12px;
+        padding: 5px;
+        color: #921111;
+        background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 90%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 90%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+    }
+
+    #map-canvas {
+        margin: 0;
+        padding: 0;
+        min-height: 480px;
+        max-height: 600px;
+        height: 100%;
+    }
+
+    .btn-group:hover .dropdown-menu {
+        display: block;
+    }
+
+    /*@@media (min-width: 1200px) {
+        .container {
+            max-width: 97%;
+        }
+    }*/
+
+    .fieldHead {
+        width: 100%;
+        font-weight: 800;
+    }
+
+    #MemberDetailView .row {
+        padding: 1px;
+        margin: 0;
+    }
+
+    #MemberDetailView .col-md-2,
+    #MemberDetailView .col-md-3,
+    #MemberDetailView .col-md-4,
+    #MemberDetailView .col-md-5,
+    #MemberDetailView .col-md-6,
+    #MemberDetailView .col-md-7,
+    #MemberDetailView .col-md-8,
+    #MemberDetailView .col-md-9,
+    #MemberDetailView .col-md-12 {
+        padding: 3px;
+        padding-bottom: 2px;
+        padding-top: 2px;
+    }
+
+    #MemberDetailView .col-md-12 {
+        padding: 0px;
+        padding-bottom: 2px;
+        padding-top: 2px;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+    .j-grid-detail-layout .export {
+        visibility: hidden;
+    }
+
+    .contentMemberInfoGrid {
+        padding: 0;
+    }
+
+    #jfilterCaption {
+        font-size: 20px !important;
+    }
+
+    /*thead th:nth-child(4) {
+        text-align: left !important;
+        background-color: #ff0000;
+    }*/
+
+
+    tbody td:nth-child(5) {
+        text-align: left !important;
+        padding-left: 10px !important;        
+    }
+    #pagingBase
+    {
+        visibility:hidden;
+    }
+</style>
+
+<div id="jFilter" style="margin-top: 10px;font-family: 'Quicksand', sans-serif;"></div>
+
+<div class="md-card" style="margin-top:30px;">
+    
+    <div class="col-md-12" style="padding:0;padding-right:2px;margin-bottom: 10px">
+        <div style="margin-top:30px;font-family: 'Quicksand', sans-serif;">
+            <div id="Grid">
+                <div class="j-detail">
+                    
+                     <table class="table table-bordered table-striped table-hover" id="DailyProgressReport">
+                        <thead>
+                            <tr>
+                                <th>SLNO</th>
+                                <th>Program</th>
+                                <th>Category</th>
+                                <th>Indicator</th>
+                                <th>Boy (6-23)</th>
+                                <th>Girls (6-23)</th>
+                                <th>Boy (24-59)</th>
+                                <th>Girls (24-59)</th>
+                                <th>PLW</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/rrmis.js"></script>
+<script src="~/Scripts/jFilter.js"></script>
+<script src="~/Scripts/jGrid.js"></script>
+
+
+<script type="text/javascript">
+    var filter = new jFilter('jFilter', 'Daily Progress Report <br>', 'Search and manage member info records.');
+    var labelArr = ["Users:USER", "DistrictCode:DISTRICT", "UpazilaCode:UPAZILA", "UnionCode:UNION", "VillageCode:VILLAGE"]
+    filter.setCustomLabel(labelArr);
+    setFromToDateFilters(filter);
+    filter.addDropDownAction(['Block'], 'fc-g');
+    setGeoFilters(filter);
+    var today = new Date().toISOString().split('T')[0];
+    var mydate = new Date();
+    mydate.setMonth(mydate.getMonth() - 1);
+    mydate = mydate.toISOString().split('T')[0];
+    filter.setFilter({ FromDate: mydate, ToDate: today });
+
+    filter.onClick(function (filterData) {
+        Search(filterData);
+    });
+
+    function Search() {
+
+        var actionPath = '@Url.Action("ManageGrid", "JGrid")';
+        var filter = { 'RcNSchoolCode': $("#RcNSchoolCode").val(), 'BenId': $("#BenId").val(), 'Users': $('#UserId').val(), 'FromDate': $('#FromDate').val(), 'ToDate': $('#ToDate').val(), 'DistrictCode': $('#DistrictCode').val(), 'UpazilaCode': $('#UpazilaCode').val(), 'UnionCode': $('#UnionCode').val(), 'VillageCode': $('#VillageCode').val(), 'DoseYear': $('#DoseYearX').val(), 'Dose': $('#DoseX').val() };
+
+        var report = new jGrid('Grid', "Daily Progress Report", actionPath, filter);
+        report.bindSingle('DailyProgressReport', "0", false, false, false, false, true);
+        report.bindExport([{ "ModelName": "DailyProgressReportView", "DisplayName": "Export List", "Extension": "xlsx" }])
+    }
+
+</script>
+
+

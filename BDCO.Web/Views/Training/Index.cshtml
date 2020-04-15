@@ -1,0 +1,240 @@
+﻿
+@{
+    ViewBag.Title = "Training Information";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@* JSGRID Includes *@
+<link href="~/Content/font-awesome.css" rel="stylesheet" />
+<link href="~/Content/component.css" rel="stylesheet" />
+<link href="~/Content/jgrid.css" rel="stylesheet" />
+<link href="~/Content/simplePagination.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.simplePagination.js"></script>
+@* JSGRID Includes *@
+
+<div>
+    <h4 style="padding-left: 0px;padding-right: 30px;color: #d50808; padding-top:5px;">Training Information</h4>
+    <hr />
+    <form id="block">
+        <input type="hidden" name="RecordId" id="RecordId" value="" />
+        <div class="row">
+            <div class="col-md-3">
+                <label>District</label>
+                <input type="text" name="DistrictCode" id="DistrictCode" value="" style="width:100%" onchange="" />
+            </div>
+            <div class="col-md-3">
+                <label>
+                    Upazila
+                </label>
+                <input type="text" name="UpazilaCode" id="UpazilaCode" value="" style="width:100%" />
+            </div>
+            <div class="col-md-3">
+                <label>
+                    Union
+                </label>
+                <input type="text" name="UnionCode" id="UnionCode" value="" style="width:100%" />
+            </div>
+            <div class="col-md-3">
+                <label>
+                    Village
+                </label>
+                <input type="text" name="VillageCode" id="VillageCode" value="" style="width:100%" />
+            </div>
+        </div>
+        <div class="row" style="margin-top:5px; margin-bottom:10px;">
+            <div class="col-md-3">
+                <label>
+                    Center
+                </label>
+                <input type="text" name="CenterId" id="CenterId" class="" value="" style="width:100%" />
+            </div>
+            <div class="col-md-2 col-md-offset-7" style="padding-top:10px;">
+                @*<button type="button" onclick="fnSave()" class="btn btn-success"><i class="fa fa-plus"></i> Save</button>*@
+                <button type="button" onclick="fnSearch(1)" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
+                <button type="button" onclick="fnClear()" class="btn btn-warning"><i class="fa fa-recycle"></i> Clear</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Training ID</th>
+                <th>Training Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Center</th>
+                <th>Venue</th>
+                <th>Trainer</th>
+                <th>District</th>
+                <th>Upazila</th>
+                <th>Union</th>
+                <th>Village</th>
+                <th>#</th>
+            </tr>
+        </thead>
+        <tbody id="blocks"></tbody>
+    </table>
+    <div id="pagination" class="pull-right"></div>
+</div>
+
+<script>
+
+    var currentPageNumber = 1;
+
+    $("#TypeId").kendoDropDownList({
+        optionLabel: "Select...",
+        dataTextField: "Text",
+        dataValueField: "Value",
+        dataSource: [{ Text: "Master Trainer", Value: "1" }, { Text: "Resource Trainer", Value: "2" }, { Text: "Teacher", Value: "3" }]
+    });
+
+
+    function fnClear() {
+        $("#UpazilaCode").data("kendoDropDownList").select("");
+        $("#DistrictCode").data("kendoDropDownList").select("");
+        $("#UnionCode").data("kendoDropDownList").select("");
+        $("#VillageCode").data("kendoDropDownList").select("");      
+        $("#CenterId").data("kendoDropDownList").select("");
+ 
+        $("#RecordId").val("");
+    }
+
+    $(document).on("ready", function () {
+        function dropdownChange(control, method) { control.bind('change', method); }
+
+        var district;
+        var upazila;
+        var union;
+        var village;
+        $("#block")[0].reset();
+
+        function kendoDropdownSetDefault(id) { $("#" + DistrictCode).kendoDropDownList({ optionLabel: "Select..." }); }
+
+        $("#DistrictCode").kendoDropDownList({
+            optionLabel: "Select...",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            change: districtChange,
+            dataSource: { transport: { read: { dataType: "json", url: "/filter/GetDistrictCode" } } }
+        });
+
+        function districtChange() {
+            var districtCode = $("#DistrictCode").val();
+            upazila = $("#UpazilaCode").kendoDropDownList({
+                optionLabel: "Select...",
+                dataTextField: "Text",
+                dataValueField: "Value",
+                change: upazilaChnage,
+                dataSource: { transport: { read: { dataType: "json", url: "/filter/GetUpazilaCode/?DistrictCode=" + districtCode } } }
+            });
+
+            $("#UpazilaCode").data("kendoDropDownList").trigger('change');
+            $("#UnionCode").data("kendoDropDownList").trigger('change');
+        }
+
+        function upazilaChnage() {
+            union = $("#UnionCode").kendoDropDownList({
+                optionLabel: "Select...",
+                dataTextField: "Text",
+                dataValueField: "Value",
+                change: unionChange,
+                dataSource: { transport: { read: { dataType: "json", url: "/filter/GetUnionCode/?DistrictCode=" + $("#DistrictCode").val() + "&UpazilaCode=" + $("#UpazilaCode").val() } } }
+            });
+
+            $("#UnionCode").data("kendoDropDownList").trigger('change');
+        }
+
+        function unionChange() {
+            village = $("#VillageCode").kendoDropDownList({
+                optionLabel: "Select...",
+                dataTextField: "Text",
+                dataValueField: "Value",
+                change: villageChange,
+                dataSource: { transport: { read: { dataType: "json", url: "/filter/GetVillageCode/?DistrictCode=" + $("#DistrictCode").val() + "&UpazilaCode=" + $("#UpazilaCode").val() + "&UnionCode=" + $("#UnionCode").val() } } }
+            });
+        }
+
+        function villageChange() {
+            $('#CenterId').kendoDropDownList({
+                optionLabel: "Select...",
+                dataTextField: "Text",
+                dataValueField: "Value",
+                dataSource: { transport: { read: { dataType: "json", url: "/filter/GetCenterId/?DistrictCode=" + $("#DistrictCode").val() + "&UpazilaCode=" + $("#UpazilaCode").val() + "&UnionCode=" + $("#UnionCode").val() + "&VillageCode=" + $("#VillageCode").val() } } }
+            });
+        }       
+    });
+
+    function deleteItem(recordId) {
+        var getUrl = '@Url.Action("Delete")';
+        appetizer.ajaxLoder.showPleaseWait();
+
+        appetizer.actionCall(getUrl, { id: recordId }, 'json', function (data, result) {
+            if (result) {
+                appetizer.message.showInfo('#showMsg', data.Data, 10000);
+                appetizer.ajaxLoder.hidePleaseWait();
+            }
+            else { appetizer.message.showError('#showMsg', data.Data, 10000); appetizer.ajaxLoder.hidePleaseWait(); }
+        });
+    }
+
+    function fnSearch(pageNo) {
+        var formData = appetizer.div.getJsonObjectFromDiv("block");
+        var searchUrl = '@Url.Action("GetAllTrainingInfo")';
+        appetizer.ajaxLoder.showPleaseWait();
+        formData.PageNo = pageNo;
+        appetizer.actionCall(searchUrl, formData, 'json', function (data, result) {
+            if (data) {
+                var html = '';
+                if (data.length > 0) {
+                    for (var i = 0; i < data.length; i++) {
+                        html += '<tr id=' + data[i].RecordID + '">';
+                        html += '<td>' + data[i].TrainingId + '</td>';
+                        html += '<td>' + data[i].TrainingDate + '</td>';
+                        html += '<td>' + data[i].StartTime + '</td>';
+                        html += '<td>' + (data[i].EndTime || '') + '</td>';
+                        html += '<td>' + (data[i].CenterName || '') + '</td>';
+                        html += '<td>' + (data[i].Venue || '') + '</td>';
+                        html += '<td>' + (data[i].Trainer || '') + '</td>';
+                        html += '<td>' + data[i].DistrictName + '</td>';
+                        html += '<td>' + data[i].UpazilaName + '</td>';
+                        html += '<td>' + data[i].UnionName + '</td>';
+                        html += '<td>' + data[i].VillageName + '</td>';
+                        html += '<td>';
+                        html += '<span onclick="details(' + data[i].TrainingId + ')" class="hi-icon-effect-3 hi-icon-effect-3b center-block" style = "display:inline;" > <i style="margin-right: 4px;" class="hi-icon fa fa-pencil icon-fa "></i></span > ';
+                        html += '<span onclick="deleteItem(' + data[i].TrainingId + ')" class="hi-icon-effect-3 hi-icon-effect-3b center-block" style = "display:inline;" > <i style="margin-right: 4px;color:#ED1F24;" class="hi-icon fa fa-trash icon-fa"></i></span >';
+                        html += '</td></tr > ';
+                        //
+                    }
+                    $('#blocks').html(html);
+
+                    currentPageNumber = data[0] ? data[0].TotalRecord : 0;
+                    $('#pagination').pagination({
+                        items: currentPageNumber,
+                        cssStyle: 'light-theme',
+                        currentPage: pageNo,
+                        itemsOnPage: 20,
+                        onPageClick: function (pageNumber, e) { fnSearch(pageNumber); }
+                    });
+                    appetizer.ajaxLoder.hidePleaseWait();
+                }
+                else {   $('#blocks').html('');
+                    appetizer.ajaxLoder.hidePleaseWait();}
+
+            }
+            else {
+                appetizer.ajaxLoder.hidePleaseWait();
+            }
+        });
+    }
+
+    function details(recordId) {
+         window.location = '/Training/Details?recordId=' + recordId;
+    }
+
+</script>
+
+
+

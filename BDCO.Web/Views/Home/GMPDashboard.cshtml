@@ -1,0 +1,1137 @@
+﻿
+@{
+    ViewBag.Title = "GMPDashboard";
+}
+
+<link href="~/Content/dashboardmain.min.css" rel="stylesheet" />
+<link href="~/Content/uikit.almost-flat.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Mukta|Scada" rel="stylesheet">
+<style type="text/css">
+    body {
+        background-color: #ebebeb !important;
+    }
+
+    #randerDiv {
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    .md-card {
+        background: #fff;
+        position: relative;
+        -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+        box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+        border: none;
+    }
+
+    .uk-overflow-container {
+        overflow: hidden;
+        /*-webkit-overflow-scrolling: touch;*/
+    }
+
+    .btn-success {
+        background-color: #ED7F82;
+        border-color: #ED7F82;
+    }
+    /*.row {
+        margin-top: 25px;
+    }*/
+
+    /*.k-chart, .k-stockchart {
+        height: 150px;
+    }*/
+
+    #example10 {
+        height: 142px;
+    }
+
+    .k-radio:checked + .k-radio-label:after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+    }
+
+    .k-radio-label {
+        position: relative;
+        padding-left: 1.5em;
+        vertical-align: middle;
+        line-height: 1.4em;
+        cursor: pointer;
+    }
+
+    .imgDashboard {
+        max-width: 50px;
+        max-height: 50px;
+        margin-top: 0px;
+        margin-right: -10px;
+    }
+
+    .labelText label {
+        font-size: 12px;
+        color: #000 !important;
+        margin-bottom: 0px;
+        text-align: right;
+        text-transform: none;
+        font-weight: 600;
+    }
+
+    #chart circle {
+        display: none !important;
+    }
+
+    .totalnumber {
+        font-family: 'Mukta', sans-serif;
+        color: #fff;
+        font-size: 45px;
+        font-weight: 800;
+        margin: 0;
+        padding: 0;
+        height: 45px;
+    }
+
+    .percent {
+       font-family: 'Mukta', sans-serif;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 800;
+        margin: 0;
+        padding: 0;
+        margin-left: 50px;
+        margin-top: -50px;
+    }
+
+    .totaltext {
+       font-family: 'Mukta', sans-serif;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 800;
+        margin: 0;
+        padding: 0;
+    }
+
+    .imgdiv {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .topnumber {
+        font-family: 'Mukta', sans-serif;
+        color: #000;
+        font-size: 30px;
+        font-weight: bolder;
+        margin: 0;
+        padding: 0;
+        margin-top: 0px;
+    }
+
+    .headertextleft {
+        text-transform: uppercase;
+        text-align: left;
+        font-family: 'Scada', sans-serif;
+        color: #000;
+        font-size: 14px;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+        margin-top: -10px;
+        margin-left:-1px
+    }
+
+    .headertextright {
+        text-transform: lowercase;
+        text-align: right;
+        font-family: 'Mukta', sans-serif;
+        color: #000;
+        font-size: 12px;
+        font-weight: normal;
+        margin: 0;
+        padding: 0;
+        margin-top: -10px;
+        text-decoration: underline;
+    }
+
+    .textgender {
+        text-transform: none;
+        text-align: left;
+        font-family: 'Mukta', sans-serif;
+        color: #3c3b3b;
+        font-size: 12px;
+        font-weight: normal;
+        margin: 0;
+        padding: 0;
+    }
+
+    .textsubheader {
+        text-transform: uppercase;
+        text-align: left;
+        font-family: 'Mukta', sans-serif;
+        color: #000;
+        font-size: 13px;
+        font-weight: 600;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 5px;
+    }
+
+    .textgenderNumber {
+        text-transform: uppercase;
+        text-align: right;
+        font-family: 'Mukta', sans-serif;
+        color: #3c3b3b;
+        font-size: 11px;
+        font-weight: 600;
+        margin: 0;
+        padding: 0;
+    }
+
+    .fillbox {
+        text-align: center;
+        font-family: 'Mukta', sans-serif;
+        font-size: 12px;
+        font-weight: normal;
+        height: 30px;
+        color: #fff;
+        background-color: #19C5B4;
+        margin-bottom: 5px;
+        line-height: 30px;
+    }
+
+    .donut-wrapper {
+        position: relative;
+        width: 185px;
+        height: 185px;
+        background-color: transparent !important; 
+    }
+    text {
+         font-family: 'Mukta', sans-serif !important;
+    }
+</style>
+<div id="print">
+
+
+    <div class="uk-grid uk-grid-width-large-1-1 uk-grid-width-medium-1-1 uk-grid-medium uk-sortable sortable-handler" data-uk-sortable="" data-uk-grid-margin="" style="margin-top: 0px; margin-bottom: -24px;">
+        <div class="uk-row-first">
+            <div class="md-card">
+                <div class="md-card-content">
+
+                    <div class="row" style="">
+                        <div class="col-md-11">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label class="lblFont">রিসোর্স সেন্টারঃ</label>
+                                    <input id="ServicePointId" name="ServicePointId" type="text" style="width: 100%;min-width: 100%;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="lblFont">জেলাঃ</label>
+                                    <input id="DistrictCode" style="width: 100%;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="lblFont">লোকেশন টাইপ</label>
+                                    <input id="GeoType" name="GeoType" style="width: 100%;min-width: 100%;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="lblFont">উপজেলাঃ</label>
+                                    <input id="UpazilaCode" style="width: 100%;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="lblFont">শুরুর তারিখঃ</label>
+                                    <input id="FromDate" name="FromDate" type="text" style="width: 100%;min-width: 100%;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="lblFont">শেষ তারিখঃ</label>
+                                    <input id="ToDate" name="ToDate" type="text" style="width: 100%;min-width: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="lblFont">Search</label>
+                                    <span title="Search" class="odDefaultButton fa fa-search" id="btnSearch" style="width: 100%; text-align: center;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-grid" style="margin-top:30px">
+
+        <div class="uk-width-large-12-12 uk-row-first">
+
+            <div class="md-card">
+
+                <div class="md-card-content" style="min-height: 280px;">
+                    <div class="uk-overflow-container">
+
+                        <div id="example">
+                            <div class="demo-section k-content wide">
+                                <div class="row" style="padding-left: 0px;padding-right: 15px;">
+                                    <h3 style="text-align:right;color:#424041;line-height: 0; font-size:16px;padding-right:15px;margin-top:10px;font-family:'scada',sans-sarif;"><strong>GMP/ES DASHBOARD</strong></h3>
+                                </div>
+
+                                <div class="row" style="margin-left:0px;margin-right:0px">
+
+                                    <div class="col-md-4" style="padding-right:45px;">
+                                        <div class="row" style="margin-left:0px;margin-right:0px">
+
+                                            <div class="col-md-5" style="min-height:200px;padding:0;">
+
+                                                <div class="col-md-12" id="baseBoy" style="background-color:#19C5B4;margin-bottom:25px;padding-left: 20px;padding-right: 10px;">
+                                                    <div class="col-md-12 totalnumber">
+                                                        <span id="TotalBoyPersent"> 0</span> <div class="percent">%</div>
+                                                    </div>
+                                                    <div class="col-md-7 totaltext" style="padding:0; font-weight:600;">BOY :</div>
+                                                    <div class="col-md-5 totaltext" style="padding:0; " id="CoverageTotalBoy">0</div>
+                                                </div>
+
+                                                <div class="col-md-12" id="baseGirl" style="background-color:#ED7F82;padding-left: 20px;padding-right: 10px;">
+                                                    <div class="col-md-12 totalnumber">
+                                                        <span id="TotalGirlPercent"> 0</span> <div class="percent">%</div>
+                                                    </div>
+                                                    <div class="col-md-7 totaltext" style="padding:0; font-weight:600;">GIRL :</div>
+                                                    <div class="col-md-5 totaltext" style="padding:0; " id="CoverageTotalGirl">0</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 donut-wrapper" style="padding:0;margin:0;margin-top:-10px;margin-left:-10px">
+                                                <div id="Totalchart" style="padding:0;margin:0;margin-top: -7px;"></div>
+                                                <div class="" style="margin-top: -70px; text-align:center;font-family: 'Signika', sans-serif;font-size:13px;color:#3c3b3b;">
+                                                    COVERAGE
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" style="margin:0;padding:0;margin-top:10px;padding-left:0px;">
+
+
+                                            <div class="col-md-9 headertextleft">AGE WISE COVERAGE</div>
+                                            <div class="col-md-2 headertextright" style="display:none;">Details</div>
+                                        </div>
+                                        <div class="row" style="margin:0;padding:0;margin-top:10px;padding-left: 5px; border-left:1px dashed #000;">
+                                            <div class="col-md-9 textgender"> 0-12 Month:</div>
+                                            <div class="col-md-2 textgenderNumber" id="Age_0_12_Month_Coverage">0</div>
+                                            <div class="col-md-9 textgender">13-24 Month:</div>
+                                            <div class="col-md-2 textgenderNumber" id="Age_13_24_Month_Coverage">0</div>
+                                            <div class="col-md-9 textgender">25-36 Month:</div>
+                                            <div class="col-md-2 textgenderNumber" id="Age_25_36_Month_Coverage">0</div>
+                                            <div class="col-md-9 textgender">37-59 Month	 :</div>
+                                            <div class="col-md-2 textgenderNumber" id="Age_37_59_Month_Coverage">0</div>
+                                        </div>
+
+                                        <div class="col-md-11 fillbox" style="margin-top:10px;">SPONSOSORED CHILD RECEIVED GMP: <span id="SponsoredChildTotal"> 0</span></div>
+                                        @*<div class="col-md-11 fillbox">CHILD CONSISTANCY: <span id="ChildConsistancy"> 0</span></div>*@
+
+                                        <div class="col-md-11 fillbox">NEW CHILD LAST MONTH: <span id="NewChildLastMonth"> 0</span></div>
+                                        <div class="col-md-11 fillbox">RETURNED CHILD LAST MONTH: <span id="ReturnChildLastMonth"> 0</span></div>
+                                        <div class="col-md-11 fillbox" style="background-color:#ED7F82;">DROPED CHILD LAST MONTH: <span id="DropChild"> 0</span></div>
+
+                                        <div class="col-md-12" id="KPIdonut" style="margin-top:10px;margin-left: 15px;">
+
+                                            <div id="some_element" style="padding-left: 5px;"></div>
+                                            <div class="" style="padding-left:10px;margin-top: -70px;margin-left:-66px; text-align:center;font-family: 'Mukta', sans-serif;font-size:13px;color:#3c3b3b;">
+                                                <span style="font-family: 'Mukta', sans-serif;">Achieved</span>
+                                                <div style="margin:0;padding:0;font-family: 'Mukta', sans-serif;">Target:<span id="TargetPercent">0%</span></div>
+                                                <div style="margin:0;padding:0;font-family: 'Mukta', sans-serif;">No Coverage:<span id="NoCoverage">0</span></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4" style="margin:0;padding:0;padding-right:35px;margin-left: -23px;">
+                                   
+
+                                        <div class="col-md-3 imgdiv" style="margin-top:0px;">
+                                            <img class="imgDashboard" src="~/Images/children.png" />
+                                        </div>
+                                        <div class="col-md-9" style="margin:0;padding:0;margin-bottom:40px;margin-top:18px">
+                                            @*<div class="col-md-12 topnumber" id="TotalChildAtRisk">0</div>*@
+                                            <div class="col-md-12 headertextleft">MALNOURISHED STATUS</div>
+                                            @*<div class="col-md-3 headertextright" style="display:none;">Details</div>*@
+                                            <div class="row" style="margin:0;padding:0;margin-top:6px;padding-left: 5px; border-left:1px dashed #000;">
+
+                                                <div class="col-md-9 textgender">Severe Underweight:</div>
+                                                <div class="col-md-3 textgenderNumber" id="SeverUnderWeight">0</div>
+
+                                                <div class="col-md-9 textgender">Moderate Underweight:</div>
+                                                <div class="col-md-3 textgenderNumber" id="ModerateUnderWeight">0</div>
+
+                                                <div class="col-md-12" style="height:3px;margin-top:45px;"></div>
+
+                                                @*<div class="col-md-9 textsubheader">Underweight:</div>
+                                                <div class="col-md-3 textgenderNumber" id="UnderWeightTotal">0</div>*@
+
+                                                <div class="col-md-9 textgender">Severe Stunted:</div>
+                                                <div class="col-md-3 textgenderNumber" id="SeverStunted">0</div>
+
+                                                <div class="col-md-9 textgender">Moderate Stunted:</div>
+                                                <div class="col-md-3 textgenderNumber" id="ModerateStunted">0</div>
+
+                                                <div class="col-md-12" style="height:3px;margin-top:45px;"></div>
+
+                                                @*<div class="col-md-9 textsubheader">Stunted:</div>
+                                                <div class="col-md-3 textgenderNumber" id="StuntedTotal">0</div>*@
+
+                                                <div class="col-md-9 textgender">Severe Acute Malnutrition:</div>
+                                                <div class="col-md-3 textgenderNumber" id="SeverAcuteMalnutrition">0</div>
+
+                                                <div class="col-md-9 textgender">Moderate Acute Malnutrition :</div>
+                                                <div class="col-md-3 textgenderNumber" id="ModerateAcuteMalnutrition">0</div>
+
+                                                @*<div class="col-md-12" style="height:3px;margin-top:52px;"></div>*@
+
+                                                @*<div class="col-md-9 textsubheader">Acute Malnutrition:</div>
+                                                <div class="col-md-3 textgenderNumber" id="AcuteMalnutritionTotal">0</div>*@
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 imgdiv" style="margin-top: 16px;">
+                                            <img class="imgDashboard" src="~/Images/baby.png" style="max-width:53px;max-height:53px" />
+                                        </div>
+                                        <div class="col-md-9" style="margin:0;padding:0; margin-bottom:30px;margin-top: 16px;">
+                                            <div class="col-md-12 topnumber" id="RecoveredTotal">0</div>
+                                            <div class="col-md-12 headertextleft">CHILDREN RETURNED TO HEALTH</div>
+                                            @*<div class="col-md-3 headertextright" style="display:none;">Details</div>*@
+                                            <div class="row" style="margin:0;padding:0;margin-top:6px;padding-left: 5px; border-left:1px dashed #000;">
+                                                <div class="col-md-9 textgender">BOY:</div>
+                                                <div class="col-md-3 textgenderNumber" id="RecoveredBoy">0</div>
+                                                <div class="col-md-9 textgender">GIRL:</div>
+                                                <div class="col-md-3 textgenderNumber" id="RecoveredGirl">0</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 imgdiv" style="margin-top: 18px;">
+                                            <img class="imgDashboard" src="~/Images/hospital.png"  style="max-width:55px;max-height:55px;padding-top:5px"/>
+                                        </div>
+                                        <div class="col-md-9" style="margin:0;padding:0; margin-bottom:30px;margin-top: 18px;">
+                                            <div class="col-md-12 topnumber" id="ReferredChildTotal">0</div>
+                                            <div class="col-md-12 headertextleft">CHILDREN NEED ATTENTION & REFERRED</div>
+                                            @*<div class="col-md-3 headertextright" style="display:none;">Details</div>*@
+                                            <div class="row" style="margin:0;padding:0;margin-top:6px;padding-left: 5px; border-left:1px dashed #000;">
+
+                                                <div class="col-md-9 textgender">Government Hospital :</div>
+                                                <div class="col-md-3 textgenderNumber" id="GovermentTotal">0</div>
+                                                <div class="col-md-9 textgender">NGO Hospital :</div>
+                                                <div class="col-md-3 textgenderNumber" id="NGoTotal">0</div>
+                                                <div class="col-md-9 textgender">Private Hospital:</div>
+                                                <div class="col-md-3 textgenderNumber" id="PrivateTotal">0</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 imgdiv" style="margin-top: 20px;">
+                                            <img class="imgDashboard" src="~/Images/open-book.png" />
+                                        </div>
+                                        <div class="col-md-9" style="margin:0;padding:0;margin-bottom:30px;margin-top: 20px;">
+                                            <div class="col-md-12 topnumber" id="CardBookTotal">0</div>
+                                            <div class="col-md-12 headertextleft">CARD/BOOK DISTRIBUTED</div>
+                                            @*<div class="col-md-3 headertextright" style="display:none;">Details</div>*@
+                                            <div class="row" style="margin:0;padding:0;margin-top:6px;padding-left: 5px; border-left:1px dashed #000;">
+
+                                                <div class="col-md-9 textgender">Shishu Bikash:</div>
+                                                <div class="col-md-3 textgenderNumber" id="Shishubikash">0</div>
+                                                <div class="col-md-9 textgender">Amar Jogot Boi:</div>
+                                                <div class="col-md-3 textgenderNumber" id="AmarJogot">0</div>
+                                                <div class="col-md-9 textgender">Amar Bari Boi:</div>
+                                                <div class="col-md-3 textgenderNumber" id="AmarBari">0</div>
+
+                                                <div class="col-md-9 textgender">GMP Card:</div>
+                                                <div class="col-md-3 textgenderNumber" id="GmpCard">0</div>
+                                                <div class="col-md-9 textgender">Zipper File:</div>
+                                                <div class="col-md-3 textgenderNumber" id="ZipperFile">0</div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4" style="margin-left:23px">
+                                        <div class="col-md-12" id="GMPTrend" style="max-height:215px;background:#f7f3eb;">
+                                        </div>
+                                        <div class="row" style="text-align: right;padding-right: 74px;margin-left: 0px;background:#f7f3eb;margin-right: 0px;font-family: 'scada',sans-serif;">
+                                            <input type="radio" id="REACH" name="chart" value="REACH" onclick="fnLoadChart(this.id)" checked /><label for="REACH" style="color:black;display:inline;font-size:12px;font-family: 'scada',sans-serif;"> REACH</label>
+                                            <input type="radio" id="RECOVERED" name="chart" value="RECOVERED" onclick="fnLoadChart(this.id)" /> <label for="RECOVERED" style="color:black;display:inline;font-size:12px;font-family: 'scada',sans-serif;"> RECOVERED</label>
+                                            <input type="radio" id="CRITICAL" name="chart" value="CRITICAL" onclick="fnLoadChart(this.id)" /><label for="CRITICAL" style="color:black;display:inline;font-size:12px;font-family:'scada',sans-serif;"> CRITICAL</label>
+
+
+                                        </div>
+                                        <div class="row" style="margin-top:20px;font-family: 'scada',sans-serif;">
+                                            <div class="col-md-4" style="text-align:center; ">
+                                                <input type="button" id="gmp" name="gmp" value="RC Wise GMP" class="btn btn-sm btn-success " style="width:100%; border-radius:0px" />
+                                            </div>
+                                            <div class="col-md-4" style="text-align:center; ">
+                                                <input type="button" id="gmp" name="gmp" value="RC Wise ES" class="btn btn-sm btn-success" style="width:100%; border-radius:0px" />
+                                            </div>
+                                            <div class="col-md-4" style="text-align:center;">
+                                                <input type="button" id="gmp" name="gmp" value="GMP Status" class="btn btn-sm btn-success" style="width:100%; border-radius:0px" />
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-2 imgdiv" style="margin-top:73px;">
+                                            <img class="imgDashboard" src="~/Images/pill.png" style="margin-right: 0px;" />
+                                        </div>
+                                        <div class="col-md-10" style="margin:0;padding:0;margin-bottom:30px;margin-top:73px;padding-left: 10px;">
+                                            <div class="col-md-12 topnumber" id="MicronutrientTotal">0</div>
+                                            <div class="col-md-12 headertextleft">CHILD RECEIVED MICRONUTRIENT</div>
+                                            @*<div class="col-md-3 headertextright" style="display:none;">Details</div>*@
+                                            <div class="row" style="margin:0;padding:0;margin-top:6px;padding-left: 5px; border-left:1px dashed #000;">
+
+                                                <div class="col-md-9 textgender">Total Boy Supplement Received :</div>
+                                                <div class="col-md-3 textgenderNumber" id="TotalSupplementBoy">0</div>
+                                                <div class="col-md-9 textgender">Total Girl Supplement Received :</div>
+                                                <div class="col-md-3 textgenderNumber" id="TotalSupplementGirl">0</div>
+                                                
+                                                <div class="col-md-9 textgender" style="padding-top:10px">6 months cycle completed :</div>
+                                                <div class="col-md-3 textgenderNumber" style="padding-top:10px" id="SixMonthCycleCompleted">0</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 imgdiv" style="margin-top:18px">
+                                            <img class="imgDashboard" src="~/Images/message.png" style="margin-right: 0px;" />
+                                        </div>
+                                        <div class="col-md-10" style="margin:0;padding:0;margin-bottom:30px;padding-left: 10px;margin-top:11px">
+                                            <div class="col-md-12 topnumber" id="MessageDeliveredTotal">0</div>
+                                            <div class="col-md-9 headertextleft">MESSAGES DELIVERED</div>
+                                            @*<div class="col-md-3 headertextright" style="display:none;">Details</div>*@
+                                            <div class="row" style="margin:0;padding:0;margin-top:15px;padding-left: 5px; border-left:1px dashed #000;">
+
+                                                <div class="col-md-9 textgender">Nutrition Message Delivered:</div>
+                                                <div class="col-md-3 textgenderNumber" id="NutritionMessage">0</div>
+                                                <div class="col-md-9 textgender">WASH Message Received:</div>
+                                                <div class="col-md-3 textgenderNumber" id="WashMesssageTotal">0</div>
+                                                <div class="col-md-9 textgender">CP Message Received:</div>
+                                                <div class="col-md-3 textgenderNumber" id="CPMessageTotal">0</div>
+
+                                                <div class="col-md-9 textgender">ES Message Received:</div>
+                                                <div class="col-md-3 textgenderNumber" id="ESMessageTotal">0</div>
+                                                <div class="col-md-9 textgender">ES Message to New Caregivers:</div>
+                                                <div class="col-md-3 textgenderNumber" id="ESMessageToNewCaregiversLastMonth">0</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+<style>
+    .imgCirce {
+        height: 30px;
+        width: 30px;
+    }
+
+    .imgGender {
+        height: 30px;
+        width: 30px;
+    }
+
+    .imgGroupDiv {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .cirlceText {
+        font-family: 'Segoe UI';
+        color: #fff;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        padding: 0;
+    }
+
+    .smalCirlceText {
+        font-family: 'Segoe UI';
+        color: #fff;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        padding: 0;
+        padding-top: 0;
+    }
+
+    .cirlceNumber {
+        font-family: 'Segoe UI';
+        color: #fff;
+        font-size: 11px;
+        font-weight: bold;
+        text-align: center;
+        padding: 0;
+        padding-top: 0;
+    }
+
+    .cbheSessionRound {
+        height: 120px;
+        width: 120px;
+        background-color: #8FAADC;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 130px;
+    }
+
+    .cbheAgeRound {
+        height: 120px;
+        width: 120px;
+        background-color: #A5A5A5;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 130px;
+    }
+
+    .cbheCoverageRound {
+        height: 100px;
+        width: 100px;
+        background-color: #F4B183;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 130px;
+        margin-top: 15px;
+    }
+
+    .cbheGenderRound {
+        height: 100px;
+        width: 100px;
+        background-color: #81A0c0;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 130px;
+        margin-top: 15px;
+    }
+
+
+    .labelText {
+        font-size: 12px;
+        color: #4a4848;
+        text-align: right;
+    }
+
+    .dewormingText {
+        font-size: 15px;
+        color: #4a4848;
+        font-weight: 600;
+    }
+
+    .dewormingBigText {
+        font-size: 25px;
+        color: #4a4848;
+        font-weight: 600;
+    }
+
+    .txtgender {
+        color: #4a4848;
+        font-weight: 600;
+    }
+
+    .donut-wrapper .k-chart {
+        max-height: 180px;
+    }
+
+    .donut-wrapper {
+        position: relative;
+        width: 185px;
+        height: 185px;
+        background-color: #fff;
+    }
+
+
+    /* The width and height of the chart must be equal to the width and height of the .donut-wrapper in order to be horizontally and vertically centered  */
+    .donut-chart {
+        width: 100%;
+        height: 100%;
+    }
+
+    .inner-content {
+        position: absolute;
+        top: 50%;
+        /*left: 50%;*/
+        width: 50px;
+        height: 50px;
+        margin-top: -50px;
+        margin-left: -50px;
+        font-size: 20px;
+        line-height: 30px;
+        vertical-align: middle;
+        text-align: center;
+        color: #a2ccef;
+    }
+
+    #baseBoy {
+        background: red;
+        display: inline-block;
+        height: 70px;
+        margin-bottom: 20px;
+        margin-right: 55px;
+        position: relative;
+        width: 103px;
+    }
+
+        #baseBoy:after {
+            content: " ";
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 35px solid transparent;
+            border-bottom: 35px solid transparent;
+            border-left: 30px solid #19C5B4;
+            position: absolute;
+            top: 50%;
+            margin-top: -35px;
+            left: 100%;
+        }
+
+    #baseGirl {
+        background: red;
+        display: inline-block;
+        height: 70px;
+        margin-bottom: 20px;
+        margin-right: 55px;
+        position: relative;
+        width: 103px;
+    }
+
+        #baseGirl:after {
+            content: " ";
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 35px solid transparent;
+            border-bottom: 35px solid transparent;
+            border-left: 30px solid #ED7F82;
+            position: absolute;
+            top: 50%;
+            margin-top: -35px;
+            left: 100%;
+        }
+
+</style>
+
+
+
+<script src="~/Scripts/KendoUI/kendo.dataviz.min.js"></script>
+<script src="~/Scripts/KendoUI/kendo.dataviz.chart.min.js"></script>
+<script src="~/Scripts/jspdf.min.js"></script>
+<script src="~/Scripts/Appetizer.js"></script>
+<script src="~/Scripts/GMPDashboard.js"></script>
+<script src="~/Scripts/pureknob.js"></script>
+<script type="text/javascript">
+
+    /*
+     * Demo code for knob element.
+     */
+    function demoKnob() {
+        // Create knob element, 300 x 300 px in size.
+        var knob = pureknob.createKnob(210, 210);
+
+        // Set properties.
+        knob.setProperty('angleStart', -0.75 * Math.PI);
+        knob.setProperty('angleEnd', 0.75 * Math.PI);
+        knob.setProperty('colorFG', '#19C5B4');
+        knob.setProperty('trackWidth', 0.4);
+        knob.setProperty('valMin', 0);
+        knob.setProperty('valMax', 100);
+        knob.setProperty('readonly', true);
+        // Set initial value.
+        knob.setValue(75);
+
+        /*
+         * Event listener.
+         *
+         * Parameter 'knob' is the knob object which was
+         * actuated. Allows you to associate data with
+         * it to discern which of your knobs was actuated.
+         *
+         * Parameter 'value' is the value which was set
+         * by the user.
+         */
+        //var listener = function(knob, value) {
+        //	console.log(value);
+        //};
+
+        //knob.addListener(listener);
+
+        // Create element node.
+        var node = knob.node();
+
+        // Add it to the DOM.
+        var elem = document.getElementById('some_element');
+        elem.appendChild(node);
+
+    }
+
+
+
+    /*
+     * This is executed after the document finished loading.
+     */
+    function ready() {
+        demoKnob();
+    }
+
+    document.addEventListener('DOMContentLoaded', ready, false);
+</script>
+
+<script type="text/javascript">
+    var myData;
+    $(document).ready(function () {
+        var SelectedDate = $("#FromDate").val();
+        var SelectedYear = new Date(SelectedDate).getFullYear();
+        fnLoadData($("#ServicePointId").val(), $("#DistrictCode").val(), $("#UpazilaCode").val(), $("#FromDate").val(), $("#ToDate").val(), SelectedYear);
+
+    });
+    $("#btnSearch").click(function () {
+        if (!appetizer.date.comparison($("#FromDate").val(), $("#ToDate").val())) {
+            appetizer.message.showError('#showErrorMsg', "From Date and To Date is not valid", 10000);
+            return false;
+        }
+        var SelectedDate = $("#FromDate").val();
+        var SelectedYear = new Date(SelectedDate).getFullYear();
+        fnLoadData($("#ServicePointId").val(), $("#DistrictCode").val(), $("#UpazilaCode").val(), $("#FromDate").val(), $("#ToDate").val(), SelectedYear);
+
+    });
+
+    function fnLoadChart(id) {
+        debugger
+        var SelectedDate = '@DateTime.Now';
+        var SelectedYear = new Date(SelectedDate).getFullYear();
+        GraphManager.createChartGMPTrend("GMPTrend", "GMP " + id + " TREND " , myData, id);
+
+    }
+    // All Graph function start
+    function fnLoadData(ServicePointId, DistrictCode, UpazilaCode, FromDate, ToDate, Year) {
+        var urlpath = "";
+        urlpath = '@Url.Action("LoadGmpDashboardData", "Home")';
+        var jsonData = { "ServicePointId": ServicePointId, "DistrictCode": DistrictCode, "UpazilaCode": UpazilaCode, "FromDate": FromDate, "ToDate": ToDate, "Year": Year }
+        appetizer.actionCall(urlpath, jsonData, 'GET', function (data, result) {
+            if (result) {
+
+                myData = data.Data;
+                fnLoadChart('REACH');
+                document.getElementById("CoverageTotalBoy").innerHTML = myData.CoverageTotalBoy;
+                var boyPersent = (myData.CoverageTotalBoy / myData.CoverageTotal) * 100;
+                var girlPersent = (myData.CoverageTotalGirl / myData.CoverageTotal) * 100;
+                document.getElementById("TotalBoyPersent").innerHTML = Math.round(boyPersent);
+                document.getElementById("CoverageTotalGirl").innerHTML = myData.CoverageTotalGirl;
+                document.getElementById("TotalGirlPercent").innerHTML = Math.round(girlPersent);
+                createTotalChart(myData.CoverageTotalBoy, myData.CoverageTotalGirl, myData.CoverageTotal);
+
+                document.getElementById("SponsoredChildTotal").innerHTML = myData.SponsoredChildTotal;
+               // document.getElementById("ChildConsistancy").innerHTML = myData.ChildConsistancy;
+
+                document.getElementById("Age_0_12_Month_Coverage").innerHTML = myData.Age_0_12_Month_Coverage;
+                document.getElementById("Age_13_24_Month_Coverage").innerHTML = myData.Age_13_24_Month_Coverage;
+                document.getElementById("Age_25_36_Month_Coverage").innerHTML = myData.Age_25_36_Month_Coverage;
+                document.getElementById("Age_37_59_Month_Coverage").innerHTML = myData.Age_37_59_Month_Coverage;
+                document.getElementById("NewChildLastMonth").innerHTML = myData.NewChildLastMonth;
+                document.getElementById("ReturnChildLastMonth").innerHTML = myData.ReturnChildLastMonth;
+                document.getElementById("DropChild").innerHTML = myData.DropChild;
+                document.getElementById("TargetPercent").innerHTML = myData.TargetPercent;
+                document.getElementById("NoCoverage").innerHTML = myData.NoCoverage;
+
+                document.getElementById("RecoveredBoy").innerHTML = myData.RecoveredBoy;
+                document.getElementById("RecoveredGirl").innerHTML = myData.RecoveredGirl;
+                
+                document.getElementById("RecoveredTotal").innerHTML = (myData.RecoveredTotal.toString().length == 1 ? '0' + myData.RecoveredTotal : myData.RecoveredTotal);
+
+                //document.getElementById("TotalChildAtRisk").innerHTML = myData.TotalChildAtRisk;
+                document.getElementById("SeverUnderWeight").innerHTML = myData.SeverUnderWeight;
+                document.getElementById("ModerateUnderWeight").innerHTML = myData.ModerateUnderWeight;
+                //document.getElementById("UnderWeightTotal").innerHTML = myData.UnderWeightTotal;
+                document.getElementById("SeverStunted").innerHTML = myData.SeverStunted;
+                document.getElementById("ModerateStunted").innerHTML = myData.ModerateStunted;
+                //document.getElementById("StuntedTotal").innerHTML = myData.StuntedTotal;
+                document.getElementById("SeverAcuteMalnutrition").innerHTML = myData.SeverAcuteMalnutrition;
+                document.getElementById("ModerateAcuteMalnutrition").innerHTML = myData.ModerateAcuteMalnutrition;
+                //document.getElementById("AcuteMalnutritionTotal").innerHTML = myData.AcuteMalnutritionTotal;
+                document.getElementById("ReferredChildTotal").innerHTML = myData.ReferredChildTotal;
+                document.getElementById("GovermentTotal").innerHTML = myData.GovermentTotal;
+                document.getElementById("NGoTotal").innerHTML = myData.NGoTotal;
+                document.getElementById("PrivateTotal").innerHTML = myData.PrivateTotal;
+
+                document.getElementById("CardBookTotal").innerHTML = myData.CardBookTotal;
+                document.getElementById("Shishubikash").innerHTML = myData.Shishubikash;
+                document.getElementById("AmarJogot").innerHTML = myData.AmarJogot;
+                document.getElementById("AmarBari").innerHTML = myData.AmarBari;
+                document.getElementById("GmpCard").innerHTML = myData.GmpCard;
+                document.getElementById("ZipperFile").innerHTML = myData.ZipperFile;
+
+
+                document.getElementById("MicronutrientTotal").innerHTML = myData.MicronutrientTotal;
+                document.getElementById("TotalSupplementBoy").innerHTML = myData.TotalSupplementBoy;
+                document.getElementById("TotalSupplementGirl").innerHTML = myData.TotalSupplementGirl;
+                document.getElementById("SixMonthCycleCompleted").innerHTML = myData.SixMonthCycleCompleted;
+                document.getElementById("MessageDeliveredTotal").innerHTML = myData.MessageDeliveredTotal;
+                document.getElementById("NutritionMessage").innerHTML = myData.NutritionMessage;
+                document.getElementById("WashMesssageTotal").innerHTML = myData.WashMesssageTotal;
+                document.getElementById("CPMessageTotal").innerHTML = myData.CPMessageTotal;
+                document.getElementById("ESMessageTotal").innerHTML = myData.ESMessageTotal;
+                document.getElementById("ESMessageToNewCaregiversLastMonth").innerHTML = myData.ESMessageToNewCaregiversLastMonth;
+
+
+
+            }
+            else {
+                debugger
+                appetizer.message.showError('#showErrorMsg', data.data, 10000);
+            }
+        });
+    }
+
+
+    var locationType = [{ text: "-----SELECT-----", textBangla: "-----SELECT-----", value: "0" }, { text: "City Corporation", textBangla: "সিটি কর্পোরেশন", value: "3" }, { text: "Municipality", textBangla: "পৌরসভা", value: "2" }, { text: "Upazila", textBangla: "উপজেলা", value: "1" }];
+    $("#GeoType").kendoDropDownList({
+        dataTextField: "text",
+        dataValueField: "value",
+        height: '400',
+        dataSource: locationType,
+        template: '<div style=\"padding:5px;line-height:18px;font-size:14px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.text #</div>'
+
+    }).data("kendoDropDownList");
+
+
+    // All Graph function end
+
+    $date = new Date();
+    $day = $date.getDate();
+    $month = $date.getMonth();
+    $year = $date.getFullYear();
+
+    $("#FromDate").kendoDatePicker({
+        value: appStartDate,
+        format: "dd-MMM-yyyy",
+        animation: {
+            close: {
+                effects: "fadeOut zoom:out",
+                duration: 300
+            },
+            open: {
+                effects: "fadeIn zoom:in",
+                duration: 300
+            }
+        }
+    });
+    $("#ToDate").kendoDatePicker({
+        value: new Date(),
+        format: "dd-MMM-yyyy",
+        animation: {
+            close: {
+                effects: "fadeOut zoom:out",
+                duration: 300
+            },
+            open: {
+                effects: "fadeIn zoom:in",
+                duration: 300
+            }
+        }
+    });
+
+    var myData;
+    $("#ServicePointId").kendoDropDownList({
+        optionLabel: "------SELECT------",
+        dataTextField: "ServicePointName",
+        dataValueField: "ServicePointId",
+        filter: "contains",
+        dataSource: {
+            type: "JSON",
+            transport: {
+                read: {
+                    url: '@Url.Action("GetServicePointInfo", "MNCHN")'
+                }
+            }
+        },
+        height: '300',
+        template: "<div style=\"padding:5px;line-height:18px;font-size:14px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.ServicePointInfo #</div>",
+        open: adjustDropDownWidth
+    }).data("kendoDropDownList");
+    $("#UserId").kendoDropDownList({
+        optionLabel: "------SELECT------",
+        dataTextField: "FullName",
+        dataValueField: "UserId",
+        filter: "contains",
+        dataSource: {
+            type: "JSON",
+            transport: {
+                read: {
+                    url: '@Url.Action("GetUserInfo", "MNCHN")'
+                }
+            }
+        },
+        height: '300',
+        template: "<div style=\"padding:5px;line-height:18px;font-size:14px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.UserInfo #</div>",
+        open: adjustDropDownWidth
+    }).data("kendoDropDownList");
+    $("#DistrictCode").kendoDropDownList({
+        optionLabel: "------SELECT------",
+        dataTextField: "DistrictNameBangla",
+        dataValueField: "DistrictCode",
+        filter: "contains",
+        dataSource: {
+            type: "JSON",
+            transport: {
+                read: {
+                    url: '@Url.Action("GetDistrict", "Registration")'
+                }
+            }
+        },
+        height: '300',
+        template: "<div style=\"padding:5px;line-height:18px;font-size:13px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.DistrictNameBangla #</div>",
+        open: adjustDropDownWidth
+    }).data("kendoDropDownList");
+
+    $("#UpazilaCode").kendoDropDownList({
+        autoBind: false,
+        cascadeFrom: "GeoType",
+        optionLabel: "------SELECT------",
+        dataTextField: "UpazilaNameBangla",
+        dataValueField: "UpazilaCode",
+        filter: "startswith",
+        dataSource: {
+            type: "JSON",
+            serverFiltering: true,
+            transport: {
+                read: {
+                    url: '@Url.Action("GetUpazila", "Registration")',
+                    data: function (e) {
+                        var inputValue = "";
+                        if (e.filter.filters.length > 1) {
+                            inputValue = this.data.arguments[0].filter.filters[1].value;
+                        }
+                        return { GeoType: $("#GeoType").val(), DistrictCode: $("#DistrictCode").val(), UpazilaName: inputValue };
+                    }
+                }
+            }
+        },
+        height: '300',
+        template: "<div style=\"padding:5px;line-height:18px;font-size:13px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.UpazilaNameBangla #</div>"
+    }).data("kendoDropDownList");
+    $("#UnionCode").kendoDropDownList({
+        optionLabel: "------SELECT------",
+        autoBind: false,
+        cascadeFrom: "UpazilaCode",
+        dataTextField: "UnionNameBangla",
+        dataValueField: "UnionCode",
+        filter: "contains",
+        dataSource: {
+            type: "JSON",
+            serverFiltering: true,
+            transport: {
+                read: {
+                    url: '@Url.Action("GetUnion", "Registration")',
+                    data: function (e) {
+                        var inputValue = "";
+                        if (e.filter.filters.length > 1) {
+                            inputValue = this.data.arguments[0].filter.filters[1].value;
+                        }
+                        return { DistrictCode: $("#DistrictCode").val(), UpazilaCode: $("#UpazilaCode").val(), UnionName: inputValue };
+                    }
+                }
+            }
+        },
+        height: '300',
+        template: "<div style=\"padding:5px;line-height:18px;font-size:13px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.UnionNameBangla #</div>",
+        open: adjustDropDownWidth
+
+    }).data("kendoDropDownList");
+    function adjustDropDownWidth(e) {
+        var listContainer = e.sender.list.closest(".k-list-container");
+        listContainer.width(listContainer.width() + kendo.support.scrollbar());
+    }
+
+    function createTotalChart(totalBoy, totalGirl, totalCoverage) {
+        var center;
+        var radius;
+
+        $("#Totalchart").kendoChart({
+            theme: 'flat',
+
+            title: {
+                position: "top",
+                text: " "
+            },
+            legend: {
+                visible: false
+            },
+            chartArea: {
+                background: ""
+            },
+            series: [{
+                type: "donut",
+                startAngle: 90,
+                holeSize: 80,
+                visual: function (e) {
+
+                    // Obtain parameters for the segments
+                    // Will run many times, but that's not an issue
+                    center = e.center;
+                    radius = e.radius;
+
+                    // Create default visual
+                    return e.createVisual();
+                },
+                data: [{
+                    category: "Boy",
+                    value: totalBoy,
+                    color: "#19C5B4"
+                }, {
+                    category: "Girl",
+                    value: totalGirl,
+                    color: "#ED7F82"
+                }]
+            }],
+            tooltip: {
+                visible: true,
+                format: "{0}%",
+                template: "#= category #: #= value #"
+
+            },
+            render: function (e) {
+                var draw = kendo.drawing;
+                var geom = kendo.geometry;
+                var chart = e.sender;
+
+                // The center and radius are populated by now.
+                // We can ask a circle geometry to calculate the bounding rectangle for us.
+                //
+                // http://docs.telerik.com/kendo-ui/api/javascript/geometry/circle/methods/bbox
+                var circleGeometry = new geom.Circle(center, radius);
+                var bbox = circleGeometry.bbox();
+
+                // Render the text
+                //
+                // http://docs.telerik.com/kendo-ui/api/javascript/dataviz/drawing/text
+                //CoverageTotal
+                var text = new draw.Text("" + totalCoverage, [0, 0], {
+                    font: "bold 30px 'Mukta',sans-serif"
+                });
+
+                // Align the text in the bounding box
+                //
+                // http://docs.telerik.com/kendo-ui/api/javascript/drawing/methods/align
+                // http://docs.telerik.com/kendo-ui/api/javascript/drawing/methods/vAlign
+                draw.align([text], bbox, "center");
+                draw.vAlign([text], bbox, "center");
+
+                // Draw it on the Chart drawing surface
+                e.sender.surface.draw(text);
+            }
+        });
+
+    }
+
+    function createKPIChart() {
+        var center;
+        var radius;
+
+
+
+    }
+</script>

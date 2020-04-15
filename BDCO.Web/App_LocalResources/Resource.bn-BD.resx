@@ -1,0 +1,1863 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ancAge" xml:space="preserve">
+    <value>সুবিধাভোগীর বয়স</value>
+  </data>
+  <data name="ancAncVisitDate" xml:space="preserve">
+    <value>ভিজিট তারিখ</value>
+  </data>
+  <data name="ancAncVisitTerm" xml:space="preserve">
+    <value>এ এন সি ভিজিট</value>
+  </data>
+  <data name="ancAncVisitWhere" xml:space="preserve">
+    <value>কোথায় সেবা নিয়েছেন</value>
+  </data>
+  <data name="ancBabyMovingFeel" xml:space="preserve">
+    <value>বাচ্চার নড়া চড়া বুজতে পারেন কি না</value>
+  </data>
+  <data name="ancBenId" xml:space="preserve">
+    <value>সুবিধাভোগীর আইডি</value>
+  </data>
+  <data name="ancBenName" xml:space="preserve">
+    <value>সুবিধাভোগীর নাম</value>
+  </data>
+  <data name="ancBloodPressure" xml:space="preserve">
+    <value>রক্তচাপ</value>
+  </data>
+  <data name="ancDateOfBirth" xml:space="preserve">
+    <value>জন্ম তারিখ</value>
+  </data>
+  <data name="ancEdd" xml:space="preserve">
+    <value>ই ডি ডি</value>
+  </data>
+  <data name="ancHeartRate" xml:space="preserve">
+    <value>হৃদস্পন্দন</value>
+  </data>
+  <data name="ancJaundice" xml:space="preserve">
+    <value>জন্ডিস (চোখের সাদা অংশ হলুদ কি না)</value>
+  </data>
+  <data name="ancLmp" xml:space="preserve">
+    <value>এল এম পি</value>
+  </data>
+  <data name="ancMiscarriage" xml:space="preserve">
+    <value>আগে কোনো গর্ভপাত হয়েছে?</value>
+  </data>
+  <data name="ancNumberOfPregnancy" xml:space="preserve">
+    <value>কততম গর্ভধারণ?</value>
+  </data>
+  <data name="ancPaleEyelids" xml:space="preserve">
+    <value>চোখের নিচের পাতা ফ্যাকাসে?</value>
+  </data>
+  <data name="ancPregnancyTest" xml:space="preserve">
+    <value>গর্ভধারণ পরীক্ষা করেছেন?</value>
+  </data>
+  <data name="ancReferralHospital" xml:space="preserve">
+    <value>রেফারাল হাসপাতাল</value>
+  </data>
+  <data name="ancReferralHospitalBefore" xml:space="preserve">
+    <value>পূর্বের রেফারাল হাসপাতাল</value>
+  </data>
+  <data name="ancReferralInstitute" xml:space="preserve">
+    <value>রেফারাল প্রতিষ্ঠান</value>
+  </data>
+  <data name="ancReferralInstituteBefore" xml:space="preserve">
+    <value>পূর্বের রেফারাল প্রতিষ্ঠান</value>
+  </data>
+  <data name="ancReferralReason" xml:space="preserve">
+    <value>রেফারাল কারণ</value>
+  </data>
+  <data name="ancReferralReasonBefore" xml:space="preserve">
+    <value>পূর্বের রেফারাল কারণ</value>
+  </data>
+  <data name="ancRegistrationDate" xml:space="preserve">
+    <value>রেজিস্ট্রেশনের তারিখ</value>
+  </data>
+  <data name="ancRemarks" xml:space="preserve">
+    <value>মন্তব্য, যদি থাকে</value>
+  </data>
+  <data name="ancSwelling" xml:space="preserve">
+    <value>পা ফোলা(পিটিং ইডিমা)</value>
+  </data>
+  <data name="ancTemperature" xml:space="preserve">
+    <value>তাপমাত্রা</value>
+  </data>
+  <data name="ancTTDate" xml:space="preserve">
+    <value>টি টি তারিখ</value>
+  </data>
+  <data name="ancTTTerm" xml:space="preserve">
+    <value>টি টি তথ্য</value>
+  </data>
+  <data name="ancTTVisitWhere" xml:space="preserve">
+    <value>কোথায় সেবা নিয়েছেন</value>
+  </data>
+  <data name="ancVisitDate" xml:space="preserve">
+    <value>পরিদর্শনের তারিখ</value>
+  </data>
+  <data name="ancVisitNo" xml:space="preserve">
+    <value>ভিজিট নম্বর</value>
+  </data>
+  <data name="anc_Counseling_1" xml:space="preserve">
+    <value>গর্ভকালীন সেবা (ANC) নিয়মিত ও ফলো আপ</value>
+  </data>
+  <data name="anc_Counseling_10" xml:space="preserve">
+    <value>প্রসব পরবর্তী সেবা</value>
+  </data>
+  <data name="anc_Counseling_11" xml:space="preserve">
+    <value>প্রসব পরবর্তী পরিবার পরিকল্পনা ও জন্মবিরতি</value>
+  </data>
+  <data name="anc_Counseling_12" xml:space="preserve">
+    <value>ভিডিও প্রদর্শন</value>
+  </data>
+  <data name="anc_Counseling_13" xml:space="preserve">
+    <value>সাবান দিয়ে হাত ধোয়া</value>
+  </data>
+  <data name="anc_Counseling_14" xml:space="preserve">
+    <value>খাবার পানি কমপক্ষে ২০ মিনিট ফুটিয়ে পান করা</value>
+  </data>
+  <data name="anc_Counseling_2" xml:space="preserve">
+    <value>ধনুষ্টংকারের প্রতিষেধক</value>
+  </data>
+  <data name="anc_Counseling_3" xml:space="preserve">
+    <value>স্বাস্থ্যকর খাদ্য ও পুষ্টি</value>
+  </data>
+  <data name="anc_Counseling_4" xml:space="preserve">
+    <value>আয়রন ও ফলিক এসিড</value>
+  </data>
+  <data name="anc_Counseling_5" xml:space="preserve">
+    <value>ক্যালসিয়াম গ্রহন</value>
+  </data>
+  <data name="anc_Counseling_6" xml:space="preserve">
+    <value>বিশ্রাম ও অন্যান্য কাজ</value>
+  </data>
+  <data name="anc_Counseling_7" xml:space="preserve">
+    <value>ব্যক্তিগত পরিষ্কার পরিচ্ছন্নতা ও নিজের যত্ন</value>
+  </data>
+  <data name="anc_Counseling_8" xml:space="preserve">
+    <value>নবজাতকের তাৎক্ষনিক ও অত্যাবশ্যকীয় যত্ন</value>
+  </data>
+  <data name="anc_Counseling_9" xml:space="preserve">
+    <value>বুকের দুধ খাওয়ানো</value>
+  </data>
+  <data name="anc_counseling_title" xml:space="preserve">
+    <value>কাউন্সেলিং</value>
+  </data>
+  <data name="anc_danger_sign_1" xml:space="preserve">
+    <value>যোনিপথে রক্তস্রাব</value>
+  </data>
+  <data name="anc_danger_sign_2" xml:space="preserve">
+    <value>তীব্র মাথাব্যথা ও চোখে ঝাপসা দেখা</value>
+  </data>
+  <data name="anc_danger_sign_3" xml:space="preserve">
+    <value>৩ দিন বা তারচেয়ে বেশিদিন ধরে  ১০০.৪0F/ ৩৮0C এর বেশি জ্বর</value>
+  </data>
+  <data name="anc_danger_sign_4" xml:space="preserve">
+    <value>বাধাগ্রস্থ বা বিলম্বিত প্রসব বা গর্ভে শিশুর ঝুঁকিপূর্ণ অবস্থান</value>
+  </data>
+  <data name="anc_danger_sign_5" xml:space="preserve">
+    <value>খিঁচুনি</value>
+  </data>
+  <data name="anc_danger_sign_title" xml:space="preserve">
+    <value>আজকের বিপদচিহ্ন</value>
+  </data>
+  <data name="anc_training_support_title" xml:space="preserve">
+    <value>আজকের প্রদত্ত প্রশিক্ষণ ও সহায়তা</value>
+  </data>
+  <data name="anc_visit_0" xml:space="preserve">
+    <value>ভিজিট নেয় নাই</value>
+  </data>
+  <data name="anc_visit_1" xml:space="preserve">
+    <value>এ এন সি ভিজিট ১</value>
+  </data>
+  <data name="anc_visit_2" xml:space="preserve">
+    <value>এ এন সি ভিজিট ২</value>
+  </data>
+  <data name="anc_visit_3" xml:space="preserve">
+    <value>এ এন সি ভিজিট ৩</value>
+  </data>
+  <data name="anc_visit_4" xml:space="preserve">
+    <value>এ এন সি ভিজিট ৪</value>
+  </data>
+  <data name="anc_visit_5" xml:space="preserve">
+    <value>এ এন সি ভিজিট ৫</value>
+  </data>
+  <data name="anc_visit_6" xml:space="preserve">
+    <value>এ এন সি ভিজিট ৬</value>
+  </data>
+  <data name="ben_selection" xml:space="preserve">
+    <value>সুবিধাভোগী নির্বাচন</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>বাতিল করুন</value>
+  </data>
+  <data name="chlAge" xml:space="preserve">
+    <value>সুবিধাভোগীর বয়স</value>
+  </data>
+  <data name="chlBenId" xml:space="preserve">
+    <value>সুবিধাভোগীর আইডি</value>
+  </data>
+  <data name="chlBenName" xml:space="preserve">
+    <value>সুবিধাভোগীর নাম</value>
+  </data>
+  <data name="chlChestDrawing" xml:space="preserve">
+    <value>বুকের খাঁচা দেবে যাওয়া?</value>
+  </data>
+  <data name="chlConjunctivitis" xml:space="preserve">
+    <value>চোখ লাল/কঞ্জাংটিভাইটিস?</value>
+  </data>
+  <data name="chlConvulsion" xml:space="preserve">
+    <value>খিচুনি/অজ্ঞান হওয়া</value>
+  </data>
+  <data name="chlCoughing" xml:space="preserve">
+    <value>কাশি আছে কি না?</value>
+  </data>
+  <data name="chlDateOfBirth" xml:space="preserve">
+    <value>জন্ম তারিখ</value>
+  </data>
+  <data name="chlDiarrhea" xml:space="preserve">
+    <value>ডায়রিযা হচ্ছে কি না (দিনে তিন বারের বেশি)</value>
+  </data>
+  <data name="chlDrinking" xml:space="preserve">
+    <value>তরল বা বুকের দুধ পান করে কি না</value>
+  </data>
+  <data name="chlHeartRate" xml:space="preserve">
+    <value>হৃদস্পন্দনের হার (প্রতি মিনিটে)</value>
+  </data>
+  <data name="chlInfantSuck" xml:space="preserve">
+    <value>বুকের দুধ চুষে খাওয়া</value>
+  </data>
+  <data name="chlMuac" xml:space="preserve">
+    <value>মুয়াক</value>
+  </data>
+  <data name="chlNasalDischarge" xml:space="preserve">
+    <value>নাকে নিঃসরণ?</value>
+  </data>
+  <data name="chlPaleEyelids" xml:space="preserve">
+    <value>চোখের পাতা ফ্যাকাসে?</value>
+  </data>
+  <data name="chlPalePalms" xml:space="preserve">
+    <value>হাতের তালু ফ্যাকাসে?</value>
+  </data>
+  <data name="chlPittingEdema" xml:space="preserve">
+    <value>পা ফুলে গেছে (পিটিং ইডিমা)</value>
+  </data>
+  <data name="chlRash" xml:space="preserve">
+    <value>শরীরের কোথাও লাল দাগযুক্ত লালচে দানা?</value>
+  </data>
+  <data name="chlReferralHospital" xml:space="preserve">
+    <value>রেফারাল হাসপাতাল</value>
+  </data>
+  <data name="chlReferralHospitalBefore" xml:space="preserve">
+    <value>পূর্বের রেফারাল হাসপাতাল</value>
+  </data>
+  <data name="chlReferralInstitute" xml:space="preserve">
+    <value>রেফারাল প্রতিষ্ঠান</value>
+  </data>
+  <data name="chlReferralInstituteBefore" xml:space="preserve">
+    <value>পূর্বের রেফারাল প্রতিষ্ঠান</value>
+  </data>
+  <data name="chlReferralReason" xml:space="preserve">
+    <value>রেফারাল কারণ</value>
+  </data>
+  <data name="chlReferralReasonBefore" xml:space="preserve">
+    <value>পূর্বের রেফারাল কারণ</value>
+  </data>
+  <data name="chlRegistrationDate" xml:space="preserve">
+    <value>রেজিস্ট্রেশনের তারিখ</value>
+  </data>
+  <data name="chlRemarks" xml:space="preserve">
+    <value>মন্তব্য</value>
+  </data>
+  <data name="chlRespiratory" xml:space="preserve">
+    <value>শ্বাস প্রশ্বাস এর হার (প্রতি মিনিটে)</value>
+  </data>
+  <data name="chlSkinInfection" xml:space="preserve">
+    <value>ত্বকের সংক্রমণ</value>
+  </data>
+  <data name="chlSkinTurgor" xml:space="preserve">
+    <value>চামড়ার অবস্থা (পানি সল্পতার লক্ষণ)</value>
+  </data>
+  <data name="chlTears" xml:space="preserve">
+    <value>কাঁদলে  চোখে জল আসে কি না?</value>
+  </data>
+  <data name="chlTemperature" xml:space="preserve">
+    <value>তাপমাত্রা (ফারেনহাইট)</value>
+  </data>
+  <data name="chlUrinated" xml:space="preserve">
+    <value>সর্বশেষ কখন প্রস্রাব করেছে?</value>
+  </data>
+  <data name="chlVisitDate" xml:space="preserve">
+    <value>পরিদর্শনের তারিখ</value>
+  </data>
+  <data name="chlVisitNo" xml:space="preserve">
+    <value>ভিসিট নম্বর</value>
+  </data>
+  <data name="chlVomiting" xml:space="preserve">
+    <value>বমি হচ্ছে কি না?</value>
+  </data>
+  <data name="chlWeight" xml:space="preserve">
+    <value>ওজন (কেজি)</value>
+  </data>
+  <data name="chlWheezing" xml:space="preserve">
+    <value>শ্বাসের সময় শোঁ শোঁ শব্দ হওয়া?</value>
+  </data>
+  <data name="chl_coughing1" xml:space="preserve">
+    <value>কাশি নেই</value>
+  </data>
+  <data name="chl_coughing2" xml:space="preserve">
+    <value>১৪ দিনের কম সময় ধরে কাশি</value>
+  </data>
+  <data name="chl_coughing3" xml:space="preserve">
+    <value>১৪ দিনের বেশি সময় ধরে কাশি</value>
+  </data>
+  <data name="chl_diarrhea1" xml:space="preserve">
+    <value>ডায়রিয়া নেই</value>
+  </data>
+  <data name="chl_diarrhea2" xml:space="preserve">
+    <value>১-৫ বার</value>
+  </data>
+  <data name="chl_diarrhea3" xml:space="preserve">
+    <value>৬-১০ বার</value>
+  </data>
+  <data name="chl_diarrhea4" xml:space="preserve">
+    <value>১০ বারের বেশি</value>
+  </data>
+  <data name="chl_drinking1" xml:space="preserve">
+    <value>স্বাভাবিক</value>
+  </data>
+  <data name="chl_drinking2" xml:space="preserve">
+    <value>স্বাভাবিকের চেয়ে বেশি</value>
+  </data>
+  <data name="chl_drinking3" xml:space="preserve">
+    <value>স্বাভাবিকের চেয়ে কম</value>
+  </data>
+  <data name="chl_drinking4" xml:space="preserve">
+    <value>তরল বা বুকের দুধ খেতে পারছে না</value>
+  </data>
+  <data name="chl_info_counseling" xml:space="preserve">
+    <value>কাউন্সিলিং ও সহায়তা</value>
+  </data>
+  <data name="chl_info_general" xml:space="preserve">
+    <value>সাধারণ তথ্য</value>
+  </data>
+  <data name="chl_info_observation" xml:space="preserve">
+    <value>রোগের লক্ষণ ও পরীক্ষা</value>
+  </data>
+  <data name="chl_info_referral" xml:space="preserve">
+    <value>রেফারাল তথ্য</value>
+  </data>
+  <data name="chl_list_item_button1" xml:space="preserve">
+    <value>টীকা তথ্য</value>
+  </data>
+  <data name="chl_list_item_button2" xml:space="preserve">
+    <value>কাউন্সেলিং</value>
+  </data>
+  <data name="chl_list_item_button3" xml:space="preserve">
+    <value>প্রশিক্ষণ/সহায়তা</value>
+  </data>
+  <data name="chl_list_item_title1" xml:space="preserve">
+    <value>টীকা তথ্</value>
+  </data>
+  <data name="chl_list_item_title2" xml:space="preserve">
+    <value>কাউন্সেলিং</value>
+  </data>
+  <data name="chl_list_item_title3" xml:space="preserve">
+    <value>আজকে প্রদত্ত প্রশিক্ষণ ও সহায়তা</value>
+  </data>
+  <data name="chl_muac1" xml:space="preserve">
+    <value>কমলা/লাল</value>
+  </data>
+  <data name="chl_muac2" xml:space="preserve">
+    <value>সবুজ</value>
+  </data>
+  <data name="chl_muac3" xml:space="preserve">
+    <value>হলুদ</value>
+  </data>
+  <data name="chl_refer_reason1" xml:space="preserve">
+    <value>কোনো কারণ নাই</value>
+  </data>
+  <data name="chl_refer_reason2" xml:space="preserve">
+    <value>অসুস্থ</value>
+  </data>
+  <data name="chl_refer_reason3" xml:space="preserve">
+    <value>টিকাদান</value>
+  </data>
+  <data name="chl_refer_reason4" xml:space="preserve">
+    <value>ডায়রিয়া</value>
+  </data>
+  <data name="chl_refer_reason5" xml:space="preserve">
+    <value>নিউমোনিয়া ও অন্যান্য শ্বাসজনিত রোগ</value>
+  </data>
+  <data name="chl_refer_reason6" xml:space="preserve">
+    <value>বিপদচিহ্ন</value>
+  </data>
+  <data name="chl_refer_reason7" xml:space="preserve">
+    <value>মারাত্মক অপুষ্টি</value>
+  </data>
+  <data name="chl_refer_reason8" xml:space="preserve">
+    <value>অন্যান্য</value>
+  </data>
+  <data name="chl_skin_infection1" xml:space="preserve">
+    <value>লাল</value>
+  </data>
+  <data name="chl_skin_infection2" xml:space="preserve">
+    <value>উষ্ণ</value>
+  </data>
+  <data name="chl_skin_infection3" xml:space="preserve">
+    <value>ফোলা</value>
+  </data>
+  <data name="chl_skin_infection4" xml:space="preserve">
+    <value>ব্যথা</value>
+  </data>
+  <data name="chl_skin_infection5" xml:space="preserve">
+    <value>পুঁজ বা পানি পড়া</value>
+  </data>
+  <data name="chl_skin_turgor1" xml:space="preserve">
+    <value>দ্রুত: স্বাভাবিক</value>
+  </data>
+  <data name="chl_skin_turgor2" xml:space="preserve">
+    <value>ধীরগতিতে: ১-২ সেকেন্ডে</value>
+  </data>
+  <data name="chl_skin_turgor3" xml:space="preserve">
+    <value>খুবই ধীরগতিতে: ২ সেকেন্ডের বেশি সময় ধরে</value>
+  </data>
+  <data name="chl_tears1" xml:space="preserve">
+    <value>হ্যাঁ</value>
+  </data>
+  <data name="chl_tears2" xml:space="preserve">
+    <value>না</value>
+  </data>
+  <data name="chl_tears3" xml:space="preserve">
+    <value>জানা নেই</value>
+  </data>
+  <data name="chl_urinated1" xml:space="preserve">
+    <value>গত ৬ ঘণ্টার মধ্যে</value>
+  </data>
+  <data name="chl_urinated2" xml:space="preserve">
+    <value>৬-১২ ঘন্টা আগে</value>
+  </data>
+  <data name="chl_urinated3" xml:space="preserve">
+    <value>১২ ঘণ্টারও আগে</value>
+  </data>
+  <data name="chl_urinated4" xml:space="preserve">
+    <value>জানা নেই</value>
+  </data>
+  <data name="chl_vomiting1" xml:space="preserve">
+    <value>বমি নেই</value>
+  </data>
+  <data name="chl_vomiting2" xml:space="preserve">
+    <value>১-৫ বার</value>
+  </data>
+  <data name="chl_vomiting3" xml:space="preserve">
+    <value>৬-১০ বার</value>
+  </data>
+  <data name="chl_vomiting4" xml:space="preserve">
+    <value>১০ বারের বেশি</value>
+  </data>
+  <data name="comAttachedToilet" xml:space="preserve">
+    <value>ঘরের সাথে সংযুক্ত</value>
+  </data>
+  <data name="comAttachedToiletGr" xml:space="preserve">
+    <value>সংযুক্ত</value>
+  </data>
+  <data name="comCbheMember" xml:space="preserve">
+    <value>বাড়িতে অবস্থিত CBHE শিশু সদস্য আছে কি না?</value>
+  </data>
+  <data name="comChildToiletUse" xml:space="preserve">
+    <value>বাড়ির বা ঘরের শিশু টয়লেট থেকে বের হয়ে সাবান দিয়ে হাত ধুয়েছে (নাম ও বয়স লিখুন) কি না?</value>
+  </data>
+  <data name="comCleanToilet" xml:space="preserve">
+    <value>ভাল অবস্থা/পরিষ্কার</value>
+  </data>
+  <data name="comCleanToiletGr" xml:space="preserve">
+    <value>পরিষ্কার</value>
+  </data>
+  <data name="comCoverDrinkingWater" xml:space="preserve">
+    <value>পানি রাখা পাত্র ঢাকনা দিয়ে ঢাকা  আছে কিনা</value>
+  </data>
+  <data name="comCvMember" xml:space="preserve">
+    <value>বাড়িতে অবস্থিত CV সদস্য আছে কি না?</value>
+  </data>
+  <data name="comDrinkBoilWater" xml:space="preserve">
+    <value>পরিবারটি পানি  ফুটিয়ে পান করছে কিনা</value>
+  </data>
+  <data name="comDrinkingWaterOther" xml:space="preserve">
+    <value>অন্য কোন পদ্ধতিতে (যেমন ক্লোরিন ট্যাবলেট, ফিটকিরী ,ফিল্টার, মিনারেল পানি ইত্যাদি) নিরাপদ করছেন কি?</value>
+  </data>
+  <data name="comDrinkingWaterUseMsg" xml:space="preserve">
+    <value>পূর্ববর্তী দুইটি বিষয়ের যে কোন একটি “না” হলে কাউন্সেলিং করুন ও কাউন্সেলিং বার্তা লিখুন</value>
+  </data>
+  <data name="comHomeName" xml:space="preserve">
+    <value>বাড়ির নাম</value>
+  </data>
+  <data name="comHomeNo" xml:space="preserve">
+    <value>বাড়ির কোড</value>
+  </data>
+  <data name="comHouseID" xml:space="preserve">
+    <value>ঘরের কোড</value>
+  </data>
+  <data name="comLockToilet" xml:space="preserve">
+    <value>খোলা/তালা বদ্ধহীন</value>
+  </data>
+  <data name="comLockToiletGr" xml:space="preserve">
+    <value>তালা বদ্ধহীন</value>
+  </data>
+  <data name="comPosterToilet" xml:space="preserve">
+    <value>৫ টি অভ্যাসের পোস্টার ঝুলানো/দৃশ্যমান</value>
+  </data>
+  <data name="comPosterToiletGr" xml:space="preserve">
+    <value>পোস্টার ঝুলানো</value>
+  </data>
+  <data name="comRemarks" xml:space="preserve">
+    <value>মন্তব্য</value>
+  </data>
+  <data name="comToiletNumber" xml:space="preserve">
+    <value>টয়লেট  নং</value>
+  </data>
+  <data name="comToiletNumberGr" xml:space="preserve">
+    <value>নং</value>
+  </data>
+  <data name="comToiletUseMsg" xml:space="preserve">
+    <value>পূর্ববর্তী তিনটি বিষয়ের যে কোন একটি “না” হলে কাউন্সেলিং করুন</value>
+  </data>
+  <data name="comVisitDate" xml:space="preserve">
+    <value>পরিদর্শনের তারিখ</value>
+  </data>
+  <data name="comVisitNo" xml:space="preserve">
+    <value>ভিসিট নম্বর</value>
+  </data>
+  <data name="comWasteBinBlueUse" xml:space="preserve">
+    <value>বাড়িতে নির্দৃষ্ট স্থানে বড় নীল ড্রামে বর্জ্য ফেলছে কিনা ও ড্রাম ঢেকে রাখা হয়েছে কি না বা সরাসরি ভ্যানে ফেলেছে কি না</value>
+  </data>
+  <data name="comWasteBinCover" xml:space="preserve">
+    <value>ঘরের বর্জ্য রাখার পর পাত্র ঢাকনা দিয়ে ঢাকা আছে কি না?</value>
+  </data>
+  <data name="comWasteBinUse" xml:space="preserve">
+    <value>ঘরের বর্জ্য রাখার লাল পাত্রে বর্জ্য ফেলছে কি না ?</value>
+  </data>
+  <data name="comWasteBinUseMsg" xml:space="preserve">
+    <value>পূর্ববর্তী তিনটি বিষয়ের যে কোন একটি “না” হলে কাউন্সেলিং করুন ও কাউন্সেলিং বার্তা লিখুন</value>
+  </data>
+  <data name="com_info_general" xml:space="preserve">
+    <value>সাধারণ তথ্য</value>
+  </data>
+  <data name="com_info_hand_wash" xml:space="preserve">
+    <value>শিশুর হাত ধোয়া ফলোয়াপ তথ্য</value>
+  </data>
+  <data name="com_info_toilet_list" xml:space="preserve">
+    <value>টয়লেট তালিকা</value>
+  </data>
+  <data name="com_info_toillet_followup" xml:space="preserve">
+    <value>টয়লেটের ফলোয়াপ তথ্য</value>
+  </data>
+  <data name="com_info_wast_management" xml:space="preserve">
+    <value>খানা ভিত্তিক বর্জ ব্যাবস্থাপনার তথ্য</value>
+  </data>
+  <data name="com_info_water_management" xml:space="preserve">
+    <value>খানা ভিত্তিক ফুটানো/নিরাপদ পানি পান ও ব্যাবহারের তথ্য</value>
+  </data>
+  <data name="counseling" xml:space="preserve">
+    <value>কাউন্সেলিং</value>
+  </data>
+  <data name="counseling_support" xml:space="preserve">
+    <value>কাউন্সিলিং ও সহায়তা</value>
+  </data>
+  <data name="danger_sign" xml:space="preserve">
+    <value>বিপদচিহ্ন</value>
+  </data>
+  <data name="dewAge" xml:space="preserve">
+    <value>সুবিধাভোগীর বয়স</value>
+  </data>
+  <data name="dewBenId" xml:space="preserve">
+    <value>সুবিধাভোগীর আইডি</value>
+  </data>
+  <data name="dewBenName" xml:space="preserve">
+    <value>সুবিধাভোগীর নাম</value>
+  </data>
+  <data name="dewCard" xml:space="preserve">
+    <value>শিশুর কাছে কৃমিনাশক ঔষধের কার্ড আছে কিনা ?</value>
+  </data>
+  <data name="dewDateOfBirth" xml:space="preserve">
+    <value>জন্ম তারিখ</value>
+  </data>
+  <data name="dewDose" xml:space="preserve">
+    <value>ঔষদের ডোজ</value>
+  </data>
+  <data name="dewFollowup" xml:space="preserve">
+    <value>শিশুকে ৭ দিনের মধ্যে ফলো –আপ হয়েছে কিনা</value>
+  </data>
+  <data name="dewIntegration" xml:space="preserve">
+    <value>অন্য কম্পনেন্টের  সাথে ইন্টিগ্রেশন গুলো টিক ছিন্ন দিয়ে সিলেক্ট করুন</value>
+  </data>
+  <data name="dewMssDose" xml:space="preserve">
+    <value>শিশু এমএসএস থেকে এর পরের রাউন্ডে কৃমিনাষক ঔষধ খেয়েছে কিনা</value>
+  </data>
+  <data name="dewRemarks" xml:space="preserve">
+    <value>মন্তব্য</value>
+  </data>
+  <data name="dewServicePoint" xml:space="preserve">
+    <value>স্কুলে যায় কিনা?</value>
+  </data>
+  <data name="dewVisitDate" xml:space="preserve">
+    <value>কৃমিনাশক সপ্তাহের তারিখ</value>
+  </data>
+  <data name="dewVisitNo" xml:space="preserve">
+    <value>ভিসিট নম্বর</value>
+  </data>
+  <data name="dew_info_general" xml:space="preserve">
+    <value>সাধারণ তথ্য</value>
+  </data>
+  <data name="dew_info_observation" xml:space="preserve">
+    <value>পরিদর্শন কালীন তথ্য সমুহ</value>
+  </data>
+  <data name="disqualified_for_service" xml:space="preserve">
+    <value>সেবা পাওয়ার অযোগ্য</value>
+  </data>
+  <data name="eighth" xml:space="preserve">
+    <value>অষ্টম</value>
+  </data>
+  <data name="female" xml:space="preserve">
+    <value>মহিলা</value>
+  </data>
+  <data name="fifth" xml:space="preserve">
+    <value>পঞ্চম</value>
+  </data>
+  <data name="first" xml:space="preserve">
+    <value>প্রথম</value>
+  </data>
+  <data name="fourth" xml:space="preserve">
+    <value>চতুর্থ</value>
+  </data>
+  <data name="FromDate" xml:space="preserve">
+    <value>তারিখ হইতেঃ</value>
+  </data>
+  <data name="happen_at_hospital" xml:space="preserve">
+    <value>হাসপাতালে হয়েছে</value>
+  </data>
+  <data name="house_no" xml:space="preserve">
+    <value>ঘর নম্বর</value>
+  </data>
+  <data name="id" xml:space="preserve">
+    <value>আইডি</value>
+  </data>
+  <data name="ifaAge" xml:space="preserve">
+    <value>সুবিধাভোগীর বয়স</value>
+  </data>
+  <data name="ifaBenId" xml:space="preserve">
+    <value>সুবিধাভোগীর আইডি</value>
+  </data>
+  <data name="ifaBenName" xml:space="preserve">
+    <value>সুবিধাভোগীর নাম</value>
+  </data>
+  <data name="ifaCALGot" xml:space="preserve">
+    <value>পেয়েছেন</value>
+  </data>
+  <data name="ifaCALInHand" xml:space="preserve">
+    <value>হাতে আছে</value>
+  </data>
+  <data name="ifaCALTaken" xml:space="preserve">
+    <value>খেছেন</value>
+  </data>
+  <data name="ifaDateOfBirth" xml:space="preserve">
+    <value>জন্ম তারিখ</value>
+  </data>
+  <data name="ifaIFAGot" xml:space="preserve">
+    <value>পেয়েছেন</value>
+  </data>
+  <data name="ifaIFAInHand" xml:space="preserve">
+    <value>হাতে আছে</value>
+  </data>
+  <data name="ifaIFATaken" xml:space="preserve">
+    <value>খেছেন</value>
+  </data>
+  <data name="ifa_cal_stock" xml:space="preserve">
+    <value>ক্যালশিয়াম ট্যাবলেটে কয়টি :</value>
+  </data>
+  <data name="ifa_ifa_stock" xml:space="preserve">
+    <value>আয়রন ফলিক অ্যাসিড কয়টি :</value>
+  </data>
+  <data name="ifa_info_general" xml:space="preserve">
+    <value>সাধারণ তথ্য</value>
+  </data>
+  <data name="ifa_info_ifa" xml:space="preserve">
+    <value>আইরন ও ফলিক অ্যাসিড ফলোআপ</value>
+  </data>
+  <data name="ifa_side_effect" xml:space="preserve">
+    <value>আয়রন ফলিক এসিড (IFA) জনিত কোনো পার্শ্ব প্রতিক্রিয়া হয়েছে?</value>
+  </data>
+  <data name="male" xml:space="preserve">
+    <value>পুরুষ</value>
+  </data>
+  <data name="monAge" xml:space="preserve">
+    <value>সুবিধাভোগীর বয়স</value>
+  </data>
+  <data name="monBenId" xml:space="preserve">
+    <value>সুবিধাভোগীর আইডি</value>
+  </data>
+  <data name="monBenName" xml:space="preserve">
+    <value>সুবিধাভোগীর নাম</value>
+  </data>
+  <data name="monDateOfBirth" xml:space="preserve">
+    <value>জন্ম তারিখ</value>
+  </data>
+  <data name="monFirstMonth" xml:space="preserve">
+    <value>প্রথম মাসে কয়টি খেয়েছে</value>
+  </data>
+  <data name="monSecondMonth" xml:space="preserve">
+    <value>দ্বিতীয় মাসে কয়টি খেয়েছে</value>
+  </data>
+  <data name="monSixMonthCompleted" xml:space="preserve">
+    <value>ষষ্ট মাসে সম্পূর্ণ করেছে</value>
+  </data>
+  <data name="mon_info_general" xml:space="preserve">
+    <value>সাধারণ তথ্য</value>
+  </data>
+  <data name="mon_info_monimix" xml:space="preserve">
+    <value>মনিমিক্স ফলোআপ</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>নাম</value>
+  </data>
+  <data name="newAge" xml:space="preserve">
+    <value>সুবিধাভোগীর বয়স</value>
+  </data>
+  <data name="newBenId" xml:space="preserve">
+    <value>সুবিধাভোগীর আইডি</value>
+  </data>
+  <data name="newBenName" xml:space="preserve">
+    <value>সুবিধাভোগীর নাম</value>
+  </data>
+  <data name="newChestDrawing" xml:space="preserve">
+    <value>বুকের খাঁচা দেবে যাওয়া?</value>
+  </data>
+  <data name="newConjunctivitis" xml:space="preserve">
+    <value>চোখ লাল/কঞ্জাংটিভাইটিস?</value>
+  </data>
+  <data name="newConvulsion" xml:space="preserve">
+    <value>খিচুনি/অজ্ঞান হওয়া</value>
+  </data>
+  <data name="newCoughing" xml:space="preserve">
+    <value>কাশি আছে কি না?</value>
+  </data>
+  <data name="newDateOfBirth" xml:space="preserve">
+    <value>জন্ম তারিখ</value>
+  </data>
+  <data name="newDiarrhea" xml:space="preserve">
+    <value>ডায়রিযা হচ্ছে কি না (দিনে তিন বারের বেশি)</value>
+  </data>
+  <data name="newDrinking" xml:space="preserve">
+    <value>তরল বা বুকের দুধ পান করে কি না</value>
+  </data>
+  <data name="newHeartRate" xml:space="preserve">
+    <value>হৃদস্পন্দনের হার (প্রতি মিনিটে)</value>
+  </data>
+  <data name="newInfantSuck" xml:space="preserve">
+    <value>বুকের দুধ চুষে খাওয়া</value>
+  </data>
+  <data name="newMuac" xml:space="preserve">
+    <value>মুয়াক</value>
+  </data>
+  <data name="newNasalDischarge" xml:space="preserve">
+    <value>নাকে নিঃসরণ?</value>
+  </data>
+  <data name="newPaleEyelids" xml:space="preserve">
+    <value>চোখের পাতা ফ্যাকাসে?</value>
+  </data>
+  <data name="newPalePalms" xml:space="preserve">
+    <value>হাতের তালু ফ্যাকাসে?</value>
+  </data>
+  <data name="newPittingEdema" xml:space="preserve">
+    <value>পা ফুলে গেছে (পিটিং ইডিমা)</value>
+  </data>
+  <data name="newRash" xml:space="preserve">
+    <value>শরীরের কোথাও লাল দাগযুক্ত লালচে দানা?</value>
+  </data>
+  <data name="newReferralHospital" xml:space="preserve">
+    <value>রেফারাল হাসপাতাল</value>
+  </data>
+  <data name="newReferralHospitalBefore" xml:space="preserve">
+    <value>পূর্বের রেফারাল হাসপাতাল</value>
+  </data>
+  <data name="newReferralInstitute" xml:space="preserve">
+    <value>রেফারাল প্রতিষ্ঠান</value>
+  </data>
+  <data name="newReferralInstituteBefore" xml:space="preserve">
+    <value>পূর্বের রেফারাল প্রতিষ্ঠান</value>
+  </data>
+  <data name="newReferralReason" xml:space="preserve">
+    <value>রেফারাল কারণ</value>
+  </data>
+  <data name="newReferralReasonBefore" xml:space="preserve">
+    <value>পূর্বের রেফারাল কারণ</value>
+  </data>
+  <data name="newRegistrationDate" xml:space="preserve">
+    <value>রেজিস্ট্রেশনের তারিখ</value>
+  </data>
+  <data name="newRemarks" xml:space="preserve">
+    <value>মন্তব্য</value>
+  </data>
+  <data name="newRespiratory" xml:space="preserve">
+    <value>শ্বাস প্রশ্বাস এর হার (প্রতি মিনিটে)</value>
+  </data>
+  <data name="newSkinInfection" xml:space="preserve">
+    <value>ত্বকের সংক্রমণ</value>
+  </data>
+  <data name="newSkinTurgor" xml:space="preserve">
+    <value>চামড়ার অবস্থা (পানি সল্পতার লক্ষণ)</value>
+  </data>
+  <data name="newTears" xml:space="preserve">
+    <value>কাঁদলে  চোখে জল আসে কি না?</value>
+  </data>
+  <data name="newTemperature" xml:space="preserve">
+    <value>তাপমাত্রা (ফারেনহাইট)</value>
+  </data>
+  <data name="newUmbilicalInfection" xml:space="preserve">
+    <value>Umbilical Infection</value>
+  </data>
+  <data name="newUrinated" xml:space="preserve">
+    <value>সর্বশেষ কখন প্রস্রাব করেছে?</value>
+  </data>
+  <data name="newVisitDate" xml:space="preserve">
+    <value>পরিদর্শনের তারিখ</value>
+  </data>
+  <data name="newVisitNo" xml:space="preserve">
+    <value>ভিসিট নম্বর</value>
+  </data>
+  <data name="newVomiting" xml:space="preserve">
+    <value>বমি হচ্ছে কি না?</value>
+  </data>
+  <data name="newWeight" xml:space="preserve">
+    <value>ওজন (কেজি)</value>
+  </data>
+  <data name="newWheezing" xml:space="preserve">
+    <value>শ্বাসের সময় শোঁ শোঁ শব্দ হওয়া?</value>
+  </data>
+  <data name="new_breathing1" xml:space="preserve">
+    <value>স্বাভাবিক শ্বাস</value>
+  </data>
+  <data name="new_breathing2" xml:space="preserve">
+    <value>দ্রুত শ্বাস (৬০/মিনিট এর বেশি)</value>
+  </data>
+  <data name="new_breathing3" xml:space="preserve">
+    <value>শ্বাস নিতে কষ্ট হছে (৬০/মিনিট এর কম)</value>
+  </data>
+  <data name="new_gender1" xml:space="preserve">
+    <value>ছেলে</value>
+  </data>
+  <data name="new_gender2" xml:space="preserve">
+    <value>মেয়ে</value>
+  </data>
+  <data name="new_infant_suck1" xml:space="preserve">
+    <value>স্বাভাবিক</value>
+  </data>
+  <data name="new_infant_suck2" xml:space="preserve">
+    <value>দুর্বল</value>
+  </data>
+  <data name="new_infant_suck3" xml:space="preserve">
+    <value>চুষে খেতে পারছে না</value>
+  </data>
+  <data name="new_info_counseling" xml:space="preserve">
+    <value>কাউন্সিলিং ও সহায়তা</value>
+  </data>
+  <data name="new_info_general" xml:space="preserve">
+    <value>সাধারণ তথ্য</value>
+  </data>
+  <data name="new_info_observation" xml:space="preserve">
+    <value>রোগের লক্ষণ ও পরীক্ষা</value>
+  </data>
+  <data name="new_info_referral" xml:space="preserve">
+    <value>রেফারাল তথ্য</value>
+  </data>
+  <data name="new_list_item_button1" xml:space="preserve">
+    <value>টীকা তথ্য</value>
+  </data>
+  <data name="new_list_item_button2" xml:space="preserve">
+    <value>কাউন্সেলিং</value>
+  </data>
+  <data name="new_list_item_button3" xml:space="preserve">
+    <value>প্রশিক্ষণ/সহায়তা</value>
+  </data>
+  <data name="new_list_item_title1" xml:space="preserve">
+    <value>টীকা তথ্</value>
+  </data>
+  <data name="new_list_item_title2" xml:space="preserve">
+    <value>কাউন্সেলিং</value>
+  </data>
+  <data name="new_list_item_title3" xml:space="preserve">
+    <value>আজকে প্রদত্ত প্রশিক্ষণ ও সহায়তা</value>
+  </data>
+  <data name="new_refer_reason1" xml:space="preserve">
+    <value>কোনো কারণ নাই</value>
+  </data>
+  <data name="new_refer_reason2" xml:space="preserve">
+    <value>অসুস্থ নবজাতক</value>
+  </data>
+  <data name="new_refer_reason3" xml:space="preserve">
+    <value>টিকা</value>
+  </data>
+  <data name="new_refer_reason4" xml:space="preserve">
+    <value>প্রসবপরবর্তী সেবা</value>
+  </data>
+  <data name="new_refer_reason5" xml:space="preserve">
+    <value>বিপদচিহ্ন</value>
+  </data>
+  <data name="new_refer_reason6" xml:space="preserve">
+    <value>অন্যান্য</value>
+  </data>
+  <data name="new_umbilicaliInfection1" xml:space="preserve">
+    <value>নাভির চারপাশের ত্বক লাল</value>
+  </data>
+  <data name="new_umbilicaliInfection2" xml:space="preserve">
+    <value>ফোলা</value>
+  </data>
+  <data name="new_umbilicaliInfection3" xml:space="preserve">
+    <value>নাভি থেকে নিঃসরণ</value>
+  </data>
+  <data name="ninth" xml:space="preserve">
+    <value>নবম</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>না</value>
+  </data>
+  <data name="not_applicable" xml:space="preserve">
+    <value>প্রযোজ্য নয়</value>
+  </data>
+  <data name="not_happen" xml:space="preserve">
+    <value>হয় নাই</value>
+  </data>
+  <data name="not_identified" xml:space="preserve">
+    <value>সনাক্ত করা হয়নি</value>
+  </data>
+  <data name="no_data" xml:space="preserve">
+    <value>তথ্য নেই</value>
+  </data>
+  <data name="no_reason" xml:space="preserve">
+    <value>কোনো কারণ নাই</value>
+  </data>
+  <data name="others" xml:space="preserve">
+    <value>অন্যান্য</value>
+  </data>
+  <data name="pncAge" xml:space="preserve">
+    <value>সুবিধাভোগীর বয়স</value>
+  </data>
+  <data name="pncBenId" xml:space="preserve">
+    <value>সুবিধাভোগীর আইডি</value>
+  </data>
+  <data name="pncBenName" xml:space="preserve">
+    <value>সুবিধাভোগীর নাম</value>
+  </data>
+  <data name="pncBloodPressure" xml:space="preserve">
+    <value>রক্তচাপ</value>
+  </data>
+  <data name="pncDateOfBirth" xml:space="preserve">
+    <value>জন্ম তারিখ</value>
+  </data>
+  <data name="pncDeliveryAttendant" xml:space="preserve">
+    <value>প্রসবে সহায়তাকারী</value>
+  </data>
+  <data name="pncDeliveryDate" xml:space="preserve">
+    <value>প্রসবের তারিখ</value>
+  </data>
+  <data name="pncDeliveryPlace" xml:space="preserve">
+    <value>প্রসবের স্থান</value>
+  </data>
+  <data name="pncDeliveryResult" xml:space="preserve">
+    <value>প্রসবের ফলাফল</value>
+  </data>
+  <data name="pncHeartRate" xml:space="preserve">
+    <value>হৃদস্পন্দন</value>
+  </data>
+  <data name="pncPaleEyelids" xml:space="preserve">
+    <value>চোখের নিচের পাতা ফ্যাকাসে?</value>
+  </data>
+  <data name="pncPncVisitDate" xml:space="preserve">
+    <value>ভিজিট তারিখ</value>
+  </data>
+  <data name="pncPncVisitTerm" xml:space="preserve">
+    <value>পি এন সি ভিজিট</value>
+  </data>
+  <data name="pncPncVisitWhere" xml:space="preserve">
+    <value>কোথায় সেবা নিয়েছেন</value>
+  </data>
+  <data name="pncReferralHospital" xml:space="preserve">
+    <value>রেফারাল হাসপাতাল</value>
+  </data>
+  <data name="pncReferralHospitalBefore" xml:space="preserve">
+    <value>পূর্বের রেফারাল হাসপাতাল</value>
+  </data>
+  <data name="pncReferralInstitute" xml:space="preserve">
+    <value>রেফারাল প্রতিষ্ঠান</value>
+  </data>
+  <data name="pncReferralInstituteBefore" xml:space="preserve">
+    <value>পূর্বের রেফারাল প্রতিষ্ঠান</value>
+  </data>
+  <data name="pncReferralReason" xml:space="preserve">
+    <value>রেফারাল কারণ</value>
+  </data>
+  <data name="pncReferralReasonBefore" xml:space="preserve">
+    <value>পূর্বের রেফারাল কারণ</value>
+  </data>
+  <data name="pncRegistrationDate" xml:space="preserve">
+    <value>রেজিস্ট্রেশনের তারিখ</value>
+  </data>
+  <data name="pncRemarks" xml:space="preserve">
+    <value>মন্তব্য, যদি থাকে</value>
+  </data>
+  <data name="pncSwelling" xml:space="preserve">
+    <value>পা ফোলা(পিটিং ইডিমা)</value>
+  </data>
+  <data name="pncTemperature" xml:space="preserve">
+    <value>তাপমাত্রা</value>
+  </data>
+  <data name="pncVisitDate" xml:space="preserve">
+    <value>পরিদর্শনের তারিখ</value>
+  </data>
+  <data name="pncVisitNo" xml:space="preserve">
+    <value>ভিজিট নম্বর</value>
+  </data>
+  <data name="pnc_counseling1" xml:space="preserve">
+    <value>বিপদচিহ্ন</value>
+  </data>
+  <data name="pnc_counseling10" xml:space="preserve">
+    <value>খাবার পানি কমপক্ষে ২০ মিনিট ফুটিয়ে পান করা</value>
+  </data>
+  <data name="pnc_counseling2" xml:space="preserve">
+    <value>শিশুর ৬ মাস বয়স পর্যন্ত শুধুই বুকের দুধ খাওয়ানো</value>
+  </data>
+  <data name="pnc_counseling3" xml:space="preserve">
+    <value>মা-এর স্বাভাবিক ও বাড়তি খাবার</value>
+  </data>
+  <data name="pnc_counseling4" xml:space="preserve">
+    <value>বিশ্রাম ও অন্যান্য কাজ</value>
+  </data>
+  <data name="pnc_counseling5" xml:space="preserve">
+    <value>ব্যক্তিগত পরিষ্কার পরিচ্ছন্নতা মেনে চলা</value>
+  </data>
+  <data name="pnc_counseling6" xml:space="preserve">
+    <value>প্রস্রাব ও পায়খানা বিষয়ক যত্ন</value>
+  </data>
+  <data name="pnc_counseling7" xml:space="preserve">
+    <value>স্বাস্থ্যকেন্দ্রে প্রসব পরবর্তী সেবা (PNC)</value>
+  </data>
+  <data name="pnc_counseling8" xml:space="preserve">
+    <value>প্রসব-পরবর্তী পরিবার পরিকল্পনা</value>
+  </data>
+  <data name="pnc_counseling9" xml:space="preserve">
+    <value>সাবান দিয়ে হাত ধোয়া</value>
+  </data>
+  <data name="pnc_danger_after1" xml:space="preserve">
+    <value>যোনিপথে প্রচুর রক্ত যাওয়া বা রক্তস্রাব বেড়ে যাওয়া</value>
+  </data>
+  <data name="pnc_danger_after2" xml:space="preserve">
+    <value>মাঝারী থেকে তীব্র উচ্চ রক্তচাপ (১৪০/৯০ বা বেশি)</value>
+  </data>
+  <data name="pnc_danger_after3" xml:space="preserve">
+    <value>খিঁচুনি বা অজ্ঞান হওয়া</value>
+  </data>
+  <data name="pnc_danger_after4" xml:space="preserve">
+    <value>তীব্র পেটব্যাথা সাথে দুর্গন্ধযুক্ত স্রাব ও জ্বর</value>
+  </data>
+  <data name="pnc_danger_after5" xml:space="preserve">
+    <value>তীব্র বুকে ব্যথা অথবা শ্বাসকষ্ট</value>
+  </data>
+  <data name="pnc_danger_after6" xml:space="preserve">
+    <value>যোনিপথে প্রস্রাব বা পায়খানা উভয়ই যাওয়া</value>
+  </data>
+  <data name="pnc_danger_after7" xml:space="preserve">
+    <value>যোনিপথে কিছু বের হয়ে আসা</value>
+  </data>
+  <data name="pnc_danger_before1" xml:space="preserve">
+    <value>প্রচুর রক্তস্রাব</value>
+  </data>
+  <data name="pnc_danger_before2" xml:space="preserve">
+    <value>বাধাগ্রস্থ প্রসব</value>
+  </data>
+  <data name="pnc_danger_before3" xml:space="preserve">
+    <value>১২ ঘন্টার বেশি সময় ধরে প্রসব</value>
+  </data>
+  <data name="pnc_danger_before4" xml:space="preserve">
+    <value>চোখে ঝাপসা দেখা</value>
+  </data>
+  <data name="pnc_danger_before5" xml:space="preserve">
+    <value>খিঁচুনি বা অজ্ঞান হওয়া</value>
+  </data>
+  <data name="pnc_delivery_attendant1" xml:space="preserve">
+    <value>ডাক্তার</value>
+  </data>
+  <data name="pnc_delivery_attendant2" xml:space="preserve">
+    <value>নার্স</value>
+  </data>
+  <data name="pnc_delivery_attendant3" xml:space="preserve">
+    <value>প্রশিক্ষিত বার্থ এটেনডেন্ট (SBA)</value>
+  </data>
+  <data name="pnc_delivery_attendant4" xml:space="preserve">
+    <value>সনাতন ও অপ্রশিক্ষিত বার্থ এটেনডেন্ট  (TBA)</value>
+  </data>
+  <data name="pnc_delivery_attendant5" xml:space="preserve">
+    <value>আত্মীয় বা পরিবারের সদস্য</value>
+  </data>
+  <data name="pnc_delivery_attendant6" xml:space="preserve">
+    <value>অন্যান্য</value>
+  </data>
+  <data name="pnc_delivery_place1" xml:space="preserve">
+    <value>সরকারী হাসপাতাল</value>
+  </data>
+  <data name="pnc_delivery_place2" xml:space="preserve">
+    <value>এনজিও হাসপাতাল</value>
+  </data>
+  <data name="pnc_delivery_place3" xml:space="preserve">
+    <value>টব্যক্তিগত ক্লিনিক/হাসপাতাল</value>
+  </data>
+  <data name="pnc_delivery_place4" xml:space="preserve">
+    <value>ব্যাক্তিগত/বাড়িতে প্রসব</value>
+  </data>
+  <data name="pnc_delivery_result1" xml:space="preserve">
+    <value>ছেলে</value>
+  </data>
+  <data name="pnc_delivery_result2" xml:space="preserve">
+    <value>মেয়ে</value>
+  </data>
+  <data name="pnc_delivery_result3" xml:space="preserve">
+    <value>মৃত</value>
+  </data>
+  <data name="pnc_info_counseling" xml:space="preserve">
+    <value>কাউন্সিলিং ও সহায়তা</value>
+  </data>
+  <data name="pnc_info_delivery" xml:space="preserve">
+    <value>প্রসব তথ্য</value>
+  </data>
+  <data name="pnc_info_general" xml:space="preserve">
+    <value>সাধারণ তথ্য</value>
+  </data>
+  <data name="pnc_info_observation" xml:space="preserve">
+    <value>রোগের লক্ষণ ও পরীক্ষা</value>
+  </data>
+  <data name="pnc_info_referral" xml:space="preserve">
+    <value>রেফারাল তথ্য</value>
+  </data>
+  <data name="pnc_list_item_button1" xml:space="preserve">
+    <value>প্রসবের সময় বিবিপদ চিহ্ন</value>
+  </data>
+  <data name="pnc_list_item_button2" xml:space="preserve">
+    <value>প্রসবের পর বিবিপদ চিহ্ন</value>
+  </data>
+  <data name="pnc_list_item_button3" xml:space="preserve">
+    <value>কাউন্সেলিং</value>
+  </data>
+  <data name="pnc_list_item_button4" xml:space="preserve">
+    <value>নবজাতকের কাউন্সেলিং</value>
+  </data>
+  <data name="pnc_list_item_button5" xml:space="preserve">
+    <value>প্রশিক্ষণ/সহায়তা</value>
+  </data>
+  <data name="pnc_list_item_title1" xml:space="preserve">
+    <value>প্রসবের সময় কোন বিপদচিহ্ন ?</value>
+  </data>
+  <data name="pnc_list_item_title2" xml:space="preserve">
+    <value>প্রসবের পর কোন বিপদচিহ্ন ?</value>
+  </data>
+  <data name="pnc_list_item_title3" xml:space="preserve">
+    <value>কাউন্সেলিং</value>
+  </data>
+  <data name="pnc_list_item_title4" xml:space="preserve">
+    <value>নবজাতকের কাউন্সেলিং</value>
+  </data>
+  <data name="pnc_list_item_title5" xml:space="preserve">
+    <value>আজকে প্রদত্ত প্রশিক্ষণ ও সহায়তা</value>
+  </data>
+  <data name="pnc_newborn_counseling1" xml:space="preserve">
+    <value>বিপদচিহ্নের কাউন্সেলিং</value>
+  </data>
+  <data name="pnc_newborn_counseling2" xml:space="preserve">
+    <value>৬ মাস বয়স পর্যন্ত শুধুই বুকের দুধ খাওয়ানো</value>
+  </data>
+  <data name="pnc_newborn_counseling3" xml:space="preserve">
+    <value>৬ মাস পরে বুকের দুধের পাশাপাশি অন্যান্য খাবার খাওয়ানো</value>
+  </data>
+  <data name="pnc_newborn_counseling4" xml:space="preserve">
+    <value>টিকাদান</value>
+  </data>
+  <data name="pnc_newborn_counseling5" xml:space="preserve">
+    <value>প্রসবপরবর্তী পরিদর্শন</value>
+  </data>
+  <data name="pnc_newborn_counseling6" xml:space="preserve">
+    <value>ভিডিও প্রদর্শন</value>
+  </data>
+  <data name="pnc_newborn_counseling7" xml:space="preserve">
+    <value>শিশু সুরক্ষার বার্তাসমুহ</value>
+  </data>
+  <data name="pnc_newborn_counseling8" xml:space="preserve">
+    <value>সাবান দিয়ে হাত ধোয়া</value>
+  </data>
+  <data name="pnc_newborn_counseling9" xml:space="preserve">
+    <value>খাবার পানি কমপক্ষে ২০ মিনিট ফুটিয়ে পান করা</value>
+  </data>
+  <data name="pnc_refer_reason1" xml:space="preserve">
+    <value>কোনো কারণ নাই</value>
+  </data>
+  <data name="pnc_refer_reason2" xml:space="preserve">
+    <value>প্রসব পরবর্তী সেবা</value>
+  </data>
+  <data name="pnc_refer_reason3" xml:space="preserve">
+    <value>প্রসব পরবর্তী পরিবার পরিকল্পনা</value>
+  </data>
+  <data name="pnc_refer_reason4" xml:space="preserve">
+    <value>টঅন্যান্য অসুস্থতা</value>
+  </data>
+  <data name="pnc_support_1" xml:space="preserve">
+    <value>সাফ কথা দেয়া হয়েছে?</value>
+  </data>
+  <data name="pnc_support_2" xml:space="preserve">
+    <value>শিশু বিকাশ কার্ড দেয়া হয়েছে</value>
+  </data>
+  <data name="pnc_support_3" xml:space="preserve">
+    <value>WASH কার্ড দেয়া হয়েছে ও ২ টি তথ্য পয়েছে</value>
+  </data>
+  <data name="pnc_support_4" xml:space="preserve">
+    <value>৭.১% ক্লোরহেক্সিডিন বোতল দেয়া হয়েছে</value>
+  </data>
+  <data name="pnc_visit_1" xml:space="preserve">
+    <value>পি এন সি ভিজিট ১</value>
+  </data>
+  <data name="pnc_visit_2" xml:space="preserve">
+    <value>পি এন সি ভিজিট ২</value>
+  </data>
+  <data name="pnc_visit_3" xml:space="preserve">
+    <value>পি এন সি ভিজিট ৩</value>
+  </data>
+  <data name="pnc_visit_4" xml:space="preserve">
+    <value>পি এন সি ভিজিট ৪</value>
+  </data>
+  <data name="pnc_visit_5" xml:space="preserve">
+    <value>পি এন সি ভিজিট ৫</value>
+  </data>
+  <data name="pnc_visit_6" xml:space="preserve">
+    <value>পি এন সি ভিজিট ৬</value>
+  </data>
+  <data name="qualified_for_service" xml:space="preserve">
+    <value>সেবা পাওয়ার যোগ্য</value>
+  </data>
+  <data name="refer_info" xml:space="preserve">
+    <value>রেফারাল তথ্য</value>
+  </data>
+  <data name="ref_hospital_0" xml:space="preserve">
+    <value>রেফার প্রয়োজন নাই</value>
+  </data>
+  <data name="ref_hospital_1" xml:space="preserve">
+    <value>এনজিও হাসপাতাল</value>
+  </data>
+  <data name="ref_hospital_2" xml:space="preserve">
+    <value>সরকারী হাসপাতাল</value>
+  </data>
+  <data name="ref_hospital_3" xml:space="preserve">
+    <value>ব্যক্তিগত ক্লিনিক</value>
+  </data>
+  <data name="ref_hospital_4" xml:space="preserve">
+    <value>স্যাটেলাইট ক্লিনিক</value>
+  </data>
+  <data name="ref_Institute_govt_1" xml:space="preserve">
+    <value>শিশু হাসপাতাল</value>
+  </data>
+  <data name="ref_Institute_govt_2" xml:space="preserve">
+    <value>শহীদ সোহরাওয়ার্দী হাসপাতাল</value>
+  </data>
+  <data name="ref_Institute_govt_3" xml:space="preserve">
+    <value>মোহাম্মদপুর ফার্টিলিটি সার্ভিসেস এন্ড ট্রেইনিং সেন্টার (এমএফএসটিসি)</value>
+  </data>
+  <data name="ref_Institute_govt_4" xml:space="preserve">
+    <value>ঢাকা মেডিক্যাল কলেজ</value>
+  </data>
+  <data name="ref_Institute_govt_5" xml:space="preserve">
+    <value>স্যার সলিমুল্লাহ মেডিক্যাল কলেজ ও মিটফোর্ড হাসপাতাল</value>
+  </data>
+  <data name="ref_Institute_ngo_1" xml:space="preserve">
+    <value>সূর্যের হাসি ক্লিনিক</value>
+  </data>
+  <data name="ref_Institute_ngo_2" xml:space="preserve">
+    <value>UPHCSDP ক্লিনিক</value>
+  </data>
+  <data name="ref_Institute_ngo_3" xml:space="preserve">
+    <value>মেরী স্টোপস</value>
+  </data>
+  <data name="ref_Institute_ngo_4" xml:space="preserve">
+    <value>ব্র্যাক</value>
+  </data>
+  <data name="ref_Institute_private_1" xml:space="preserve">
+    <value>বাংলাদেশ মেডিক্যাল কলেজ হাসপাতাল</value>
+  </data>
+  <data name="ref_Institute_private_2" xml:space="preserve">
+    <value>শিকদার মেডিক্যাল কলেজ হাসপাতাল</value>
+  </data>
+  <data name="ref_reason_anc_1" xml:space="preserve">
+    <value>গর্ভকালীন সেবা</value>
+  </data>
+  <data name="second" xml:space="preserve">
+    <value>দ্বিতীয়</value>
+  </data>
+  <data name="select" xml:space="preserve">
+    <value>সিলেক্ট করুন</value>
+  </data>
+  <data name="seventh" xml:space="preserve">
+    <value>সপ্তম</value>
+  </data>
+  <data name="sixth" xml:space="preserve">
+    <value>ষষ্ঠ</value>
+  </data>
+  <data name="suddenly_happen" xml:space="preserve">
+    <value>হঠাৎ হয়েছে</value>
+  </data>
+  <data name="tenth" xml:space="preserve">
+    <value>দশম</value>
+  </data>
+  <data name="third" xml:space="preserve">
+    <value>তৃতীয়</value>
+  </data>
+  <data name="training_support" xml:space="preserve">
+    <value>প্রশিক্ষণ/সহায়তা</value>
+  </data>
+  <data name="tt1" xml:space="preserve">
+    <value>টি টি ১</value>
+  </data>
+  <data name="tt2" xml:space="preserve">
+    <value>টি টি ২</value>
+  </data>
+  <data name="tt3" xml:space="preserve">
+    <value>টি টি ৩</value>
+  </data>
+  <data name="tt4" xml:space="preserve">
+    <value>টি টি ৪</value>
+  </data>
+  <data name="tt5" xml:space="preserve">
+    <value>টি টি ৫</value>
+  </data>
+  <data name="tt_vaccine" xml:space="preserve">
+    <value>টিটি টিকা</value>
+  </data>
+  <data name="vacAge" xml:space="preserve">
+    <value>সুবিধাভোগীর বয়স</value>
+  </data>
+  <data name="vacBcg" xml:space="preserve">
+    <value>বি সি জি</value>
+  </data>
+  <data name="vacBenId" xml:space="preserve">
+    <value>সুবিধাভোগীর আইডি</value>
+  </data>
+  <data name="vacBenName" xml:space="preserve">
+    <value>সুবিধাভোগীর নাম</value>
+  </data>
+  <data name="vacDateOfBirth" xml:space="preserve">
+    <value>জন্ম তারিখ</value>
+  </data>
+  <data name="vacIpv" xml:space="preserve">
+    <value>আই পি ভি</value>
+  </data>
+  <data name="vacMr1" xml:space="preserve">
+    <value>এম আর (ডোজ ১)</value>
+  </data>
+  <data name="vacMr2" xml:space="preserve">
+    <value>এম আর (ডোজ 2)</value>
+  </data>
+  <data name="vacOpv0" xml:space="preserve">
+    <value>ও পি ভি - 0</value>
+  </data>
+  <data name="vacOpv1" xml:space="preserve">
+    <value>ও পি ভি - 1</value>
+  </data>
+  <data name="vacOpv2" xml:space="preserve">
+    <value>ও পি ভি - 2</value>
+  </data>
+  <data name="vacOpv3" xml:space="preserve">
+    <value>ও পি ভি - 3</value>
+  </data>
+  <data name="vacPcv1" xml:space="preserve">
+    <value>পি সি ভি  - 1</value>
+  </data>
+  <data name="vacPcv2" xml:space="preserve">
+    <value>পি সি ভি  - 2</value>
+  </data>
+  <data name="vacPcv3" xml:space="preserve">
+    <value>পি সি ভি  - 3</value>
+  </data>
+  <data name="vacPenta1" xml:space="preserve">
+    <value>পেন্টা - 1</value>
+  </data>
+  <data name="vacPenta2" xml:space="preserve">
+    <value>পেন্টা - 2</value>
+  </data>
+  <data name="vacPenta3" xml:space="preserve">
+    <value>পেন্টা - 3</value>
+  </data>
+  <data name="vac_info_general" xml:space="preserve">
+    <value>সাধারণ তথ্য</value>
+  </data>
+  <data name="vac_info_vaccine" xml:space="preserve">
+    <value>টিকা তথ্য ফলোআপ</value>
+  </data>
+  <data name="want_to_give_service" xml:space="preserve">
+    <value>সেবা দিতে চাচ্ছেন?</value>
+  </data>
+  <data name="want_to_see_registration" xml:space="preserve">
+    <value>আপনি কি রেজিস্ট্রেশন তথ্য দেখবেন?</value>
+  </data>
+  <data name="work_area" xml:space="preserve">
+    <value>কর্ম এলাকা</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>হ্যাঁ</value>
+  </data>
+  <data name="Age" xml:space="preserve">
+    <value>বয়স (বছর-মাস-দিন)</value>
+  </data>
+  <data name="BenName" xml:space="preserve">
+    <value>সুবিধাভোগীর নাম</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>জন্ম তারিখ</value>
+  </data>
+  <data name="DistrictCode" xml:space="preserve">
+    <value>জেলাঃ</value>
+  </data>
+  <data name="FatherOrHusband" xml:space="preserve">
+    <value>স্বামীর/বাবার নাম</value>
+  </data>
+  <data name="ServicePointId" xml:space="preserve">
+    <value>রিসোর্স সেন্টারঃ</value>
+  </data>
+  <data name="RowNo" xml:space="preserve">
+    <value>ক্রঃনংঃ</value>
+  </data>
+  <data name="ToDate" xml:space="preserve">
+    <value>তারিখ পর্যন্তঃ</value>
+  </data>
+  <data name="UnionCode" xml:space="preserve">
+    <value>ইউনিয়নঃ</value>
+  </data>
+  <data name="UpazilaCode" xml:space="preserve">
+    <value>উপজেলাঃ</value>
+  </data>
+  <data name="UserId" xml:space="preserve">
+    <value>ইউজার নেমঃ</value>
+  </data>
+  <data name="VillageCode" xml:space="preserve">
+    <value>গ্রামঃ</value>
+  </data>
+  <data name="ANC" xml:space="preserve">
+    <value>এ.এন.সি</value>
+  </data>
+  <data name="AncInfo" xml:space="preserve">
+    <value>প্রসব পূর্ববর্তী/গর্ভকালীন (Antenatal) পরিদর্শনের তথ্য</value>
+  </data>
+  <data name="ancTotalDose" xml:space="preserve">
+    <value>মোট ডোজ সংখ্যা</value>
+  </data>
+  <data name="Basic" xml:space="preserve">
+    <value>বেসিক</value>
+  </data>
+  <data name="BasicBenId" xml:space="preserve">
+    <value>গর্ভবতীর রেজি.নং</value>
+  </data>
+  <data name="BasicDataCollectionDate" xml:space="preserve">
+    <value>রেজি তারিখ</value>
+  </data>
+  <data name="CommunicationInfo" xml:space="preserve">
+    <value>যোগাযোগের তথ্য</value>
+  </data>
+  <data name="DELIVERY" xml:space="preserve">
+    <value>প্রসব</value>
+  </data>
+  <data name="DeliveryInfo" xml:space="preserve">
+    <value>প্রসবের (Delivery) তথ্য</value>
+  </data>
+  <data name="MobileNo" xml:space="preserve">
+    <value>মোবাইল নম্বর</value>
+  </data>
+  <data name="PNC" xml:space="preserve">
+    <value>পি.এন.সি</value>
+  </data>
+  <data name="PncInfo" xml:space="preserve">
+    <value>প্রসব পরবর্তী (Postnatal) পরিদর্শনের তথ্য</value>
+  </data>
+  <data name="RegistrationInfo" xml:space="preserve">
+    <value>রেজিস্ট্রেশনের তথ্য</value>
+  </data>
+  <data name="tt_vaccineInfo" xml:space="preserve">
+    <value>টিটি টিকা(বর্তমান গর্ভকালীন সময়ে)</value>
+  </data>
+  <data name="anc_support_1" xml:space="preserve">
+    <value>সাফ কথা দেয়া হয়েছে?</value>
+  </data>
+  <data name="anc_support_2" xml:space="preserve">
+    <value>শিশু বিকাশ কার্ড দেয়া হয়েছে</value>
+  </data>
+  <data name="anc_support_3" xml:space="preserve">
+    <value>WASH কার্ড দেয়া হয়েছে ও ২ টি তথ্য পয়েছে</value>
+  </data>
+  <data name="anc_support_4" xml:space="preserve">
+    <value>৭.১% ক্লোরহেক্সিডিন বোতল দেয়া হয়েছে</value>
+  </data>
+  <data name="HeadOccupationCode" xml:space="preserve">
+    <value>পরিবার প্রধানের পেশা</value>
+  </data>
+  <data name="HeadOfTheFamily" xml:space="preserve">
+    <value>পরিবার প্রধানের নাম</value>
+  </data>
+  <data name="HomeName" xml:space="preserve">
+    <value>বাড়ির নাম</value>
+  </data>
+  <data name="HomeNo" xml:space="preserve">
+    <value>বাড়ির নম্বর</value>
+  </data>
+  <data name="HouseholdNo" xml:space="preserve">
+    <value>হাউজ হোল্ড নম্বর</value>
+  </data>
+  <data name="HouseID" xml:space="preserve">
+    <value>ঘরের নম্বর</value>
+  </data>
+  <data name="RegistrationSearchHeader" xml:space="preserve">
+    <value>উপকারভোগকারীদের নিবন্ধন তালিকা</value>
+  </data>
+  <data name="AncRegisterTitle" xml:space="preserve">
+    <value>এ এন সি,ডেলিভারি ,পি এন সি  রেজিষ্টার</value>
+  </data>
+  <data name="AssistRecycling" xml:space="preserve">
+    <value>বর্জ্য ব্যাবস্থাপনায় সাহায্য পান</value>
+  </data>
+  <data name="BenInfo" xml:space="preserve">
+    <value>সুবিধাভোগীর তথ্য</value>
+  </data>
+  <data name="Commodities" xml:space="preserve">
+    <value>আসবাবপত্র</value>
+  </data>
+  <data name="DataCollectionDate" xml:space="preserve">
+    <value>তথ্য সংগ্রহের তারিখ</value>
+  </data>
+  <data name="DataProviderName" xml:space="preserve">
+    <value>তথ্য দাতার নাম</value>
+  </data>
+  <data name="DomesticAnimals" xml:space="preserve">
+    <value>গবাদি পশু-পাখি</value>
+  </data>
+  <data name="FamilyTitle" xml:space="preserve">
+    <value>পরিবারের পদবী</value>
+  </data>
+  <data name="FatherHusbandName" xml:space="preserve">
+    <value>পিতা / স্বামীর নাম</value>
+  </data>
+  <data name="FiveHabitsPoster" xml:space="preserve">
+    <value>লিফ্লেট এবং পোস্টার বিতরন</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>লিঙ্গ</value>
+  </data>
+  <data name="HasBirthCertificate" xml:space="preserve">
+    <value>জন্মনিবন্ধন আছে</value>
+  </data>
+  <data name="HouseCondition" xml:space="preserve">
+    <value>ঘরের অবস্থা</value>
+  </data>
+  <data name="IsPregnant" xml:space="preserve">
+    <value>গর্ভবতী কিনা</value>
+  </data>
+  <data name="IsVerified" xml:space="preserve">
+    <value>ভেরিফিকেশন স্টেটাস</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>পরিবারের ভাষা</value>
+  </data>
+  <data name="MaritalStatus" xml:space="preserve">
+    <value>বৈবাহিক অবস্থা</value>
+  </data>
+  <data name="MobileMessage" xml:space="preserve">
+    <value>মোবাইল বার্তা</value>
+  </data>
+  <data name="MonthlyIncome" xml:space="preserve">
+    <value>পরিবারের মাসিক আয়</value>
+  </data>
+  <data name="NumberOfMember" xml:space="preserve">
+    <value>পরিবারের সদস্য সংখ্যা</value>
+  </data>
+  <data name="TVMessage" xml:space="preserve">
+    <value>টিভি বার্তা</value>
+  </data>
+  <data name="Verification" xml:space="preserve">
+    <value>ভেরিফিকেশন</value>
+  </data>
+  <data name="VerificationNote" xml:space="preserve">
+    <value>ভেরিফিকেশন নোট</value>
+  </data>
+  <data name="WaterBoilMicking" xml:space="preserve">
+    <value>পানি ফুটিয়ে খাওয়ার জন্য মাইকিং/উদ্যোগ</value>
+  </data>
+  <data name="BenType" xml:space="preserve">
+    <value>উপকারভোগকারীর ধরন</value>
+  </data>
+  <data name="BirthId" xml:space="preserve">
+    <value>জন্মনিবন্ধন নম্বর</value>
+  </data>
+  <data name="DrivingId" xml:space="preserve">
+    <value>ড্রাইভিং লাইসেন্স নম্বর</value>
+  </data>
+  <data name="EduQualification" xml:space="preserve">
+    <value>শিক্ষাগত যোগ্যতা</value>
+  </data>
+  <data name="Enrolled" xml:space="preserve">
+    <value>এনরল্ড/আন-এনরল্ড</value>
+  </data>
+  <data name="HasAutism" xml:space="preserve">
+    <value>প্রতিবন্ধিতা আছে কিনা</value>
+  </data>
+  <data name="IcdpService" xml:space="preserve">
+    <value>আইসিডিপি সেবা গ্রহন</value>
+  </data>
+  <data name="IsActiveMobileNo" xml:space="preserve">
+    <value>মোবাইল নম্বর সচল</value>
+  </data>
+  <data name="IsChildLabor" xml:space="preserve">
+    <value>কর্মজিবি শিশু কিনা</value>
+  </data>
+  <data name="NationalId" xml:space="preserve">
+    <value>জাতীয় পরিচয়পত্র নম্বর</value>
+  </data>
+  <data name="OccupationCode" xml:space="preserve">
+    <value>পেশা</value>
+  </data>
+  <data name="OtherNGO" xml:space="preserve">
+    <value>অন্য এনজিওতে জড়িত</value>
+  </data>
+  <data name="OthSvcProviderOrgName" xml:space="preserve">
+    <value>ভিন্ন সংগঠন হলে নাম</value>
+  </data>
+  <data name="PassportId" xml:space="preserve">
+    <value>পাসপোর্ট নম্বর</value>
+  </data>
+  <data name="Personality" xml:space="preserve">
+    <value>ব্যক্তিত্ব</value>
+  </data>
+  <data name="ProjectCode" xml:space="preserve">
+    <value>স্পন্সর প্রজেক্ট কোড</value>
+  </data>
+  <data name="RcvSvcCode" xml:space="preserve">
+    <value>সংগৃহিত সেবার নাম</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>রেজিষ্ট্রেশনের তারিখ</value>
+  </data>
+  <data name="RelationWithHead" xml:space="preserve">
+    <value>পরিবার প্রধানের সাথে সম্পর্ক</value>
+  </data>
+  <data name="ServicePointAttendance" xml:space="preserve">
+    <value>স্কুলে উপস্থিতি</value>
+  </data>
+  <data name="ServicePointing" xml:space="preserve">
+    <value>স্কুলে যায় কিনা</value>
+  </data>
+  <data name="ServicePointName" xml:space="preserve">
+    <value>স্কুলের নাম</value>
+  </data>
+  <data name="ServicePointType" xml:space="preserve">
+    <value>স্কুলে গেলে স্কুলের ধরণ</value>
+  </data>
+  <data name="SponsorId" xml:space="preserve">
+    <value>স্পনসর আইডি</value>
+  </data>
+  <data name="SvcRcvFromOrg" xml:space="preserve">
+    <value>সেবা প্রদানকারী সংগঠন</value>
+  </data>
+  <data name="WantMobileMssg" xml:space="preserve">
+    <value>মোবাইল বার্তা পেতে চান</value>
+  </data>
+  <data name="VerificationDate" xml:space="preserve">
+    <value>ভেরিফিকেশন তারিখ</value>
+  </data>
+  <data name="GeoType" xml:space="preserve">
+    <value>লোকেশন টাইপ</value>
+  </data>
+  <data name="HHServices" xml:space="preserve">
+    <value>হাউজ হোল্ড সেবা সমূহ</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>লোকেশন</value>
+  </data>
+  <data name="BenFName" xml:space="preserve">
+    <value>প্রথম নাম</value>
+  </data>
+  <data name="BenLName" xml:space="preserve">
+    <value>শেষ নাম</value>
+  </data>
+  <data name="BenMName" xml:space="preserve">
+    <value>মধ্য নাম</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>দিন</value>
+  </data>
+  <data name="FamilyMember" xml:space="preserve">
+    <value>পরিবারের সদস্যদের তথ্য</value>
+  </data>
+  <data name="HHInfo" xml:space="preserve">
+    <value>ঘরভিত্তিক তথ্য</value>
+  </data>
+  <data name="IsGuessed" xml:space="preserve">
+    <value>আনুমানিক</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>মাস</value>
+  </data>
+  <data name="SponsorChildInfo" xml:space="preserve">
+    <value>স্পন্সর শিশুর তথ্য</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>বছর</value>
+  </data>
+  <data name="Ambition" xml:space="preserve">
+    <value>জীবনের লক্ষ্য</value>
+  </data>
+  <data name="ChildId" xml:space="preserve">
+    <value>শিশুর আইডি</value>
+  </data>
+  <data name="Crawling" xml:space="preserve">
+    <value>হামাগুড়ি দিয়ে চলে</value>
+  </data>
+  <data name="DailyActivities" xml:space="preserve">
+    <value>দৈনন্দিন কার্যবিধি</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>মন্তব্য</value>
+  </data>
+  <data name="FavoritePlayItem" xml:space="preserve">
+    <value>প্রিয় খেলা</value>
+  </data>
+  <data name="FavoriteSubject" xml:space="preserve">
+    <value>প্রিয় পাঠ্য বিষয়</value>
+  </data>
+  <data name="GradeInServicePoint" xml:space="preserve">
+    <value>কোন শ্রেণীতে পড়ে</value>
+  </data>
+  <data name="IneligibilityEvent" xml:space="preserve">
+    <value>অযোগ্যতার কারণ</value>
+  </data>
+  <data name="IneligibilityEventDate" xml:space="preserve">
+    <value>কারণ প্রকাশের তারিখ</value>
+  </data>
+  <data name="Talking" xml:space="preserve">
+    <value>কথা বলতে পারে</value>
+  </data>
+  <data name="Walking" xml:space="preserve">
+    <value>হাঁটতে পারে</value>
+  </data>
+</root>

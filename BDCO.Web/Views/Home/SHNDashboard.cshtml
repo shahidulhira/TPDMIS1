@@ -1,0 +1,838 @@
+﻿
+@{
+    ViewBag.Title = "SHNDashboard";
+}
+
+<link href="~/Content/dashboardmain.min.css" rel="stylesheet" />
+<link href="~/Content/uikit.almost-flat.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Mukta|Scada" rel="stylesheet">
+<style type="text/css">
+    body {
+        background-color: #ebebeb !important;
+    }
+
+    #randerDiv {
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    .md-card {
+        background: #fff;
+        position: relative;
+        -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+        box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+        border: none;
+    }
+
+    .row {
+        margin-top: 15px;
+    }
+
+    .k-chart, .k-stockchart {
+        height: 300px;
+    }
+
+    #example10 {
+        height: 142px;
+    }
+
+    .k-radio:checked + .k-radio-label:after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+    }
+
+    .k-radio-label {
+        position: relative;
+        padding-left: 1.5em;
+        vertical-align: middle;
+        line-height: 1.4em;
+        cursor: pointer;
+    }
+
+    .imgDashboard {
+        /*max-width: 50px;
+        max-height: 50px;*/
+         max-width: 35px;
+        max-height: 35px;
+        margin-top: 10px;
+    }
+
+    .labelText label {
+        font-size: 12px;
+        color: #000 !important;
+        margin-bottom: 0px;
+        text-align: right;
+        text-transform: none;
+        font-weight: 600;
+    }
+
+    #chart circle {
+        display: none !important;
+    }
+    .scada{
+        font-family:'Scada',sans-sarif;
+        font-size:14px !important;
+    }
+    .mukta{
+        font-family:'Mukta',sans-sarif;
+    }
+</style>
+<div id="print">
+
+
+    <div class="uk-grid uk-grid-width-large-1-1 uk-grid-width-medium-1-1 uk-grid-medium uk-sortable sortable-handler" data-uk-sortable="" data-uk-grid-margin="" style="margin-top: 0px; margin-bottom: -24px;">
+        <div class="uk-row-first">
+            <div class="md-card">
+                <div class="md-card-content">
+
+                    <div class="row" style="margin-top: -32px;">
+                        <div class="col-md-11">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label class="lblFont">রিসোর্স সেন্টারঃ</label>
+                                    <input id="ServicePointId" name="ServicePointId" type="text" style="width: 100%;min-width: 100%;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="lblFont">জেলাঃ</label>
+                                    <input id="DistrictCode" style="width: 100%;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="lblFont">লোকেশন টাইপ</label>
+                                    <input id="GeoType" name="GeoType" style="width: 100%;min-width: 100%;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="lblFont">উপজেলাঃ</label>
+                                    <input id="UpazilaCode" style="width: 100%;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="lblFont">শুরুর তারিখঃ</label>
+                                    <input id="FromDate" name="FromDate" type="text" style="width: 100%;min-width: 100%;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="lblFont">শেষ তারিখঃ</label>
+                                    <input id="ToDate" name="ToDate" type="text" style="width: 100%;min-width: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="lblFont">Search</label>
+                                    <span title="Search" class="odDefaultButton fa fa-search" id="btnSearch" style="width: 100%; text-align: center;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="uk-grid" style="margin-top:30px">
+
+        <div class="uk-width-large-12-12 uk-row-first">
+
+            <div class="md-card">
+
+                <div class="md-card-content" style="min-height: 280px;">
+                    <div class="uk-overflow-container">
+
+                        <div id="example">
+                            <div class="demo-section k-content wide">
+                                <div class="col-md-4" style="min-height:650px;padding-right:65px;z-index: 1;">
+                                    <h3 style="margin-top: 6px;color:#424041;line-height: 0.5; font-size:16px;font-family: 'Scada',sans-serif;"><strong>SHN</strong></h3>
+                                    <h3 style="margin-top: -2px;color:#424041;line-height: 0.5; font-size:16px;font-family: 'Scada',sans-serif;"><strong>DASHBOARD</strong></h3>
+                                    <div class="row" style="margin-left:0px;margin-top:5px;margin-right:0px">
+                                        <div class="col-md-12 mukta" style="font-size:14px;text-align:justify; width:100%;padding:0;">
+                                            Total <span style="font-weight:bold; font-size:13px;color:black;" id="TotalBen"> 0</span> benificaries are getting SHN services, Where <span style="font-weight:bold; font-size:13px;color:black;" id="TotalWomen"> 0</span> are women and <span style="font-weight:bold; font-size:13px;color:black;" id="TotalMan"> 0</span> are man, <span style="font-weight:bold; font-size:13px;color:black;" id="TotalBoy"> 0</span> are boy, <span style="font-weight:bold; font-size:13px;color:black;" id="TotalGirl"> 0</span> are girl and <span style="font-weight:bold; font-size:13px;color:black;" id="TotalAdolescent"> 0</span> adolescent.
+                                        </div>
+                                        <div class="col-md-12" style="border-bottom: 3px solid #424041; width:35%; margin-top:5px;"></div>
+                                    </div>
+                                    <div class="row" style="margin-left:0px;margin-right:0px;padding:0px">
+                                        <div class="col-md-12" style="border-bottom: 1px dashed #424041; width:100%;margin:0px; padding:0px;">
+                                            <div class="scada" style="color:#424041; font-size:13px; font-weight:bold; text-align:right;text-transform:uppercase;">Children Used Soap After Toilet</div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <img class="imgDashboard" src="~/Images/handwash.png" />
+                                        </div>
+                                        <div class="col-md-9 labelText" style="padding:0px">
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">Observed:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="HandWashObserved">0</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">Attained:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="HandWashAttained">0</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400; ">Achieved:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="HandWashAchieved">0%</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">No Coverage:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="HandWashNoCoverage">0(0%)</div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-left:0px;margin-right:0px;padding:0px">
+                                        <div class="col-md-12" style="border-bottom: 1px dashed #424041; width:100%;padding:0px">
+                                            <div class="scada" style="color: #424041; font-size:13px; font-weight:bold; text-align:right;text-transform:uppercase;">Safe Drinking Water (HH)</div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <img class="imgDashboard" src="~/Images/tap.png" />
+
+                                        </div>
+                                        <div class="col-md-9 labelText" style="padding:0px">
+
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">Observed:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="DrinkingWaterObserved">0</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400; ">Achieved:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="DrinkingWaterAchieved">0%</div>
+                                            @*<div class="col-md-7" style="padding:0; font-weight:400;">Attained:</div>
+                                                <div class="col-md-5" style="padding:0; " id="DrinkingWaterAttained">0</div>*@
+
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">Boiled Water:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; ">
+                                                <span id="DrinkingBoiledWater">0</span>
+                                            </div>
+
+
+
+
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">Chlorine Tablet:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="DrinkingWaterChlorineTablet">0</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">Fitkari:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="DrinkingWaterFitkari">0</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">Filter:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="DrinkingWaterFilter">0</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">Mineral Water:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="DrinkingWaterMinaral">0</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">Tube Well Water:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="DrinkingWaterTubeWell">0</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">No Coverage:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="DrinkingWaterNoCoverage">0(0%)</div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="margin-left:0px;margin-right:0px;padding:0px">
+                                        <div class="col-md-12" style="border-bottom: 1px dashed #424041; width:100%;padding:0px">
+                                            <div class="scada" style="color:#424041; font-size:13px; font-weight:bold; text-align:right;text-transform:uppercase;">Community Toilet Condition</div>
+                                        </div> <div class="col-md-3">
+                                            <img class="imgDashboard" src="~/Images/toilet.png" />
+
+                                        </div>
+                                        <div class="col-md-9 labelText" style="padding:0px">
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">Observed:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="ToiletObserved">0</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">Met 2 Criteria:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="Toilet4CriteriaMeet">0(0%)</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400; ">Achieved:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="ToiletAchieved">0%</div>
+                                            <div class="col-md-8 mukta" style="padding: 0;width: 110%;margin-left: -22px;font-weight: bold;font-size: 13px;margin-top: 6px;">Gender Segregated (Count)</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">Male:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="ToiletMale">200</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">Female:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="ToiletFemale">200</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">Common:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="ToiletBoth">200</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">No Coverage:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="ToiletNoCoverage">0</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="margin-left:0px;margin-right:0px;padding:0px">
+                                        <div class="col-md-12" style="border-bottom: 1px dashed #424041; width:100%;padding:0px">
+                                            <div class="scada" style="color:#424041; font-size:13px; font-weight:bold; text-align:right;text-transform:uppercase;">Waste Management (HH)</div>
+                                        </div> <div class="col-md-3">
+                                            <img class="imgDashboard" src="~/Images/wasteBin.png" style="max-width:45px;max-height:45px" />
+                                        </div>
+                                        <div class="col-md-9 labelText" style="padding:0px">
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">Observed:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="WasteMangementObserved">0</div> 
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">Met 3 Criteria:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="WasteMangement3CriteriaMeet">0</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400; ">Achieved:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="WasteMangementAchieved">0%</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;">No Coverage:</div>
+                                            <div class="col-md-4 mukta" style="padding:0; " id="WasteMangementNoCoverage">0(0%)</div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="col-md-12" id="ServiceTrend" style="min-height:400px;background:#f7f3eb;z-index:100;">
+                                    </div>
+                                    <div class="col-md-12" style="background-image:url('../Images/dewormingBack.PNG'); background-repeat:repeat;min-height: 200px; margin-bottom:100px; margin-top:50px;">
+
+
+                                        <div class="col-md-12" style="width:100%;margin-top:30px;margin-bottom:25px;padding-top:10px;">
+                                            <div class="scada" style="color:#424041; font-size:13px; font-weight:bold; text-align:left;text-transform:uppercase;">Deworming <span style="text-transform:lowercase;font-size:12px;">(5-16 years children)</span> </div>
+                                        </div>
+                                        <div class="col-md-3 labelText" style="text-align:left;">
+                                            <div class="col-md-12" style="text-align:left; margin-bottom:15px;">
+                                                <img class="imgDashboard" src="~/Images/deworming.png" style="margin-left: -15px;" />
+                                            </div>
+
+
+                                            <div class="col-md-9 mukta" style="padding:0; font-weight:400; ">Achieved:</div>
+                                            <div class="col-md-3 mukta" style="padding:0; " id="DewormingAchieved">0%</div>
+                                            <div class="col-md-9 mukta" style="padding:0; font-weight:400;">Children Dewormed:</div>
+                                            <div class="col-md-3 mukta" style="padding:0; " id="DewormingObserved">0</div>
+                                            <div class="col-md-9 mukta" style="padding:0; font-weight:400;">Total Children:</div>
+                                            <div class="col-md-3 mukta" style="padding:0; " id="TotalChild">0</div>
+
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="col-md-6">
+                                                <div class="col-md-12 mukta"><span class="dewormingBigText" id="ServicePointGoingTotal"> 0 </span> <span class="txtgender"> Boy:</span> <span id="ServicePointGoingBoy"> 0</span> , <span class="txtgender">Girl:</span><span id="ServicePointGoingGirl"> 0</span> </div>
+                                                <div class="col-md-12 mukta dewormingText">ServicePoint Going Children</div>
+
+                                                <div class="col-md-12 mukta" style="margin-top:20px;"><span class="dewormingBigText" id="OutOfServicePointTotal">0</span> <span class="txtgender">Boy:</span> <span id="OutOfServicePointBoy"> 0</span> , <span class="txtgender">Girl:</span> <span id="OutOfServicePointGirl">0</span> </div>
+                                                <div class="col-md-12 mukta dewormingText">Out Of ServicePoint Children</div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="col-md-12 mukta"><span class="dewormingBigText" id="SponsoredTotal">0</span> <span class="txtgender">Boy:</span> <span id="SponsoredBoy"> 0</span> , <span class="txtgender">Girl:</span> <span id="SponsoredGirl"> 0</span> </div>
+                                                <div class="col-md-12 mukta dewormingText">Sponsored Children</div>
+
+                                                <div class="col-md-12 mukta" style="margin-top:20px;"> <span class="dewormingBigText" id="SpecialNeedTotal">0</span> <span class="txtgender">Boy:</span> <span id="SpecialNeedBoy"> 0</span> , <span class="txtgender">Girl:</span> <span id="SpecialNeedGirl">0</span> </div>
+                                                <div class="col-md-12 mukta dewormingText">Special Need Children</div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12" style="width:100%;margin-top:30px;margin-bottom:25px;">
+                                    <br />
+                                    
+                                </div>
+                                <div class="col-md-12">
+                                    <div style="width:100%; float:left;padding-top:0px;">
+                                        <div class="scada" style="color:#424041; font-size:14px; font-weight:bold; text-align:left;text-transform:none;">COMMUNITY BASED HEALTH EDUCATION (CBHE)</div>
+                                        <br />
+                                    </div>
+                                    
+                                    <div class="col-md-2 cbheSessionRound">
+                                        @*<div class="col-md-12 imgdiv">
+                                                <img src="~/Images/Teaching.png" class="imgCirce" />
+                                            </div>*@
+                                        <div class="col-md-12 cirlceText" style="margin-top: 43px;">
+                                            SESSIONS <br />
+                                            <span>(Parents & Children) </span>
+                                        </div>
+                                        <div class="col-md-12 mukta cirlceNumber">
+                                            <span id="SessionTotal">0</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 cbheCoverageRound">
+                                        <div class="col-md-12 imgGroupDiv">
+                                            &nbsp;
+                                            @*<img src="~/Images/group.png" class="imgCirce" style="height:24px;width:24px;" />*@
+                                        </div>
+                                        <div class="col-md-12 mukta smalCirlceText">
+                                            ATTENDANCE
+                                        </div>
+                                        <div class="col-md-12 mukta cirlceNumber">
+                                            <span id="SessionAttendance">0%</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 cbheAgeRound">
+                                        <div class="col-md-12 mukta cirlceText" style="margin-top:25px;">
+                                            CHILDREN
+                                        </div>
+                                        <div class="col-md-12 mukta cirlceText">
+                                            (AGE 5-12)
+                                        </div>
+                                        <div class="col-md-12 mukta cirlceNumber">
+                                            <span id="Session_Age_5_12_Child">0</span>
+                                        </div>
+                                        <div class="col-md-12 mukta cirlceText">
+                                            (AGE 13-19)
+                                        </div>
+                                        <div class="col-md-12 mukta cirlceNumber">
+                                            <span id="Session_Age_13_19_Child">0</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 mukta parentsRound">
+                                        <div class="col-md-12 cirlceText" style="margin-top:46px;">
+                                            PARENTS
+                                        </div>
+                                        @*<div class="col-md-12 cirlceText">
+                                                AGE 5-12
+                                            </div>*@
+                                        <div class="col-md-12 mukta cirlceNumber">
+                                            <span id="Session_Age_5_12_Parents">0</span>
+                                        </div>
+                                        @*<div class="col-md-12 cirlceText">
+                                                AGE 13-19
+                                            </div>
+                                            <div class="col-md-12 cirlceNumber">
+                                                <span id="Session_Age_13_19_Parents">300</span>
+                                            </div>*@
+                                    </div>
+                                    @*<div class="col-md-2 cbheGenderRound">
+
+                                            <div class="col-md-12 smalCirlceText" style="position:absolute;margin-top:16px; ">
+                                                3000
+                                            </div>
+                                            <div class="col-md-12 imgGroupDiv" style="text-align:left;">
+                                                <img src="~/Images/gender.png" class="imgGender" style="height:30px;width:30px;margin-top: 12px;margin-left:-5px;" />
+                                            </div>
+                                            <div class="col-md-12 cirlceText">
+                                                6000
+                                            </div>
+                                        </div>*@
+                                    <div class="col-md-2 pull-right" style="margin-top:-130px;">
+                                        @*<div class="col-md-12" style="text-align:right;">
+                                            <img class="imgDashboard" src="~/Images/presentationBoard.png" style="margin-right:-30px;" />
+                                        </div>*@
+
+                                        <div class="col-md-12" style="margin:0;padding:0;margin-left: 18px; font-size:14px; margin-top:44px;color: #4a4848">
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;text-align: left;border-left: 1px dashed #424041;padding-left: 10px;margin-bottom: 2px;">Attendance:</div>
+                                            <div class="col-md-4 mukta" style="padding:0;text-align: right" id="SessionAchieved">0%</div>
+                                            <div class="col-md-8 mukta" style="padding:0; text-align: left;border-left: 1px dashed #424041;padding-left: 10px;margin-bottom: 2px;">Total Member:</div>
+                                            <div class="col-md-4 mukta" style="padding:0;text-align: right; " id="SessionObserved">0</div>
+                                            <div class="col-md-8 mukta" style="padding:0; font-weight:400;text-align: left;border-left: 1px dashed #424041;padding-left: 10px;margin-bottom: 2px;">Total Present:</div>
+                                            <div class="col-md-4 mukta" style="padding:0;text-align: right;" id="SessionAttained">0</div>
+
+                                            @*<div class="col-md-7" style="padding:0; font-weight:400;text-align:right;">No Coverage:</div>
+                                                <div class="col-md-5" style="padding:0; text-align:right;" id="SessionNoCoverage">3000(40%)</div>*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-md-offset-1" style="border-top:1px dashed #6d6969; margin-top:-65px; width:65%;">
+                                </div>
+
+                                <div class="col-md-12" style="margin-top:150px;">
+                                    <div class="col-md-4" style="padding-left: 0;padding-top:40px">
+                                        <div class="col-md-12 mukta" id="HandWash" style="max-height:150px;background:whitesmoke;">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4" style="padding-top:40px">
+                                        <div class="col-md-12 mukta" id="DrinkingWater" style="max-height:150px;background:whitesmoke;">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4" style="padding-right: 0;padding-top:40px">
+                                        <div class="col-md-12 mukta" id="Toilet" style="max-height:150px;background:whitesmoke;">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-12" style="margin-top:170px;">
+                                    <div class="col-md-4" style="padding-left: 0;padding-top:20px">
+                                        <div class="col-md-12 mukta" id="WasteManagement" style="max-height:150px;background:whitesmoke;">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4" style="padding-top:20px">
+                                        <div class="col-md-12 mukta" id="deworming" style="max-height:150px;background:whitesmoke;">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4" style="padding-right: 0;padding-top:20px">
+                                        <div class="col-md-12 mukta" id="cbhe" style="max-height:150px;background:whitesmoke;">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .imgdiv {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .imgCirce {
+        height: 30px;
+        width: 30px;
+    }
+
+    .imgGender {
+        height: 30px;
+        width: 30px;
+    }
+
+    .imgGroupDiv {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .cirlceText {
+        font-family: 'Mukta',sans-sarif;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 400;
+        text-align: center;
+        padding: 0;
+    }
+
+    .smalCirlceText {
+       font-family: 'Mukta',sans-sarif;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 400;
+        text-align: center;
+        padding: 0;
+        padding-top: 0;
+    }
+
+    .cirlceNumber {
+        font-family: 'Mukta',sans-sarif;
+        color: #323330;
+        font-size: 13px;
+        font-weight: bold;
+        text-align: center;
+        padding: 0;
+        padding-top: 0;
+    }
+
+    .cbheSessionRound {
+        height: 130px;
+        width: 130px;
+        background-color: #8FAADC;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 130px;
+        z-index:1;
+    }
+
+    .parentsRound {
+        height: 115px;
+        width: 115px;
+        background-color: #9dc8dc;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 130px;
+        z-index:1;
+        margin-top:8px;
+    }
+
+    .cbheAgeRound {
+        height: 135px;
+        width: 135px;
+        background-color: #A5A5A5;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 130px;
+        z-index:1;
+    }
+
+    .cbheCoverageRound {
+        height: 100px;
+        width: 100px;
+        background-color: #F4B183;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 130px;
+        margin-top: 15px;
+        z-index:1;
+    }
+
+    .cbheGenderRound {
+        height: 100px;
+        width: 100px;
+        background-color: #81A0c0;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 130px;
+        margin-top: 15px;
+        z-index:1;
+    }
+
+
+    .labelText {
+        font-size: 13px;
+        color: #4a4848;
+        text-align: right;
+    }
+
+    .dewormingText {
+        font-size: 15px;
+        color: #4a4848;
+        font-weight: 600;
+    }
+
+    .dewormingBigText {
+        font-size: 25px;
+        color: #4a4848;
+        font-weight: 600;
+    }
+
+    .txtgender {
+        color: #4a4848;
+        font-weight: 600;
+    }
+</style>
+
+
+
+<script src="~/Scripts/KendoUI/kendo.dataviz.min.js"></script>
+<script src="~/Scripts/KendoUI/kendo.dataviz.chart.min.js"></script>
+<script src="~/Scripts/jspdf.min.js"></script>
+<script src="~/Scripts/Appetizer.js"></script>
+<script src="~/Scripts/SHNGraphCreator.js"></script>
+<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        fnLoadDashboard();
+
+
+    });
+    $("#btnSearch").click(function () {
+        if (!appetizer.date.comparison($("#FromDate").val(), $("#ToDate").val())) {
+            appetizer.message.showError('#showErrorMsg', "From Date and To Date is not valid", 10000);
+            return false;
+        }
+        fnLoadDashboard();
+
+    });
+
+
+    // All Graph function start
+
+    function fnLoadDashboard() {
+        var urlpath = "";
+        urlpath = '@Url.Action("GetSHNDashboardData", "Home")';
+        
+        var jsonData = {
+            'UserId': 0,
+            'Year': $year,
+            'FromDate': $("#FromDate").val(),
+            'ToDate': $("#ToDate").val(),
+            'ServicePointId': $("#ServicePointId").val(),
+            'DistrictCode': $("#DistrictCode").val(),
+            'UpazilaCode': $("#UpazilaCode").val(),
+
+        };
+        appetizer.actionCall(urlpath, jsonData, 'GET', function (data, result) {
+            if (result) {
+                var data = data.Data;
+                GraphManager.createChartServiceTrend("ServiceTrend", "Observed Trend- (Overall)", data.ServiceTrend);
+
+
+                document.getElementById("TotalBen").innerHTML = data.TotalBen;
+                document.getElementById("TotalWomen").innerHTML = data.TotalWomen;
+                document.getElementById("TotalMan").innerHTML = data.TotalMan;
+                document.getElementById("TotalBoy").innerHTML = data.TotalBoy;
+                document.getElementById("TotalGirl").innerHTML = data.TotalGirl;
+                document.getElementById("TotalAdolescent").innerHTML = data.TotalAdolescent;
+
+
+
+
+
+                document.getElementById("HandWashAchieved").innerHTML = data.HandWashAchieved + '%';
+                document.getElementById("HandWashAttained").innerHTML = data.HandWashAttained;
+                document.getElementById("HandWashObserved").innerHTML = data.HandWashObserved;
+                document.getElementById("HandWashNoCoverage").innerHTML = data.HandWashNoCoverage;
+
+
+                document.getElementById("DrinkingWaterAchieved").innerHTML = data.DrinkingWaterAchieved + '%';
+                //document.getElementById("DrinkingWaterAttained").innerHTML = data.DrinkingWaterAttained;
+                document.getElementById("DrinkingWaterObserved").innerHTML = data.DrinkingWaterObserved;
+                document.getElementById("DrinkingBoiledWater").innerHTML = data.DrinkingBoiledWater;
+                document.getElementById("DrinkingWaterNoCoverage").innerHTML = data.DrinkingWaterNoCoverage;
+
+                document.getElementById("DrinkingWaterChlorineTablet").innerHTML = data.DrinkingWaterChlorineTablet;
+                document.getElementById("DrinkingWaterFitkari").innerHTML = data.DrinkingWaterFitkari;
+                document.getElementById("DrinkingWaterFilter").innerHTML = data.DrinkingWaterFilter;
+                document.getElementById("DrinkingWaterMinaral").innerHTML = data.DrinkingWaterMinaral;
+                document.getElementById("DrinkingWaterTubeWell").innerHTML = data.DrinkingWaterTubeWell;
+
+                document.getElementById("ToiletAchieved").innerHTML = data.ToiletAchieved + '%';
+                //document.getElementById("ToiletAttained").innerHTML = data.ToiletAttained;
+                document.getElementById("ToiletObserved").innerHTML = data.ToiletObserved;
+                document.getElementById("ToiletNoCoverage").innerHTML = data.ToiletNoCoverage;
+                document.getElementById("Toilet4CriteriaMeet").innerHTML = data.Toilet4CriteriaMeet;
+                // int, int,  int,
+                document.getElementById("ToiletMale").innerHTML = data.ToiletMale;
+                document.getElementById("ToiletFemale").innerHTML = data.ToiletFemale;
+                document.getElementById("ToiletBoth").innerHTML = data.ToiletBoth;
+
+
+                document.getElementById("WasteMangementAchieved").innerHTML = data.WasteMangementAchieved + '%';
+                //document.getElementById("WasteMangementAttained").innerHTML = data.WasteMangementAttained;
+                document.getElementById("WasteMangementObserved").innerHTML = data.WasteMangementObserved;
+                document.getElementById("WasteMangementNoCoverage").innerHTML = data.WasteMangementNoCoverage;
+                document.getElementById("WasteMangement3CriteriaMeet").innerHTML = data.WasteMangement3CriteriaMeet;
+
+                document.getElementById("DewormingAchieved").innerHTML = data.DewormingAchieved + '%';
+                document.getElementById("DewormingObserved").innerHTML = data.DewormingObserved;
+                document.getElementById("TotalChild").innerHTML = data.TotalChild;
+                document.getElementById("ServicePointGoingTotal").innerHTML = data.ServicePointGoingTotal+ " ";
+                document.getElementById("ServicePointGoingBoy").innerHTML = data.ServicePointGoingBoy;
+                document.getElementById("ServicePointGoingGirl").innerHTML = data.ServicePointGoingGirl;
+                document.getElementById("OutOfServicePointTotal").innerHTML = data.OutOfServicePointTotal;
+                document.getElementById("OutOfServicePointBoy").innerHTML = data.OutOfServicePointBoy;
+                document.getElementById("OutOfServicePointGirl").innerHTML = data.OutOfServicePointGirl;
+                document.getElementById("SponsoredTotal").innerHTML = data.SponsoredTotal;
+                document.getElementById("SponsoredBoy").innerHTML = data.SponsoredBoy;
+                document.getElementById("SponsoredGirl").innerHTML = data.SponsoredGirl;
+                document.getElementById("SpecialNeedTotal").innerHTML = data.SpecialNeedTotal;
+                document.getElementById("SpecialNeedBoy").innerHTML = data.SpecialNeedBoy;
+                document.getElementById("SpecialNeedGirl").innerHTML = data.SpecialNeedGirl;
+                document.getElementById("SessionTotal").innerHTML = data.SessionTotal;
+                document.getElementById("SessionAttendance").innerHTML = data.SessionAttendance;
+                //document.getElementById("SessionCoverage").innerHTML = data.SessionCoverage;
+
+                document.getElementById("Session_Age_5_12_Child").innerHTML = data.Session_Age_5_12_Child;
+                document.getElementById("Session_Age_13_19_Child").innerHTML = data.Session_Age_13_19_Child;
+                document.getElementById("Session_Age_5_12_Parents").innerHTML = data.Session_Age_5_12_Parents;
+                //document.getElementById("Session_Age_13_19_Parents").innerHTML = data.Session_Age_13_19_Parents;
+
+                document.getElementById("SessionAchieved").innerHTML = data.SessionAchieved + '%';
+                document.getElementById("SessionAttained").innerHTML = data.SessionAttained;
+                document.getElementById("SessionObserved").innerHTML = data.SessionObserved;
+                //document.getElementById("SessionNoCoverage").innerHTML = data.SessionNoCoverage;
+
+
+
+                GraphManager.createChartHandWash("HandWash", "CHILDREN USED SOAP AFTER TOILET (OVSERVED/ATTAINED)", data);
+                GraphManager.createChartDrinkingWater("DrinkingWater", "SAFE DRINKING WATER (OVSERVED/DRANK BOILED WATER)", data);
+                GraphManager.createChartToilet("Toilet", "COMMUNITY TOILET CONDITION (OVSERVED/MET 2 CRITERIA)", data);
+                GraphManager.createChartWasteManagement("WasteManagement", "WASTE MANAGEMENT (OVSERVED/MET 3 CRITERIA)", data);
+
+                GraphManager.createChartDeworming("deworming", "DEWORMING (CHILDREN DEWORMED/TOTAL CHILDREN)", data);
+                GraphManager.createChartCBHE("cbhe", "CBHE (TOTAL MEMBER/TOTAL PRESENT)", data);
+
+            }
+            else {
+
+                appetizer.message.showError('#showErrorMsg', data.data, 10000);
+            }
+        });
+    }
+    var locationType = [{ text: "-----SELECT-----", textBangla: "-----SELECT-----", value: "0" }, { text: "City Corporation", textBangla: "সিটি কর্পোরেশন", value: "3" }, { text: "Municipality", textBangla: "পৌরসভা", value: "2" }, { text: "Upazila", textBangla: "উপজেলা", value: "1" }];
+    $("#GeoType").kendoDropDownList({
+        dataTextField: "text",
+        dataValueField: "value",
+        height: '400',
+        dataSource: locationType,
+        template: '<div style=\"padding:5px;line-height:18px;font-size:14px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.text #</div>'
+
+    }).data("kendoDropDownList");
+
+
+    // All Graph function end
+
+    $date = new Date();
+    $day = $date.getDate();
+    $month = $date.getMonth();
+    $year = $date.getFullYear();
+
+    $("#FromDate").kendoDatePicker({
+        value: appStartDate,
+        format: "dd-MMM-yyyy",
+        animation: {
+            close: {
+                effects: "fadeOut zoom:out",
+                duration: 300
+            },
+            open: {
+                effects: "fadeIn zoom:in",
+                duration: 300
+            }
+        }
+    });
+    $("#ToDate").kendoDatePicker({
+        value: new Date(),
+        format: "dd-MMM-yyyy",
+        animation: {
+            close: {
+                effects: "fadeOut zoom:out",
+                duration: 300
+            },
+            open: {
+                effects: "fadeIn zoom:in",
+                duration: 300
+            }
+        }
+    });
+    var userId = '@User.CurrentUserID()';
+    var myData;
+    $("#ServicePointId").kendoDropDownList({
+        optionLabel: "------SELECT------",
+        dataTextField: "ServicePointName",
+        dataValueField: "ServicePointId",
+        filter: "contains",
+        dataSource: {
+            type: "JSON",
+            transport: {
+                read: {
+                    url: '@Url.Action("GetServicePointInfo", "MNCHN")'
+                }
+            }
+        },
+        height: '300',
+        template: "<div style=\"padding:5px;line-height:18px;font-size:14px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.ServicePointInfo #</div>",
+        open: adjustDropDownWidth
+    }).data("kendoDropDownList");
+
+    $("#DistrictCode").kendoDropDownList({
+        optionLabel: "------SELECT------",
+        dataTextField: "DistrictNameBangla",
+        dataValueField: "DistrictCode",
+        filter: "contains",
+        dataSource: {
+            type: "JSON",
+            transport: {
+                read: {
+                    url: '@Url.Action("GetDistrict", "Registration")'
+                }
+            }
+        },
+        height: '300',
+        template: "<div style=\"padding:5px;line-height:18px;font-size:13px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.DistrictNameBangla #</div>",
+        open: adjustDropDownWidth
+    }).data("kendoDropDownList");
+
+    $("#UpazilaCode").kendoDropDownList({
+        autoBind: false,
+        cascadeFrom: "GeoType",
+        optionLabel: "------SELECT------",
+        dataTextField: "UpazilaNameBangla",
+        dataValueField: "UpazilaCode",
+        filter: "startswith",
+        dataSource: {
+            type: "JSON",
+            serverFiltering: true,
+            transport: {
+                read: {
+                    url: '@Url.Action("GetUpazila", "Registration")',
+                    data: function (e) {
+                        var inputValue = "";
+                        if (e.filter.filters.length > 1) {
+                            inputValue = this.data.arguments[0].filter.filters[1].value;
+                        }
+                        return { GeoType: $("#GeoType").val(), DistrictCode: $("#DistrictCode").val(), UpazilaName: inputValue };
+                    }
+                }
+            }
+        },
+        height: '300',
+        template: "<div style=\"padding:5px;line-height:18px;font-size:13px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.UpazilaNameBangla #</div>"
+    }).data("kendoDropDownList");
+
+    function adjustDropDownWidth(e) {
+        var listContainer = e.sender.list.closest(".k-list-container");
+        listContainer.width(listContainer.width() + kendo.support.scrollbar());
+    }
+
+</script>
+

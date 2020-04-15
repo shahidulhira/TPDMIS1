@@ -1,0 +1,400 @@
+﻿
+@{
+    ViewBag.Title = "Training Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="height:auto;" id="block">
+    <form>
+        <div class="content-form-title">
+            <h4 style="padding-top:20px;"><b>Training</b> Information</h4>
+            <hr />
+        </div>
+
+        <div class="row" style="display:none;">
+            <div class="col-md-4" style="display:none;">
+                <input type="text" name="RecordID" id="RecordID" value="" style="width:100%" onchange="" />
+                <input type="text" name="TrainingId" id="TrainingId" value="" style="width:100%" onchange="" />
+                <input type="text" name="UserId" id="UserId" value="" style="width:100%" onchange="" />
+                <span id="eRecordId" class="hideError"></span>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:5px;">
+            <div class="col-md-3">
+                <label>Training ID</label>
+                <input type="text" name="TrainingId" id="TrainingId" value="" class="k-textbox" style="width:100%"  />
+                <span id="eTrainingId" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Start Time</label>
+                <input type="text" name="StartTime" id="StartTime" value="" style="width:100%" />
+                <span id="eStartTime" class="hideError"></span>
+            </div>
+
+            <div class="col-md-3">
+                <label>End Time</label>
+                <input type="text" name="EndTime" id="EndTime" value="" style="width:100%" />
+                <span id="eEndTime" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Training Date</label>
+                <input type="text" name="TrainingDate" id="TrainingDate" value="" style="width:100%" />
+                <span id="eTrainingDate" class="hideError"></span>
+            </div>
+        </div>
+
+
+        <div class="row" style="margin-top:5px;">
+            <div class="col-md-3">
+                <label>Training Type</label>
+                <input type="text" name="TypeId" id="TypeId" value="" style="width:100%" />
+                <span id="eTypeId" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Training Category</label>
+                <input type="text" name="CategoryId" id="CategoryId" value="" style="width:100%" />
+                <span id="eCategoryId" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Batch Name</label>
+                <input type="text" name="BatchCode" id="BatchCode" value="" style="width:100%" />
+                <span id="eBatchCode" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Topic</label>
+                <input type="text" name="TopicId" id="TopicId" value="" style="width:100%" />
+                <span id="eTopicId" class="hideError"></span>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:5px;">
+            <div class="col-md-3">
+                <label>Topic Others</label>
+                <input type="text" name="TopicOthers" id="TopicOthers" value="" style="width:100%" class="k-textbox"/>
+                <span id="eTopicOthers" class="hideError"></span>
+            </div>
+
+            <div class="col-md-3">
+                <label>Training Material</label>
+                <input type="text" name="MaterialId" id="MaterialId" value="" style="width:100%" />
+                <span id="eMaterialId" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Location</label>
+                <input type="text" name="Venue" id="Venue" value="" style="width:100%" class="k-textbox"/>
+                <span id="eVenue" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Trainer</label>
+                <input type="text" name="Trainer" id="Trainer" value="" style="width:100%" class="k-textbox"/>
+                <span id="eTrainer" class="hideError"></span>
+            </div>
+        </div>
+
+
+        <div class="row" style="margin-top:5px;">
+            <div class="col-md-12">
+                <label>Remarks</label>
+                <input type="text" name="Remarks" id="Remarks" value="" class="k-textbox" style="width:100%" />
+                <span id="eRemarks" class="hideError"></span>
+            </div>
+        </div>
+
+        @*<div class="row" style="margin-top:5px;">
+            <div class="col-md-3">
+                <label>District</label>
+                <input type="text" name="DistrictCode" id="DistrictCode" value="" style="width:100%" onchange="" />
+                <span id="eDistrictCode" class="hideError"></span>
+            </div>
+
+            <div class="col-md-3">
+                <label>Upazila</label>
+                <input type="text" name="UpazilaCode" id="UpazilaCode" value="" style="width:100%" onchange="" />
+                <span id="eUpazilaCode" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Union</label>
+                <input type="text" name="UnionCode" id="UnionCode" value="" style="width:100%" onchange="" />
+                <span id="eUnionCode" class="hideError"></span>
+            </div>
+            <div class="col-md-3">
+                <label>Village</label>
+                <input type="text" name="VillageCode" id="VillageCode" value="" style="width:100%" onchange="" />
+                <span id="eVillageCode" class="hideError"></span>
+            </div>
+        </div>*@
+
+        <div class="row" style="margin-top:5px;">
+            @*<div class="col-md-3">
+                <label>Center</label>
+                <input type="text" name="CenterCode" id="CenterCode" value="" style="width:100%" onchange="" />
+                <span id="eCenterCode" class="hideError"></span>
+            </div>*@
+            <div class="col-md-2 col-md-offset-10" style="padding-top:25px;">
+                <button type="button" onclick="fnSave()" class="btn btn-success"><i class="fa fa-plus"></i> Save</button>
+                @*<button type="button" onclick="fnSearch(1)" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>*@
+                <button type="button" onclick="fnClear()" class="btn btn-warning"><i class="fa fa-recycle"></i> Clear</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<script>
+    
+    $("#StartTime").kendoTimePicker({
+        value: new Date(),
+        format: "hh:mm tt",
+        animation: { close: { effects: "fadeOut zoom:out", duration: 300 }, open: { effects: "fadeIn zoom:in", duration: 300 } }
+    });
+     
+    $("#EndTime").kendoTimePicker({
+        value: new Date(),
+        format: "hh:mm tt",
+        animation: { close: { effects: "fadeOut zoom:out", duration: 300 }, open: { effects: "fadeIn zoom:in", duration: 300 } }
+    });
+
+    $("#TrainingDate").kendoDatePicker({
+        value: new Date(),
+        format: "yyyy-MM-dd",
+        animation: { close: { effects: "fadeOut zoom:out", duration: 300 }, open: { effects: "fadeIn zoom:in", duration: 300 } }
+    });
+
+    $("#TypeId").kendoDropDownList({
+        optionLabel: "Select...",     
+        dataTextField: "Text",
+        dataValueField: "Value",
+        change: changeType,
+        dataSource: { transport: { read: { dataType: "json", url: "/filter/GetTrainingType/" } } }
+    });
+
+    function changeType() {
+        $("#CategoryId").kendoDropDownList({
+            optionLabel: "Select...",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            change: changeCategory,
+            dataSource: { transport: { read: { dataType: "json", url: "/filter/GetTrainingCategory/?typeid=" + $("#TypeId").val() } } }
+        });
+
+        $("#TopicId").kendoMultiSelect({
+               includeSelectAllOption: true,
+            placeholder: "Select...",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            height: 400,
+            dataSource: { transport: { read: { dataType: "json", url: "/filter/GetTrainingTopic/?typeid=" + $("#TypeId").val() } } }
+        });
+    }
+       
+    function changeCategory() {
+        $("#BatchCode").kendoDropDownList({
+            optionLabel: "Select...",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            dataSource: { transport: { read: { dataType: "json", url: "/filter/GetBatchIndex/?typeid=" + $("#TypeId").val() + "&categoryId=" + $("#CategoryId").val() } } }
+        });
+        
+
+        $("#MaterialId").kendoMultiSelect({
+            includeSelectAllOption: true,
+            placeholder: "Select...",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            height: 400,
+           dataSource: { transport: { read: { dataType: "json", url: "/filter/GetTrainingMaterial/?typeid=" + $("#TypeId").val() + "&categoryId=" + $("#CategoryId").val() } } }
+        });  
+    }
+    
+    var currentPageNumber = 1;
+    function fnClear() {
+        $("#TypeId").data("kendoDropDownList").select("");
+        $("#CategoryId").data("kendoDropDownList").select("");
+        $("#BatchCode").data("kendoDropDownList").select("");
+        //$("#VillageCode").data("kendoDropDownList").select("");
+        //$("#CampId").data("kendoDropDownList").select("");
+        //$("#BlockId").data("kendoDropDownList").select("");
+        //$("#BlockId").data("kendoDropDownList").select("");
+        $("#RecordId").val("");
+        $("#RecordId").val("");
+    }
+
+    function GetDistrict() {
+        $("#DistrictCode").kendoDropDownList({
+            optionLabel: "Select...",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            change: districtChange,
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: "/filter/GetDistrictCode",
+                    }
+                }
+            }
+        });
+    }
+
+    function districtChange() {
+        var districtCode = $("#DistrictCode").val();
+        upazila = $("#UpazilaCode").kendoDropDownList({
+            optionLabel: "Select...",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            change: upazilaChnage,
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: "/filter/GetUpazilaCode/?DistrictCode=" + districtCode,
+                    }
+                }
+            }
+        });
+        //$("#UpazilaCode").data("kendoDropDownList").trigger('change');
+    }
+
+    function upazilaChnage() {
+        union = $("#UnionCode").kendoDropDownList({
+            optionLabel: "Select...",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            change: unionChange,
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: "/filter/GetUnionCode/?DistrictCode=" + $("#DistrictCode").val() + "&UpazilaCode=" + $("#UpazilaCode").val(),
+                    }
+                }
+            }
+        });
+        //$("#UnionCode").data("kendoDropDownList").trigger('change');
+    }
+
+    function unionChange() {
+        village = $("#VillageCode").kendoDropDownList({
+            optionLabel: "Select...",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            change: villageChange,
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: "/filter/GetVillageCode/?DistrictCode=" + $("#DistrictCode").val() + "&UpazilaCode=" + $("#UpazilaCode").val() + "&UnionCode=" + $("#UnionCode").val(),
+                    }
+                }
+            }
+        });
+    }
+
+    function villageChange() {       
+
+        $('#CenterCode').kendoDropDownList({
+            optionLabel: "Select...",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            dataSource: {
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: "/filter/GetCenterId/?DistrictCode=" + $("#DistrictCode").val() + "&UpazilaCode=" + $("#UpazilaCode").val() + "&UnionCode=" + $("#UnionCode").val() + "&VillageCode=" + $("#VillageCode").val()
+                    }
+                }
+            }
+        });
+    }
+       
+
+    $(document).on("ready", function () {
+        function dropdownChange(control, method) {
+            control.bind('change', method);
+        }
+        var district;
+        var upazila;
+        var union;
+        var village;
+        var campid;
+        var centerId;
+
+        var typeId;
+        var categoryId;
+        var batchCode;
+
+        GetDistrict();
+
+        $('#TrainingId').val(getUrlVars()["recordId"]);
+        SetToTop($('#TrainingId').val());
+    });
+
+
+    function fnSave() {
+        debugger
+        var urlpath = '@Url.Action("Save", "Training")';
+        var jsonData = appetizer.div.getJsonObjectFromDiv('block', '0');
+
+        var trainingInfoTopic = $("#TopicId").data("kendoMultiSelect").value();
+        var trainingInfoMaterial= $("#MaterialId").data("kendoMultiSelect").value();        
+
+        appetizer.actionCall(urlpath, { 'trainingInfo':jsonData, 'trainingInfoMaterial':trainingInfoMaterial,'trainingInfoTopic': trainingInfoTopic}, "POST", function (data, result) {
+            if (result) {
+                appetizer.message.showInfo('#showMsg', data.Data, 10000);
+                fnReset();
+            }
+            else { appetizer.message.showError('#showMsg', data.Data, 10000); }
+        });
+    }
+
+    function SetToTop(recordId) {
+        var getUrl = '@Url.Action("GetTrainingInfoByID")';
+        appetizer.ajaxLoder.showPleaseWait();
+        appetizer.actionCall(getUrl, { id: recordId }, 'json', function (data, result) {
+            appetizer.div.setJsonObjectToDiv(data, 'block');
+            debugger
+            $("#TypeId").data("kendoDropDownList").trigger('change');
+            $("#CategoryId").data("kendoDropDownList").trigger('change');
+
+            var a;
+            var topic = [];
+            for (a = 0; a < data.trainingInfoTopic.length; a++) {
+                topic.push(data.trainingInfoTopic[a].TopicId);
+            }      
+
+            $("#TopicId").data("kendoMultiSelect").value(topic);
+
+             var b;
+            var material = [];
+            for (b = 0; b < data.trainingInfoMaterial.length; b++) {
+                material.push(data.trainingInfoMaterial[b].MaterialId);
+            }
+       
+            $("#MaterialId").data("kendoMultiSelect").value(material);
+
+            //$("#BatchCode").data("kendoDropDownList").trigger('change');
+
+            //$("#DistrictCode").data("kendoDropDownList").trigger('change');
+            //$("#UpazilaCode").data("kendoDropDownList").trigger('change');
+            //$("#UnionCode").data("kendoDropDownList").trigger('change');
+            //$("#VillageCode").data("kendoDropDownList").trigger('change');
+            //$("#CampId").data("kendoDropDownList").trigger('change');
+            appetizer.ajaxLoder.hidePleaseWait();
+
+        });
+    }
+
+     function getUrlVars() {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for (var i = 0; i < hashes.length; i++) {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+</script>
+
+

@@ -1,0 +1,1824 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ancAge" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="ancAncVisitDate" xml:space="preserve">
+    <value>Anc Visit Date</value>
+  </data>
+  <data name="ancAncVisitTerm" xml:space="preserve">
+    <value>Anc Visit No</value>
+  </data>
+  <data name="ancAncVisitWhere" xml:space="preserve">
+    <value>Anc Visit Where</value>
+  </data>
+  <data name="ancBabyMovingFeel" xml:space="preserve">
+    <value>Baby Moving Feel</value>
+  </data>
+  <data name="ancBenId" xml:space="preserve">
+    <value>Beneficiary Id</value>
+  </data>
+  <data name="ancBenName" xml:space="preserve">
+    <value>Beneficiary Name</value>
+  </data>
+  <data name="ancBloodPressure" xml:space="preserve">
+    <value>Blood Pressure</value>
+  </data>
+  <data name="ancDateOfBirth" xml:space="preserve">
+    <value>Date Of Birth</value>
+  </data>
+  <data name="ancEdd" xml:space="preserve">
+    <value>Edd</value>
+  </data>
+  <data name="ancHeartRate" xml:space="preserve">
+    <value>Heart Rate</value>
+  </data>
+  <data name="ancJaundice" xml:space="preserve">
+    <value>Jaundice</value>
+  </data>
+  <data name="ancLmp" xml:space="preserve">
+    <value>Lmp</value>
+  </data>
+  <data name="ancMiscarriage" xml:space="preserve">
+    <value>Miscarriage</value>
+  </data>
+  <data name="ancNumberOfPregnancy" xml:space="preserve">
+    <value>Number Of Pregnancy</value>
+  </data>
+  <data name="ancPaleEyelids" xml:space="preserve">
+    <value>Pale Eyelids</value>
+  </data>
+  <data name="ancPregnancyTest" xml:space="preserve">
+    <value>Pregnancy Test</value>
+  </data>
+  <data name="ancReferralHospital" xml:space="preserve">
+    <value>Referral Hospital</value>
+  </data>
+  <data name="ancReferralHospitalBefore" xml:space="preserve">
+    <value>Referral Hospital Before</value>
+  </data>
+  <data name="ancReferralInstitute" xml:space="preserve">
+    <value>Referral Institute</value>
+  </data>
+  <data name="ancReferralInstituteBefore" xml:space="preserve">
+    <value>Referral Institute Before</value>
+  </data>
+  <data name="ancReferralReason" xml:space="preserve">
+    <value>Referral Reason</value>
+  </data>
+  <data name="ancReferralReasonBefore" xml:space="preserve">
+    <value>Referral Reason Before</value>
+  </data>
+  <data name="ancRegistrationDate" xml:space="preserve">
+    <value>Registration Date</value>
+  </data>
+  <data name="ancRemarks" xml:space="preserve">
+    <value>Remarks</value>
+  </data>
+  <data name="ancSwelling" xml:space="preserve">
+    <value>Swelling</value>
+  </data>
+  <data name="ancTemperature" xml:space="preserve">
+    <value>Temperature</value>
+  </data>
+  <data name="ancTTDate" xml:space="preserve">
+    <value>TT Date</value>
+  </data>
+  <data name="ancTTTerm" xml:space="preserve">
+    <value>TT No</value>
+  </data>
+  <data name="ancTTVisitWhere" xml:space="preserve">
+    <value>TT Visit Where</value>
+  </data>
+  <data name="ancVisitDate" xml:space="preserve">
+    <value>Visit Date</value>
+  </data>
+  <data name="ancVisitNo" xml:space="preserve">
+    <value>VisitNo</value>
+  </data>
+  <data name="anc_Counseling_1" xml:space="preserve">
+    <value>Pregnancy Service (ANC) and Regular Follow-Up</value>
+  </data>
+  <data name="anc_Counseling_10" xml:space="preserve">
+    <value>Post-Delivery Services</value>
+  </data>
+  <data name="anc_Counseling_11" xml:space="preserve">
+    <value>Post-Delivery Family Planning and Birth Anniversary</value>
+  </data>
+  <data name="anc_Counseling_12" xml:space="preserve">
+    <value>Showing Video</value>
+  </data>
+  <data name="anc_Counseling_13" xml:space="preserve">
+    <value>Hand Wash with Soap</value>
+  </data>
+  <data name="anc_Counseling_14" xml:space="preserve">
+    <value>Boil Drinking Water at least 20 minutes</value>
+  </data>
+  <data name="anc_Counseling_2" xml:space="preserve">
+    <value>Tetanus Antidote/Remedial</value>
+  </data>
+  <data name="anc_Counseling_3" xml:space="preserve">
+    <value>Healthy Food and Nutrition</value>
+  </data>
+  <data name="anc_Counseling_4" xml:space="preserve">
+    <value>Iron and Folic Acid</value>
+  </data>
+  <data name="anc_Counseling_5" xml:space="preserve">
+    <value>Acquired Calcium</value>
+  </data>
+  <data name="anc_Counseling_6" xml:space="preserve">
+    <value>Rest and Other Works</value>
+  </data>
+  <data name="anc_Counseling_7" xml:space="preserve">
+    <value>Personal Cleanliness and Self-Care</value>
+  </data>
+  <data name="anc_Counseling_8" xml:space="preserve">
+    <value>Immediate and Urgent Care of The Newborn</value>
+  </data>
+  <data name="anc_Counseling_9" xml:space="preserve">
+    <value>Breastfeeding</value>
+  </data>
+  <data name="anc_counseling_title" xml:space="preserve">
+    <value>Counseling</value>
+  </data>
+  <data name="anc_danger_sign_1" xml:space="preserve">
+    <value>Bleeding in Vagina</value>
+  </data>
+  <data name="anc_danger_sign_2" xml:space="preserve">
+    <value>Severe headaches and blurred vision</value>
+  </data>
+  <data name="anc_danger_sign_3" xml:space="preserve">
+    <value>More than 100.40F / 380C fever for 3 days or more</value>
+  </data>
+  <data name="anc_danger_sign_4" xml:space="preserve">
+    <value>Preventive or delayed delivery or risk of child in the womb</value>
+  </data>
+  <data name="anc_danger_sign_5" xml:space="preserve">
+    <value>Seizure</value>
+  </data>
+  <data name="anc_danger_sign_title" xml:space="preserve">
+    <value>Today danger sign</value>
+  </data>
+  <data name="anc_training_support_title" xml:space="preserve">
+    <value>Today provided training and support</value>
+  </data>
+  <data name="anc_visit_0" xml:space="preserve">
+    <value>Does not pay visit</value>
+  </data>
+  <data name="anc_visit_1" xml:space="preserve">
+    <value>ANC visit 1</value>
+  </data>
+  <data name="anc_visit_2" xml:space="preserve">
+    <value>ANC visit 2</value>
+  </data>
+  <data name="anc_visit_3" xml:space="preserve">
+    <value>ANC visit 3</value>
+  </data>
+  <data name="anc_visit_4" xml:space="preserve">
+    <value>ANC visit 4</value>
+  </data>
+  <data name="anc_visit_5" xml:space="preserve">
+    <value>ANC visit 5</value>
+  </data>
+  <data name="anc_visit_6" xml:space="preserve">
+    <value>ANC visit 6</value>
+  </data>
+  <data name="chlAge" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="chlBenId" xml:space="preserve">
+    <value>Beneficiary Id</value>
+  </data>
+  <data name="chlBenName" xml:space="preserve">
+    <value>Beneficiary Name</value>
+  </data>
+  <data name="chlChestDrawing" xml:space="preserve">
+    <value>Chest Drawing</value>
+  </data>
+  <data name="chlConjunctivitis" xml:space="preserve">
+    <value>Conjunctivitis</value>
+  </data>
+  <data name="chlConvulsion" xml:space="preserve">
+    <value>Convulsion</value>
+  </data>
+  <data name="chlCoughing" xml:space="preserve">
+    <value>Coughing</value>
+  </data>
+  <data name="chlDateOfBirth" xml:space="preserve">
+    <value>Date Of Birth</value>
+  </data>
+  <data name="chlDiarrhea" xml:space="preserve">
+    <value>Diarrhea</value>
+  </data>
+  <data name="chlDrinking" xml:space="preserve">
+    <value>Drinking</value>
+  </data>
+  <data name="chlHeartRate" xml:space="preserve">
+    <value>Heart Rate</value>
+  </data>
+  <data name="chlInfantSuck" xml:space="preserve">
+    <value>Infant Suck</value>
+  </data>
+  <data name="chlMuac" xml:space="preserve">
+    <value>Muac</value>
+  </data>
+  <data name="chlNasalDischarge" xml:space="preserve">
+    <value>Nasal Discharge</value>
+  </data>
+  <data name="chlPaleEyelids" xml:space="preserve">
+    <value>Pale Eyelids</value>
+  </data>
+  <data name="chlPalePalms" xml:space="preserve">
+    <value>Pale Palms</value>
+  </data>
+  <data name="chlPittingEdema" xml:space="preserve">
+    <value>Pitting Edema</value>
+  </data>
+  <data name="chlRash" xml:space="preserve">
+    <value>Rash</value>
+  </data>
+  <data name="chlReferralHospital" xml:space="preserve">
+    <value>Referral Hospital</value>
+  </data>
+  <data name="chlReferralHospitalBefore" xml:space="preserve">
+    <value>Referral Hospital Before</value>
+  </data>
+  <data name="chlReferralInstitute" xml:space="preserve">
+    <value>Referral Institute</value>
+  </data>
+  <data name="chlReferralInstituteBefore" xml:space="preserve">
+    <value>Referral Institute Before</value>
+  </data>
+  <data name="chlReferralReason" xml:space="preserve">
+    <value>Referral Reason</value>
+  </data>
+  <data name="chlReferralReasonBefore" xml:space="preserve">
+    <value>Referral Reason Before</value>
+  </data>
+  <data name="chlRegistrationDate" xml:space="preserve">
+    <value>Registration Date</value>
+  </data>
+  <data name="chlRemarks" xml:space="preserve">
+    <value>Remarks</value>
+  </data>
+  <data name="chlRespiratory" xml:space="preserve">
+    <value>Respiratory</value>
+  </data>
+  <data name="chlSkinInfection" xml:space="preserve">
+    <value>SkinInfection</value>
+  </data>
+  <data name="chlSkinTurgor" xml:space="preserve">
+    <value>Skin Turgor</value>
+  </data>
+  <data name="chlTears" xml:space="preserve">
+    <value>Tears</value>
+  </data>
+  <data name="chlTemperature" xml:space="preserve">
+    <value>Temperature</value>
+  </data>
+  <data name="chlUrinated" xml:space="preserve">
+    <value>Urinated</value>
+  </data>
+  <data name="chlVisitDate" xml:space="preserve">
+    <value>Visit Date</value>
+  </data>
+  <data name="chlVisitNo" xml:space="preserve">
+    <value>Visit No</value>
+  </data>
+  <data name="chlVomiting" xml:space="preserve">
+    <value>Vomiting</value>
+  </data>
+  <data name="chlWeight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="chlWheezing" xml:space="preserve">
+    <value>Wheezing</value>
+  </data>
+  <data name="chl_coughing1" xml:space="preserve">
+    <value>No cough</value>
+  </data>
+  <data name="chl_coughing2" xml:space="preserve">
+    <value>Cough less than 14 days</value>
+  </data>
+  <data name="chl_coughing3" xml:space="preserve">
+    <value>Cough more than 14 days</value>
+  </data>
+  <data name="chl_diarrhea1" xml:space="preserve">
+    <value>No Diarrhea</value>
+  </data>
+  <data name="chl_diarrhea2" xml:space="preserve">
+    <value>1-5 times</value>
+  </data>
+  <data name="chl_diarrhea3" xml:space="preserve">
+    <value>6-10 times</value>
+  </data>
+  <data name="chl_diarrhea4" xml:space="preserve">
+    <value>More than 10 times</value>
+  </data>
+  <data name="chl_drinking1" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="chl_drinking2" xml:space="preserve">
+    <value>More than normal</value>
+  </data>
+  <data name="chl_drinking3" xml:space="preserve">
+    <value>Less than normal</value>
+  </data>
+  <data name="chl_drinking4" xml:space="preserve">
+    <value>Not Drinking or Breast Feeding</value>
+  </data>
+  <data name="chl_info_counseling" xml:space="preserve">
+    <value>Counseling and Support</value>
+  </data>
+  <data name="chl_info_general" xml:space="preserve">
+    <value>General Information</value>
+  </data>
+  <data name="chl_info_observation" xml:space="preserve">
+    <value>Observation</value>
+  </data>
+  <data name="chl_info_referral" xml:space="preserve">
+    <value>Referral</value>
+  </data>
+  <data name="chl_list_item_button1" xml:space="preserve">
+    <value>Vaccine Information</value>
+  </data>
+  <data name="chl_list_item_button2" xml:space="preserve">
+    <value>Counseling</value>
+  </data>
+  <data name="chl_list_item_button3" xml:space="preserve">
+    <value>Teaching and Support</value>
+  </data>
+  <data name="chl_list_item_title1" xml:space="preserve">
+    <value>Vaccine Information</value>
+  </data>
+  <data name="chl_list_item_title2" xml:space="preserve">
+    <value>Counseling</value>
+  </data>
+  <data name="chl_list_item_title3" xml:space="preserve">
+    <value>Teaching and support Today</value>
+  </data>
+  <data name="chl_muac1" xml:space="preserve">
+    <value>Red/Orange</value>
+  </data>
+  <data name="chl_muac2" xml:space="preserve">
+    <value>Green</value>
+  </data>
+  <data name="chl_muac3" xml:space="preserve">
+    <value>Yellow</value>
+  </data>
+  <data name="chl_refer_reason1" xml:space="preserve">
+    <value>No Reason</value>
+  </data>
+  <data name="chl_refer_reason2" xml:space="preserve">
+    <value>Sick</value>
+  </data>
+  <data name="chl_refer_reason3" xml:space="preserve">
+    <value>Vaccination</value>
+  </data>
+  <data name="chl_refer_reason4" xml:space="preserve">
+    <value>Diarrhea</value>
+  </data>
+  <data name="chl_refer_reason5" xml:space="preserve">
+    <value>Respiratory Symptoms including Pneumonia</value>
+  </data>
+  <data name="chl_refer_reason6" xml:space="preserve">
+    <value>Danger Signs</value>
+  </data>
+  <data name="chl_refer_reason7" xml:space="preserve">
+    <value>Severe Malnutrition</value>
+  </data>
+  <data name="chl_refer_reason8" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="chl_skin_infection1" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="chl_skin_infection2" xml:space="preserve">
+    <value>Warm</value>
+  </data>
+  <data name="chl_skin_infection3" xml:space="preserve">
+    <value>Swelling</value>
+  </data>
+  <data name="chl_skin_infection4" xml:space="preserve">
+    <value>Pain</value>
+  </data>
+  <data name="chl_skin_infection5" xml:space="preserve">
+    <value>Discharge/Drainage</value>
+  </data>
+  <data name="chl_skin_turgor1" xml:space="preserve">
+    <value>Rapidly: Normal</value>
+  </data>
+  <data name="chl_skin_turgor2" xml:space="preserve">
+    <value>Slow: 1-2 seconds</value>
+  </data>
+  <data name="chl_skin_turgor3" xml:space="preserve">
+    <value>Very slow: more than 2 seconds</value>
+  </data>
+  <data name="chl_tears1" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="chl_tears2" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="chl_tears3" xml:space="preserve">
+    <value>Don't know</value>
+  </data>
+  <data name="chl_urinated1" xml:space="preserve">
+    <value>Within last 6 hours</value>
+  </data>
+  <data name="chl_urinated2" xml:space="preserve">
+    <value>6-12 hours ago</value>
+  </data>
+  <data name="chl_urinated3" xml:space="preserve">
+    <value>More than 12 hours ago</value>
+  </data>
+  <data name="chl_urinated4" xml:space="preserve">
+    <value>Don\'t know</value>
+  </data>
+  <data name="chl_vomiting1" xml:space="preserve">
+    <value>No vomiting</value>
+  </data>
+  <data name="chl_vomiting2" xml:space="preserve">
+    <value>1-5 times</value>
+  </data>
+  <data name="chl_vomiting3" xml:space="preserve">
+    <value>6-10 times</value>
+  </data>
+  <data name="chl_vomiting4" xml:space="preserve">
+    <value>More than 10 times</value>
+  </data>
+  <data name="comAttachedToilet" xml:space="preserve">
+    <value>Attached Toilet</value>
+  </data>
+  <data name="comAttachedToiletGr" xml:space="preserve">
+    <value>Attached</value>
+  </data>
+  <data name="comCbheMember" xml:space="preserve">
+    <value>Cbhe Member</value>
+  </data>
+  <data name="comChildToiletUse" xml:space="preserve">
+    <value>Child use Toilet</value>
+  </data>
+  <data name="comCleanToilet" xml:space="preserve">
+    <value>Toilet is Clean</value>
+  </data>
+  <data name="comCleanToiletGr" xml:space="preserve">
+    <value>Clean</value>
+  </data>
+  <data name="comCoverDrinkingWater" xml:space="preserve">
+    <value>Cover Drinking Water</value>
+  </data>
+  <data name="comCvMember" xml:space="preserve">
+    <value>Cv Member</value>
+  </data>
+  <data name="comDrinkBoilWater" xml:space="preserve">
+    <value>Drink Boil Water</value>
+  </data>
+  <data name="comDrinkingWaterOther" xml:space="preserve">
+    <value>Other Drinking Water Source</value>
+  </data>
+  <data name="comDrinkingWaterUseMsg" xml:space="preserve">
+    <value>Drinking Water Use Message</value>
+  </data>
+  <data name="comHomeName" xml:space="preserve">
+    <value>Home Name</value>
+  </data>
+  <data name="comHomeNo" xml:space="preserve">
+    <value>Home No</value>
+  </data>
+  <data name="comHouseID" xml:space="preserve">
+    <value>House ID</value>
+  </data>
+  <data name="comLockToilet" xml:space="preserve">
+    <value>Toilet has Lock</value>
+  </data>
+  <data name="comLockToiletGr" xml:space="preserve">
+    <value>Lock</value>
+  </data>
+  <data name="comPosterToilet" xml:space="preserve">
+    <value>Poster in Toilet</value>
+  </data>
+  <data name="comPosterToiletGr" xml:space="preserve">
+    <value>Posters</value>
+  </data>
+  <data name="comRemarks" xml:space="preserve">
+    <value>Remarks</value>
+  </data>
+  <data name="comToiletNumber" xml:space="preserve">
+    <value>Toilet Number</value>
+  </data>
+  <data name="comToiletNumberGr" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="comToiletUseMsg" xml:space="preserve">
+    <value>Toilet Use Message</value>
+  </data>
+  <data name="comVisitDate" xml:space="preserve">
+    <value>Visit Date</value>
+  </data>
+  <data name="comVisitNo" xml:space="preserve">
+    <value>VisitNo</value>
+  </data>
+  <data name="comWasteBinBlueUse" xml:space="preserve">
+    <value>Blue Waste Bin Use</value>
+  </data>
+  <data name="comWasteBinCover" xml:space="preserve">
+    <value>Red Waste Bin Cover</value>
+  </data>
+  <data name="comWasteBinUse" xml:space="preserve">
+    <value>Red Waste Bin Use</value>
+  </data>
+  <data name="comWasteBinUseMsg" xml:space="preserve">
+    <value>Waste Bin Use Message</value>
+  </data>
+  <data name="com_info_general" xml:space="preserve">
+    <value>General Information</value>
+  </data>
+  <data name="com_info_hand_wash" xml:space="preserve">
+    <value>Child Hand Wash Information</value>
+  </data>
+  <data name="com_info_toilet_followup" xml:space="preserve">
+    <value>Toilet Follow-up Information</value>
+  </data>
+  <data name="com_info_toilet_list" xml:space="preserve">
+    <value>Toilet Information</value>
+  </data>
+  <data name="com_info_wast_management" xml:space="preserve">
+    <value>Waste Management Information</value>
+  </data>
+  <data name="com_info_water_management" xml:space="preserve">
+    <value>Safe Drinking Water Information</value>
+  </data>
+  <data name="counseling" xml:space="preserve">
+    <value>Counseling</value>
+  </data>
+  <data name="counseling_support" xml:space="preserve">
+    <value>Counseling and Support</value>
+  </data>
+  <data name="danger_sign" xml:space="preserve">
+    <value>Danger sign</value>
+  </data>
+  <data name="dewAge" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="dewBenId" xml:space="preserve">
+    <value>Beneficiary Id</value>
+  </data>
+  <data name="dewBenName" xml:space="preserve">
+    <value>Beneficiary Name</value>
+  </data>
+  <data name="dewCard" xml:space="preserve">
+    <value>Card</value>
+  </data>
+  <data name="dewDateOfBirth" xml:space="preserve">
+    <value>Date Of Birth</value>
+  </data>
+  <data name="dewDose" xml:space="preserve">
+    <value>Dose</value>
+  </data>
+  <data name="dewFollowup" xml:space="preserve">
+    <value>Followup</value>
+  </data>
+  <data name="dewIntegration" xml:space="preserve">
+    <value>Integration</value>
+  </data>
+  <data name="dewMssDose" xml:space="preserve">
+    <value>MssDose</value>
+  </data>
+  <data name="dewRemarks" xml:space="preserve">
+    <value>Remarks</value>
+  </data>
+  <data name="dewServicePoint" xml:space="preserve">
+    <value>ServicePoint</value>
+  </data>
+  <data name="dewVisitDate" xml:space="preserve">
+    <value>VisitDate</value>
+  </data>
+  <data name="dewVisitNo" xml:space="preserve">
+    <value>VisitNo</value>
+  </data>
+  <data name="dew_info_general" xml:space="preserve">
+    <value>General Information</value>
+  </data>
+  <data name="dew_info_observation" xml:space="preserve">
+    <value>Observation</value>
+  </data>
+  <data name="eighth" xml:space="preserve">
+    <value>Eighth</value>
+  </data>
+  <data name="fifth" xml:space="preserve">
+    <value>Fifth</value>
+  </data>
+  <data name="first" xml:space="preserve">
+    <value>First</value>
+  </data>
+  <data name="fourth" xml:space="preserve">
+    <value>Fourth</value>
+  </data>
+  <data name="FromDate" xml:space="preserve">
+    <value>From Date</value>
+  </data>
+  <data name="happen_at_hospital" xml:space="preserve">
+    <value>Happened at hospital</value>
+  </data>
+  <data name="ifaAge" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="ifaBenId" xml:space="preserve">
+    <value>Beneficiary Id</value>
+  </data>
+  <data name="ifaBenName" xml:space="preserve">
+    <value>Beneficiary Name</value>
+  </data>
+  <data name="ifaCALGot" xml:space="preserve">
+    <value>Received</value>
+  </data>
+  <data name="ifaCALInHand" xml:space="preserve">
+    <value>In Hand</value>
+  </data>
+  <data name="ifaCALTaken" xml:space="preserve">
+    <value>Taken</value>
+  </data>
+  <data name="ifaDateOfBirth" xml:space="preserve">
+    <value>Date Of Birth</value>
+  </data>
+  <data name="ifaIFAGot" xml:space="preserve">
+    <value>Received</value>
+  </data>
+  <data name="ifaIFAInHand" xml:space="preserve">
+    <value>In Hand</value>
+  </data>
+  <data name="ifaIFATaken" xml:space="preserve">
+    <value>Taken</value>
+  </data>
+  <data name="ifa_cal_stock" xml:space="preserve">
+    <value>How many Calcium?</value>
+  </data>
+  <data name="ifa_ifa_stock" xml:space="preserve">
+    <value>How many Iron and Folic Acid?</value>
+  </data>
+  <data name="ifa_info_general" xml:space="preserve">
+    <value>General Information</value>
+  </data>
+  <data name="ifa_info_ifa" xml:space="preserve">
+    <value>IFA Follow-up</value>
+  </data>
+  <data name="ifa_side_effect" xml:space="preserve">
+    <value>Any side effect due to Iron/Folic Acid?</value>
+  </data>
+  <data name="monAge" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="monBenId" xml:space="preserve">
+    <value>Beneficiary Id</value>
+  </data>
+  <data name="monBenName" xml:space="preserve">
+    <value>Beneficiary Name</value>
+  </data>
+  <data name="monDateOfBirth" xml:space="preserve">
+    <value>Date Of Birth</value>
+  </data>
+  <data name="monFirstMonth" xml:space="preserve">
+    <value>First Month Completed</value>
+  </data>
+  <data name="monSecondMonth" xml:space="preserve">
+    <value>Second Month Completed</value>
+  </data>
+  <data name="monSixMonthCompleted" xml:space="preserve">
+    <value>Six Month Completed</value>
+  </data>
+  <data name="mon_info_general" xml:space="preserve">
+    <value>General Information</value>
+  </data>
+  <data name="mon_info_monimix" xml:space="preserve">
+    <value>Monimix Follow-up</value>
+  </data>
+  <data name="newAge" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="newBenId" xml:space="preserve">
+    <value>Beneficiary Id</value>
+  </data>
+  <data name="newBenName" xml:space="preserve">
+    <value>Beneficiary Name</value>
+  </data>
+  <data name="newChestDrawing" xml:space="preserve">
+    <value>ChestDrawing</value>
+  </data>
+  <data name="newConjunctivitis" xml:space="preserve">
+    <value>Conjunctivitis</value>
+  </data>
+  <data name="newConvulsion" xml:space="preserve">
+    <value>Convulsion</value>
+  </data>
+  <data name="newCoughing" xml:space="preserve">
+    <value>Coughing</value>
+  </data>
+  <data name="newDateOfBirth" xml:space="preserve">
+    <value>Date Of Birth</value>
+  </data>
+  <data name="newDiarrhea" xml:space="preserve">
+    <value>Diarrhea</value>
+  </data>
+  <data name="newDrinking" xml:space="preserve">
+    <value>Drinking</value>
+  </data>
+  <data name="newHeartRate" xml:space="preserve">
+    <value>HeartRate</value>
+  </data>
+  <data name="newInfantSuck" xml:space="preserve">
+    <value>Infant Suck</value>
+  </data>
+  <data name="newMuac" xml:space="preserve">
+    <value>Muac</value>
+  </data>
+  <data name="newNasalDischarge" xml:space="preserve">
+    <value>Nasal Discharge</value>
+  </data>
+  <data name="newPaleEyelids" xml:space="preserve">
+    <value>Pale Eyelids</value>
+  </data>
+  <data name="newPalePalms" xml:space="preserve">
+    <value>Pale Palms</value>
+  </data>
+  <data name="newPittingEdema" xml:space="preserve">
+    <value>Pitting Edema</value>
+  </data>
+  <data name="newRash" xml:space="preserve">
+    <value>Rash</value>
+  </data>
+  <data name="newReferralHospital" xml:space="preserve">
+    <value>Referral Hospital</value>
+  </data>
+  <data name="newReferralHospitalBefore" xml:space="preserve">
+    <value>Referral Hospital Before</value>
+  </data>
+  <data name="newReferralInstitute" xml:space="preserve">
+    <value>Referral Institute</value>
+  </data>
+  <data name="newReferralInstituteBefore" xml:space="preserve">
+    <value>Referral Institute Before</value>
+  </data>
+  <data name="newReferralReason" xml:space="preserve">
+    <value>Referral Reason</value>
+  </data>
+  <data name="newReferralReasonBefore" xml:space="preserve">
+    <value>Referral Reason Before</value>
+  </data>
+  <data name="newRegistrationDate" xml:space="preserve">
+    <value>Registration Date</value>
+  </data>
+  <data name="newRemarks" xml:space="preserve">
+    <value>Remarks</value>
+  </data>
+  <data name="newRespiratory" xml:space="preserve">
+    <value>Respiratory</value>
+  </data>
+  <data name="newSkinInfection" xml:space="preserve">
+    <value>SkinInfection</value>
+  </data>
+  <data name="newSkinTurgor" xml:space="preserve">
+    <value>Skin Turgor</value>
+  </data>
+  <data name="newTears" xml:space="preserve">
+    <value>Tears</value>
+  </data>
+  <data name="newTemperature" xml:space="preserve">
+    <value>Temperature</value>
+  </data>
+  <data name="newUmbilicalInfection" xml:space="preserve">
+    <value>Umbilical Infection</value>
+  </data>
+  <data name="newUrinated" xml:space="preserve">
+    <value>Urinated</value>
+  </data>
+  <data name="newVisitDate" xml:space="preserve">
+    <value>Visit Date</value>
+  </data>
+  <data name="newVisitNo" xml:space="preserve">
+    <value>VisitNo</value>
+  </data>
+  <data name="newVomiting" xml:space="preserve">
+    <value>Vomiting</value>
+  </data>
+  <data name="newWeight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="newWheezing" xml:space="preserve">
+    <value>Wheezing</value>
+  </data>
+  <data name="new_breathing1" xml:space="preserve">
+    <value>Breathing normally</value>
+  </data>
+  <data name="new_breathing2" xml:space="preserve">
+    <value>Breathing fast</value>
+  </data>
+  <data name="new_breathing3" xml:space="preserve">
+    <value>Struggling or working hard to breathe</value>
+  </data>
+  <data name="new_gender1" xml:space="preserve">
+    <value>Boy</value>
+  </data>
+  <data name="new_gender2" xml:space="preserve">
+    <value>Girl</value>
+  </data>
+  <data name="new_infant_suck1" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="new_infant_suck2" xml:space="preserve">
+    <value>Poor</value>
+  </data>
+  <data name="new_infant_suck3" xml:space="preserve">
+    <value>Will not suck</value>
+  </data>
+  <data name="new_info_counseling" xml:space="preserve">
+    <value>Counseling and Support</value>
+  </data>
+  <data name="new_info_general" xml:space="preserve">
+    <value>General Information</value>
+  </data>
+  <data name="new_info_observation" xml:space="preserve">
+    <value>Observation</value>
+  </data>
+  <data name="new_info_referral" xml:space="preserve">
+    <value>Referral</value>
+  </data>
+  <data name="new_list_item_button1" xml:space="preserve">
+    <value>Vaccine Information</value>
+  </data>
+  <data name="new_list_item_button2" xml:space="preserve">
+    <value>Counseling</value>
+  </data>
+  <data name="new_list_item_button3" xml:space="preserve">
+    <value>Teaching and Support</value>
+  </data>
+  <data name="new_list_item_title1" xml:space="preserve">
+    <value>Vaccine Information</value>
+  </data>
+  <data name="new_list_item_title2" xml:space="preserve">
+    <value>Counseling</value>
+  </data>
+  <data name="new_list_item_title3" xml:space="preserve">
+    <value>Teaching and support Today</value>
+  </data>
+  <data name="new_refer_reason1" xml:space="preserve">
+    <value>No Reason</value>
+  </data>
+  <data name="new_refer_reason2" xml:space="preserve">
+    <value>Sick</value>
+  </data>
+  <data name="new_refer_reason3" xml:space="preserve">
+    <value>Vaccination</value>
+  </data>
+  <data name="new_refer_reason4" xml:space="preserve">
+    <value>Postnatal Care</value>
+  </data>
+  <data name="new_refer_reason5" xml:space="preserve">
+    <value>Danger Signs</value>
+  </data>
+  <data name="new_refer_reason6" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="new_umbilicaliInfection1" xml:space="preserve">
+    <value>Redness Extends to Skin</value>
+  </data>
+  <data name="new_umbilicaliInfection2" xml:space="preserve">
+    <value>Swelling</value>
+  </data>
+  <data name="new_umbilicaliInfection3" xml:space="preserve">
+    <value>Discharge</value>
+  </data>
+  <data name="ninth" xml:space="preserve">
+    <value>Ninth</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="not_applicable" xml:space="preserve">
+    <value>Not Applicable</value>
+  </data>
+  <data name="not_happen" xml:space="preserve">
+    <value>Not happened</value>
+  </data>
+  <data name="no_reason" xml:space="preserve">
+    <value>No reason</value>
+  </data>
+  <data name="others" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="pncAge" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="pncBenId" xml:space="preserve">
+    <value>Beneficiary Id</value>
+  </data>
+  <data name="pncBenName" xml:space="preserve">
+    <value>Beneficiary Name</value>
+  </data>
+  <data name="pncBloodPressure" xml:space="preserve">
+    <value>Blood Pressure</value>
+  </data>
+  <data name="pncDateOfBirth" xml:space="preserve">
+    <value>Date Of Birth</value>
+  </data>
+  <data name="pncDeliveryAttendant" xml:space="preserve">
+    <value>Delivery Attendant</value>
+  </data>
+  <data name="pncDeliveryDate" xml:space="preserve">
+    <value>Delivery Date</value>
+  </data>
+  <data name="pncDeliveryPlace" xml:space="preserve">
+    <value>Delivery Place</value>
+  </data>
+  <data name="pncDeliveryResult" xml:space="preserve">
+    <value>Delivery Result</value>
+  </data>
+  <data name="pncHeartRate" xml:space="preserve">
+    <value>Heart Rate</value>
+  </data>
+  <data name="pncPaleEyelids" xml:space="preserve">
+    <value>Pale Eyelids</value>
+  </data>
+  <data name="pncPncVisitDate" xml:space="preserve">
+    <value>Pnc Visit Date</value>
+  </data>
+  <data name="pncPncVisitTerm" xml:space="preserve">
+    <value>Pnc Visit NO</value>
+  </data>
+  <data name="pncPncVisitWhere" xml:space="preserve">
+    <value>Pnc Visit Where</value>
+  </data>
+  <data name="pncReferralHospital" xml:space="preserve">
+    <value>Referral Hospital</value>
+  </data>
+  <data name="pncReferralHospitalBefore" xml:space="preserve">
+    <value>Referral Hospital Before</value>
+  </data>
+  <data name="pncReferralInstitute" xml:space="preserve">
+    <value>Referral Institute</value>
+  </data>
+  <data name="pncReferralInstituteBefore" xml:space="preserve">
+    <value>Referral Institute Before</value>
+  </data>
+  <data name="pncReferralReason" xml:space="preserve">
+    <value>Referral Reason</value>
+  </data>
+  <data name="pncReferralReasonBefore" xml:space="preserve">
+    <value>Referral Reason Before</value>
+  </data>
+  <data name="pncRegistrationDate" xml:space="preserve">
+    <value>Registration Date</value>
+  </data>
+  <data name="pncRemarks" xml:space="preserve">
+    <value>Remarks</value>
+  </data>
+  <data name="pncSwelling" xml:space="preserve">
+    <value>Swelling</value>
+  </data>
+  <data name="pncTemperature" xml:space="preserve">
+    <value>Temperature</value>
+  </data>
+  <data name="pncVisitDate" xml:space="preserve">
+    <value>Visit Date</value>
+  </data>
+  <data name="pncVisitNo" xml:space="preserve">
+    <value>Visit No</value>
+  </data>
+  <data name="pnc_counseling1" xml:space="preserve">
+    <value>Danger Signs</value>
+  </data>
+  <data name="pnc_counseling10" xml:space="preserve">
+    <value>Boiling water before Drinking</value>
+  </data>
+  <data name="pnc_counseling2" xml:space="preserve">
+    <value>Breastfeeding</value>
+  </data>
+  <data name="pnc_counseling3" xml:space="preserve">
+    <value>Maternal diet and supplementation</value>
+  </data>
+  <data name="pnc_counseling4" xml:space="preserve">
+    <value>Rest and other activities</value>
+  </data>
+  <data name="pnc_counseling5" xml:space="preserve">
+    <value>Maintain personal hygiene</value>
+  </data>
+  <data name="pnc_counseling6" xml:space="preserve">
+    <value>Bladder and Bowel care</value>
+  </data>
+  <data name="pnc_counseling7" xml:space="preserve">
+    <value>Postnatal Care (PNC) visit at health facility</value>
+  </data>
+  <data name="pnc_counseling8" xml:space="preserve">
+    <value>Postpartum family planning</value>
+  </data>
+  <data name="pnc_counseling9" xml:space="preserve">
+    <value>Hand washing with Soap</value>
+  </data>
+  <data name="pnc_danger_after1" xml:space="preserve">
+    <value>Profuse vaginal bleeding or vaginal bleeding that increases</value>
+  </data>
+  <data name="pnc_danger_after2" xml:space="preserve">
+    <value>Moderate to severe hypertension (140/90 or above)</value>
+  </data>
+  <data name="pnc_danger_after3" xml:space="preserve">
+    <value>Convulsions/Fit</value>
+  </data>
+  <data name="pnc_danger_after4" xml:space="preserve">
+    <value>Severe abdominal pain with foul smelling discharge with fever</value>
+  </data>
+  <data name="pnc_danger_after5" xml:space="preserve">
+    <value>Severe pain in chest or shortness of breath</value>
+  </data>
+  <data name="pnc_danger_after6" xml:space="preserve">
+    <value>Urine and/or feces leaking out of the vagina</value>
+  </data>
+  <data name="pnc_danger_after7" xml:space="preserve">
+    <value>Something coming out of the vagina</value>
+  </data>
+  <data name="pnc_danger_before1" xml:space="preserve">
+    <value>Heavy Bleeding</value>
+  </data>
+  <data name="pnc_danger_before2" xml:space="preserve">
+    <value>Obstructed Labor</value>
+  </data>
+  <data name="pnc_danger_before3" xml:space="preserve">
+    <value>Prolonged labor more than 12 Hours</value>
+  </data>
+  <data name="pnc_danger_before4" xml:space="preserve">
+    <value>Blurring of Vision</value>
+  </data>
+  <data name="pnc_danger_before5" xml:space="preserve">
+    <value>Convulsions/Fit</value>
+  </data>
+  <data name="pnc_delivery_attendant1" xml:space="preserve">
+    <value>Doctor</value>
+  </data>
+  <data name="pnc_delivery_attendant2" xml:space="preserve">
+    <value>Nurse</value>
+  </data>
+  <data name="pnc_delivery_attendant3" xml:space="preserve">
+    <value>Specialized Birth Assistance (SBA)/Hospital</value>
+  </data>
+  <data name="pnc_delivery_attendant4" xml:space="preserve">
+    <value>Traditional and Untrained Birth Assistance (TBA)</value>
+  </data>
+  <data name="pnc_delivery_attendant5" xml:space="preserve">
+    <value>Relative or Family Member</value>
+  </data>
+  <data name="pnc_delivery_attendant6" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="pnc_delivery_place1" xml:space="preserve">
+    <value>Govt. Hospital</value>
+  </data>
+  <data name="pnc_delivery_place2" xml:space="preserve">
+    <value>NGO Hospital</value>
+  </data>
+  <data name="pnc_delivery_place3" xml:space="preserve">
+    <value>Private Clinic/Hospital</value>
+  </data>
+  <data name="pnc_delivery_place4" xml:space="preserve">
+    <value>Delivery at Home</value>
+  </data>
+  <data name="pnc_delivery_result1" xml:space="preserve">
+    <value>Boy</value>
+  </data>
+  <data name="pnc_delivery_result2" xml:space="preserve">
+    <value>Girl</value>
+  </data>
+  <data name="pnc_delivery_result3" xml:space="preserve">
+    <value>Dead</value>
+  </data>
+  <data name="pnc_info_counseling" xml:space="preserve">
+    <value>Counseling and Support</value>
+  </data>
+  <data name="pnc_info_delivery" xml:space="preserve">
+    <value>Delivery Information</value>
+  </data>
+  <data name="pnc_info_general" xml:space="preserve">
+    <value>General Information</value>
+  </data>
+  <data name="pnc_info_observation" xml:space="preserve">
+    <value>Observation</value>
+  </data>
+  <data name="pnc_info_referral" xml:space="preserve">
+    <value>Referral</value>
+  </data>
+  <data name="pnc_list_item_button1" xml:space="preserve">
+    <value>Danger Signs During Delivery</value>
+  </data>
+  <data name="pnc_list_item_button2" xml:space="preserve">
+    <value>Danger Signs After Delivery</value>
+  </data>
+  <data name="pnc_list_item_button3" xml:space="preserve">
+    <value>Counseling</value>
+  </data>
+  <data name="pnc_list_item_button4" xml:space="preserve">
+    <value>Newborn Counseling</value>
+  </data>
+  <data name="pnc_list_item_button5" xml:space="preserve">
+    <value>Teaching and Support</value>
+  </data>
+  <data name="pnc_list_item_title1" xml:space="preserve">
+    <value>Danger Signs During Delivery?</value>
+  </data>
+  <data name="pnc_list_item_title2" xml:space="preserve">
+    <value>Danger Signs After Delivery?</value>
+  </data>
+  <data name="pnc_list_item_title3" xml:space="preserve">
+    <value>Counseling</value>
+  </data>
+  <data name="pnc_list_item_title4" xml:space="preserve">
+    <value>Newborn Counseling</value>
+  </data>
+  <data name="pnc_list_item_title5" xml:space="preserve">
+    <value>Teaching and support Today</value>
+  </data>
+  <data name="pnc_newborn_counseling1" xml:space="preserve">
+    <value>Danger Signs Counseling</value>
+  </data>
+  <data name="pnc_newborn_counseling2" xml:space="preserve">
+    <value>Exclusive Breastfeeding up to 6 months</value>
+  </data>
+  <data name="pnc_newborn_counseling3" xml:space="preserve">
+    <value>Supplemental Feeding after 6 months</value>
+  </data>
+  <data name="pnc_newborn_counseling4" xml:space="preserve">
+    <value>Immunization</value>
+  </data>
+  <data name="pnc_newborn_counseling5" xml:space="preserve">
+    <value>Postnatal Visit</value>
+  </data>
+  <data name="pnc_newborn_counseling6" xml:space="preserve">
+    <value>Video Display</value>
+  </data>
+  <data name="pnc_newborn_counseling7" xml:space="preserve">
+    <value>Child Protection Messages</value>
+  </data>
+  <data name="pnc_newborn_counseling8" xml:space="preserve">
+    <value>Handwashing with soap</value>
+  </data>
+  <data name="pnc_newborn_counseling9" xml:space="preserve">
+    <value>Boiling water for 20 minutes before drinking</value>
+  </data>
+  <data name="pnc_refer_reason1" xml:space="preserve">
+    <value>No Reason</value>
+  </data>
+  <data name="pnc_refer_reason2" xml:space="preserve">
+    <value>Post-delivery Care</value>
+  </data>
+  <data name="pnc_refer_reason3" xml:space="preserve">
+    <value>Post-delivery Family Planning</value>
+  </data>
+  <data name="pnc_refer_reason4" xml:space="preserve">
+    <value>Other Disease</value>
+  </data>
+  <data name="pnc_support_1" xml:space="preserve">
+    <value>Saaf Katha has been given</value>
+  </data>
+  <data name="pnc_support_2" xml:space="preserve">
+    <value>Child development card has been given</value>
+  </data>
+  <data name="pnc_support_3" xml:space="preserve">
+    <value>WASH card has been given and got 2 information</value>
+  </data>
+  <data name="pnc_support_4" xml:space="preserve">
+    <value>7.1% of the chlorhexidein bottle has been given</value>
+  </data>
+  <data name="pnc_visit_1" xml:space="preserve">
+    <value>PNC visit 1</value>
+  </data>
+  <data name="pnc_visit_2" xml:space="preserve">
+    <value>PNC visit 2</value>
+  </data>
+  <data name="pnc_visit_3" xml:space="preserve">
+    <value>PNC visit 3</value>
+  </data>
+  <data name="pnc_visit_4" xml:space="preserve">
+    <value>PNC visit 4</value>
+  </data>
+  <data name="pnc_visit_5" xml:space="preserve">
+    <value>PNC visit 5</value>
+  </data>
+  <data name="pnc_visit_6" xml:space="preserve">
+    <value>PNC visit 6</value>
+  </data>
+  <data name="refer_info" xml:space="preserve">
+    <value>Refer Info</value>
+  </data>
+  <data name="ref_hospital_0" xml:space="preserve">
+    <value>Need not to refer</value>
+  </data>
+  <data name="ref_hospital_1" xml:space="preserve">
+    <value>NGO Hospital</value>
+  </data>
+  <data name="ref_hospital_2" xml:space="preserve">
+    <value>Govt Hospital</value>
+  </data>
+  <data name="ref_hospital_3" xml:space="preserve">
+    <value>Private Clinic</value>
+  </data>
+  <data name="ref_hospital_4" xml:space="preserve">
+    <value>Satellite Clinic</value>
+  </data>
+  <data name="ref_Institute_govt_1" xml:space="preserve">
+    <value>Shishu Hospital</value>
+  </data>
+  <data name="ref_Institute_govt_2" xml:space="preserve">
+    <value>Shohid Sarwardi Hospital</value>
+  </data>
+  <data name="ref_Institute_govt_3" xml:space="preserve">
+    <value>Mohhamdpur Fertility Services and Training Center (MFSTC)</value>
+  </data>
+  <data name="ref_Institute_govt_4" xml:space="preserve">
+    <value>Dhaka Medical College</value>
+  </data>
+  <data name="ref_Institute_govt_5" xml:space="preserve">
+    <value>Sir Salimullah Medical College and Mitford Hospital</value>
+  </data>
+  <data name="ref_Institute_ngo_1" xml:space="preserve">
+    <value>Sun smile Clinic</value>
+  </data>
+  <data name="ref_Institute_ngo_2" xml:space="preserve">
+    <value>UPHCSDP Clinic</value>
+  </data>
+  <data name="ref_Institute_ngo_3" xml:space="preserve">
+    <value>Mari Stops</value>
+  </data>
+  <data name="ref_Institute_ngo_4" xml:space="preserve">
+    <value>BRAC</value>
+  </data>
+  <data name="ref_Institute_private_1" xml:space="preserve">
+    <value>Bangladesh Medical College Hospital</value>
+  </data>
+  <data name="ref_Institute_private_2" xml:space="preserve">
+    <value>Shikder Medical College Hospital</value>
+  </data>
+  <data name="ref_reason_anc_1" xml:space="preserve">
+    <value>Antenatal Care</value>
+  </data>
+  <data name="second" xml:space="preserve">
+    <value>Second</value>
+  </data>
+  <data name="seventh" xml:space="preserve">
+    <value>Seventh</value>
+  </data>
+  <data name="sixth" xml:space="preserve">
+    <value>Sixth</value>
+  </data>
+  <data name="suddenly_happen" xml:space="preserve">
+    <value>Happened suddenly</value>
+  </data>
+  <data name="tenth" xml:space="preserve">
+    <value>Tenth</value>
+  </data>
+  <data name="third" xml:space="preserve">
+    <value>Third</value>
+  </data>
+  <data name="training_support" xml:space="preserve">
+    <value>Training/Support</value>
+  </data>
+  <data name="tt1" xml:space="preserve">
+    <value>TT 1</value>
+  </data>
+  <data name="tt2" xml:space="preserve">
+    <value>TT 2</value>
+  </data>
+  <data name="tt3" xml:space="preserve">
+    <value>TT 3</value>
+  </data>
+  <data name="tt4" xml:space="preserve">
+    <value>TT 4</value>
+  </data>
+  <data name="tt5" xml:space="preserve">
+    <value>TT 5</value>
+  </data>
+  <data name="tt_vaccine" xml:space="preserve">
+    <value>TT Vaccine</value>
+  </data>
+  <data name="vacAge" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="vacBcg" xml:space="preserve">
+    <value>BCG</value>
+  </data>
+  <data name="vacBenId" xml:space="preserve">
+    <value>Beneficiary Id</value>
+  </data>
+  <data name="vacBenName" xml:space="preserve">
+    <value>Beneficiary Name</value>
+  </data>
+  <data name="vacDateOfBirth" xml:space="preserve">
+    <value>Date Of Birth</value>
+  </data>
+  <data name="vacIpv" xml:space="preserve">
+    <value>IPV</value>
+  </data>
+  <data name="vacMr1" xml:space="preserve">
+    <value>MR (Dose 1)</value>
+  </data>
+  <data name="vacMr2" xml:space="preserve">
+    <value>MR (Dose 2)</value>
+  </data>
+  <data name="vacOpv0" xml:space="preserve">
+    <value>OPV - 0</value>
+  </data>
+  <data name="vacOpv1" xml:space="preserve">
+    <value>OPV - 1</value>
+  </data>
+  <data name="vacOpv2" xml:space="preserve">
+    <value>OPV - 2</value>
+  </data>
+  <data name="vacOpv3" xml:space="preserve">
+    <value>OPV - 3</value>
+  </data>
+  <data name="vacPcv1" xml:space="preserve">
+    <value>PCV - 1</value>
+  </data>
+  <data name="vacPcv2" xml:space="preserve">
+    <value>PCV - 2</value>
+  </data>
+  <data name="vacPcv3" xml:space="preserve">
+    <value>PCV - 3</value>
+  </data>
+  <data name="vacPenta1" xml:space="preserve">
+    <value>Penta - 1</value>
+  </data>
+  <data name="vacPenta2" xml:space="preserve">
+    <value>Penta - 2</value>
+  </data>
+  <data name="vacPenta3" xml:space="preserve">
+    <value>Penta - 3</value>
+  </data>
+  <data name="vac_info_general" xml:space="preserve">
+    <value>General Information</value>
+  </data>
+  <data name="vac_info_vaccine" xml:space="preserve">
+    <value>Vaccine Follow-up</value>
+  </data>
+  <data name="work_area" xml:space="preserve">
+    <value>Work Area</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Age" xml:space="preserve">
+    <value>Age (Year-Month-Day)</value>
+  </data>
+  <data name="BenName" xml:space="preserve">
+    <value>Beneficiary Name</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>Date Of Birth</value>
+  </data>
+  <data name="DistrictCode" xml:space="preserve">
+    <value>District</value>
+  </data>
+  <data name="FatherOrHusband" xml:space="preserve">
+    <value>Father/Husband Name</value>
+  </data>
+  <data name="ServicePointId" xml:space="preserve">
+    <value>Resource Center</value>
+  </data>
+  <data name="RowNo" xml:space="preserve">
+    <value>SL No</value>
+  </data>
+  <data name="ToDate" xml:space="preserve">
+    <value>To Date</value>
+  </data>
+  <data name="UnionCode" xml:space="preserve">
+    <value>Union</value>
+  </data>
+  <data name="UpazilaCode" xml:space="preserve">
+    <value>Upazila</value>
+  </data>
+  <data name="UserId" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="VillageCode" xml:space="preserve">
+    <value>Village</value>
+  </data>
+  <data name="ANC" xml:space="preserve">
+    <value>ANC</value>
+  </data>
+  <data name="AncInfo" xml:space="preserve">
+    <value>Pregnancy Service (ANC) and Regular Follow-Up</value>
+  </data>
+  <data name="ancTotalDose" xml:space="preserve">
+    <value>Total Dose </value>
+  </data>
+  <data name="Basic" xml:space="preserve">
+    <value>BASIC</value>
+  </data>
+  <data name="BasicBenId" xml:space="preserve">
+    <value>Beneficiary Id</value>
+  </data>
+  <data name="BasicDataCollectionDate" xml:space="preserve">
+    <value>REGISTRATION DATE</value>
+  </data>
+  <data name="CommunicationInfo" xml:space="preserve">
+    <value>Communication Info</value>
+  </data>
+  <data name="DELIVERY" xml:space="preserve">
+    <value>DELIVERY</value>
+  </data>
+  <data name="DeliveryInfo" xml:space="preserve">
+    <value>Delivery Info</value>
+  </data>
+  <data name="MobileNo" xml:space="preserve">
+    <value>Mobile No</value>
+  </data>
+  <data name="PNC" xml:space="preserve">
+    <value>PNC</value>
+  </data>
+  <data name="PncInfo" xml:space="preserve">
+    <value>Postnatal Care (PNC) visit Info</value>
+  </data>
+  <data name="RegistrationInfo" xml:space="preserve">
+    <value>Registration Info</value>
+  </data>
+  <data name="tt_vaccineInfo" xml:space="preserve">
+    <value>TT Vaccine Info</value>
+  </data>
+  <data name="anc_support_1" xml:space="preserve">
+    <value>Saaf Katha has been given</value>
+  </data>
+  <data name="anc_support_2" xml:space="preserve">
+    <value>Child development card has been given</value>
+  </data>
+  <data name="anc_support_3" xml:space="preserve">
+    <value>WASH card has been given and got 2 information</value>
+  </data>
+  <data name="anc_support_4" xml:space="preserve">
+    <value>7.1% of the chlorhexidein bottle has been given</value>
+  </data>
+  <data name="not_identified" xml:space="preserve">
+    <value>Not Identified</value>
+  </data>
+  <data name="RegistrationSearchHeader" xml:space="preserve">
+    <value>Beneficiary Registration List</value>
+  </data>
+  <data name="HomeName" xml:space="preserve">
+    <value>Home Name</value>
+  </data>
+  <data name="HomeNo" xml:space="preserve">
+    <value>Home No</value>
+  </data>
+  <data name="HouseholdNo" xml:space="preserve">
+    <value>House Hold No</value>
+  </data>
+  <data name="HouseID" xml:space="preserve">
+    <value>House No</value>
+  </data>
+  <data name="HeadOccupationCode" xml:space="preserve">
+    <value>Head Occupation</value>
+  </data>
+  <data name="HeadOfTheFamily" xml:space="preserve">
+    <value>HeadOf The Family</value>
+  </data>
+  <data name="AncRegisterTitle" xml:space="preserve">
+    <value>ANC, DELIVERY, PNC REGISTER</value>
+  </data>
+  <data name="AssistRecycling" xml:space="preserve">
+    <value>Assist Recycling</value>
+  </data>
+  <data name="BenInfo" xml:space="preserve">
+    <value>Beneficiary Info</value>
+  </data>
+  <data name="Commodities" xml:space="preserve">
+    <value>Commodities</value>
+  </data>
+  <data name="DataCollectionDate" xml:space="preserve">
+    <value>Data collection Date</value>
+  </data>
+  <data name="DataProviderName" xml:space="preserve">
+    <value>Data Provider</value>
+  </data>
+  <data name="DomesticAnimals" xml:space="preserve">
+    <value>Domestic Animals</value>
+  </data>
+  <data name="FamilyTitle" xml:space="preserve">
+    <value>Family Designation</value>
+  </data>
+  <data name="FatherHusbandName" xml:space="preserve">
+    <value>Father / Husband</value>
+  </data>
+  <data name="FiveHabitsPoster" xml:space="preserve">
+    <value>Five Habits Poster</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="HasBirthCertificate" xml:space="preserve">
+    <value>Has Birth Certificate</value>
+  </data>
+  <data name="HouseCondition" xml:space="preserve">
+    <value>House Condition</value>
+  </data>
+  <data name="IsPregnant" xml:space="preserve">
+    <value>Is Pregnant</value>
+  </data>
+  <data name="IsVerified" xml:space="preserve">
+    <value>Verification Status</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Family Language</value>
+  </data>
+  <data name="MaritalStatus" xml:space="preserve">
+    <value>Marital Status</value>
+  </data>
+  <data name="MobileMessage" xml:space="preserve">
+    <value>Want mobile SMS</value>
+  </data>
+  <data name="MonthlyIncome" xml:space="preserve">
+    <value>Family monthly income</value>
+  </data>
+  <data name="NumberOfMember" xml:space="preserve">
+    <value>Number of member</value>
+  </data>
+  <data name="TVMessage" xml:space="preserve">
+    <value>TV Message</value>
+  </data>
+  <data name="Verification" xml:space="preserve">
+    <value>Verify</value>
+  </data>
+  <data name="VerificationNote" xml:space="preserve">
+    <value>Verification Note</value>
+  </data>
+  <data name="WaterBoilMicking" xml:space="preserve">
+    <value>Drink Boil Water Micking</value>
+  </data>
+  <data name="BenType" xml:space="preserve">
+    <value>Beneficiary Type</value>
+  </data>
+  <data name="BirthId" xml:space="preserve">
+    <value>Birth Certificate</value>
+  </data>
+  <data name="DrivingId" xml:space="preserve">
+    <value>Driving License</value>
+  </data>
+  <data name="EduQualification" xml:space="preserve">
+    <value>Educational Qualification</value>
+  </data>
+  <data name="Enrolled" xml:space="preserve">
+    <value>Sponsor Enrolled</value>
+  </data>
+  <data name="HasAutism" xml:space="preserve">
+    <value>Has Autism</value>
+  </data>
+  <data name="IcdpService" xml:space="preserve">
+    <value>Take ICDP Service</value>
+  </data>
+  <data name="IsActiveMobileNo" xml:space="preserve">
+    <value>Is Mobile Active</value>
+  </data>
+  <data name="IsChildLabor" xml:space="preserve">
+    <value>Is Child Labour</value>
+  </data>
+  <data name="NationalId" xml:space="preserve">
+    <value>National ID</value>
+  </data>
+  <data name="OccupationCode" xml:space="preserve">
+    <value>Profession</value>
+  </data>
+  <data name="OtherNGO" xml:space="preserve">
+    <value>Other NGO engagement</value>
+  </data>
+  <data name="OthSvcProviderOrgName" xml:space="preserve">
+    <value>If Other Org</value>
+  </data>
+  <data name="PassportId" xml:space="preserve">
+    <value>Passport</value>
+  </data>
+  <data name="Personality" xml:space="preserve">
+    <value>Personality</value>
+  </data>
+  <data name="ProjectCode" xml:space="preserve">
+    <value>Sponsor Project Code</value>
+  </data>
+  <data name="RcvSvcCode" xml:space="preserve">
+    <value>Taken services Name</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>Registration Date</value>
+  </data>
+  <data name="RelationWithHead" xml:space="preserve">
+    <value>Relation with Head</value>
+  </data>
+  <data name="ServicePointAttendance" xml:space="preserve">
+    <value>ServicePoint Attendance</value>
+  </data>
+  <data name="ServicePointing" xml:space="preserve">
+    <value>Go to ServicePoint</value>
+  </data>
+  <data name="ServicePointName" xml:space="preserve">
+    <value>ServicePoint Name</value>
+  </data>
+  <data name="ServicePointType" xml:space="preserve">
+    <value>ServicePoint Type</value>
+  </data>
+  <data name="SponsorId" xml:space="preserve">
+    <value>Sponsor Id</value>
+  </data>
+  <data name="SvcRcvFromOrg" xml:space="preserve">
+    <value>Service providing Org</value>
+  </data>
+  <data name="WantMobileMssg" xml:space="preserve">
+    <value>Want mobile SMS</value>
+  </data>
+  <data name="VerificationDate" xml:space="preserve">
+    <value>Verification Date</value>
+  </data>
+  <data name="GeoType" xml:space="preserve">
+    <value>Location Type</value>
+  </data>
+  <data name="HHServices" xml:space="preserve">
+    <value>Household Services</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="BenFName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="BenLName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="BenMName" xml:space="preserve">
+    <value>Middle Name</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="FamilyMember" xml:space="preserve">
+    <value>Family Member Info</value>
+  </data>
+  <data name="HHInfo" xml:space="preserve">
+    <value>Household Info</value>
+  </data>
+  <data name="IsGuessed" xml:space="preserve">
+    <value>Is Guessed</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="SponsorChildInfo" xml:space="preserve">
+    <value>Sponsor Child Info</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="Ambition" xml:space="preserve">
+    <value>Ambition</value>
+  </data>
+  <data name="ChildId" xml:space="preserve">
+    <value>Child ID</value>
+  </data>
+  <data name="Crawling" xml:space="preserve">
+    <value>Crawling</value>
+  </data>
+  <data name="DailyActivities" xml:space="preserve">
+    <value>Daily Activities</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Remarks</value>
+  </data>
+  <data name="FavoritePlayItem" xml:space="preserve">
+    <value>Favorite Play Item</value>
+  </data>
+  <data name="FavoriteSubject" xml:space="preserve">
+    <value>Favorite Subject</value>
+  </data>
+  <data name="GradeInServicePoint" xml:space="preserve">
+    <value>Grade In ServicePoint</value>
+  </data>
+  <data name="IneligibilityEvent" xml:space="preserve">
+    <value>Ineligibility Reason</value>
+  </data>
+  <data name="IneligibilityEventDate" xml:space="preserve">
+    <value>Ineligibility Date</value>
+  </data>
+  <data name="Talking" xml:space="preserve">
+    <value>Talking</value>
+  </data>
+  <data name="Walking" xml:space="preserve">
+    <value>Walking</value>
+  </data>
+</root>

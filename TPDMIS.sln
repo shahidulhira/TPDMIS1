@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDCO.Core", "BDCO.CORE\BDCO.Core.csproj", "{26341233-87FB-450E-902E-9B4387D93248}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDCO.Domain", "BDCO.DOMAIN\BDCO.Domain.csproj", "{BF0549E9-1083-4BB3-AFFC-F7766FDF4EED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDCO.Repository", "BDCO.REPOSITORY\BDCO.Repository.csproj", "{8A91296E-FC89-4AA0-B53B-B78357D7052D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDCO.Web", "BDCO.Web\BDCO.Web.csproj", "{553F5213-7D4E-4E7E-945C-F3ACCE4BC1F5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{E731E0BE-9D3B-44CD-B0FC-A4DB664E05FC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{2BBF2FD1-414B-4EDA-B464-BDA2324A44CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RapidFire", "RapidFire\RapidFire.csproj", "{7ADB640E-2A2E-4273-9E87-E84001A7DCB2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26341233-87FB-450E-902E-9B4387D93248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26341233-87FB-450E-902E-9B4387D93248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26341233-87FB-450E-902E-9B4387D93248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26341233-87FB-450E-902E-9B4387D93248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF0549E9-1083-4BB3-AFFC-F7766FDF4EED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF0549E9-1083-4BB3-AFFC-F7766FDF4EED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF0549E9-1083-4BB3-AFFC-F7766FDF4EED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF0549E9-1083-4BB3-AFFC-F7766FDF4EED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A91296E-FC89-4AA0-B53B-B78357D7052D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A91296E-FC89-4AA0-B53B-B78357D7052D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A91296E-FC89-4AA0-B53B-B78357D7052D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A91296E-FC89-4AA0-B53B-B78357D7052D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{553F5213-7D4E-4E7E-945C-F3ACCE4BC1F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{553F5213-7D4E-4E7E-945C-F3ACCE4BC1F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{553F5213-7D4E-4E7E-945C-F3ACCE4BC1F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{553F5213-7D4E-4E7E-945C-F3ACCE4BC1F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E731E0BE-9D3B-44CD-B0FC-A4DB664E05FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E731E0BE-9D3B-44CD-B0FC-A4DB664E05FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E731E0BE-9D3B-44CD-B0FC-A4DB664E05FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E731E0BE-9D3B-44CD-B0FC-A4DB664E05FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BBF2FD1-414B-4EDA-B464-BDA2324A44CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BBF2FD1-414B-4EDA-B464-BDA2324A44CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BBF2FD1-414B-4EDA-B464-BDA2324A44CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BBF2FD1-414B-4EDA-B464-BDA2324A44CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ADB640E-2A2E-4273-9E87-E84001A7DCB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ADB640E-2A2E-4273-9E87-E84001A7DCB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ADB640E-2A2E-4273-9E87-E84001A7DCB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ADB640E-2A2E-4273-9E87-E84001A7DCB2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {40C57560-23AB-4F5F-BC3F-354A167E5A8B}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://10.12.0.18:8080/tfs/scibdappcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = BDCO.CORE\\BDCO.Core.csproj
+		SccProjectName1 = BDCO.CORE
+		SccLocalPath1 = BDCO.CORE
+		SccProjectUniqueName2 = BDCO.DOMAIN\\BDCO.Domain.csproj
+		SccProjectName2 = BDCO.DOMAIN
+		SccLocalPath2 = BDCO.DOMAIN
+		SccProjectUniqueName3 = BDCO.REPOSITORY\\BDCO.Repository.csproj
+		SccProjectName3 = BDCO.REPOSITORY
+		SccLocalPath3 = BDCO.REPOSITORY
+		SccProjectUniqueName4 = BDCO.Web\\BDCO.Web.csproj
+		SccProjectName4 = BDCO.Web
+		SccLocalPath4 = BDCO.Web
+		SccProjectUniqueName5 = API\\API.csproj
+		SccProjectName5 = API
+		SccLocalPath5 = API
+		SccProjectUniqueName6 = Domain\\Domain.csproj
+		SccProjectName6 = Domain
+		SccLocalPath6 = Domain
+		SccProjectUniqueName7 = RapidFire\\RapidFire.csproj
+		SccProjectName7 = RapidFire
+		SccLocalPath7 = RapidFire
+	EndGlobalSection
+EndGlobal

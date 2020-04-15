@@ -1,0 +1,270 @@
+﻿
+
+<div class="row">
+    <div class="col-md-2">
+        <label class="lblFont">DATE FROM:</label>
+        <input id="FromDate" name="FromDate" type="text" style="width: 100%;min-width: 100%;" />
+    </div>
+    <div class="col-md-2">
+        <label class="lblFont">DATE TO:</label>
+        <input id="ToDate" name="ToDate" type="text" style="width: 100%;min-width: 100%;" />
+    </div>
+    <div class="col-md-2">
+        <label class="lblFont">Consistency</label>
+        <input id="Consistency" name="Consistency" type="text" style="width: 100%;min-width: 100%;" />
+    </div>
+    <div class="col-md-2">
+        <label class="lblFont">Periodicity</label>
+        <input id="Periodicity" name="Periodicity" type="text"  style="width: 100%;min-width: 100%;" />
+    </div>
+    <div class="col-md-2">
+        <label class="lblFont">User Name</label>
+        <input id="UserId" name="UserId" type="text" style="width: 100%;min-width: 100%;" />
+    </div>
+    <div class="col-md-2">
+        <label class="lblFont">Resource Center</label>
+        <input id="ServicePointId" name="ServicePointId" type="text" style="width: 100%;min-width: 100%;"  />
+    </div>
+</div>
+
+
+<div class="row" style="margin-top:7px;">
+
+    <div class="col-md-2">
+        <label class="lblFont">District</label>
+        <input id="DistrictCode" style="width: 100%; " />
+    </div>
+    <div class="col-md-2">
+        <label class="lblFont">Location Type</label>
+        <input id="GeoType" name="GeoType" style="width: 100%;min-width: 100%;" />
+    </div>
+    <div class="col-md-2">
+        <label class="lblFont">Upazila</label>
+        <input id="UpazilaCode" style="width: 100%;" />
+    </div>
+    <div class="col-md-2">
+        <label class="lblFont">Union</label>
+        <input id="UnionCode" style="width: 100%;" />
+    </div>
+    <div class="col-md-2">
+        <label class="lblFont">Village</label>
+        <input id="VillageCode" style="width: 100%;" />
+    </div>
+
+    <div class="col-md-2">
+        <div class="row">
+            <div class="col-md-12">
+                <label class="lblFont">Search</label>
+                <span title="Search" class="odDefaultButton fa fa-search" id="btnSearch" style="width: 100%; text-align: center;" onclick="fnSearchData()"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $("#FromDate").kendoDatePicker({
+        value: appStartDate,
+        format: "dd-MMM-yyyy",
+        animation: {
+            close: {
+                effects: "fadeOut zoom:out",
+                duration: 300
+            },
+            open: {
+                effects: "fadeIn zoom:in",
+                duration: 300
+            }
+        }
+    });
+
+    $("#ToDate").kendoDatePicker({
+        value: new Date(),
+        format: "dd-MMM-yyyy",
+        animation: {
+            close: {
+                effects: "fadeOut zoom:out",
+                duration: 300
+            },
+            open: {
+                effects: "fadeIn zoom:in",
+                duration: 300
+            }
+        }
+    });
+    var consistencyArr = [
+                        { "text": "-----SELECT-----", "value": 0 },
+                        { "text": "Regular", "value": 1 },
+                        { "text": "Intermittent", "value": 2 },
+                        { "text": "Pending", "value": 3 }
+    ];
+    var periodicityArr = [
+                       { "text": "-----SELECT-----", "value": 0 },
+                       { "text": "0-6 months", "value": 1 },
+                       { "text": "6+ -12 months", "value": 2 },
+                       { "text": "12+ -24 months", "value": 3 },
+                       { "text": "24+ - 36 months", "value": 4 }
+    ];
+    $("#Consistency").kendoDropDownList({
+        dataTextField: "text",
+        dataValueField: "value",
+        height: '400',
+        dataSource: consistencyArr,
+        template: "<div style=\"padding:5px;line-height:18px;font-size:12px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.text #</div>",
+        
+    }).data("kendoDropDownList");
+    $("#Periodicity").kendoDropDownList({
+        dataTextField: "text",
+        dataValueField: "value",
+        height: '400',
+        dataSource: periodicityArr,
+        template: "<div style=\"padding:5px;line-height:18px;font-size:12px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.text #</div>",
+        
+    }).data("kendoDropDownList");
+    
+    $("#ServicePointId").kendoDropDownList({
+        optionLabel: "------SELECT------",
+        dataTextField: "ServicePointName",
+        dataValueField: "ServicePointId",
+        filter: "contains",
+        dataSource: {
+            type: "JSON",
+            transport: {
+                read: {
+                    url: '@Url.Action("GetServicePointInfo", "MNCHN")'
+                }
+            }
+        },
+        height: '300',
+        template: "<div style=\"padding:5px;line-height:18px;font-size:12px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.ServicePointInfo #</div>",
+        open: adjustUserDropDownWidth
+    }).data("kendoDropDownList");
+    $("#UserId").kendoDropDownList({
+        optionLabel: "------SELECT------",
+        dataTextField: "FullName",
+        dataValueField: "UserId",
+        filter: "contains",
+        dataSource: {
+            type: "JSON",
+            transport: {
+                read: {
+                    url: '@Url.Action("GetUserInfo", "MNCHN")'
+                }
+            }
+        },
+        height: '300',
+        template: "<div style=\"padding:5px;line-height:18px;font-size:12px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.UserInfo #</div>",
+        open: adjustUserDropDownWidth
+    }).data("kendoDropDownList");
+
+    $("#DistrictCode").kendoDropDownList({
+        optionLabel: "------SELECT------",
+        dataTextField: "DistrictName",
+        dataValueField: "DistrictCode",
+        filter: "contains",
+        dataSource: { type: "JSON", transport: { read: { url: '@Url.Action("GetDistrict", "Registration")' } } },
+        height: '300',
+        template: "<div style=\"padding:5px;line-height:18px;font-size:12px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.DistrictName #</div>",
+        open: adjustDropDownWidth
+    }).data("kendoDropDownList");
+    var locationType = [{ text: "-----SELECT-----", textBangla: "-----SELECT-----", value: "0" }, { text: "City Corporation", textBangla: "সিটি কর্পোরেশন", value: "3" }, { text: "Municipality", textBangla: "পৌরসভা", value: "2" }, { text: "Upazila", textBangla: "উপজেলা", value: "1" }];
+    $("#GeoType").kendoDropDownList({
+        dataTextField: "text",
+        dataValueField: "value",
+        height: '400',
+        dataSource: locationType,
+        template: "<div style=\"padding:5px;line-height:18px;font-size:12px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.text #</div>",
+        change: onGeoSelect
+    }).data("kendoDropDownList");
+    function onGeoSelect(e) {
+        var dataItem = this.dataItem(e.item);
+    }
+
+    $("#UpazilaCode").kendoDropDownList({
+        autoBind: false,
+        cascadeFrom: "GeoType",
+        optionLabel: "------SELECT------",
+        dataTextField: "UpazilaName",
+        dataValueField: "UpazilaCode",
+        filter: "startswith",
+        dataSource: {
+            type: "JSON",
+            serverFiltering: true,
+            transport: {
+                read: {
+                    url: '@Url.Action("GetUpazila", "Registration")',
+                    data: function (e) {
+                        var inputValue = "";
+                        if (e.filter.filters.length > 1) {
+                            inputValue = this.data.arguments[0].filter.filters[1].value;
+                        }
+                        return { GeoType: $("#GeoType").val(), DistrictCode: $("#DistrictCode").val(), UpazilaName: inputValue };
+                    }
+                }
+            }
+        },
+        height: '300',
+        template: "<div style=\"padding:5px;line-height:18px;font-size:12px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.UpazilaName #</div>",
+    }).data("kendoDropDownList");
+    $("#UnionCode").kendoDropDownList({
+        optionLabel: "------SELECT------",
+        autoBind: false,
+        cascadeFrom: "UpazilaCode",
+        dataTextField: "UnionName",
+        dataValueField: "UnionCode",
+        filter: "contains",
+        dataSource: {
+            type: "JSON",
+            serverFiltering: true,
+            transport: {
+                read: {
+                    url: '@Url.Action("GetUnion", "Registration")',
+                    data: function (e) {
+                        var inputValue = "";
+                        if (e.filter.filters.length > 1) { inputValue = this.data.arguments[0].filter.filters[1].value; }
+                        return { DistrictCode: $("#DistrictCode").val(), UpazilaCode: $("#UpazilaCode").val(), UnionName: inputValue };
+                    }
+                }
+            }
+        },
+        height: '300',
+        open: adjustDropDownWidth
+
+    }).data("kendoDropDownList");
+
+    $("#VillageCode").kendoDropDownList({
+        optionLabel: "------SELECT------",
+        autoBind: false,
+        cascadeFrom: "UnionCode",
+        dataTextField: "VillageName",
+        dataValueField: "VillageCode",
+        filter: "contains",
+        dataSource: {
+            type: "JSON",
+            serverFiltering: true,
+            transport: {
+                read: {
+                    url: '@Url.Action("GetVillage", "Registration")',
+                    data: function (e) {
+                        var inputValue = "";
+                        if (e.filter.filters.length > 1) { inputValue = this.data.arguments[0].filter.filters[1].value; }
+                        return { DistrictCode: $("#DistrictCode").val(), UpazilaCode: $("#UpazilaCode").val(), UnionCode: $("#UnionCode").val(), VillageName: inputValue };
+                    }
+                }
+            }
+        },
+        height: '300',
+        open: adjustDropDownWidth
+
+    }).data("kendoDropDownList");
+
+    function adjustDropDownWidth(e) {
+        var listContainer = e.sender.list.closest(".k-list-container");
+        listContainer.width(listContainer.width() + kendo.support.scrollbar());
+    }
+    function adjustUserDropDownWidth(e) {
+        var listContainer = e.sender.list.closest(".k-list-container");
+        listContainer.width(300);
+    }
+</script>
+

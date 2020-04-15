@@ -1,0 +1,110 @@
+﻿@using AppetizerHtmlHelper
+@using BDCO.Web.Models
+
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in"; Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="~/Images/favicon.png">
+    <title>TPDMIS Log in</title>
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/suchana")
+
+    <link href="~/Content/css/login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="cont">
+        <div class="demo">
+            <div class="login">
+                <div class="titleLogo">
+                    <img src="../Images/logInUser.png" style="width:165px;" />
+                </div>
+                <div class="loginForm" id="loginForm">
+                    @Html.CustomAntiForgeryToken()
+                    <div class="loginRow">
+                        <svg class="loginIcon name svg-icon" viewBox="0 0 20 20">
+                            <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
+                        </svg>
+                        <input id="UserName" name="username" type="text" class="loginInput name" placeholder="User Name" />
+                    </div>
+                    <div class="loginRow">
+                        <svg class="loginIcon pass svg-icon" viewBox="0 0 18 18">
+                            <path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0" />
+                        </svg>
+                        <input name="Password" id="Password" type="password" class="loginInput pass" placeholder="Password" />
+                    </div>
+                    <button type="button" class="loginSubmit" onclick="LogIn()">Sign in</button>
+                    <p class="signup">Forget your password? &nbsp;<a>Click here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var animating = false, submitPhase1 = 1100, submitPhase2 = 400, logoutPhase1 = 800, $login = $(".login"), $app = $(".app");
+
+            function ripple(elem, e) {
+                $(".ripple").remove();
+                var elTop = elem.offset().top, elLeft = elem.offset().left, x = e.pageX - elLeft, y = e.pageY - elTop;
+                var $ripple = $("<div class='ripple'></div>");
+                $ripple.css({ top: y, left: x });
+                elem.append($ripple);
+            };
+
+            $(document).on("click", ".loginSubmit", function (e) {
+                if (animating) return;
+                animating = true;
+                var that = this;
+                ripple($(that), e);
+                $(that).addClass("processing");
+
+                setTimeout(function () {
+                    $(that).addClass("success");
+
+                    setTimeout(function () {
+                        $app.show();
+                        $app.css("top");
+                        $app.addClass("active");
+                    }, submitPhase2 - 70);
+
+                    setTimeout(function () {
+                        $login.hide();
+                        $login.addClass("inactive");
+                        animating = false;
+                        $(that).removeClass("success processing");
+                    }, submitPhase2);
+                }, submitPhase1);
+            });
+
+            $('input').on('keydown', function (e) {
+                if (e.key == 'Enter') {
+                    e.preventDefault();
+                    LogIn();
+                }
+            });
+        });
+
+        function LogIn() {
+            var urlpath = '@Url.Action("Login", "Account")';
+            var jsonData = appetizer.div.getJsonObjectFromDiv('loginForm', '0');
+
+            appetizer.actionCall(urlpath, jsonData, "POST", function (data, result) {
+                if (result) {
+                    var returnurl = '@ViewBag.ReturnUrl';
+                    if (returnurl != '') { window.location = '@ViewBag.ReturnUrl'; }
+                    else { window.location.href = '@Url.Action("Index", "Home")'; }
+                }
+                else { document.location.reload(true); }
+            });
+        }
+    </script>
+</body>
+</html>

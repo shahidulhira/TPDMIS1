@@ -1,0 +1,133 @@
+﻿@using AppetizerHtmlHelper
+
+<style>
+    .activeMenu {
+        background: #de2f2f;
+        color: #fff !important;
+    }
+
+    .hvr-underline-from-center:hover {
+        color: black !important;
+    }
+</style>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right" id="gn-menu">
+        @*<li><a class="hvr-underline-from-center" href="/Dashboard/Index"><i class="fa fa-pie-chart fa-lg" style="color:maroon"></i> Dashboard</a></li>*@
+        <li><a class="hvr-underline-from-center" href="/Home/"><i class="fa fa-home fa-lg" style="color:maroon"></i> Batch</a></li>
+        <li><a class="hvr-underline-from-center" href="/Batch/"><i class="fa fa-pie-chart fa-lg" style="color:maroon"></i> Batch</a></li>
+        <li><a class="hvr-underline-from-center" href="/Training/"><i class="fa fa-pie-chart fa-lg" style="color:maroon"></i> Training</a></li>
+        <li class="dropdown" id="Profile">
+            <a class="hvr-underline-from-center dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+                <i class="fa fa-user fa-lg" style="color:maroon;"></i> Profile<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="hvr-shutter-out-horizontal" href="/PartnerInfo/"> <i class="fa fa-user fa-lg" style="color:maroon;"></i> Partner Info</a></li>
+                <li><a class="hvr-shutter-out-horizontal" href="/LearningFacility/"> <i class="fa fa-home fa-lg" style="color:maroon;"></i> Learning Center</a></li>
+                <li><a class="hvr-shutter-out-horizontal" href="/ProfileInfo/"> <i class="fa fa-group fa-lg" style="color:maroon;"></i> Teacher Profile</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown" id="Profile">
+            <a class="hvr-underline-from-center dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+                <i class="fa fa-plus fa-lg" style="color:maroon;"></i> Competency Tool<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="hvr-shutter-out-horizontal" href="/CompetencyTest/Index"> <i class="fa fa-archive fa-lg" style="color:maroon;"></i> Competency test</a></li>
+                <li><a class="hvr-shutter-out-horizontal" href="/DocAndRecordChecklist/Index"> <i class="fa fa-file fa-lg" style="color:maroon;"></i> Doc Record Checklist</a></li>
+                <li><a class="hvr-shutter-out-horizontal" href="/InterviewQuestionnaire/Index"> <i class="fa fa-file fa-lg" style="color:maroon;"></i> Interview Questionnaire</a></li>
+            </ul>
+        </li>
+
+        @*<li class="dropdown" id="Report">
+            <a class="hvr-underline-from-center dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+                <i class="fa fa-file fa-lg" style="color:maroon;"></i> Reports<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="hvr-shutter-out-horizontal" href="/Report/ProgressReport"> <i class="fa fa-calendar fa-lg" style="color:maroon;"></i> Daily Progress Report</a></li>
+                <li><a class="hvr-shutter-out-horizontal" href="/Report/DistributionPlan"> <i class="fa fa-dropbox fa-lg" style="color:maroon;"></i> Distribution Plan Report</a></li>
+                <li><a class="hvr-shutter-out-horizontal" href="/Report/ServiceCount"> <i class="fa fa-refresh fa-lg" style="color:maroon;"></i> Sync Record Count Report</a></li>
+            </ul>
+        </li>*@
+        <li class="dropdown" id="Setup">
+            <a class="hvr-underline-from-center dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+                <i class="fa fa-wrench fa-lg" style="color:maroon;"></i> Settings<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="hvr-shutter-out-horizontal" href="/Account/UserList"> <i class="fa fa-user-md fa-lg" style="color:maroon;"></i> User List</a></li>
+                <li><a class="hvr-shutter-out-horizontal" href="/BlockInfo/Index"> <i class="fa fa-bold fa-lg" style="color:maroon;"></i> Block</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown" id="MyAccount">
+            <a class="hvr-underline-from-center dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+                <i class="fa fa-universal-access fa-fw" style="color:lightseagreen"></i>My Account<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                @if (User.DisplayName() != "")
+                {
+                    <li><a class="hvr-shutter-out-horizontal"><i class="fa fa-user fa-fw"></i> @User.DisplayName()</a></li>
+                }
+
+                @*<li><a class="hvr-shutter-out-horizontal" href="@Url.Action("ChangePassword", "Manage", null)"><i class="fa fa-key fa-fw"></i> Change Password</a></li>*@
+                <li><a id="logoutlink" class="hvr-shutter-out-horizontal" onclick="logOff()"><i class="fa fa-power-off fa-fw"></i> Sign out</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+
+        //new gnMenu(document.getElementById('gn-menu'));
+
+        function logOff() {
+
+            var url = '@Url.Action("LogOff", "Account")';
+            appetizer.actionCall(url, appetizer.div.getJsonObjectFromDiv("menu", "0"), "POST", function (data, result) {
+                if (result) {
+                    var url = '@Url.Action("Login", "Account")';
+                    ;
+                    window.location.href = url;
+                    document.location.reload(true);
+                }
+                else {
+                    document.location.reload(true);
+                    //appetizer.message.showError('#showMsg', data.Data);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            var pathname = window.location.pathname;
+            $('.nav > li > a[href="' + pathname + '"]').parent().addClass('active');
+            if (pathname.indexOf("Account") > 0) {
+                $("#User").addClass("active");
+            }
+            else if (pathname.indexOf("Monitoring") > 0) {
+                $("#Monitoring").addClass("active");
+            }
+
+            else if (pathname.indexOf("Report") > 0) {
+                $("#Reports").addClass("active");
+            }
+        });
+
+
+        function backupDB() {
+            appetizer.ajaxLoder.showPleaseWait();
+            var urlpath = '@Url.Action("BackupDatabase", "Account")';
+            appetizer.actionCall(urlpath, '', "GET", function (data, result) {
+                if (result) {
+                    appetizer.ajaxLoder.hidePleaseWait();
+                    appetizer.message.showInfo('#showMsg', data.Data.Message, 10000);
+                }
+                else {
+                    appetizer.ajaxLoder.hidePleaseWait();
+                    appetizer.message.showError('#showErrorMsg', data.Data.Message, 10000);
+                }
+            });
+        }
+    </script>
+</div>
+
+<form id="menu">
+    @Html.CustomAntiForgeryToken()
+</form>

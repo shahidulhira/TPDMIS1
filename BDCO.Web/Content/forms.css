@@ -1,0 +1,249 @@
+﻿body {
+    background-color: #ebebeb !important;
+}
+
+#randerDiv {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.md-card {
+    background: #fff;
+    position: relative;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+    box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+    border: none;
+}
+
+.hi-icon {
+    height: 24px;
+    width: 24px;
+}
+
+.lblFont {
+    color: #3c3c3c;
+}
+
+.lblValue {
+    color: #000000;
+    font-weight:bold;
+}
+
+.table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
+    padding: 3px;
+    vertical-align: inherit;
+    font-size: 12px;
+    text-align: center;
+}
+
+    .table thead > tr > th, .table thead > tr > th > label {
+        cursor: pointer;
+    }
+
+.bg-primary {
+    background: #5DD1C1;
+}
+
+tr.sub {
+    display: none;
+}
+
+
+.cx {
+    width: 35px;
+}
+
+.cx {
+    cursor: pointer;
+    text-align: center;
+}
+
+.textRotate {
+    white-space: nowrap;
+    padding: 0;
+    font-size: 12px;
+    width: 30px;
+    transform: rotate(-90deg);
+    transform-origin: 15px;
+    margin: 0;
+    position: relative;
+    margin-bottom: 6px;
+}
+
+thead td {
+    padding-bottom: 12px;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    /*                vertical-align: middle;*/
+}
+
+
+
+.wizard {
+    margin: 20px auto;
+    background: #fff;
+}
+
+    .wizard .nav-tabs {
+        position: relative;
+        margin: 40px auto;
+        margin-bottom: 0;
+        border-bottom-color: #e0e0e0;
+    }
+
+    .wizard > div.wizard-inner {
+        position: relative;
+    }
+
+.connecting-line {
+    height: 2px;
+    background: #e0e0e0;
+    position: absolute;
+    width: 75%;
+    margin: 0 auto;
+    left: 120px;
+    top: 50%;
+    z-index: 1;
+}
+
+.wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+    color: #555555;
+    cursor: default;
+    border: 0;
+    border-bottom-color: transparent;
+}
+
+span.round-tab {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    border-radius: 100px;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    font-size: 12px;
+}
+
+    span.round-tab i {
+        color: #555555;
+    }
+
+.wizard li.active span.round-tab {
+    background: #fff;
+    border: 2px solid #5bc0de;
+}
+
+    .wizard li.active span.round-tab i {
+        color: #5bc0de;
+    }
+
+span.round-tab:hover {
+    color: #333;
+    border: 2px solid #333;
+}
+
+.wizard .nav-tabs > li {
+    width: 25%;
+}
+
+.wizard li:after {
+    content: " ";
+    position: absolute;
+    left: 46%;
+    opacity: 0;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 5px solid transparent;
+    border-bottom-color: #5bc0de;
+    transition: 0.1s ease-in-out;
+}
+
+.wizard li.active:after {
+    content: " ";
+    position: absolute;
+    left: 46%;
+    opacity: 1;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 10px solid transparent;
+    border-bottom-color: #5bc0de;
+}
+
+.wizard .nav-tabs > li a {
+    width: 70px;
+    height: 70px;
+    margin: 20px auto;
+    border-radius: 100%;
+    padding: 0;
+}
+
+    .wizard .nav-tabs > li a:hover {
+        background: transparent;
+    }
+
+.wizard .tab-pane {
+    position: relative;
+    padding-top: 5px;
+}
+
+.wizard h3 {
+    margin-top: 0;
+}
+
+
+@media( max-width : 585px ) {
+
+    .wizard {
+        width: 90%;
+        height: auto !important;
+    }
+
+    span.round-tab {
+        font-size: 16px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .wizard .nav-tabs > li a {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .wizard li.active:after {
+        content: " ";
+        position: absolute;
+        left: 35%;
+    }
+}
+
+.table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: 1px solid #DDD;
+}
+
+.fa:hover {
+    color: brown;
+}
+
+input {
+    border:1px solid rgba(0,0,0,.15);
+    padding:4px;
+}
+
+.custom-box {
+    -webkit-box-shadow: -1px 0px 8px 1px rgba(0,0,0,0.3);
+-moz-box-shadow: -1px 0px 8px 1px rgba(0,0,0,0.3);
+box-shadow: -1px 0px 8px 1px rgba(0,0,0,0.3);
+}

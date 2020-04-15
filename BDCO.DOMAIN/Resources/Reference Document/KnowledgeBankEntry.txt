@@ -1,0 +1,324 @@
+﻿@model BDCO.Domain.Aggregates.Home.KBDocument
+@using Microsoft.AspNet.Identity
+@using AppetizerHtmlHelper
+@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pageTitle"><h3>Publish</h3> <span>(Article, Newsletter, Books, etc.)</span></div>
+<form id="PublicationDiv">
+    <div class="pageSectionTitle"><div>document info</div></div>
+
+    @Html.CustomAntiForgeryToken()
+    <div class="pageSectionContainer">
+
+        <div class="row">
+            <div class="col-md-4" style="display:none">
+                <div style="margin-bottom:2px;">Doc ID</div>
+                @Html.KendoNumericBox("DocID", Model != null ? Convert.ToInt32(@Model.DocID) : 0)
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label> Document Title</label>
+                    @Html.KendoTextArea("DocTitle", Model != null ? @Model.DocTitle : "", "500", "30", "10", "width: 100%;max-width: 100%;height: 82px;", " ")
+                    <span id="eDocTitle" class="hideError"></span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label> Document Description</label>
+                    @Html.KendoTextArea("DocDescription", Model != null ? @Model.DocDescription : "", "1500", "30", "10", "width: 100%;max-width: 100%;height: 82px;", " ")
+                    <span id="eDocDescription" class="hideError"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>  Document Author</label>
+                    @Html.KendoTextBox("DocAuthor", Model.DocAuthor != null ? Model.DocAuthor : "", "150", "width: 100%;", "")
+                    <span id="eDocAuthor" class="hideError"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>  Document Source</label>
+                    @Html.KendoTextBox("DocumentSource", Model.DocAuthor != null ? Model.DocAuthor : "", "150", "width: 100%;", "")
+                    <span id="eDocumentSource" class="hideError"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>
+                        Publication Year
+                    </label>
+                    @(Html.Kendo().DatePickerFor(m => m.PublicationYear).HtmlAttributes(new { value = @Model.PublicationYear != null ? Convert.ToDateTime(@Model.PublicationYear).ToString("dd/MM/yyyy") : "", style = "width: 100%" }))
+                    <span id="ePublicationYear" class="hideError"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                Document Type
+                            </label>
+                            @Html.KendoDropDownList("DocTypeID", @Model.DocTypeID != null ? @Model.DocTypeID.ToString() : "", "Home", "GetDocumentType", "DocTypeName", "DocTypeID", "")
+                            <span id="eDocTypeID" class="hideError"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                Tag
+                            </label>
+                            @Html.KendoTextBox("Tag", Model.Tag != null ? Model.Tag : "", "150", "width: 100%;", "")
+                            <span id="eTag" class="hideError"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        Active/In Active
+                        <div class="form-group">
+                            @Html.RadioButton("IsActive", true, new { id = "IsActive", @class = "radio-inline", @checked = "checked" }) <label>Active</label>
+                            @Html.RadioButton("IsActive", false, new { id = "IsActive", @class = "radio-inline" }) <label> In Active</label>
+                            <span id="eIsActive" class="hideError"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        Display Type
+                        <div class="form-group">
+                            @Html.RadioButton("DisplyType", "0", new { id = "DisplyType", @class = "radio-inline", @checked = "checked" }) <label> Portrait</label>
+                            @Html.RadioButton("DisplyType", "1", new { id = "DisplyType", @class = "radio-inline" }) <label> Landscap</label>
+                            <span id="eDisplyType" class="hideError"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Theme</label>
+                    @Html.KendoDropDownList("ThemeID", @Model.ThemeID != null ? @Model.ThemeID.ToString() : "", "Home", "GetTheme", "ThemeName", "ThemeID", "")
+                    <span id="eThemeID" class="hideError"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Sub-Themes</label>
+                    @(Html.Kendo().DropDownList().Name("SubThemeID").HtmlAttributes(new { style = "width:100%" }).OptionLabel("Select Sub Theme...").Value(Model.SubThemeID.ToString())
+                                .DataTextField("SubThemeName").DataValueField("SubThemeID").Animation(true).DataSource(source =>
+                        {
+                            source.Read(read =>
+                            {
+                                read.Action("GetSubTheme", "Home")
+                                    .Data("filterThem");
+                            })
+                            .ServerFiltering(true);
+                        })
+                                .Enable(false)
+                        .AutoBind(false)
+                                        .CascadeFrom("ThemeID")
+                    )
+                    <span id="eSubThemeID" class="hideError"></span>
+                </div>
+            </div>
+            <script type="text/javascript">
+                function filterThem() {
+                    return {
+
+                        id: $("#ThemeID").val()
+                    };
+                }
+            </script>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        Cover Photo
+                    </label>
+                    @(Html.Kendo().Upload().Name("CoverPhoto").Multiple(false).Events(events => events.Select("onSelect")))
+                    <span id="ePhoto" class="hideError"></span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        Document
+                    </label>
+                    <div style="display:none">
+                        <input type="text" id="FileName" name="FileName" value="@Model.FileName" />
+                    </div>
+                    @(Html.Kendo().Upload().Name("UploadedFile").Multiple(false).Events(events => events.Remove("onFileCancel").Select("onFileSelect")))
+                    <span id="eFileName" class="hideError"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <input type="button" value="Save" class="odDefaultButton" onclick="return CheckData();" style="width:100%;" disabled />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <input type="button" value="Cancel" title="Cancel" id="btnCancel" style="width:100%;" class="odDefaultButton" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@{Html.RenderAction("HistoryControl", "CustomControl");}
+
+
+
+<script type="text/javascript">
+
+
+    function onSelect(e) {
+        var notAllowed = false;
+        if (e.files[0].extension.toLowerCase() !== ".jpg" && e.files[0].extension.toLowerCase() !== ".png") {
+            appetizer.message.showError('#showErrorMsg', 'Not allowed!. Please select a image file.', 10000);
+            notAllowed = true;
+        }
+        if (notAllowed == true)
+            e.preventDefault();
+    }
+    function onFileCancel(e) {
+        $('input:submit').attr('disabled', true);
+
+    }
+    function onFileSelect(e) {
+        $('input:button').attr('disabled', false);
+    }
+
+
+    function CheckData() {
+        var isFormValidate = new appetizer.formValidation();
+        //    //isFormValidate.add('DocAuthor', appetizer.tools.validationType.isNotEmpty, "Document author is required.");
+        //    isFormValidate.add('DocTitle', appetizer.tools.validationType.isNotEmpty, "Document title is required.");
+        //    isFormValidate.add('DocDescription', appetizer.tools.validationType.isNotEmpty, "Document description is required.");
+        //    isFormValidate.add('GeogFocusID', appetizer.tools.validationType.isNotEmpty, "Geographical focus is required.");
+        //    //isFormValidate.add('PublicationYear', appetizer.tools.validationType.isNotEmpty, "Publication year is required.");
+        //    isFormValidate.add('DocTypeID', appetizer.tools.validationType.isNotEmpty, "Document Type is required.");
+        //    isFormValidate.add('ThemeID', appetizer.tools.validationType.isNotEmpty, "Theme name is required.");
+        //    isFormValidate.add('SubThemeID', appetizer.tools.validationType.isNotEmpty, "Sub theme is required.");
+
+
+
+        if (isFormValidate.validate()) {
+
+            fnSaveData();
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    function fnSaveData() {
+        var formData = new FormData($('#PublicationDiv')[0]);
+        var formValue = appetizer.div.getJsonObjectFromDiv('PublicationDiv', '0');
+        $.extend(formData, formValue);
+
+        var urlpath = '@Url.Action("SaveKnowledgeBank", "Home")';
+        appetizer.ajaxLoder.showPleaseWait();
+        appetizer.actionCallWithFileUpload(urlpath, formData, "POST", function (data, result) {
+            if (result) {
+                appetizer.ajaxLoder.hidePleaseWait();
+                appetizer.message.showInfo('#showMsg', data.Data, 10000);
+            }
+            else {
+
+                appetizer.ajaxLoder.hidePleaseWait();
+                appetizer.message.showError('#showErrorMsg', data.Data, 10000);
+            }
+        });
+    }
+
+
+
+    //History Control
+    var hc = historyControl.create();
+    hc.recordParPage = 15;
+    hc.attachmentCount = 2;
+    hc.setHistoryCaption('Knowledge Bank<br />history');
+
+    function getHistory() {
+        debugger
+        var urlpath = '@Url.Action("GetApprovalsHistory", "Approvals")';
+        var parm = { EmployeeID: '@User.EmployeeID()', IsSupervisor: false, RefID: 0, ServiceType: 'kb', RequestorID: '@User.EmployeeID()', FromDate: null, ToDate: null, HistoryApprovalType: 1 }; //HistoryApprovalType -- History = 1 or Approval = 0
+
+        hc.urlpath = urlpath;
+        hc.parm = parm;
+        hc.loadRecord();
+    }
+
+    //history cotrol events
+    hc.editFN = function editItem(id) { loadRecord(id) };
+    hc.deleteFN = function deleteItem(id) { DeleteRecord(id) };
+
+    //load record
+    function loadRecord(docID) {
+        debugger
+        var urlpath = '@Url.Action("GetDataForEditKnowledgeBank", "Home")';
+
+        appetizer.actionCall(urlpath, { 'DocID': docID }, 'GET', function (data, result) {
+            if (result) {
+                debugger
+                appetizer.div.loadDivControlFromJson(data.document, "DocID");
+                $('#PublicationYear').val(appetizer.tools.getDate(data.document.PublicationYear));
+            }
+            else { appetizer.message.showError('#showErrorMsg', data, 10000); }
+        });
+    }
+
+    //Delete History
+    function DeleteRecord(id) {
+        var data = { 'DocID': id };
+        var urlpath = '@Url.Action("DeleteKnowledgeBank", "Home")';
+        debugger
+        appetizer.message.showConfirm("Do You Want To Delete This Record!", function () {
+            appetizer.actionCall(urlpath, data, 'POST', function (data, result) {
+                if (result) { swal("Deleted!", data.Data, "success"); getHistory(); }
+                else { swal("Deleted!", data.Data, "failed"); }
+            });
+        })
+    }
+
+    $(document).ready(function () {
+
+        getHistory();
+        if ('@Model.DocID' > 0) {
+            $('input:submit').attr('disabled', false);
+        }
+
+        if ('@ViewBag.Message' != '') {
+            appetizer.message.showInfo('#showMsg', '@ViewBag.Message', 10000);
+            $(document).on('closed', '#showMsg', function (e) {
+                document.getElementById('btnCancel').click();
+            });
+        }
+    });
+
+</script>

@@ -1,0 +1,151 @@
+﻿
+@{
+    ViewBag.Title = "BSFPReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/jgrid.css" rel="stylesheet" />
+
+<style type="text/css">
+    body {
+        background-color: #ebebeb !important;
+    }
+
+    #randerDiv {
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    #jfilterCaption {
+        font-size: 39px !important;
+        height: 63px !important;
+        width: 100%;
+        line-height: 12px !important;
+    }
+
+    .card-style {
+        border-radius: 4px !important;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px rgba(63,63,68,.1) !important;
+        box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px rgba(63,63,68,.1) !important;
+        background-color: #fff !important;
+    }
+
+
+
+    #jfilterCaption {
+        font-size: 17px !important;
+    }
+</style>
+
+<div id="jFilter" style="margin-top: 10px;font-family: 'Quicksand', sans-serif;"></div>
+
+    <div class="uk-grid uk-grid-width-large-1-1 uk-grid-width-medium-1-1 uk-grid-medium uk-sortable sortable-handler"
+         data-uk-sortable="" data-uk-grid-margin="" style="margin-top: 10px; line-height: 10px; font-size: 12px;font-weight: 500;">
+        <div class="uk-row-first">
+            <div class="card-style" style="font-family: 'Quicksand', sans-serif;">
+                <div class="md-card-content" style="min-height:85px;margin: 16px;padding-bottom: 14px;margin-top: 10px;padding-top: 15px; ">
+                    <table class="table table-bordered table-striped table-hover" id="tblOstDose">
+                        <thead>
+                            <tr>
+                                <th>Ben ID</th>
+                                <th>Ben Name</th>
+                                <th>Gender</th>
+                                <th>Birth Year</th>
+                                <th>Present Address</th>
+                                <th>SpotName</th>
+                                <th>Dose Info</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<script src="~/Scripts/jFilter.js"></script>
+<script src="~/Scripts/jGrid.js"></script>
+
+
+<script type="text/javascript">
+    var filter = new jFilter('jFilter', 'Food Request Form (BSFP)<br>', 'Search and manage BSFP record info.');
+    var labelArr = ["BenId:Ben ID", "Ben Name:Ben Name", "DicId:DIC ID"];
+    filter.setCustomLabel(labelArr);
+    filter.addText(['BenId'], 'fc-g'); filter.addEmpty();
+    filter.addText(['BenName'], 'fc-g'); filter.addEmpty();
+   
+
+    filter.onClick(function (filterData) {
+        //Search(filterData);
+    });
+
+    function Search(jsonData) {
+
+        var urlpath = '@Url.Action("SearchDoseInfo", "Home")';
+        appetizer.actionCall(urlpath, jsonData, 'GET', function (data, result) {
+            if (result) {
+                var html = '';
+                if (data.Data.length > 0) {
+                    var myData = data.Data;
+
+                    myData.forEach(function (item) {
+                        html += '<tr >';
+                        html += '<td>' + (item.BenId || "") + '</td>';
+                        html += '<td style = "text-align:left!important; padding-left:5px;">' + (item.BenName || "") + '</td>';
+                        html += '<td>' + (item.Gender || "") + '</td>';
+                        html += '<td>' + (item.BirthYear || "") + '</td>';
+                        html += '<td style = "text-align:left!important; padding-left:5px;">' + (item.PresentAddress || "") + '</td>';
+                        html += '<td style = "text-align:left!important; padding-left:5px;">' + (item.SpotName || "") + '</td>';
+                        html += '<td style = "text-align:left!important; padding-left:5px;max-width:40px;"><input type="number" class="k-textbox" name="OSTDose' + item.BenId + '" id="OSTDose' + item.BenId + '" value="' + (item.OSTDose || "") + '"style="width: 100%;min-width: 100%;color:#000;" /></td>';
+                        html += '</tr>';
+                    });
+                }
+                var table = $("#tblOstDose");
+                var tbody = $(table).find('tbody');
+                tbody.html(html);
+
+            } else {
+                appetizer.ajaxLoder.hidePleaseWait();
+                appetizer.message.showError('#showErrorMsg', data.Data, 10000);
+            }
+        });
+    }
+
+
+    function Save() {
+        var urlpath = '@Url.Action("SaveDoseInfo", "Home")';
+        var lstDose = [];
+        lstDose = getJsonDataFromTable();
+        appetizer.actionCall(urlpath, { 'lstDose':lstDose }, 'POST', function (data, result) {
+            if (result) {
+                appetizer.message.showInfo('#showMsg', data.Data, 10000);
+            } else {
+                appetizer.ajaxLoder.hidePleaseWait();
+                appetizer.message.showError('#showErrorMsg', data.Data, 10000);
+            }
+        });
+    }
+
+    function getJsonDataFromTable() {
+
+        var json = [];
+        $('#tblOstDose').find('tbody tr').each(function () {
+            $td = $(this).find('td');
+            var recordid = $td.eq(0).text();
+            var obj = {
+                'RecordId': 0,
+                'BenId': $td.eq(0).text(),
+                'OSTDose': $td.eq(6).find('input').val(),
+                'UserId': '@User.CurrentUserID()'
+            };
+            json.push(obj);
+        });
+
+        return json;
+    }
+</script>
+
+
+

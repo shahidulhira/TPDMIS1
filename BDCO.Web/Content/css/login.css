@@ -1,0 +1,263 @@
+﻿*, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 62.5%;
+    height: 100%;
+    overflow: hidden;
+    background-image: url('../../Images/bglogin.png');
+    background-size:cover;
+    background-color:rgba(2, 5, 0, 0.4)
+}
+
+
+svg {
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    overflow: visible;
+}
+
+.svg-icon {
+    cursor: pointer;
+}
+
+    .svg-icon path {
+        stroke: rgba(255, 255, 251, 0.9);
+        fill: none;
+        stroke-width: 1;
+    }
+
+input, button {
+    outline: none;
+    border: none;
+}
+
+.cont {
+    margin:0;
+    padding:0;
+    position: relative;
+    height: 100%;
+    overflow: auto;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+.demo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -15rem;
+    margin-top: -20.5rem;
+    width: 30rem;
+    height: 45rem;
+    overflow: hidden;
+    border-radius: 8px;
+    -webkit-box-shadow: -1px 0px 8px 1px rgba(0,0,0,0.3);
+    -moz-box-shadow: -1px 0px 8px 1px rgba(0,0,0,0.3);
+    box-shadow: -1px 0px 8px 1px rgba(0,0,0,0.3);
+}
+
+.login {
+    position: relative;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(90, 90, 91, 0.60) 0%, rgba(255, 255, 255, 0.70) 100%);
+    transition: opacity 0.1s, -webkit-transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25);
+    transition: opacity 0.1s, transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25);
+    transition: opacity 0.1s, transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25), -webkit-transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+    .login.inactive {
+        opacity: 0;
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+
+.titleLogo {
+    position: absolute;
+    top: 3.5rem;
+    left: 7.0rem;
+    width: 14rem;
+    /*height: 2.0rem;*/
+}
+
+
+.loginForm {
+    position: absolute;
+    top: 43%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    padding: 0.5rem 1.5rem;
+    text-align: center;
+}
+
+.loginRow {
+    height: 5rem;
+    padding-top: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.loginIcon {
+    margin-bottom: -0.4rem;
+    margin-right: 0.5rem;
+}
+
+    .loginIcon.name path {
+        stroke-dasharray: 73.50196075439453;
+        stroke-dashoffset: 73.50196075439453;
+        -webkit-animation: animatePath 2s 0.6s forwards;
+        animation: animatePath 2s 0.6s forwards;
+    }
+
+    .loginIcon.pass path {
+        stroke-dasharray: 92.10662841796875;
+        stroke-dashoffset: 92.10662841796875;
+        -webkit-animation: animatePath 2s 0.6s forwards;
+        animation: animatePath 2s 0.6s forwards;
+    }
+
+.loginInput {
+    display: inline-block;
+    width: 22rem;
+    height: 100%;
+    padding-left: 1.3rem;
+    font-size: 1.8rem;
+    background: transparent;
+    color: #FDFCFD;
+}
+
+.loginSubmit {
+    position: relative;
+    width: 100%;
+    height: 4rem;
+    margin: 5rem 0 2.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    background: #FF3366;
+    font-size: 1.5rem;
+    border-radius: 3rem;
+    cursor: pointer;
+    overflow: hidden;
+    transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
+}
+
+    .loginSubmit:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -1.5rem;
+        margin-top: -1.5rem;
+        width: 3rem;
+        height: 3rem;
+        border: 2px dotted #fff;
+        border-radius: 50%;
+        border-left: none;
+        border-bottom: none;
+        transition: opacity 0.1s 0.4s;
+        opacity: 0;
+    }
+
+    .loginSubmit.processing {
+        width: 4rem;
+        font-size: 0;
+    }
+
+        .loginSubmit.processing:after {
+            opacity: 1;
+            -webkit-animation: rotate 0.5s 0.4s infinite linear;
+            animation: rotate 0.5s 0.4s infinite linear;
+        }
+
+    .loginSubmit.success {
+        transition: opacity 0.1s 0.3s, background-color 0.1s 0.3s, -webkit-transform 0.3s 0.1s ease-out;
+        transition: transform 0.3s 0.1s ease-out, opacity 0.1s 0.3s, background-color 0.1s 0.3s;
+        transition: transform 0.3s 0.1s ease-out, opacity 0.1s 0.3s, background-color 0.1s 0.3s, -webkit-transform 0.3s 0.1s ease-out;
+        -webkit-transform: scale(30);
+        transform: scale(30);
+        opacity: 0.9;
+    }
+
+        .loginSubmit.success:after {
+            transition: opacity 0.1s 0s;
+            opacity: 0;
+            -webkit-animation: none;
+            animation: none;
+        }
+
+.signup {
+    font-size: 1.2rem;
+    color: #19181a;
+}
+
+    .signup a {
+        color: #860707;
+        cursor: pointer;
+    }
+
+
+.ripple {
+    position: absolute;
+    width: 15rem;
+    height: 15rem;
+    margin-left: -7.5rem;
+    margin-top: -7.5rem;
+    background: rgba(0, 0, 0, 0.4);
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-animation: animRipple 0.4s;
+    animation: animRipple 0.4s;
+    border-radius: 50%;
+}
+
+@-webkit-keyframes animRipple {
+    to {
+        -webkit-transform: scale(3.5);
+        transform: scale(3.5);
+        opacity: 0;
+    }
+}
+
+@keyframes animRipple {
+    to {
+        -webkit-transform: scale(3.5);
+        transform: scale(3.5);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes rotate {
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate {
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes animatePath {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes animatePath {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    html, body {
+        font-size: 50%;
+    }
+}

@@ -1,0 +1,226 @@
+﻿@using AppetizerHtmlHelper
+@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "USER LIST";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/component.css" rel="stylesheet" />
+
+<link href="https://fonts.googleapis.com/css?family=Anton|Archivo+Narrow" rel="stylesheet">
+<style>
+    #table-wrapper {
+        position: relative;
+    }
+
+    .lblFont {
+        font-family: 'Kalpurush ANSI';
+        font-weight: bold;
+    }
+
+    .lblEng {
+        font-family: Tahoma;
+        font-weight: bold;
+    }
+
+    #table-scroll {
+        height: 600px;
+        overflow: auto;
+        margin-top: 20px;
+    }
+
+    #table-wrapper table {
+        width: 100%;
+    }
+
+        #table-wrapper table * {
+            color: black;
+        }
+
+        #table-wrapper table thead th .text {
+            position: absolute;
+            top: -20px;
+            z-index: 2;
+            height: 20px;
+            width: 35%;
+            border: 1px solid red;
+        }
+         .k-grid tbody tr{
+            height: 10px;
+            padding:5px;
+        }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        @*<h3 style="text-align:left">Master Roll GMP Register</h3>*@
+        <div class="col-md-6">
+            <h3 style="color:#c20123;line-height: 0.5; font-size:20px"><strong>USER</strong> LIST</h3><br />
+        </div>
+        <div class="col-md-6">
+            <div class="btn-group pull-right col-md-offset-1" style="margin-top:20px;" role="group" aria-label="Basic example">
+                <a class="btn btn-warning" href="/Account/RegisterUser"> <i class="fa fa-plus" aria-hidden="true"></i> <b>Add User</b></a>
+                <a class="btn btn-primary" href="/Account/UserList"> <i class="fa fa-list" aria-hidden="true"></i> <b>List</b></a>
+                <a class="btn btn-info" href="/Account/UserGeolocation"><i class="fa fa-globe" aria-hidden="true"></i> <b>GEO</b></a>
+                @*<a class="btn btn-success" href="/Account/UserServicePoint"><i class="fa fa-registered" aria-hidden="true"></i> <b>ServicePoint</b></a>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="table-wrapper">
+    <div id="table-scroll">
+        <div id="UserList" class="uk-table uk-table-condensed"></div>
+    </div>
+</div>
+<script src="~/Scripts/KendoUI/jszip.min.js"></script>
+<script src="~/Scripts/Appetizer.js"></script>
+<script>
+
+    //var dateRegExp = /^\/Date\((.*?)\)\/$/;
+
+    //oper.toDate = function toDate(value) {
+    //    var date = dateRegExp.exec(value);
+    //    return new Date(parseInt(date[1]));
+    //}
+
+    //var userId = '@User.CurrentUserID()';
+    $(document).ready(function () {
+        fnSearchData();
+        
+    });
+
+    function fnSearchData() {
+            appetizer.ajaxLoder.showPleaseWait();
+            var urlpath = '@Url.Action("GetUserInfoList", "Account")';
+            //var jsonToken = { "Type": "GMP", "ObservationDate": '', "DistrictCode": $("#DistrictCode").val(), "UpazilaCode": $("#UpazilaCode").val(), "UnionCode": $("#UnionCode").val(), "VillageCode": $("#VillageCode").val(), "FromDate": $('#FromDate').val(), "ToDate": $('#ToDate').val() }
+
+            appetizer.actionCall(urlpath, null, 'GET', function (data, result) {
+                if (result) {
+                    $("#UserList").kendoGrid({
+                        //toolbar: ["excel"],
+                        //excel: {
+                        //    fileName: "UserListExport.xlsx",
+                        //    filterable: false,
+                        //    allPages: true
+                        //    //allPages: true
+                        //},
+                        dataSource: {
+                            data: data.Data,
+                            schema: {
+                                model: {
+                                    fields: {
+                                        ObservationDate: { type: 'date' },
+                                        ChildDOB: { type: 'date' }
+                                    }
+                                }
+                            },
+                            pageSize: 10
+                        },
+                        dataBound: function () {
+                            var fullGrid = $("#UserList").data("kendoGrid");
+                            var gridColumns = fullGrid.columns;
+                            for (var i = 0; i < gridColumns.length; i++) {
+                                fullGrid.autoFitColumn(i);
+                            }
+                        },
+                        filterable: {
+                            mode: "row"
+                        },
+                        pageable: {
+                            refresh: true,
+                            pageSizes: true,
+                            buttonCount: 5
+                        },
+                        
+                        sortable: false,
+                        columns: [
+                        {
+                            field: "UserID",
+                            title: "User ID",
+                            width:120,
+                            filterable: {
+                                cell: {
+                                    showOperators: false
+                                }
+                            }
+                        },
+                        {
+                            field: "UserName",
+                            title: "User Name",
+                            filterable: {
+                                cell: {
+                                    showOperators: false
+                                }
+                            }
+                        },
+                        {
+                            field: "FullName",
+                            title: "Full Name",
+                            filterable: {
+                                cell: {
+                                    showOperators: false
+                                }
+                            }
+                        },
+                        {
+                            field: "Designation",
+                            title: "Designation",
+                            filterable: {
+                                cell: {
+                                    showOperators: false
+                                }
+                            }
+                        },
+                        {
+                            field: "Organization",
+                            title: "Organization",
+                            filterable: {
+                                cell: {
+                                    showOperators: false
+                                }
+                            }
+                        },
+                        {
+                            command: {
+                                text: " Edit",
+                                click: editUser,
+                                iconClass: "fa fa-pencil-square-o"
+
+                            },
+                            title: "Action",
+                            locked: true,
+                            lockable: false
+                        }],
+                        noRecords: true,
+                        messages: {
+                            noRecords: "Data not found!"
+                        },
+                        resizable: false,
+                        height: "450" //grid will be 140px height
+                    });
+                    appetizer.ajaxLoder.hidePleaseWait();
+
+                } else {
+                    appetizer.ajaxLoder.hidePleaseWait();
+                };
+
+            });
+       
+    }
+
+    function editUser(e) {
+        console.log(e);
+        var tr = $(e.target).closest("tr");
+        var data = this.dataItem(tr);
+        //alert(data.UserID);
+        window.location.href = '/Account/RegisterUser?ID=' + data.UserID;
+    }
+
+    function adjustDropDownWidth(e) {
+        var listContainer = e.sender.list.closest(".k-list-container");
+        listContainer.width(listContainer.width() + kendo.support.scrollbar());
+    }
+
+</script>
+
+
+

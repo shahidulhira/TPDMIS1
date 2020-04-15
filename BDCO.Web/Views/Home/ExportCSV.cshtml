@@ -1,0 +1,290 @@
+﻿
+@{
+    ViewBag.Title = "ExportCSV";
+}
+
+<link href="~/Content/dashboardmain.min.css" rel="stylesheet" />
+<link href="~/Content/uikit.almost-flat.min.css" rel="stylesheet" />
+<style type="text/css">
+    body {
+        background-color: #ebebeb !important;
+    }
+
+    #randerDiv {
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    .md-card {
+        background: #fff;
+        position: relative;
+        -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+        box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+        border: none;
+    }
+
+    .row {
+        margin-top: 25px;
+    }
+
+    .k-chart, .k-stockchart {
+        height: 300px;
+    }
+
+    #example10 {
+        height: 142px;
+    }
+
+    .k-radio:checked + .k-radio-label:after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+    }
+
+    .k-radio-label {
+        position: relative;
+        padding-left: 1.5em;
+        vertical-align: middle;
+        line-height: 1.4em;
+        cursor: pointer;
+    }
+
+    .imgDashboard {
+        max-width: 50px;
+        max-height: 50px;
+        margin-top: 5px;
+    }
+
+    .labelText label {
+        font-size: 12px;
+        color: #000 !important;
+        margin-bottom: 0px;
+        text-align: right;
+        text-transform: none;
+        font-weight: 600;
+    }
+
+    #chart circle {
+        display: none !important;
+    }
+</style>
+<div id="print">
+
+
+    <div class="uk-grid uk-grid-width-large-1-1 uk-grid-width-medium-1-1 uk-grid-medium uk-sortable sortable-handler" data-uk-sortable="" data-uk-grid-margin="" style="margin-top: 0px; margin-bottom: -24px;">
+        <div class="uk-row-first">
+            <div class="md-card">
+                <div class="md-card-content">
+
+                    <div class="row" style="margin-top: -32px;">
+                        <div class="col-md-11">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label class="lblFont">রিসোর্স সেন্টারঃ</label>
+                                    <input id="ServicePointId" name="ServicePointId" type="text" style="width: 100%;min-width: 100%;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="lblFont">জেলাঃ</label>
+                                    <input id="DistrictCode" style="width: 100%;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="lblFont">লোকেশন টাইপ</label>
+                                    <input id="GeoType" name="GeoType" style="width: 100%;min-width: 100%;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="lblFont">উপজেলাঃ</label>
+                                    <input id="UpazilaCode" style="width: 100%;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="lblFont">শুরুর তারিখঃ</label>
+                                    <input id="FromDate" name="FromDate" type="text" style="width: 100%;min-width: 100%;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="lblFont">শেষ তারিখঃ</label>
+                                    <input id="ToDate" name="ToDate" type="text" style="width: 100%;min-width: 100%;" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="lblFont">Search</label>
+                                    <span title="Search" class="odDefaultButton fa fa-search" id="btnSearch" style="width: 100%; text-align: center;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="uk-grid" data-uk-grid-margin="" data-uk-grid-match="{target:'.md-card-content'}" style="margin-top:30px">
+
+        <div class="uk-width-large-12-12 uk-row-first">
+
+            <div class="md-card">
+
+                <div class="md-card-content" style="min-height: 280px;">
+                   
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <input type="button" id="export" name="export" value="export to csv" class="btn btn-success btn-xs" onclick="fnExport()" />
+                            </div>
+                        </div>
+                      
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="~/Scripts/Appetizer.js"></script>
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+
+
+    });
+  
+    function fnExport()
+    {
+        var urlpath = '@Url.Action("ExportToCSv", "Home")';       
+        debugger
+        window.open(urlpath, "_blank");
+    }
+
+    
+    var locationType = [{ text: "-----SELECT-----", textBangla: "-----SELECT-----", value: "0" }, { text: "City Corporation", textBangla: "সিটি কর্পোরেশন", value: "3" }, { text: "Municipality", textBangla: "পৌরসভা", value: "2" }, { text: "Upazila", textBangla: "উপজেলা", value: "1" }];
+    $("#GeoType").kendoDropDownList({
+        dataTextField: "text",
+        dataValueField: "value",
+        height: '400',
+        dataSource: locationType,
+        template: '<div style=\"padding:5px;line-height:18px;font-size:14px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.text #</div>'
+
+    }).data("kendoDropDownList");
+
+
+    // All Graph function end
+
+    $date = new Date();
+    $day = $date.getDate();
+    $month = $date.getMonth();
+    $year = $date.getFullYear();
+
+    $("#FromDate").kendoDatePicker({
+        value: new Date($year, $month - 5, $day),
+        format: "dd-MMM-yyyy",
+        animation: {
+            close: {
+                effects: "fadeOut zoom:out",
+                duration: 300
+            },
+            open: {
+                effects: "fadeIn zoom:in",
+                duration: 300
+            }
+        }
+    });
+    $("#ToDate").kendoDatePicker({
+        value: new Date(),
+        format: "dd-MMM-yyyy",
+        animation: {
+            close: {
+                effects: "fadeOut zoom:out",
+                duration: 300
+            },
+            open: {
+                effects: "fadeIn zoom:in",
+                duration: 300
+            }
+        }
+    });
+   
+   
+    $("#ServicePointId").kendoDropDownList({
+        optionLabel: "------SELECT------",
+        dataTextField: "ServicePointName",
+        dataValueField: "ServicePointId",
+        filter: "contains",
+        dataSource: {
+            type: "JSON",
+            transport: {
+                read: {
+                    url: '@Url.Action("GetServicePointInfo", "MNCHN")'
+                }
+            }
+        },
+        height: '300',
+        template: "<div style=\"padding:5px;line-height:18px;font-size:14px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.ServicePointInfo #</div>",
+        open: adjustDropDownWidth
+    }).data("kendoDropDownList");
+
+    $("#DistrictCode").kendoDropDownList({
+        optionLabel: "------SELECT------",
+        dataTextField: "DistrictNameBangla",
+        dataValueField: "DistrictCode",
+        filter: "contains",
+        dataSource: {
+            type: "JSON",
+            transport: {
+                read: {
+                    url: '@Url.Action("GetDistrict", "Registration")'
+                }
+            }
+        },
+        height: '300',
+        template: "<div style=\"padding:5px;line-height:18px;font-size:13px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.DistrictNameBangla #</div>",
+        open: adjustDropDownWidth
+    }).data("kendoDropDownList");
+
+    $("#UpazilaCode").kendoDropDownList({
+        autoBind: false,
+        cascadeFrom: "GeoType",
+        optionLabel: "------SELECT------",
+        dataTextField: "UpazilaNameBangla",
+        dataValueField: "UpazilaCode",
+        filter: "startswith",
+        dataSource: {
+            type: "JSON",
+            serverFiltering: true,
+            transport: {
+                read: {
+                    url: '@Url.Action("GetUpazila", "Registration")',
+                    data: function (e) {
+                        var inputValue = "";
+                        if (e.filter.filters.length > 1) {
+                            inputValue = this.data.arguments[0].filter.filters[1].value;
+                        }
+                        return { GeoType: $("#GeoType").val(), DistrictCode: $("#DistrictCode").val(), UpazilaName: inputValue };
+                    }
+                }
+            }
+        },
+        height: '300',
+        template: "<div style=\"padding:5px;line-height:18px;font-size:13px; color:black;border-bottom-style:dotted; border-bottom-color:##2CAFBA; border-bottom-width:1px;  \"> #: data.UpazilaNameBangla #</div>"
+    }).data("kendoDropDownList");
+
+    function adjustDropDownWidth(e) {
+        var listContainer = e.sender.list.closest(".k-list-container");
+        listContainer.width(listContainer.width() + kendo.support.scrollbar());
+    }
+
+</script>
+
+
+

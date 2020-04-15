@@ -1,0 +1,72 @@
+﻿
+using System.Web.Http;
+using BDCO.Core.Command;
+using BDCO.Core.Query;
+using BDCO.Domain.Aggregates;
+using BDCO.Domain.Command;
+using BDCO.Domain.Query;
+using BDCO.Domain.QueryResult;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+
+
+namespace SuchanaMIS.Controllers
+{
+    public class CourseController : ApiController
+    {
+        private readonly IQueryDispatcher _query;
+        private readonly ICommandDispatcher _command;
+
+        public CourseController(IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher)
+        {
+            _query = queryDispatcher;
+            _command = commandDispatcher;
+        }
+        // GET: api/Course
+        [HttpGet]
+        public IHttpActionResult Get()
+        {
+            CourseByCourseIdQuery query = null;
+            var result = _query.Dispatch<CourseByCourseIdQuery, CourseByCourseIdQueryResult>(query);
+            return Ok(result);
+        }
+
+         // GET: api/Course/5
+        [HttpGet]
+        public IHttpActionResult Get(int id)
+        {
+            CourseByCourseIdQuery query =  new CourseByCourseIdQuery();
+            query.ID = id;
+            var result = _query.Dispatch<CourseByCourseIdQuery, CourseByCourseIdQueryResult>(query);
+            return Ok(result);
+        }
+
+        // POST: api/Course
+        [HttpPost]
+        public IHttpActionResult Post(AddNewCourseCommand command)
+        {
+            CommandResult cr = _command.Dispatch(command);
+            return Ok(cr);
+        }
+
+        // PUT: api/Course/5
+        [HttpPut]
+        public IHttpActionResult Put(AddNewCourseCommand command)
+        {
+            CommandResult cr = _command.Dispatch(command);
+            return Ok(cr);
+        }
+
+        // DELETE: api/Course/5
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
+        {
+            DeleteCourseCommand command = new DeleteCourseCommand();
+            command.ID = id;
+            CommandResult cr = _command.Dispatch(command);
+            return Ok(cr);
+        }
+    }
+}

@@ -1,0 +1,1014 @@
+﻿@using AppetizerHtmlHelper
+@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "User Geolocation Setting";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/component.css" rel="stylesheet" />
+<link href="~/Content/KendoUI/kendo.common.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Anton|Archivo+Narrow" rel="stylesheet">
+<style>
+    .checked {
+        color: #fff;        
+        background-color:#f0ad4e;
+    }
+
+    
+   
+    .k-grid-content{
+        overflow-y: scroll;
+    }
+     .k-grid-content::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .k-grid-content::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .k-grid-content::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    .k-grid-content::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    .k-grid{
+        font-size: 13px !important;
+    }
+
+</style>
+
+        <div style="padding-top:20px;padding-top:20px;">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <h3 style="color:#c20123; margin-top:0px;line-height: 0.5; font-size:20px"><strong>USER</strong> GEOLOCATION MAPPING</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="btn-group pull-right col-md-offset-1" role="group" aria-label="Basic example">
+                            <a class="btn btn-warning" href="/Account/RegisterUser"> <i class="fa fa-plus" aria-hidden="true"></i> <b>Add User</b></a>
+                            <a class="btn btn-primary" href="/Account/UserList"> <i class="fa fa-list" aria-hidden="true"></i> <b>List</b></a>
+                            <a class="btn btn-info" href="/Account/UserGeolocation"><i class="fa fa-globe" aria-hidden="true"></i> <b>GEO</b></a>
+                            @*<a class="btn btn-success" href="/Account/UserServicePoint"><i class="fa fa-registered" aria-hidden="true"></i> <b>ServicePoint</b></a>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="col-md-12" style="padding-left:0px; padding-right: 0px;">
+                <div class="panel with-nav-tabs panel-default" style="background-color: #ededed">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="col-md-12">
+                                        <div class="row" style="padding-top:10px; min-height:45px">
+                                            <label for="usergroup1" style="font-size:16px; text-transform:none">USER </label> &nbsp;
+                                            <input id="Users" style="width: 25%;" />  
+
+                                            <button class="btn btn-info pull-right" type="button" >
+                                                BLOCK <span class="badge" id="sbBadge">0</span>
+                                            </button>   
+                                            <button class="btn btn-info pull-right" type="button" style="margin-right: 5px;">
+                                                Camp <span class="badge" id="campBadge">0</span>
+                                            </button> 
+                                            <button class="btn btn-info pull-right" type="button" style="margin-right: 5px;">
+                                                Center <span class="badge" id="centerBadge">0</span>
+                                            </button>                                       
+                                            <button class="btn btn-warning pull-right" type="button" style="margin-right: 5px;">
+                                                VILLAGE <span class="badge" id="vlBadge">0</span>
+                                            </button>
+                                            <button class="btn btn-success pull-right" type="button"style="margin-right: 5px;">
+                                                UNION <span class="badge" id="unBadge">0</span>
+                                            </button>
+                                            <button class="btn btn-info pull-right" type="button" style="margin-right: 5px;">
+                                                UPAZILA <span class="badge" id="upBadge">0</span>
+                                            </button>
+                                            <button class="btn btn-warning pull-right" type="button" style="margin-right: 5px;">
+                                                DISTRICT <span class="badge" id="dsBadge">0</span>
+                                            </button>
+                                            
+                                         
+                                        </div>
+                                    </div>
+                                        
+                                    
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-2">
+                                        <div class="row">
+                                            <table id="gridDistrict"></table>
+                                            <input type="button" value="Clear" id="btnClear" class="odDefaultButton" style="width:50%;background: linear-gradient(rgb(160, 8, 8) 5%, rgb(247, 1, 1) 100%) rgb(136, 6, 6); color:#fff" onclick="ResetGeolocation()">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2"> @*IT WAS Col-md-3 with Distrcit name*@
+                                        <div class="row" id="divUpazila">
+                                           
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="row"  id="divUnion">
+                                           
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="col-md-3" style="height:100%">
+                                        <div class="row" id="divVillage" >
+                                          
+                                        </div>
+                                      
+                                    </div>
+                                    <div class="col-md-2" style="height:100%">
+                                        
+                                        <div class="row" id="divCenter" >
+
+                                        </div>
+                                        <div class="row" id="divCamp">
+
+                                        </div>
+                                        <div class="row" id="divBlock">
+                                            
+                                        </div>
+                                        <div class="row">
+                                            <input type="button" value="Save" id="btnSave" class="odDefaultButton pull-right" style="width:50%;background: linear-gradient(rgb(160, 8, 8) 5%, rgb(247, 1, 1) 100%) rgb(136, 6, 6);color:#fff" onclick="SaveGeolocation()">
+                                        </div>
+                                    </div>
+
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<script src="~/Scripts/Appetizer.js"></script>
+
+<script>
+    var dataLength = 0;
+
+    $(document).ready(function () {
+        $selectedDistrict = [];
+        $selectedUpazila = [];
+        $selectedUnion = [];
+        $selectedVillage = [];
+        $selectedCenter = [];
+        $selectedCamp = [];
+        $selectedBlock = [];
+
+        $upflag = 0;
+        var unflag = 0;
+        var vflag = 0;
+        var sbflag = 0;
+
+        LoadUserDropdown();
+        LoadDistrict();
+
+        $("#divCenter").empty();
+        var divhtml = '<table id="gridCenter"></table>';
+        $(divhtml).appendTo($("#divCenter"));
+        var html = '';
+        $(html).appendTo($("#gridCenter"));
+        $("#gridCenter").kendoGrid({
+            height: 100,
+            sortable: false
+        });
+
+        $("#divCamp").empty();
+        var divhtml = '<table id="gridCamp"></table>';
+        $(divhtml).appendTo($("#divCamp"));
+        var html = '';
+        $(html).appendTo($("#gridCamp"));
+        $("#gridCamp").kendoGrid({
+            height: 100,
+            sortable: false
+        });
+
+
+
+        $("#divBlock").empty();
+        var divhtml = '<table id="gridBlock"></table>';
+        $(divhtml).appendTo($("#divBlock"));
+        var html = '';
+        $(html).appendTo($("#gridBlock"));
+        $("#gridBlock").kendoGrid({
+            height:197,
+            sortable: false
+        });
+
+        $("#divVillage").empty();
+        var divhtml = '<table id="gridVillage"></table>';
+        $(divhtml).appendTo($("#divVillage"));
+        var html = '';
+        $(html).appendTo($("#gridVillage"));
+        $("#gridVillage").kendoGrid({
+            height: 400,
+            sortable: false
+        });
+
+        $("#divUpazila").empty();
+        var divhtml = '<table id="gridUpazila"></table>';
+        $(divhtml).appendTo($("#divUpazila"));
+        $(html).appendTo($("#gridUpazila"));
+        $("#gridUpazila").kendoGrid({
+            height: 400,
+            sortable: false
+        });
+
+        $("#divUnion").empty();
+        var divhtml = '<table id="gridUnion"></table>';
+        $(divhtml).appendTo($("#divUnion"));
+        $(html).appendTo($("#gridUnion"));
+        $("#gridUnion").kendoGrid({
+            height: 400,
+            sortable: false
+        });
+
+        $("#grid2").kendoGrid({
+            height: 400,
+            sortable: false
+        });
+
+
+    });
+
+
+    function ResetGeolocation() {
+        $('input:checkbox').removeAttr('checked');
+        $("tr").removeClass("checked");
+       
+        $selectedDistrict = [];
+        $selectedUpazila = [];
+        $selectedUnion = [];
+        $selectedVillage = [];
+        $selectedCenter = [];
+        $selectedCamp = [];
+        $selectedBlock = [];
+        UpdateBadge();
+    }
+
+    function SaveGeolocation() {
+        var userId = $('#Users').val();
+        if (userId == "")
+        {
+            appetizer.message.showError('#showErrorMsg', 'Please select User first!', 10000);
+        }
+        else
+        {
+            SaveUserGeolocation(userId)
+        }
+
+    };
+
+    function SaveUserGeolocation(userId)
+    {
+        debugger
+        var urlpath = '@Url.Action("SaveUserGeolocation", "Account")';
+        var jsonToken = { "lstDistrict": $selectedDistrict, "lstUpazila": $selectedUpazila, "lstUnion": $selectedUnion, "lstVillage": $selectedVillage, "lstCenter": $selectedCenter, "lstCamp": $selectedCamp, "lstBlock": $selectedBlock, "UserId": userId }
+
+        appetizer.ajaxLoder.showPleaseWait();
+        appetizer.actionCall(urlpath, jsonToken, "POST", function (data, result) {
+            if (result) {
+
+                appetizer.ajaxLoder.hidePleaseWait();
+                appetizer.message.showInfo('#showMsg', data.Data, 10000);
+
+                $('input:checkbox').removeAttr('checked');
+                $("tr").removeClass("checked");
+                $selectedDistrict = [];
+                $selectedUpazila = [];
+                $selectedUnion = [];
+                $selectedVillage = [];
+                $selectedCenter = [];
+                $selectedCamp = [];
+                $selectedBlock = [];
+                UpdateBadge();
+
+                var dropdownlist = $('#Users').data("kendoDropDownList");
+                dropdownlist.select(function (dataItem) {
+                    return dataItem.symbol === "--SELECT--";
+                });
+            }
+            else {
+                appetizer.ajaxLoder.hidePleaseWait();
+                appetizer.message.showError('#showErrorMsg', data.Data, 10000);
+            }
+        });
+
+    }
+
+    function LoadUserDropdown() {
+        var urlpath = '@Url.Action("GetUserInfoList", "Account")';
+        appetizer.actionCall(urlpath, '', 'GET', function (data, result) {
+            if (result) {
+                if (data.Data.length > 0) {
+                    var item = $("#Users").kendoDropDownList({
+                        optionLabel: "--SELECT--",
+                        dataTextField: "FullName",
+                        dataValueField: "UserID",
+                        filter: "contains",
+                        dataSource: data.Data,
+                        height: '300',
+                        open: adjustDropDownWidth,
+                    }).data("kendoDropDownList");
+                }
+
+            } else {
+
+            };
+        });
+    };
+
+    function LoadDistrict() {
+        $selectedDistrict = [];
+        $selectedUpazila = [];
+        $selectedUnion = [];
+        $selectedVillage = [];
+        $selectedCenter = [];
+        $selectedCamp = [];
+        $selectedBlock = [];
+        UpdateBadge();
+        var urlpath = '@Url.Action("GetDistrict", "Account")';
+
+        appetizer.actionCall(urlpath,'','GET',function (data, result) {
+            if (result) {
+
+                    $("#gridDistrict tr").detach();
+                    var html = '<colgroup><col style="width:18%" /><col style="width:82%" /></colgroup><thead><tr><th data-field="check"></th><th data-field="DISTRICT">DISTRICT</th></tr></thead><tbody>';
+                    for (i = 0; i < data.Data.length; i++) {
+                        html += '<tr>' +
+                                '<td><input type="checkbox" class="checkbox" id="checkDestrict' + data.Data[i].DistrictCode + '" onclick="javascript: districtClicked(\'' + data.Data[i].DistrictCode + '\',this.checked);" /></td>' +
+                                '<td>' + data.Data[i].DistrictNameBangla + '</td>' +
+                                '</tr> </tbody>';
+                    }
+                    $(html).appendTo($("#gridDistrict"));
+                    $("#gridDistrict").kendoGrid({
+                        height: 400,
+                        sortable: false
+                    });
+                } else {
+
+                };
+            });
+
+    }
+
+
+    function LoadUpazila()
+    {
+        $selectedUpazila = [];
+        $selectedUnion = [];
+        $selectedVillage = [];
+        $selectedCenter = [];
+        $selectedCamp = [];
+        $selectedBlock = [];
+
+        UpdateBadge();
+        var urlpath = '@Url.Action("GetUpazila", "Account")';
+        appetizer.actionCall(urlpath, { "lstDistrict": $selectedDistrict }, 'POST', function (data, result) {
+            if (result) {
+                $("#divUpazila").empty();
+                var divhtml = '<table id="gridUpazila"></table>';
+                $(divhtml).appendTo($("#divUpazila"));
+                var html = '';
+                //WITH District //html = '<colgroup><col style="width:10%" /><col /><col /></colgroup><thead><tr><th data-field="checkBox"></th><th data-field="UPAZILA">UPAZILA</th><th data-field="DISTRICT">DISTRICT</th></tr></thead><tbody>';
+                html = '<colgroup><col style="width:18%" /><col /><col style="width:82%" /></colgroup><thead><tr><th data-field="checkBox"></th><th data-field="UPAZILA">UPAZILA</th></tr></thead><tbody>';
+                for (i = 0; i < data.Data.length; i++) {
+                    html += '<tr>' +
+                            '<td><input type="checkbox" class="checkbox" id="checkUpazila' + data.Data[i].DistrictCode + data.Data[i].UpazilaCode + '" onclick="javascript: upazilaClicked(\'' + data.Data[i].DistrictCode + '\',\'' + data.Data[i].UpazilaCode + '\',this.checked);" /></td>' +
+                            '<td>' + data.Data[i].UpazilaNameBangla + '</td>' +
+                            //'<td>' + data.Data[i].DistrictName + '</td>' +
+                            '</tr></tbody>';
+                }
+                $(html).appendTo($("#gridUpazila"));
+
+                    $("#gridUpazila").kendoGrid({
+                        height: 400,
+                        sortable: false
+                    });
+
+            } else {
+
+            };
+        });
+    }
+
+    function LoadUnion() {
+        $selectedUnion = [];
+        $selectedVillage = [];
+        $selectedCenter = [];
+        $selectedCamp = [];
+        $selectedBlock = [];
+        UpdateBadge();
+        var urlpath = '@Url.Action("GetUnion", "Account")';
+
+        appetizer.actionCall(urlpath, { "lstUpazila": $selectedUpazila }, 'POST', function (data, result) {
+            if (result) {
+                $("#divUnion").empty();
+                var divhtml = '<table id="gridUnion"></table>';
+                $(divhtml).appendTo($("#divUnion"));
+
+                var html = '<colgroup><col style="width:10%" /><col /><col /></colgroup><thead><tr><th data-field="checkBox"></th><th data-field="UNION">UNION</th><th data-field="UPAZILA">UPAZILA</th></thead><tbody>'; //<th data-field="DISTRICT">DISTRICT</th></tr>
+                for (i = 0; i < data.Data.length; i++) {
+                    html += '<tr>' +
+                            '<td><input type="checkbox" class="checkbox" id="checkUnion' + data.Data[i].DistrictCode + data.Data[i].UpazilaCode + data.Data[i].UnionCode + '"onclick="javascript: unionClicked(\'' + data.Data[i].DistrictCode + '\',\'' + data.Data[i].UpazilaCode + '\',\'' + data.Data[i].UnionCode + '\',this.checked);"  /></td>' +
+                            '<td>' + data.Data[i].UnionNameBangla + '</td>' +
+                            '<td class="hidden">' + data.Data[i].UpazilaName + '</td>' +
+                            '</tr> </tbody>';
+                }
+                $(html).appendTo($("#gridUnion"));
+                $("#gridUnion").kendoGrid({
+                    height: 400,
+                    sortable: false
+                });
+            } else {
+
+            };
+        });
+    }
+
+    function LoadVillage() {
+        $selectedVillage = [];
+        $selectedCenter = [];
+        $selectedCamp = [];
+        $selectedBlock = [];
+        UpdateBadge();
+        var urlpath = '@Url.Action("GetVillage", "Account")';
+
+        appetizer.actionCall(urlpath, { "lstUnion": $selectedUnion }, 'POST', function (data, result) {
+            if (result) {
+                $("#divVillage").empty();
+                var divhtml = '<table id="gridVillage"></table>';
+                $(divhtml).appendTo($("#divVillage"));
+
+                var html = '<colgroup><col style="width:11%" /><col style="width:50%" /><col  /><col /></colgroup><thead><tr><th data-field="checkBox"></th><th data-field="VILLAGE">VILLAGE</th><th data-field="UNION">UNION</th></tr></thead><tbody>'; //<th data-field="UPAZILA">UPAZILA</th><th data-field="DISTRICT">DISTRICT</th></tr>
+                for (i = 0; i < data.Data.length; i++) {
+                    html += '<tr>' +
+                            '<td><input type="checkbox" class="checkbox" id="checkVillage' + data.Data[i].DistrictCode + data.Data[i].UpazilaCode + data.Data[i].UnionCode +data.Data[i].VillageCode+ '"onclick="javascript: villageClicked(\'' + data.Data[i].DistrictCode + '\',\'' + data.Data[i].UpazilaCode + '\',\'' + data.Data[i].UnionCode + '\',\''+data.Data[i].VillageCode+'\',this.checked);"  /></td>' +
+                            '<td>' + data.Data[i].VillageName + '</td>' +
+                            '<td>' + data.Data[i].UnionName + '</td>' +
+                            //'<td>' + data.Data[i].UpazilaName + '</td>' +
+                            '</tr> </tbody>';
+                }
+                $(html).appendTo($("#gridVillage"));
+                $("#gridVillage").kendoGrid({
+                    height: 400,
+                    sortable: false,
+
+
+                });
+            } else {
+
+            };
+        });
+    }
+
+
+    function LoadCenter() {
+        $selectedCenter = [];
+        UpdateBadge();
+        var urlpath = '@Url.Action("GetCenterInfo", "Account")';
+
+        appetizer.actionCall(urlpath, { "lstVillage": $selectedVillage }, 'POST', function (data, result) {
+            if (result) {
+                $("#divCenter").empty();
+                var divhtml = '<table id="gridCenter"></table>';
+                $(divhtml).appendTo($("#divCenter"));
+
+                var html = '<colgroup><col style="width:8%" /><col style="width:50%" /><col  /><col /></colgroup><thead><tr><th data-field="checkBox"></th><th data-field="CENTER">CENTER</th></tr></thead><tbody>';
+                for (i = 0; i < data.Data.length; i++) {
+                    html += '<tr>' +
+                            '<td><input type="checkbox" class="checkbox" id="checkCenter' + +data.Data[i].DistrictCode + data.Data[i].UpazilaCode + data.Data[i].UnionCode + data.Data[i].VillageCode + data.Data[i].CenterId + '"onclick="javascript: centerClicked(\'' + data.Data[i].DistrictCode + '\',\'' + data.Data[i].UpazilaCode + '\',\'' + data.Data[i].UnionCode + '\',\'' + data.Data[i].VillageCode + '\',\'' + data.Data[i].CenterId + '\',this.checked);"  /></td>' +
+                            '<td>' + data.Data[i].CenterName + '</td>' +
+                            //'<td>' + data.Data[i].UnionName + '</td>' +
+                            //'<td>' + data.Data[i].UpazilaName + '</td>' +
+                            '</tr> </tbody>';
+                }
+                $(html).appendTo($("#gridCenter"));
+                $("#gridCenter").kendoGrid({
+                    height: 100,
+                    sortable: false,
+                });
+            } else {
+
+            };
+        });
+    }
+    function LoadCamp() {
+        $selectedBlock = [];
+        UpdateBadge();
+        var urlpath = '@Url.Action("GetCampInfo", "Account")';
+
+        appetizer.actionCall(urlpath, { "lstVillage": $selectedVillage }, 'POST', function (data, result) {
+            if (result) {
+                $("#divCamp").empty();
+                var divhtml = '<table id="gridCamp"></table>';
+                $(divhtml).appendTo($("#divCamp"));
+
+                var html = '<colgroup><col style="width:8%" /><col style="width:50%" /><col  /><col /></colgroup><thead><tr><th data-field="checkBox"></th><th data-field="CAMP">CAMP</th></tr></thead><tbody>'; //<th data-field="UNION">UNION</th><th data-field="UPAZILA">UPAZILA</th><th data-field="DISTRICT">DISTRICT</th></tr>
+                for (i = 0; i < data.Data.length; i++) {
+                    html += '<tr>' +
+                            '<td><input type="checkbox" class="checkbox" id="checkCamp' + +data.Data[i].DistrictCode + data.Data[i].UpazilaCode + data.Data[i].UnionCode + data.Data[i].VillageCode + data.Data[i].CampId + '"onclick="javascript: campClicked(\'' + data.Data[i].DistrictCode + '\',\'' + data.Data[i].UpazilaCode + '\',\'' + data.Data[i].UnionCode + '\',\'' + data.Data[i].VillageCode + '\',\'' + data.Data[i].CampId + '\',this.checked);"  /></td>' +
+                            '<td>' + data.Data[i].CampName + '</td>' +
+                            //'<td>' + data.Data[i].UnionName + '</td>' +
+                            //'<td>' + data.Data[i].UpazilaName + '</td>' +
+                            '</tr> </tbody>';
+                }
+                $(html).appendTo($("#gridCamp"));
+                $("#gridCamp").kendoGrid({
+                    height: 100,
+                    sortable: false,
+                });
+            } else {
+
+            };
+        });
+    }
+    function LoadBlock() {
+        $selectedBlock = [];
+        UpdateBadge();
+        var urlpath = '@Url.Action("GetBlock", "Account")';
+
+        appetizer.actionCall(urlpath, { "lstVillage": $selectedVillage }, 'POST', function (data, result) {
+            if (result) {
+                $("#divBlock").empty();
+                var divhtml = '<table id="gridBlock"></table>';
+                $(divhtml).appendTo($("#divBlock"));
+
+                var html = '<colgroup><col style="width:8%" /><col style="width:50%" /><col  /><col /></colgroup><thead><tr><th data-field="checkBox"></th><th data-field="BLOCK">BLOCK</th></tr></thead><tbody>'; //<th data-field="UNION">UNION</th><th data-field="UPAZILA">UPAZILA</th><th data-field="DISTRICT">DISTRICT</th></tr>
+                for (i = 0; i < data.Data.length; i++) {
+                    html += '<tr>' +
+                            '<td><input type="checkbox" class="checkbox" id="checkBlock' + +data.Data[i].DistrictCode + data.Data[i].UpazilaCode + data.Data[i].UnionCode + data.Data[i].VillageCode + data.Data[i].CenterId + data.Data[i].CampId + data.Data[i].BlockId + '"onclick="javascript: BlockClicked(\'' + data.Data[i].DistrictCode + '\',\'' + data.Data[i].UpazilaCode + '\',\'' + data.Data[i].UnionCode + '\',\'' + data.Data[i].VillageCode + '\',\'' + data.Data[i].CenterId + '\',\'' + data.Data[i].CampId + '\',\'' + data.Data[i].BlockId + '\',this.checked);"  /></td>' +
+                            '<td>' + data.Data[i].BlockName + '</td>' +
+                            //'<td>' + data.Data[i].UnionName + '</td>' +
+                            //'<td>' + data.Data[i].UpazilaName + '</td>' +
+                            '</tr> </tbody>';
+                }
+                $(html).appendTo($("#gridBlock"));
+                $("#gridBlock").kendoGrid({
+                    height: 197,
+                    sortable: false,
+                });
+            } else {
+
+            };
+        });
+    }
+
+
+    $('#Users').change(function () {
+        var userId = $(this).val();
+        LoadGeolocation(userId);
+
+    });
+
+
+
+    function LoadGeolocation(userId) {
+
+        $('input:checkbox').removeAttr('checked');
+        $("tr").removeClass("checked");
+        $selectedDistrict = [];
+        $selectedUpazila = [];
+        $selectedUnion = [];
+        $selectedVillage = [];       
+        $selectedCenter = [];
+        $selectedCamp = [];
+        $selectedBlock = [];
+        UpdateBadge();
+        
+
+        var urlpath = '@Url.Action("GetUsergeolocation", "Account")';
+
+        appetizer.actionCall(urlpath, 'UserId=' + userId, 'GET', function (data, result) {
+            if (result) {
+
+                        for (var i = 0; i < data.Data.DistrictList.length; i++) {
+                            if (data.Data.DistrictList[i].DistrictCode != "0") {
+                                $('#checkDestrict' + data.Data.DistrictList[i].DistrictCode).prop('checked', true);
+                                var index = $selectedDistrict.findIndex(x => x.DistrictCode == data.Data.DistrictList[i].DistrictCode);
+                                if (index == -1) {
+                                    $selectedDistrict.push({ DistrictCode: data.Data.DistrictList[i].DistrictCode });
+
+                                    $('#checkDestrict' + data.Data.DistrictList[i].DistrictCode).closest('tr').addClass('checked');
+                                }
+                            }
+                        }
+
+
+                $.ajax({
+                    url: LoadUpazila(),
+                    success: function () {
+                        setTimeout(function () {
+
+
+                        for (var j = 0; j < data.Data.UpazilaList.length; j++) {
+                            if (data.Data.UpazilaList[j].UpazilaCode != "0") {
+                                $('#checkUpazila' + data.Data.UpazilaList[j].DistrictCode + data.Data.UpazilaList[j].UpazilaCode).prop('checked', true);
+                                var index = $selectedUpazila.findIndex(x => x.DistrictCode == data.Data.UpazilaList[j].DistrictCode && x.UpazilaCode == data.Data.UpazilaList[j].UpazilaCode);
+                                if (index == -1) {
+                                    $selectedUpazila.push({ DistrictCode: data.Data.UpazilaList[j].DistrictCode, UpazilaCode: data.Data.UpazilaList[j].UpazilaCode });
+
+                                    $('#checkUpazila' + data.Data.UpazilaList[j].DistrictCode + data.Data.UpazilaList[j].UpazilaCode).closest('tr').addClass('checked');
+                                }
+                            }
+                        }
+
+                        }, 2000);
+                    }
+                })
+
+                $.ajax({
+                    url: LoadUnion(),
+                    success: function () {
+                        setTimeout(function () {
+                        for (var k = 0; k < data.Data.UnionList.length; k++) {
+                            if (data.Data.UnionList[k].UnionCode != "0") {
+                                $('#checkUnion' + data.Data.UnionList[k].DistrictCode + data.Data.UnionList[k].UpazilaCode + data.Data.UnionList[k].UnionCode).prop('checked', true);
+                                var index = $selectedUnion.findIndex(x => x.DistrictCode == data.Data.UnionList[k].DistrictCode && x.UpazilaCode == data.Data.UnionList[k].UpazilaCode && x.UnionCode == data.Data.UnionList[k].UnionCode);
+                                if (index == -1) {
+                                    $selectedUnion.push({ DistrictCode: data.Data.UnionList[k].DistrictCode, UpazilaCode: data.Data.UnionList[k].UpazilaCode, UnionCode: data.Data.UnionList[k].UnionCode });
+
+                                    $('#checkUnion' + data.Data.UnionList[k].DistrictCode + data.Data.UnionList[k].UpazilaCode + data.Data.UnionList[k].UnionCode).closest('tr').addClass('checked');
+                                }
+                            }
+                        }
+                        }, 2000);
+                    }
+                })
+                $.ajax({
+                    url: LoadVillage(),
+                    success: function () {
+                        setTimeout(function () {
+                        for (var k = 0; k < data.Data.VillageList.length; k++) {
+                            if (data.Data.VillageList[k].VillageCode != "0") {
+                                $('#checkVillage' + data.Data.VillageList[k].DistrictCode + data.Data.VillageList[k].UpazilaCode + data.Data.VillageList[k].UnionCode + data.Data.VillageList[k].VillageCode).prop('checked', true);
+                                var index = $selectedVillage.findIndex(x => x.DistrictCode == data.Data.VillageList[k].DistrictCode && x.UpazilaCode == data.Data.VillageList[k].UpazilaCode && x.UnionCode == data.Data.VillageList[k].UnionCode && x.VillageCode == data.Data.VillageList[k].VillageCode);
+                                if (index == -1) {
+                                    $selectedVillage.push({ DistrictCode: data.Data.VillageList[k].DistrictCode, UpazilaCode: data.Data.VillageList[k].UpazilaCode, UnionCode: data.Data.VillageList[k].UnionCode, VillageCode: data.Data.VillageList[k].VillageCode });
+
+                                    $('#checkVillage' + data.Data.VillageList[k].DistrictCode + data.Data.VillageList[k].UpazilaCode + data.Data.VillageList[k].UnionCode + data.Data.VillageList[k].VillageCode).closest('tr').addClass('checked');
+                                }
+                            }
+                        }
+                        UpdateBadge();
+                    }, 2000);
+                    }
+                })
+                $.ajax({
+                    url: LoadCenter(),
+                    success: function () {
+                        setTimeout(function () {
+                            debugger
+                            console.log(data.Data.CenterList);
+                            for (var l = 0; l < data.Data.CenterList.length; l++) {
+                                if (data.Data.CenterList[l].CenterId != "0") {
+                                    $('#checkCenter' + data.Data.CenterList[l].DistrictCode + data.Data.CenterList[l].UpazilaCode + data.Data.CenterList[l].UnionCode + data.Data.CenterList[l].VillageCode + data.Data.CenterList[l].CenterId ).prop('checked', true);
+                                    var index = $selectedCenter.findIndex(x => x.DistrictCode == data.Data.CenterList[l].DistrictCode && x.UpazilaCode == data.Data.CenterList[l].UpazilaCode && x.UnionCode == data.Data.CenterList[l].UnionCode && x.VillageCode == data.Data.CenterList[l].VillageCode && x.CenterId == data.Data.CenterList[l].CenterId);
+                                    if (index == -1) {
+                                        debugger
+                                        $selectedCenter.push({ DistrictCode: data.Data.CenterList[l].DistrictCode, UpazilaCode: data.Data.CenterList[l].UpazilaCode, UnionCode: data.Data.CenterList[l].UnionCode, VillageCode: data.Data.CenterList[l].VillageCode, CenterId: data.Data.CenterList[l].CenterId });
+                                        $('#checkCenter' + data.Data.CenterList[l].DistrictCode + data.Data.CenterList[l].UpazilaCode + data.Data.CenterList[l].UnionCode + data.Data.CenterList[l].VillageCode + data.Data.CenterList[l].CenterId ).closest('tr').addClass('checked');
+                                    }
+                                }
+                            }
+                            UpdateBadge();
+                        }, 2000);
+                    }
+                })
+                $.ajax({
+                    url: LoadCamp(),
+                    success: function () {
+                        setTimeout(function () {
+                            debugger
+                            console.log(data.Data.CampList);
+                            for (var l = 0; l < data.Data.CampList.length; l++) {
+                                if (data.Data.CampList[l].CampId != "0") {
+                                    $('#checkCamp' + data.Data.CampList[l].DistrictCode + data.Data.CampList[l].UpazilaCode + data.Data.CampList[l].UnionCode + data.Data.CampList[l].VillageCode + data.Data.CampList[l].CampId).prop('checked', true);
+                                    var index = $selectedCamp.findIndex(x => x.DistrictCode == data.Data.CampList[l].DistrictCode && x.UpazilaCode == data.Data.CampList[l].UpazilaCode && x.UnionCode == data.Data.CampList[l].UnionCode && x.VillageCode == data.Data.CampList[l].VillageCode && x.CampId == data.Data.CampList[l].CampId);
+                                    if (index == -1) {
+                                        debugger
+                                        $selectedCamp.push({ DistrictCode: data.Data.CampList[l].DistrictCode, UpazilaCode: data.Data.CampList[l].UpazilaCode, UnionCode: data.Data.CampList[l].UnionCode, VillageCode: data.Data.CampList[l].VillageCode, CampId: data.Data.CampList[l].CampId });
+                                        $('#checkCamp' + data.Data.CampList[l].DistrictCode + data.Data.CampList[l].UpazilaCode + data.Data.CampList[l].UnionCode + data.Data.CampList[l].VillageCode + data.Data.CampList[l].CampId).closest('tr').addClass('checked');
+                                    }
+                                }
+                            }
+                            UpdateBadge();
+                        }, 2000);
+                    }
+                })
+
+                $.ajax({
+                    url: LoadBlock(),
+                    success: function () {
+                        setTimeout(function () {
+                            debugger
+                            console.log(data.Data.BlockList);
+                            for (var l = 0; l < data.Data.BlockList.length; l++) {
+                                if (data.Data.BlockList[l].BlockId != "0") {
+                                    $('#checkBlock' + data.Data.BlockList[l].DistrictCode + data.Data.BlockList[l].UpazilaCode + data.Data.BlockList[l].UnionCode + data.Data.BlockList[l].VillageCode + data.Data.BlockList[l].CenterId + data.Data.BlockList[l].CampId + data.Data.BlockList[l].BlockId).prop('checked', true);
+                                    var index = $selectedBlock.findIndex(x => x.DistrictCode == data.Data.BlockList[l].DistrictCode && x.UpazilaCode == data.Data.BlockList[l].UpazilaCode && x.UnionCode == data.Data.BlockList[l].UnionCode && x.VillageCode == data.Data.BlockList[l].VillageCode  && x.BlockId == data.Data.BlockList[l].BlockId);
+                                    if (index == -1) {
+                                        debugger
+                                        $selectedBlock.push({ DistrictCode: data.Data.BlockList[l].DistrictCode, UpazilaCode: data.Data.BlockList[l].UpazilaCode, UnionCode: data.Data.BlockList[l].UnionCode, VillageCode: data.Data.BlockList[l].VillageCode,CenterId: data.Data.BlockList[l].CenterId,CampId: data.Data.BlockList[l].CampId, BlockId: data.Data.BlockList[l].BlockId });
+                                        $('#checkBlock' + data.Data.BlockList[l].DistrictCode + data.Data.BlockList[l].UpazilaCode + data.Data.BlockList[l].UnionCode + data.Data.BlockList[l].VillageCode + data.Data.BlockList[l].CenterId + data.Data.BlockList[l].CampId + data.Data.BlockList[l].BlockId).closest('tr').addClass('checked');
+                                    }
+                                }
+                            }
+                            UpdateBadge();
+                        }, 2000);
+                    }
+                })
+
+
+               // console.log($selectedVillage);
+
+
+            } else {
+
+            };
+        });
+
+    }
+
+
+    function adjustDropDownWidth(e) {
+        var listContainer = e.sender.list.closest(".k-list-container");
+        listContainer.width(listContainer.width() + kendo.support.scrollbar());
+    }
+
+
+    function districtClicked(districtCode,checkStatus)
+    {
+        if (checkStatus == true)
+        {
+            var index = $selectedDistrict.findIndex(x => x.DistrictCode == districtCode);
+            if (index == -1)
+            {
+                $selectedDistrict.push({ DistrictCode: districtCode });
+
+                $('#checkDestrict' + districtCode).closest('tr').addClass('checked');
+            }
+        }
+        else
+        {
+            var index = $selectedDistrict.findIndex(x => x.DistrictCode == districtCode);
+            $selectedDistrict.splice(index, 1);
+            $('#checkDestrict' + districtCode).closest('tr').removeClass('checked');
+            ClearUpazilaUnionVillageBlock();
+        }
+
+        UpdateBadge();
+        LoadUpazila();
+    }
+    function upazilaClicked(districtCode,upazilaCode, checkStatus) {
+        if (checkStatus == true) {
+            var index = $selectedUpazila.findIndex(x => x.DistrictCode == districtCode && x.UpazilaCode == upazilaCode);
+            if (index == -1) {
+                $selectedUpazila.push({ DistrictCode: districtCode, UpazilaCode: upazilaCode });
+
+                $('#checkUpazila' + districtCode + upazilaCode).closest('tr').addClass('checked');
+
+            }
+        }
+        else {
+            var index = $selectedUpazila.findIndex(x => x.DistrictCode == districtCode && x.UpazilaCode == upazilaCode);
+            $selectedUpazila.splice(index, 1);
+
+            $('#checkUpazila' + districtCode + upazilaCode).closest('tr').removeClass('checked');
+            ClearUnionVillageBlock();
+        }
+        UpdateBadge();
+        if ($selectedUpazila.length > 0)
+        {
+            LoadUnion();
+        }
+
+    }
+    function unionClicked(districtCode, upazilaCode, unionCode, checkStatus) {
+        if (checkStatus == true) {
+            var index = $selectedUnion.findIndex(x => x.DistrictCode == districtCode && x.UpazilaCode == upazilaCode && x.UnionCode == unionCode);
+            if (index == -1) {
+                $selectedUnion.push({ DistrictCode: districtCode, UpazilaCode: upazilaCode, UnionCode: unionCode });
+
+                $('#checkUnion' + districtCode + upazilaCode + unionCode).closest('tr').addClass('checked');
+
+            }
+        }
+        else {
+            var index = $selectedUnion.findIndex(x => x.DistrictCode == districtCode && x.UpazilaCode == upazilaCode && x.UnionCode == unionCode);
+            $selectedUnion.splice(index, 1);
+
+            $('#checkUnion' + districtCode + upazilaCode + unionCode).closest('tr').removeClass('checked');
+            ClearVillageBlock();
+
+        }
+        UpdateBadge();
+        if ($selectedUnion.length > 0) {
+            LoadVillage();
+        }
+    }
+
+    function villageClicked(districtCode, upazilaCode, unionCode,villageCode, checkStatus) {
+        if (checkStatus == true) {
+            var index = $selectedVillage.findIndex(x => x.DistrictCode == districtCode && x.UpazilaCode == upazilaCode && x.UnionCode == unionCode && x.VillageCode == villageCode);
+            if (index == -1) {
+                $selectedVillage.push({ DistrictCode: districtCode, UpazilaCode: upazilaCode, UnionCode: unionCode, VillageCode: villageCode });
+
+                $('#checkVillage' + districtCode + upazilaCode + unionCode + villageCode).closest('tr').addClass('checked');
+
+            }
+        }
+        else {
+            var index = $selectedVillage.findIndex(x => x.DistrictCode == districtCode && x.UpazilaCode == upazilaCode && x.UnionCode == unionCode && x.VillageCode == villageCode);
+            $selectedVillage.splice(index, 1);
+
+            $('#checkVillage' + districtCode + upazilaCode + unionCode + villageCode).closest('tr').removeClass('checked');
+            ClearBlock();
+        }
+        UpdateBadge();
+        if ($selectedVillage.length > 0) {
+            LoadCenter();
+            LoadCamp();            
+            //LoadBlock();
+        }
+
+    }
+    function centerClicked(districtCode, upazilaCode, unionCode, villageCode,centerId,  checkStatus) {
+        if (checkStatus == true) {
+            var index = $selectedCenter.findIndex(x => x.DistrictCode == districtCode && x.UpazilaCode == upazilaCode && x.UnionCode == unionCode && x.VillageCode == villageCode && x.CenterId == centerId);
+            if (index == -1) {
+                $selectedCenter.push({ DistrictCode: districtCode, UpazilaCode: upazilaCode, UnionCode: unionCode, VillageCode: villageCode, CenterId: centerId });
+
+                $('#checkCenter' + districtCode + upazilaCode + unionCode + villageCode + centerId).closest('tr').addClass('checked');
+
+            }
+        }
+        else {
+            var index = $selectedCenter.findIndex(x => x.DistrictCode == districtCode && x.UpazilaCode == upazilaCode && x.UnionCode == unionCode && x.VillageCode == villageCode && x.CenterId == centerId);
+            $selectedCenter.splice(index, 1);
+
+            $('#checkCenter' + districtCode + upazilaCode + unionCode + villageCode + centerId).closest('tr').removeClass('checked');
+
+        }
+        UpdateBadge();
+        
+        //console.log($selectedVillage);
+    }
+    function campClicked(districtCode, upazilaCode, unionCode, villageCode,campId,  checkStatus) {
+        if (checkStatus == true) {
+            var index = $selectedCamp.findIndex(x => x.DistrictCode == districtCode && x.UpazilaCode == upazilaCode && x.UnionCode == unionCode && x.VillageCode == villageCode && x.CampId == campId);
+            if (index == -1) {
+                $selectedCamp.push({ DistrictCode: districtCode, UpazilaCode: upazilaCode, UnionCode: unionCode, VillageCode: villageCode, CampId: campId });
+
+                $('#checkCamp' + districtCode + upazilaCode + unionCode + villageCode + campId).closest('tr').addClass('checked');
+
+            }
+        }
+        else {
+            var index = $selectedCamp.findIndex(x => x.DistrictCode == districtCode && x.UpazilaCode == upazilaCode && x.UnionCode == unionCode && x.VillageCode == villageCode && x.CampId == campId);
+            $selectedCamp.splice(index, 1);
+
+            $('#checkCamp' + districtCode + upazilaCode + unionCode + villageCode + campId).closest('tr').removeClass('checked');
+
+        }
+        UpdateBadge();
+        //LoadBlock();
+        if ($selectedCamp.length > 0) {
+            LoadBlock();
+        }
+        //console.log($selectedVillage);
+    }
+
+
+    function BlockClicked(districtCode, upazilaCode, unionCode, villageCode,centerId,campId, Blockid, checkStatus) {
+        if (checkStatus == true) {
+            var index = $selectedBlock.findIndex(x => x.DistrictCode == districtCode && x.UpazilaCode == upazilaCode && x.UnionCode == unionCode && x.VillageCode == villageCode && x.CenterId == centerId && x.CampId == campId && x.BlockId == Blockid);
+            if (index == -1) {
+                $selectedBlock.push({ DistrictCode: districtCode, UpazilaCode: upazilaCode, UnionCode: unionCode, VillageCode: villageCode,CenterId: centerId,CampId: campId, BlockId: Blockid });
+
+                $('#checkBlock' + districtCode + upazilaCode + unionCode + villageCode + centerId + campId + Blockid).closest('tr').addClass('checked');
+
+            }
+        }
+        else {
+            var index = $selectedBlock.findIndex(x => x.DistrictCode == districtCode && x.UpazilaCode == upazilaCode && x.UnionCode == unionCode && x.VillageCode == villageCode && x.CenterId == centerId && x.CampId == campId && x.BlockId == Blockid);
+            $selectedBlock.splice(index, 1);
+
+            $('#checkBlock' + districtCode + upazilaCode + unionCode + villageCode+ centerId + campId  + Blockid).closest('tr').removeClass('checked');
+
+        }
+        UpdateBadge();
+
+        console.log($selectedVillage);
+    }
+
+    function UpdateBadge() {
+        $('#unBadge').text($selectedUnion.length);
+        $('#upBadge').text($selectedUpazila.length);
+        $('#dsBadge').text($selectedDistrict.length);
+        $('#vlBadge').text($selectedVillage.length);
+        $('#centerBadge').text($selectedCenter.length);
+        $('#campBadge').text($selectedCamp.length);        
+        $('#sbBadge').text($selectedBlock.length);
+
+    }
+
+
+    function ClearUnionVillageBlock() {
+        $selectedUnion = [];
+        $selectedVillage = [];
+        $selectedBlock = [];
+
+        $("#divBlock").empty();
+        var divhtml = '<table id="gridBlock"></table>';
+        $(divhtml).appendTo($("#divBlock"));
+        var html = '';
+        $(html).appendTo($("#gridBlock"));
+        $("#gridBlock").kendoGrid({
+            height: 400,
+            sortable: false
+        });
+
+        $("#divVillage").empty();
+        var divhtml = '<table id="gridVillage"></table>';
+        $(divhtml).appendTo($("#divVillage"));
+        var html = '';
+        $(html).appendTo($("#gridVillage"));
+        $("#gridVillage").kendoGrid({
+            height: 400,
+            sortable: false
+        });
+
+        $("#divUnion").empty();
+        var divhtml = '<table id="gridUnion"></table>';
+        $(divhtml).appendTo($("#divUnion"));
+        $(html).appendTo($("#gridUnion"));
+        $("#gridUnion").kendoGrid({
+            height: 400,
+            sortable: false
+        });
+
+        UpdateBadge();
+    }
+
+    function ClearVillageBlock() {
+        $selectedVillage = [];
+        $selectedBlock = [];
+
+        $("#divBlock").empty();
+        var divhtml = '<table id="gridBlock"></table>';
+        $(divhtml).appendTo($("#divBlock"));
+        var html = '';
+        $(html).appendTo($("#gridBlock"));
+        $("#gridBlock").kendoGrid({
+            height: 400,
+            sortable: false
+        });
+
+        $("#divVillage").empty();
+        var divhtml = '<table id="gridVillage"></table>';
+        $(divhtml).appendTo($("#divVillage"));
+        var html = '';
+        $(html).appendTo($("#gridVillage"));
+        $("#gridVillage").kendoGrid({
+            height: 400,
+            sortable: false
+        });
+
+        UpdateBadge();
+    }
+    function ClearCamp() {
+        $selectedBlock = [];
+        $("#divCamp").empty();
+        var divhtml = '<table id="gridCamp"></table>';
+        $(divhtml).appendTo($("#divCamp"));
+        var html = '';
+        $(html).appendTo($("#gridCamp"));
+        $("#gridCamp").kendoGrid({
+            height: 100,
+            sortable: false
+        });
+
+        UpdateBadge();
+    }
+    function ClearBlock() {
+        $selectedBlock = [];
+        $("#divBlock").empty();
+        var divhtml = '<table id="gridBlock"></table>';
+        $(divhtml).appendTo($("#divBlock"));
+        var html = '';
+        $(html).appendTo($("#gridBlock"));
+        $("#gridBlock").kendoGrid({
+            height: 197,
+            sortable: false
+        });
+
+        UpdateBadge();
+    }
+</script>
+

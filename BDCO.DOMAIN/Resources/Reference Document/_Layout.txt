@@ -1,0 +1,441 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Ondesk</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300" rel="stylesheet">
+    <link href="~/Content/iziModal.css" rel="stylesheet" />
+    <script src="~/Scripts/Appetizer.js"></script>
+    <script src="~/Scripts/iziModal.js"></script>
+
+    
+    <link href="~/Content/sweetalert.css" rel="stylesheet" />
+    <script src="~/Scripts/sweetalert.min.js"></script>
+
+    @*Image Base 64*@
+    <script src="~/Scripts/base64js.min.js"></script>
+
+    <style type="text/css">
+        html {
+            height: 100%;
+            position: relative;
+        }
+
+        .footerSection {
+            background-color: #555;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            color: white;
+            height: 100px;
+        }
+
+            .footerSection footer {
+                width: 972px;
+                margin-left: auto;
+                margin-right: auto;
+                padding-top: 20px;
+            }
+
+        .alert {
+            color: #F44336;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .showError {
+            display: block;
+            color: red;
+        }
+
+        .hideError {
+            display: none;
+            color: red;
+        }
+
+
+        .block {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .block__title, .block__subtitle {
+            flex-basis: 100%;
+            width: 100%;
+            height: auto;
+            margin: 0;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .block__title {
+            align-self: flex-end;
+            padding-bottom: 3rem;
+        }
+
+        .block__subtitle {
+            align-self: flex-start;
+            color: #fff;
+            font-family: serif;
+            font-style: italic;
+            font-weight: 100;
+            opacity: 0.6;
+            letter-spacing: 1px;
+        }
+
+            .block__subtitle a {
+                /*color: #fff;*/
+            }
+
+                .block__subtitle a:hover {
+                    text-decoration: none;
+                }
+
+        .btn {
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn__trigger {
+            transition: box-shadow 300ms ease-in-out;
+            position: fixed;
+            z-index: 10;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            display: block;
+            border-radius: 50px;
+        }
+
+        .btn__trigger--views {
+            width: 7rem;
+            height: 7rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            background-color: #F44336;
+            color: #fff;
+            font-size: 1rem;
+            line-height: 53px;
+            font-weight: 700;
+            text-align: center;
+            font-size: 16px;
+            font-family: 'Oswald', sans-serif;
+            padding: 9px;
+        }
+
+            .btn__trigger--views:hover {
+                box-shadow: 0 14px 10px rgba(0, 0, 0, 0.24), 0 10px 10px rgba(0, 0, 0, 0.24);
+            }
+
+        .my-nav {
+            position: fixed;
+            opacity: 0;
+        }
+
+            .my-nav.reveal {
+                visibility: visible;
+                opacity: 1;
+            }
+
+                .my-nav.reveal:after {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    z-index: -1;
+                    display: block;
+                    content: "";
+                    /*background-color: rgba(42, 196, 159, 0.7);*/
+                }
+
+        .my-nav--list {
+            visibility: hidden;
+            bottom: 6.5rem;
+            right: 1.75rem;
+            text-align: right;
+        }
+
+        .my-nav__item {
+            transition: opacity 150ms ease-in-out;
+            display: block;
+            font-size: 0.90rem;
+            opacity: 0;
+        }
+
+            .my-nav__item.visible {
+                visibility: visible;
+                opacity: 1;
+            }
+
+        .my-nav__link {
+            transition: background-color 150ms ease-in-out;
+            display: inline-block;
+            width: auto;
+            margin: 1rem 0;
+            padding: 0.50rem 0.7rem;
+            /*box-shadow: inset 0 0 0 1px #fff;*/
+            border-radius: 25px;
+            color: #fff;
+            font-size: 11px;
+            font-family: 'Raleway';
+        }
+
+        .my-nav__link--template:hover {
+            background-color: #f3f1ed;
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .my-nav__link--new {
+            transition: box-shadow 300ms ease-in-out;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            background-color: #e0dbd9;
+            color: #fff;
+        }
+
+            .my-nav__link--new:hover {
+                box-shadow: 0 14px 10px rgba(0, 0, 0, 0.24), 0 10px 10px rgba(0, 0, 0, 0.24);
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        .my-nav__link:last-child {
+            margin-bottom: 0;
+            border: 1px solid #d3d4d3;
+            color: #441a1a;
+        }
+
+        .navbar-default .navbar-nav > .open > a,
+        .navbar-default .navbar-nav > .open > a:hover,
+        .navbar-default .navbar-nav > .open > a:focus {
+            color: #555;
+            background-color: #de2f2f;
+        }
+
+        .nav .open > a,
+        .nav .open > a:hover,
+        .nav .open > a:focus {
+            background-color: #de2f2f;
+            border-color: #337ab7;
+        }
+
+        label {
+            text-transform: uppercase;
+            font-weight: 200;
+            font-size: 12px;
+            font-family: 'Raleway', sans-serif;
+            color: #505050;
+        }
+
+        .tableHead td, .tableHead th {
+            font-weight: 100;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-family: 'Raleway', sans-serif;
+            color: #505050;
+            background-color: #f9f9f9;
+        }
+
+        .tableBody > tbody > tr > td {
+            padding-top: 4px;
+            padding-bottom: 4px;
+            line-height: 24px;
+        }
+
+        @@media (max-width: 668px) {
+            .footerSection footer {
+                width: 100%;
+                padding-left: 10px;
+            }
+
+            .appLogo {
+                padding-top: 9px;
+                padding-left: 21px;
+            }
+
+            .btnHis {
+                margin-bottom: -25px;
+            }
+        }
+    </style>
+
+    <script>
+        jQuery(document).ready(function ($) {
+
+            fnFavoriteMenu();
+            var smallWindow = false;
+
+            var windWith = this.innerWidth;
+
+            $(window).scroll(function () {
+                var scroll = $(window).scrollTop();
+                
+                if (windWith <= 320)
+                    smallWindow = true;
+                else
+                    smallWindow = false;
+                if (scroll >= 52) {
+                    $('#logo-image').attr('src', '../Images/ondesk-logo.png')
+                    $('#logo-image').width('29px');
+                    $(".important-class").addClass("padding-on-my-header");
+                    $('.navbar-header').css('margin-top', '0px');
+
+                }
+                if (scroll < 52) {
+                    $(".important-class").removeClass("padding-on-my-header");
+                    $('#logo-image').attr('src', '../Images/ondesk-logo-title.png')
+                    $('#logo-image').width('90px');
+                    
+
+                }
+               
+            }).resize(function () {
+                if (!smallWindow && this.innerWidth <= 900) {
+                    $('.container-fluid').css('width', '100%');
+                    $('.appLogo').css('padding-top', '9px');
+                    $('.navbar-header').css('margin-top', '0px');
+                    // debugger
+                }
+                else if (!smallWindow && this.innerWidth <= 1100) {
+                    $('.appLogo').css('padding-top', '4px');
+                    $('.navbar-header').css('margin-top', '16px');
+                  
+                }
+                else {
+                    $('.container-fluid').css('width', '972px');
+                    $('.appLogo').css('padding-top', '0');                   
+                }
+            });
+
+            function fnFavoriteMenu() {
+                //debugger
+                var urlpath = '@Url.Action("FavoriteMenu", "Navbar")';
+                appetizer.actionCall(urlpath, { "ID": 0 }, 'POST', function (data, result) {
+                    if (result) {
+                        var html = '';
+                        for (var i = 0; i < data.lstMenuFavorite.length; i++) {
+                            html += '<li class="my-nav__item"> <a class="my-nav__link my-nav__link--template" href="\\' +
+                                data.lstMenuFavorite[i].ControllerName + '\\' + data.lstMenuFavorite[i].ActionName + '">' +
+                                data.lstMenuFavorite[i].MenuName + '</a> </li>';
+                        }
+                        html += '<li class="my-nav__item"> <a class="my-nav__link my-nav__link--new" style="border:none;">ONDESK HOME</a> </li>';
+                        $('#wrapper-templates').append(html);
+                        displayList();
+                    }
+                    else {
+                        appetizer.message.showError('#showErrorMsg', data.data, 10000);
+                    }
+                });
+            }
+
+            function displayList() {
+                // debugger
+                $.fn.reverse = [].reverse;
+
+                var trigger = $("#trigger"),
+                    mainTarget = $(".my-nav"),
+                    targetItem = $('.my-nav__item'),
+                    html = $("html");
+
+                trigger.on("click", function (event) {
+                    mainTarget.toggleClass("reveal");
+                    targetItem.reverse().each(function (i, el) {
+                        setTimeout(function () {
+                            $(el).toggleClass("visible");
+                        }, i * 18);
+                    })
+
+                    event.preventDefault();
+                    event.stopPropagation();
+                });
+
+                //html.unbind().click(function () {
+                //    trigger.click();
+                //});
+            }
+            // $(document).on('page:load', displayList);
+            // $(document).ready(displayList);
+        });
+
+    </script>
+</head>
+
+<body style="background-color:#fefefe; position:relative; min-height: 100%; margin: 0;">
+    <div id="showMsg" class="iziModal" style="z-index:99999999999;"></div>
+    <div id="showErrorMsg" class="iziModal" style="z-index:99999999999"></div>
+    @*<input id="EmployeeID" type="hidden" value="1889"/>*@
+
+    <div class="contain-to-grid header-section">
+        <!-- TOPBAR SECTION -->
+        <nav class="top-bar important-class" data-topbar>
+
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="appLogo"><img src="~/Images/ondesk-logo-title.png" alt="" id="logo-image" style="width:90px;"></div>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    @Html.Action("Index", "Navbar")
+                  
+                   
+                   
+                </div><!-- /.container-fluid -->
+            </nav>
+        </nav> <!-- END TOPBAR SECTION -->
+    </div>
+
+    <div style="line-height: 1;font-family: 'Roboto';background: #263238;">
+        <div style="margin-left:-2px;"><a class="btn btn__trigger btn__trigger--views" id="trigger">FAVORITE</a></div>
+        <ul class="my-nav my-nav--list">
+            <div id="wrapper-templates" style="margin-bottom: 30px;">
+                @*<li class="my-nav__item"> <a class="my-nav__link my-nav__link--template">MANAGE PR</a> </li>
+                    <li class="my-nav__item"> <a class="my-nav__link my-nav__link--template">TIMESHEET</a> </li>
+                    <li class="my-nav__item"> <a class="my-nav__link my-nav__link--template">VEHICLE REQUEST</a> </li>
+                    <li class="my-nav__item"> <a class="my-nav__link my-nav__link--template">MANAGE PR</a> </li>
+                    <li class="my-nav__item"> <a class="my-nav__link my-nav__link--template">TIMESHEET</a> </li>
+                    <li class="my-nav__item"> <a class="my-nav__link my-nav__link--template">VEHICLE REQUEST</a> </li>
+                    <li class="my-nav__item"> <a class="my-nav__link my-nav__link--template">MANAGE PR</a> </li>
+                    <li class="my-nav__item"> <a class="my-nav__link my-nav__link--template">TIMESHEET</a> </li>
+                    <li class="my-nav__item"> <a class="my-nav__link my-nav__link--template">VEHICLE REQUEST</a> </li>
+                    <li class="my-nav__item"> <a class="my-nav__link my-nav__link--new" style="border:none;">ONDESK HOME</a> </li>*@
+            </div>
+        </ul>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <div style="height:120px;clear:both;"></div>
+    </div>
+    <div class="footerSection">
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Save the Children In Bangladesh</p>
+        </footer>
+    </div>
+    <div style="display:none">
+        @User.DisplayName();
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
